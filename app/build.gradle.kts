@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.pingtolk"
+    namespace = "com.example.silmedy"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.pingtolk"
+        applicationId = "com.example.silmedy"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
