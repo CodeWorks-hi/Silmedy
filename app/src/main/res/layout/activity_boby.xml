@@ -5,14 +5,25 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- 팔/손 인체 이미지 -->
     <ImageView
         android:id="@+id/bodyImage"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/boby"
-        android:scaleType="fitCenter" />
+        android:src="@drawable/arm"
+    android:scaleType="fitCenter" />
 
+    <!-- 확대 영역 -->
+    <ImageView
+        android:id="@+id/zoomedPart"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:visibility="gone"
+        android:scaleType="fitCenter"
+        android:contentDescription="확대된 부위" />
+
+    <!-- 증상 버튼 -->
     <LinearLayout
         android:id="@+id/symptomButtons"
         android:layout_width="match_parent"
