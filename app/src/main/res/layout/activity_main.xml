@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
@@ -7,20 +8,7 @@
     android:background="#FFFFFF"
     android:gravity="center_horizontal">
 
-    <!-- 🔹 인트로 문구 -->
-    <TextView
-        android:id="@+id/mainSlogan1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="&quot;말하지 않아도, 아픔은 보입니다&quot;"
-        android:textColor="#1F2E6E"
-        android:textSize="18sp"
-        android:textStyle="italic|bold"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_marginBottom="4dp" />
-
-    <!-- 🔹 로고 이미지 -->
+    <!-- 터치 가능한 로고 이미지 -->
     <ImageView
         android:id="@+id/silmedy"
         android:layout_width="match_parent"
@@ -28,29 +16,8 @@
         android:layout_weight="1"
         android:src="@drawable/silmedy"
         android:scaleType="fitCenter"
-        android:contentDescription="Silmedy 로고" />
+        android:contentDescription="Silmedy 로고"
+        android:clickable="true"
+        android:focusable="true" />
 
-
-    <TextView
-        android:id="@+id/mainSlogan2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="AI가 그 ‘보이는 고통’을 진료로 이어줍니다."
-        android:textColor="#1F2E6E"
-        android:textSize="16sp"
-        android:textStyle="italic"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_marginBottom="12dp" />
-
-    <!-- 🔹 진입 버튼 -->
-    <Button
-        android:id="@+id/btnGoToHome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="진료 홈으로"
-        android:layout_centerInParent="true"
-        android:backgroundTint="#30B9C5"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
 </LinearLayout>
