@@ -36,10 +36,12 @@
             android:src="@drawable/ic_alarm" />
     </LinearLayout>
 
-    <!-- 🔹 본문 스크롤 전체 -->
+    <!-- 🔹 본문 스크롤 -->
     <ScrollView
+        android:id="@+id/scrollContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/bottomNav"
         android:layout_below="@id/headerLayout"
         android:paddingStart="16dp"
         android:paddingEnd="16dp"
@@ -49,8 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!-- 터치로 증상 확인 -->
+            <!-- 🔸 진단 카드 3개 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -59,7 +60,7 @@
                 android:weightSum="100"
                 android:gravity="center_vertical">
 
-                <!-- 좌측 큰 카드 -->
+                <!-- 터치 진단 카드 -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="140dp"
@@ -84,7 +85,7 @@
                         android:layout_marginTop="4dp" />
                 </LinearLayout>
 
-                <!-- 우측 2개 세로 카드 -->
+                <!-- 오른쪽: 수어/AI -->
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="140dp"
@@ -92,7 +93,7 @@
                     android:orientation="vertical"
                     android:gravity="center">
 
-                    <!-- 수어 -->
+                    <!-- 수어 진료 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -115,7 +116,7 @@
                             android:layout_marginTop="2dp" />
                     </LinearLayout>
 
-                    <!-- AI -->
+                    <!-- AI 진단 -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
@@ -139,7 +140,7 @@
                 </LinearLayout>
             </LinearLayout>
 
-            <!-- 가까운 병원 -->
+            <!-- 🔸 가까운 병원 -->
             <TextView
                 android:text="가까운 병원"
                 android:textSize="15sp"
@@ -147,7 +148,7 @@
                 android:layout_marginTop="20dp"
                 android:textColor="#000000" />
 
-            <!-- 병원 카테고리 버튼 라인 -->
+            <!-- 병원 카테고리 버튼 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -210,6 +211,91 @@
                     android:backgroundTint="#E6F6F8"
                     android:textColor="#3B3BFF" />
             </LinearLayout>
+
+            <!-- 병원 정보 예시 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_card"
+                android:padding="12dp"
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="으뜸병원(관절,척추,통증병원)"
+                    android:textSize="14sp"
+                    android:textColor="#000000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="⏰ 운영시간 : 09:00 ~ 17:00"
+                    android:textSize="13sp"
+                    android:textColor="#555555"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+
+    <!-- 🔻 하단 네비게이션 바 -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:background="#FFFFFF"
+        android:weightSum="5"
+        android:paddingHorizontal="8dp"
+        android:elevation="6dp">
+
+        <ImageButton
+            android:id="@+id/nav_ai_chat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_chat"
+            android:background="@android:color/transparent"
+            android:contentDescription="AI 문진" />
+
+        <ImageButton
+            android:id="@+id/nav_health"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_heart"
+            android:background="@android:color/transparent"
+            android:contentDescription="건강관리" />
+
+        <ImageButton
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_home"
+            android:background="@android:color/transparent"
+            android:contentDescription="홈" />
+
+        <ImageButton
+            android:id="@+id/nav_history"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_history"
+            android:background="@android:color/transparent"
+            android:contentDescription="진료내역" />
+
+        <ImageButton
+            android:id="@+id/nav_mypage"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/ic_person"
+            android:background="@android:color/transparent"
+            android:contentDescription="마이페이지" />
+    </LinearLayout>
 </RelativeLayout>

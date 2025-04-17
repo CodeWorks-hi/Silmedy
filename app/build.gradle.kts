@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application) // Version Catalog용
     id("com.google.gms.google-services")    // Firebase 서비스 연동용 플러그인
 }
+dependencies {
+    implementation("com.google.firebase:firebase-messaging:23.0.0") // ✅ 메시징 기능
+}
 
 android {
     namespace = "com.example.silmedy"
