@@ -1,0 +1,65 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/armLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!-- 🔹 안내 텍스트 -->
+
+    <!-- 🔹 팔 이미지 -->
+    <TextView
+        android:id="@+id/guideText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="증상 부위를 선택해주세요"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+
+    <ImageView
+        android:id="@+id/armImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/arm"
+        android:scaleType="fitCenter"
+        android:contentDescription="팔 이미지" />
+
+    <!-- 🔹 버튼 영역 -->
+    <LinearLayout
+        android:id="@+id/buttonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/btnArm"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="팔 선택"
+            android:layout_marginEnd="8dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#30B9C5" />
+
+        <Button
+            android:id="@+id/btnHand"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="손 선택"
+            android:layout_marginStart="8dp"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#45A4BE" />
+    </LinearLayout>
+</LinearLayout>

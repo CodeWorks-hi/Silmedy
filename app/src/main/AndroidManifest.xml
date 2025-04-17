@@ -13,22 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Silmedy"
         tools:targetApi="31">
-
-        <!-- BobyMain 액티비티: 패키지 경로 정확하게 지정 -->
         <activity
-            android:name="com.example.silmedy.BobyMain"
-            android:exported="true" />
-
-        <!-- MainActivity: 앱 런처 -->
+            android:name=".ClinicHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".HandActivity"
+            android:exported="false" /> <!-- BobyMain 액티비티: 패키지 경로 정확하게 지정 -->
+        <activity
+            android:name=".BobyMain"
+            android:exported="true" /> <!-- MainActivity: 앱 런처 -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
