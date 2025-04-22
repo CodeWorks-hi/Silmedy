@@ -3,7 +3,6 @@ package com.example.silmedy.ui.clinic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,7 +14,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ClinicHomeActivity extends AppCompatActivity {
 
-
     private ImageView btnBack;
     private BottomNavigationView bottomNavigation;
 
@@ -24,17 +22,12 @@ public class ClinicHomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_clinic_home);
 
-        // 뒤로가기 버튼 설정
+        // 🔙 뒤로가기 버튼
         btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> onBackPressed());
 
-        // 알림 버튼 연결
-        btnAlarm = findViewById(R.id.btn_alarm);
-        btnAlarm.setOnClickListener(v ->
-                Toast.makeText(this, "\uD83D\uDD14 알림 화면 준비 중입니다.", Toast.LENGTH_SHORT).show()
-        );
-
-        // 상단 프로필 버튼 (BobyMain으로 이동)
+        // 👤 프로필 버튼 (BobyMain으로 이동)
+// ClinicHomeActivity.java
         View btnProfile = findViewById(R.id.btnProfile);
         if (btnProfile != null) {
             btnProfile.setOnClickListener(v -> {
@@ -43,21 +36,23 @@ public class ClinicHomeActivity extends AppCompatActivity {
             });
         }
 
-        // 하단 네비게이션 메뉴 연결
+        // ⬇ 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.nav_home:
-                    Toast.makeText(this, "\uD83C\uDFE0 현재 홈 화면입니다.", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.nav_history:
-                    Toast.makeText(this, "\uD83D\uDCCB 진료내역 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.nav_mypage:
-                    Toast.makeText(this, "\uD83D\uDC64 마이페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
-                    return true;
+            int itemId = item.getItemId();
+            if (itemId == R.id.nav_home) {
+                Toast.makeText(this, "🏠 현재 홈 화면입니다.", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (itemId == R.id.nav_history) {
+                Toast.makeText(this, "📋 진료내역 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+                return true;
+            } else if (itemId == R.id.nav_mypage) {
+                Toast.makeText(this, "👤 마이페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+                return true;
             }
             return false;
         });
+        // 홈을 기본 선택 상태로 설정 (선택사항)
+        bottomNavigation.setSelectedItemId(R.id.nav_home);
     }
 }
