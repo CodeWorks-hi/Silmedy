@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- App Info -->
+    <string name="app_name">Silmedy</string>
+    <string name="logo_description">Silmedy Logo</string>
+    <string name="slogan_line1">Silent care, profound understanding</string>
+    <string name="slogan_line2">We treat with heart, not just words.</string>
+
+    <!-- Input Hints -->
+    <string name="hint_email">Enter your email</string>
+    <string name="hint_password">Enter your password</string>
+    <string name="hint_password_confirm">Confirm your password</string>
+    <string name="hint_name">Enter your name</string>
+    <string name="hint_phone">Enter your phone number</string>
+    <string name="hint_zip">Postal code</string>
+    <string name="hint_address_detail">Enter detailed address</string>
+
+    <!-- Buttons -->
+    <string name="btn_login">Login</string>
+    <string name="btn_signup">Sign Up</string>
+    <string name="btn_zip_search">Search ZIP</string>
+    <string name="btn_find_password">Find Password</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_back">Back</string>
+
+    <!-- Screen Titles -->
+    <string name="title_activity_login">Login</string>
+    <string name="title_activity_signup">Sign Up</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_login_empty">Please enter email and password</string>
+    <string name="toast_login_failed">Invalid login credentials</string>
+    <string name="toast_signup_success">Sign-up completed successfully</string>
+    <string name="toast_signup_fail">Sign-up failed</string>
+    <string name="toast_password_mismatch">Passwords do not match</string>
+    <string name="toast_all_fields_required">Please fill out all fields</string>
+    <string name="toast_address_search_pending">Address search is not yet available</string>
+
+    <!-- Labels -->
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="label_confirm_password">Confirm Password</string>
+    <string name="label_name">Name</string>
+    <string name="label_phone">Phone</string>
+    <string name="label_address">Address</string>
+    <string name="label_detail_address">Detail Address</string>
+
+    <!-- Required for login/signup layout compatibility -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Sign In</string>
+    <string name="action_sign_in">Sign In or Register</string>
+
+</resources>

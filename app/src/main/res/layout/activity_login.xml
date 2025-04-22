@@ -7,24 +7,21 @@
     android:gravity="center_horizontal"
     android:padding="24dp">
 
-    <!-- 상단 여백 조정 -->
+    <!-- 상단 여백 -->
     <Space
         android:layout_width="match_parent"
         android:layout_height="48dp" />
 
-    <!-- Silmedy 로고 -->
+    <!-- 로고 이미지 -->
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/silmedy"
-        android:contentDescription="Silmedy 로고"
-        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/logo_description"
         android:layout_marginBottom="8dp" />
 
-
-
-    <!-- 로그인 카드 박스 -->
+    <!-- 로그인 카드 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,12 +30,12 @@
         android:background="@drawable/bg_card_rounded"
         android:elevation="6dp">
 
-        <!-- 아이디 입력 -->
+        <!-- 이메일 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
-            android:text="이메일"
+            android:text="@string/label_email"
             android:textColor="#333333"
             android:textSize="13sp" />
 
@@ -48,25 +45,25 @@
             android:layout_height="40dp"
             android:layout_marginBottom="12dp"
             android:background="@drawable/bg_edittext"
-            android:hint="이메일을 입력하세요"
+            android:hint="@string/hint_email"
             android:paddingStart="12dp"
             android:textColor="#000000"
             android:textColorHint="#AAAAAA" />
 
-        <!-- 비밀번호 입력 -->
+        <!-- 비밀번호 -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="비밀번호"
-            android:textSize="13sp"
+            android:text="@string/label_password"
             android:textColor="#333333"
+            android:textSize="13sp"
             android:layout_marginBottom="4dp" />
 
         <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:hint="비밀번호를 입력하세요"
+            android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:paddingStart="12dp"
             android:background="@drawable/bg_edittext"
@@ -79,7 +76,7 @@
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="45dp"
-            android:text="로그인"
+            android:text="@string/btn_login"
             android:textColor="#FFFFFF"
             android:backgroundTint="#51BDB3"
             android:textSize="15sp"
@@ -97,7 +94,7 @@
                 android:id="@+id/btnJoin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원가입"
+                android:text="@string/btn_signup"
                 android:textColor="#666666"
                 android:textSize="13sp" />
 
@@ -112,7 +109,7 @@
                 android:id="@+id/btnFindPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="비밀번호 찾기"
+                android:text="@string/btn_find_password"
                 android:textColor="#666666"
                 android:textSize="13sp" />
         </LinearLayout>
