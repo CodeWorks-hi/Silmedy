@@ -1,0 +1,31 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <!-- 로고 이미지 (몸 이미지 or Silmedy 로고) -->
+    <ImageView
+        android:id="@+id/silmedy"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:src="@drawable/boby"
+        android:scaleType="fitCenter"
+        android:contentDescription="몸 이미지 또는 로고" />
+
+    <!-- 버튼: 몸 부위 선택하기 -->
+    <Button
+        android:id="@+id/btnGoToBodyTouch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"
+        android:paddingVertical="12dp"
+        android:text="증상 부위를 선택해 주세요"
+        android:textSize="16sp"
+        android:backgroundTint="#30B9C5"
+        android:textColor="#FFFFFF" />
+</LinearLayout>

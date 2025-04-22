@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 기본 컬러 -->
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+
+    <!-- 민트 계열 (주 색상) -->
+    <color name="mint_100">#E8F8F7</color>  <!-- 밝은 배경 -->
+    <color name="mint_300">#C4F1EC</color>  <!-- 중간톤 -->
+    <color name="mint_500">#8CD8D0</color>  <!-- 메인 민트 -->
+    <color name="mint_700">#46B8AF</color>  <!-- 진한 민트 -->
+    <color name="mint_900">#278A83</color>  <!-- 강조용 텍스트 -->
+
+    <!-- 그라데이션 컬러 -->
+    <color name="gradient_start">#E8F8F7</color>
+    <color name="gradient_center">#C4F1EC</color>
+    <color name="gradient_end">#8CD8D0</color>
+
+    <!-- 입력창/버튼 -->
+    <color name="input_bg">#F6F6F6</color>
+    <color name="button_mint">#4DB8B2</color>
+    <color name="button_mint_pressed">#3AAFAA</color>
+
+    <!-- 텍스트용 -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="hint_text">#B0B0B0</color>
+
+    <!-- 섀도우 및 강조 -->
+    <color name="card_shadow">#33000000</color>
+</resources>

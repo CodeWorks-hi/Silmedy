@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_login_gradient"
+    android:gravity="center_horizontal"
+    android:padding="24dp">
+
+    <!-- 상단 여백 조정 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="48dp" />
+
+    <!-- Silmedy 로고 -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/silmedy"
+        android:contentDescription="Silmedy 로고"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp" />
+
+
+
+    <!-- 로그인 카드 박스 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@drawable/bg_card_rounded"
+        android:elevation="6dp">
+
+        <!-- 아이디 입력 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디"
+            android:textSize="13sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/editId"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="아이디를 입력하세요"
+            android:paddingStart="12dp"
+            android:background="@drawable/bg_edittext"
+            android:textColor="#000000"
+            android:textColorHint="#AAAAAA"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 비밀번호 입력 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"
+            android:textSize="13sp"
+            android:textColor="#333333"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:hint="비밀번호를 입력하세요"
+            android:inputType="textPassword"
+            android:paddingStart="12dp"
+            android:background="@drawable/bg_edittext"
+            android:textColor="#000000"
+            android:textColorHint="#AAAAAA"
+            android:layout_marginBottom="20dp" />
+
+        <!-- 로그인 버튼 -->
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:text="로그인"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#51BDB3"
+            android:textSize="15sp"
+            android:elevation="2dp"
+            android:layout_marginBottom="12dp" />
+
+        <!-- 하단 링크 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/btnJoin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="회원가입"
+                android:textColor="#666666"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  |  "
+                android:textColor="#AAAAAA"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/btnFindPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="비밀번호 찾기"
+                android:textColor="#666666"
+                android:textSize="13sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 하단 여백 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="60dp" />
+
+</LinearLayout>
