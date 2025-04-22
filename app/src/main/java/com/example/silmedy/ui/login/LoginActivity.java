@@ -10,95 +10,97 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.silmedy.ClinicHomeActivity;
 import com.example.silmedy.R;
+import com.example.silmedy.ui.clinic.ClinicHomeActivity;
+import com.example.silmedy.ui.login.FindPasswordActivity;
+import com.example.silmedy.ui.login.SignupActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText editEmail, editPassword;
-    private Button btnLogin;
-    private TextView btnJoin, btnFindPassword;
-    private FirebaseFirestore db;
-    private SharedPreferences prefs;
+    EditText editId, editPassword;
+    Button btnLogin;
+    TextView btnJoin, btnFindPassword;
+    FirebaseFirestore db;
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login); // 위에 주신 XML과 연결
+        setContentView(R.layout.activity_login);
 
         // 뷰 연결
-        editEmail = findViewById(R.id.editEmail);
+        editId = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnJoin = findViewById(R.id.btnJoin);
         btnFindPassword = findViewById(R.id.btnFindPassword);
 
+        // 파이어스토어 및 SharedPreferences 초기화
         db = FirebaseFirestore.getInstance();
         prefs = getSharedPreferences("SilmedyPrefs", MODE_PRIVATE);
 
-        // 저장된 로그인 정보 자동 입력
-        editEmail.setText(prefs.getString("email", ""));
-        editPassword.setText(prefs.getString("password", ""));
-
-        // 자동 로그인 시도
-        String savedEmail = prefs.getString("email", "");
+        // 저장된 정보로 자동 로그인
+        String savedNick = prefs.getString("nickname", "");
         String savedPw = prefs.getString("password", "");
 
-        if (!savedEmail.isEmpty() && !savedPw.isEmpty()) {
-            autoLogin(savedEmail, savedPw);
+        if (!savedNick.isEmpty() && !savedPw.isEmpty()) {
+            autoLogin(savedNick, savedPw);
         }
 
-        // 로그인 버튼 클릭
+        // 로그인 버튼 이벤트
         btnLogin.setOnClickListener(v -> {
-            String email = editEmail.getText().toString().trim();
+            String nickname = editId.getText().toString().trim();
             String password = editPassword.getText().toString().trim();
 
-            if (email.isEmpty() || password.isEmpty()) {
-                Toast.makeText(this, "이메일과 비밀번호를 입력해주세요.", Toast.LENGTH_SHORT).show();
+            if (nickname.isEmpty() || password.isEmpty()) {
+                Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            db.collection("users").document(email).get().addOnSuccessListener(doc -> {
+            String userDoc = nickname + "_room";
+            db.collection("rooms").document(userDoc).get().addOnSuccessListener(doc -> {
                 if (doc.exists() && password.equals(doc.getString("password"))) {
-                    saveLoginInfo(email, password);
-                    goToMain(email);
+                    saveInfo(nickname, password);
+                    goToMain(nickname);
                 } else {
                     Toast.makeText(this, "로그인 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
                 }
             });
         });
 
-        // 회원가입 버튼 클릭 → SingupActivity로 이동
+        // 회원가입 버튼
         btnJoin.setOnClickListener(v -> {
             Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
             startActivity(intent);
         });
 
-        // 비밀번호 찾기 (임시 처리)
-        btnFindPassword.setOnClickListener(v ->
-                Toast.makeText(this, "비밀번호 찾기 기능은 준비 중입니다.", Toast.LENGTH_SHORT).show()
-        );
+        // 비밀번호 찾기 버튼
+        btnFindPassword.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, FindPasswordActivity.class);
+            startActivity(intent);
+        });
     }
 
-    private void autoLogin(String email, String password) {
-        db.collection("users").document(email).get().addOnSuccessListener(doc -> {
+    private void autoLogin(String nickname, String password) {
+        String userDoc = nickname + "_room";
+        db.collection("rooms").document(userDoc).get().addOnSuccessListener(doc -> {
             if (doc.exists() && password.equals(doc.getString("password"))) {
-                goToMain(email);
+                goToMain(nickname);
             }
         });
     }
 
-    private void saveLoginInfo(String email, String password) {
+    private void saveInfo(String nickname, String password) {
         prefs.edit()
-                .putString("email", email)
+                .putString("nickname", nickname)
                 .putString("password", password)
                 .apply();
     }
 
-    private void goToMain(String email) {
-        Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class); // 로그인 후 메인 페이지
-        intent.putExtra("email", email);
+    private void goToMain(String nickname) {
+        Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
+        intent.putExtra("nickname", nickname);
         startActivity(intent);
         finish();
     }

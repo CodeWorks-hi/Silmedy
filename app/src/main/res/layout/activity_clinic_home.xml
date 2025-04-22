@@ -2,11 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white">
 
-    <!-- 🔔 상단 툴바 -->
+    <!-- 상단 툴바 -->
     <View
         android:id="@+id/statusBarSpacer"
         android:layout_width="match_parent"
@@ -15,12 +16,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <TextView
         android:id="@+id/text_greeting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="홍길동님, 환영합니다."
-        android:textColor="@android:color/black"
+        android:textColor="#51BDB3"
         android:textStyle="bold"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@id/statusBarSpacer"
@@ -28,18 +30,18 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"/>
 
-    <ImageButton
-        android:id="@+id/btn_alarm"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:padding="4dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_alarm"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_margin="20dp"
-        app:layout_constraintEnd_margin="20dp" />
+
+    <!-- 뒤로가기 버튼 -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/btn_back"
+        android:src="@drawable/ic_arrow_back" />
+
+
 
     <!-- 🧍 터치로 증상 확인 카드 -->
     <androidx.cardview.widget.CardView
@@ -48,54 +50,11 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_alarm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp"
         android:layout_marginHorizontal="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/human" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="터치로 증상확인"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="직접 신체 부위 선택\n촬영하여 증상 확인"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="(외상만 확인 가능)"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/darker_gray" />
-
-            </LinearLayout>
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <!-- 🤧 일상질환 카드 -->
@@ -111,40 +70,6 @@
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/cold_" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="일상질환"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="복잡한 과정 없이\n빠르게 진료 신청"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/black" />
-            </LinearLayout>
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <!-- 🧠 AI 증상 확인 카드 -->
@@ -161,47 +86,6 @@
         android:layout_marginBottom="80dp"
         android:layout_marginHorizontal="16dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="16dp">
-
-            <ImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/consult" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginStart="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AI 증상확인"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="AI와 채팅하며 증상예측"
-                    android:textSize="14sp"
-                    android:textColor="@android:color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="(내상만 예측 가능)"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/darker_gray" />
-            </LinearLayout>
-        </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <!-- 하단 네비게이션 바 -->
@@ -211,11 +95,137 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:menu="@menu/menu_bottom_nav"
-        app:itemIconTint="@color/selector_bottom_nav"
-        app:itemTextColor="@color/selector_bottom_nav"
+        app:itemIconTint="@xml/selector_bottom_nav"
+        app:itemTextColor="@xml/selector_bottom_nav"
         app:labelVisibilityMode="labeled"
         android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="432dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/consult" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI 증상확인"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AI와 채팅하며 증상예측"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(내상만 예측 가능)"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_editor_absoluteY="291dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/cold_" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="일상질환"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="복잡한 과정 없이\n빠르게 진료 신청"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        tools:layout_editor_absoluteX="13dp"
+        tools:layout_editor_absoluteY="136dp">
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/human" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="터치로 증상확인"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="직접 신체 부위 선택\n촬영하여 증상 확인"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(외상만 확인 가능)"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
