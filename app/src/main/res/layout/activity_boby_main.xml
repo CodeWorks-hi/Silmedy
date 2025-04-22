@@ -1,31 +1,110 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="24dp"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
-    <!-- 로고 이미지 (몸 이미지 or Silmedy 로고) -->
-    <ImageView
-        android:id="@+id/silmedy"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:src="@drawable/boby"
-        android:scaleType="fitCenter"
-        android:contentDescription="몸 이미지 또는 로고" />
+    <!-- 🔼 콘텐츠 전체를 감싸는 영역 -->
 
-    <!-- 버튼: 몸 부위 선택하기 -->
-    <Button
-        android:id="@+id/btnGoToBodyTouch"
+    <!-- ⬇️ 하단 네비게이션 바 고정 -->
+
+    <LinearLayout
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="16dp"
-        android:paddingVertical="12dp"
-        android:text="증상 부위를 선택해 주세요"
-        android:textSize="16sp"
-        android:backgroundTint="#30B9C5"
-        android:textColor="#FFFFFF" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_marginBottom="-52dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            app:srcCompat="@drawable/back_icon" />
+
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:text="증상 부위를 눌러주세요."
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="382dp"
+            android:layout_weight="1">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="뒤로가기"
+                android:src="@drawable/ic_arrow_back" />
+
+            <ImageView
+                android:id="@+id/body_image"
+                android:layout_width="match_parent"
+                android:layout_height="507dp"
+                android:layout_marginTop="40dp"
+                android:src="@drawable/wholebody" />
+
+            <ImageButton
+                android:id="@+id/btn_head"
+                android:layout_width="80dp"
+                android:layout_height="109dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="80dp"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:id="@+id/btn_arm"
+                android:layout_width="45dp"
+                android:layout_height="251dp"
+                android:layout_marginStart="101dp"
+                android:layout_marginTop="190dp"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:id="@+id/btn_arm2"
+                android:layout_width="42dp"
+                android:layout_height="250dp"
+                android:layout_marginStart="265dp"
+                android:layout_marginTop="190dp"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:id="@+id/btn_body"
+                android:layout_width="118dp"
+                android:layout_height="141dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="190dp"
+                android:background="@android:color/transparent" />
+
+            <ImageButton
+                android:id="@+id/btn_leg"
+                android:layout_width="131dp"
+                android:layout_height="319dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="340dp"
+                android:background="@android:color/transparent" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:itemIconTint="@color/selector_bottom_nav"
+        app:itemTextColor="@color/selector_bottom_nav"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_nav" />
+</RelativeLayout>
