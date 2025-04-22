@@ -1,16 +1,16 @@
 package com.example.silmedy;
 
 import android.content.Intent;
-<<<<<<< HEAD
+// <<<<<<< HEAD
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-=======
+// =======
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
->>>>>>> 0938616f1205362f61f55f0a73a8c2465efb1a9c
+// >>>>>>> 0938616f1205362f61f55f0a73a8c2465efb1a9c
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
-<<<<<<< HEAD
+// <<<<<<< HEAD
     EditText editId, editPassword;
     Button btnLogin;
     TextView btnJoin, btnFindPassword;
@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         // 뷰 연결
-        editId = findViewById(R.id.editId);
+        editId = findViewById(R.id.editEmail);
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnJoin = findViewById(R.id.btnJoin);
@@ -107,13 +107,13 @@ public class LoginActivity extends AppCompatActivity {
         intent.putExtra("nickname", nickname);
         startActivity(intent);
         finish();
-=======
+// =======
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login); // 로그인 레이아웃 연결
 
 
->>>>>>> 0938616f1205362f61f55f0a73a8c2465efb1a9c
+// >>>>>>> 0938616f1205362f61f55f0a73a8c2465efb1a9c
     }
 }
