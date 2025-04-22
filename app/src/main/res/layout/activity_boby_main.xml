@@ -4,25 +4,39 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- 상단 뒤로가기 버튼 -->
+    <!-- 🔼 콘텐츠 전체를 감싸는 영역 -->
+
+    <!-- ⬇️ 하단 네비게이션 바 고정 -->
+
     <LinearLayout
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_marginBottom="-52dp"
         android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="25dp"
+            app:srcCompat="@drawable/back_icon" />
 
         <TextView
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="82dp"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="16dp"
             android:text="증상 부위를 눌러주세요."
             android:textSize="18sp"
             android:textStyle="bold" />
 
         <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_width="wrap_content"
+            android:layout_height="382dp"
+            android:layout_weight="1">
 
             <ImageButton
                 android:id="@+id/btn_back"
@@ -36,7 +50,8 @@
             <ImageView
                 android:id="@+id/body_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="507dp"
+                android:layout_marginTop="40dp"
                 android:src="@drawable/wholebody" />
 
             <ImageButton
@@ -75,25 +90,21 @@
                 android:id="@+id/btn_leg"
                 android:layout_width="131dp"
                 android:layout_height="319dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="340dp"
                 android:background="@android:color/transparent" />
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:menu="@menu/bottom_nav_menu" />
         </FrameLayout>
     </LinearLayout>
 
-    <!-- 상단 텍스트 -->
-
-    <!-- 전신 이미지 -->
-
-    <!-- 각 부위에 투명한 버튼 배치 -->
-
-    <!-- 하단 내비게이션 -->
-
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        app:itemIconTint="@color/selector_bottom_nav"
+        app:itemTextColor="@color/selector_bottom_nav"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/menu_bottom_nav" />
 </RelativeLayout>
-
