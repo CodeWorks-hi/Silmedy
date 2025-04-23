@@ -18,8 +18,8 @@ import com.google.firebase.messaging.RemoteMessage;
  */
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private static final String CHANNEL_ID = "pingtalk_channel";
-    private static final String CHANNEL_NAME = "PingTalk 알림";
+    private static final String CHANNEL_ID = "Slimedy_channel";
+    private static final String CHANNEL_NAME = "Slimedy 알림";
 
     @Override
     public void onNewToken(@NonNull String token) {

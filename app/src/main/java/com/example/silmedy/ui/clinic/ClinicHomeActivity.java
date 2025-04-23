@@ -7,9 +7,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.example.silmedy.BodyMain;
 import com.example.silmedy.R;
+import com.example.silmedy.SymptomChoiceActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ClinicHomeActivity extends AppCompatActivity {
@@ -27,6 +29,24 @@ public class ClinicHomeActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> onBackPressed());
+        }
+
+        // 🧍 터치로 증상확인 카드 클릭 시 BodyMain 이동
+        CardView cardTouchSymptom = findViewById(R.id.card_touch_symptom);
+        if (cardTouchSymptom != null) {
+            cardTouchSymptom.setOnClickListener(v -> {
+                Intent intent = new Intent(ClinicHomeActivity.this, BodyMain.class);
+                startActivity(intent);
+            });
+        }
+
+        // 🤧 일상질환 카드 클릭 시 SymptomChoiceActivity 이동
+        CardView cardCold = findViewById(R.id.card_cold);
+        if (cardCold != null) {
+            cardCold.setOnClickListener(v -> {
+                Intent intent = new Intent(ClinicHomeActivity.this, SymptomChoiceActivity.class);
+                startActivity(intent);
+            });
         }
 
 
