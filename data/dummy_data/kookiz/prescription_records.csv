@@ -1,4 +1,4 @@
-presc_id,diagnosis_id,doctor_id,medication_list,medication_days,prescribed_at
+presciption_id,diagnosis_id,doctor_id,medication_list,medication_days,prescribed_at
 1,1,12,"{'알마겔': 1, '듀파락시럽': 1, '아목시실린': 2}",3,2025-04-21 17:32:48
 2,2,23,"{'노레보정': 3, '뮤코다인': 2, '알마겔': 1, '듀파락시럽': 1}",4,2025-04-21 11:02:50
 3,3,11,"{'부루펜': 3, '노레보정': 3, '타이레놀': 2, '듀파락시럽': 1}",7,2025-04-21 09:37:35

@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.silmedy.BobyMain;
+import com.example.silmedy.BodyMain;
 import com.example.silmedy.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -31,7 +31,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         View btnProfile = findViewById(R.id.btnProfile);
         if (btnProfile != null) {
             btnProfile.setOnClickListener(v -> {
-                Intent intent = new Intent(ClinicHomeActivity.this, BobyMain.class);
+                Intent intent = new Intent(ClinicHomeActivity.this, BodyMain.class);
                 startActivity(intent);
             });
         }

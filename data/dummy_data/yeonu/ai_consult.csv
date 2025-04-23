@@ -1,4 +1,4 @@
-chat_id,patient_id,symptom_part,disease_symptom,analysis
+consult_id,patient_id,symptom_part,disease_symptom,analysis
 1,80,"['목', '코']","['인후통', '콧물', '기침']",감기
 2,2,"['가슴', '머리']","['어지러움', '두통', '가슴 답답함']",고혈압
 3,40,"['가슴', '머리']","['어지러움', '두통', '가슴 답답함']",고혈압
