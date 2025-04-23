@@ -12,19 +12,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.silmedy.PostalCodeActivity;
 import com.example.silmedy.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -64,10 +60,30 @@ public class SignupActivity extends AppCompatActivity {
         // 뒤로가기
         btnBack.setOnClickListener(v -> finish());
 
-        // 이메일 중복확인 (임시 기능)
-        btnCheckEmail.setOnClickListener(v ->
-                Toast.makeText(this, "중복확인 기능은 아직 구현되지 않았습니다.", Toast.LENGTH_SHORT).show()
-        );
+        AtomicBoolean isValidEmail = new AtomicBoolean(false);
+
+        // 이메일 중복확인 (Firestore 중복 확인)
+        btnCheckEmail.setOnClickListener(v -> {
+            String email = editEmail.getText().toString().trim();
+            if (TextUtils.isEmpty(email)) {
+                Toast.makeText(this, "이메일을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            db.collection("patients").document(email).get()
+                .addOnSuccessListener(document -> {
+                    if (document.exists()) {
+                        Toast.makeText(this, "이미 사용 중인 이메일입니다.", Toast.LENGTH_SHORT).show();
+                        isValidEmail.set(false);
+                    } else {
+                        Toast.makeText(this, "사용 가능한 이메일입니다.", Toast.LENGTH_SHORT).show();
+                        isValidEmail.set(true);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "중복 확인 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+        });
 
         // 우편번호 검색
         btnZipSearch.setOnClickListener(v -> {
@@ -86,14 +102,20 @@ public class SignupActivity extends AppCompatActivity {
             String address = addressView.getText().toString().trim();
             String addressDetail = editDetailAddress.getText().toString().trim();
             boolean isSignLangChecked = checkboxSignLang.isChecked();
+            com.google.firebase.Timestamp timestamp = new com.google.firebase.Timestamp(new Date());
 
-            Toast.makeText(this, "환자 등록 요청 중...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "회원가입 진행 중...", Toast.LENGTH_SHORT).show();
 
             // 입력 유효성 검사
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)
                     || TextUtils.isEmpty(name) || TextUtils.isEmpty(contact)
                     || TextUtils.isEmpty(postalCode) || TextUtils.isEmpty(address)) {
                 Toast.makeText(this, getString(R.string.toast_all_fields_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!isValidEmail.get()) {
+                Toast.makeText(this, getString(R.string.toast_wrong_email), Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -111,6 +133,7 @@ public class SignupActivity extends AppCompatActivity {
             user.put("address", address);
             user.put("address_detail", addressDetail);
             user.put("sign_language_needed", isSignLangChecked);
+            user.put("created_at", timestamp);
 
             db.collection("patients").document(email).set(user)
                     .addOnSuccessListener(unused -> {

@@ -34,7 +34,7 @@
     <string name="toast_signup_fail">회원가입에 실패했습니다</string>
     <string name="toast_password_mismatch">비밀번호가 일치하지 않습니다</string>
     <string name="toast_all_fields_required">모든 정보를 입력해주세요</string>
-    <string name="toast_address_search_pending">우편번호 검색 기능은 준비 중입니다</string>
+    <string name="toast_wrong_email">유효한 이메일을 사용해주세요</string>
 
     <!-- 기타 -->
     <string name="label_email">이메일</string>
