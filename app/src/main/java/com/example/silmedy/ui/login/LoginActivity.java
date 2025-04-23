@@ -19,6 +19,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText editEmail, editPassword;
     private Button btnLogin;
+
+    private TextView btnFindId;
     private TextView btnJoin, btnFindPassword;
     private FirebaseFirestore db;
     private SharedPreferences prefs;
@@ -33,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnJoin = findViewById(R.id.btnJoin);
+        btnFindId = findViewById(R.id.btnFindId);
         btnFindPassword = findViewById(R.id.btnFindPassword);
 
         db = FirebaseFirestore.getInstance();
@@ -75,6 +78,15 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(LoginActivity.this, CheckIdentityActivity.class);
             startActivity(intent);
         });
+
+
+        // 아이디 버튼 클릭 -> FindIdActivity로 이동
+        btnFindId.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, FindIdActivity.class);
+            startActivity(intent);
+        });
+
+
 
         // 비밀번호 버튼 클릭 -> FindPasswordActivity로 이동
         btnFindPassword.setOnClickListener(v -> {

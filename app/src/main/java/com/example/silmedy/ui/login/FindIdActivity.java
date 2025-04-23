@@ -21,7 +21,7 @@ public class FindIdActivity extends AppCompatActivity {
     private Button btnVerify, btnCode, btnFindPassword, btnGoToLogin;
     private ImageButton btnBack;
 
-    private final String sentCode = "1234"; // 테스트용 고정 인증 코드
+    private final String sentCode = "123456"; // 테스트용 고정 인증 코드
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +96,7 @@ public class FindIdActivity extends AppCompatActivity {
 
     private String getUserIdByPhone(String phone) {
         // TODO: 서버/DB 조회로 교체 필요
-        if (phone.equals("01012341234")) {
+        if (phone.equals("010-1234-1234")) {
             return "code@naver.com";
         }
         return null;
