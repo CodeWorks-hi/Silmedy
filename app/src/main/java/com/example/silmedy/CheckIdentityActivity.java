@@ -35,11 +35,11 @@ public class CheckIdentityActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         // 뷰 바인딩
-        phoneInput = findViewById(R.id.phoneInput);
-        codeInput = findViewById(R.id.codeInput);
-        verifyButton = findViewById(R.id.verifyButton);
-        codeConfirmButton = findViewById(R.id.codeConfirmButton);
-        confirmButton = findViewById(R.id.confirmButton);
+        phoneInput = findViewById(R.id.editPhone);
+        codeInput = findViewById(R.id.editCode);
+        verifyButton = findViewById(R.id.btnVerify);
+        codeConfirmButton = findViewById(R.id.btnCode);
+        confirmButton = findViewById(R.id.btnConfirm);
 
         verifyButton.setOnClickListener(v -> sendVerificationCode());
         codeConfirmButton.setOnClickListener(v -> verifyCode());
