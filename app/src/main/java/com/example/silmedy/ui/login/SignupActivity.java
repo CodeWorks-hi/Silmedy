@@ -22,7 +22,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private static final int POSTCODE_REQUEST_CODE = 1001;
 
-    private EditText editEmail, editPassword, editConfirmPassword, editName, editPhone, editZip, editDetailAddress;
+    private EditText editEmail, editPassword, editConfirmPassword, editName, editPhone, editDetailAddress;
+    private TextView zipView, addressView;
     private Button btnSignup, btnZipSearch, btnCheckEmail, btnVerifyPhone;
     private ImageView btnBack;
     private FirebaseFirestore db;
@@ -41,7 +42,8 @@ public class SignupActivity extends AppCompatActivity {
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
         editName = findViewById(R.id.editName);
         editPhone = findViewById(R.id.editPhone);
-        editZip = findViewById(R.id.editZip);
+        zipView = findViewById(R.id.zipView);
+        addressView = findViewById(R.id.addressView);
         editDetailAddress = findViewById(R.id.editDetailAddress);
         btnSignup = findViewById(R.id.btnSignup);
         btnZipSearch = findViewById(R.id.btnZipSearch);
@@ -75,13 +77,14 @@ public class SignupActivity extends AppCompatActivity {
             String confirmPassword = editConfirmPassword.getText().toString().trim();
             String name = editName.getText().toString().trim();
             String phone = editPhone.getText().toString().trim();
-            String zip = editZip.getText().toString().trim();
+            String zip = zipView.getText().toString().trim();
+            String address = addressView.getText().toString().trim();
             String addressDetail = editDetailAddress.getText().toString().trim();
 
             // 입력 유효성 검사
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)
                     || TextUtils.isEmpty(name) || TextUtils.isEmpty(phone)
-                    || TextUtils.isEmpty(zip) || TextUtils.isEmpty(addressDetail)) {
+                    || TextUtils.isEmpty(zip) || TextUtils.isEmpty(address) || TextUtils.isEmpty(addressDetail)) {
                 Toast.makeText(this, getString(R.string.toast_all_fields_required), Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -98,6 +101,7 @@ public class SignupActivity extends AppCompatActivity {
             user.put("name", name);
             user.put("phone", phone);
             user.put("zip", zip);
+            user.put("address", address);
             user.put("addressDetail", addressDetail);
 
             db.collection("users").document(email).set(user)
@@ -116,9 +120,9 @@ public class SignupActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == POSTCODE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
             String zipCode = data.getStringExtra("zipCode");
-            String address = data.getStringExtra("address");
-            TextView resultView = findViewById(R.id.resultView);
-            resultView.setText("우편번호: " + zipCode + "\n주소: " + address);
+            String addressResult = data.getStringExtra("address");
+            zipView.setText(zipCode);
+            addressView.setText(addressResult);
         }
     }
 }
