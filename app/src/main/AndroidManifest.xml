@@ -21,6 +21,9 @@
         <activity
             android:name=".PostalCodeActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.clinic.ClinicHomeActivity"
+            android:exported="false" />
         <!-- 앱 시작 액티비티: 로그인 화면 -->
         <activity
             android:name=".ui.login.LoginActivity"

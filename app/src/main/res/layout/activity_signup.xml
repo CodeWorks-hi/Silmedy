@@ -104,8 +104,8 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 우편번호 + 주소 검색 -->
-    <EditText
-        android:id="@+id/editZip"
+    <TextView
+        android:id="@+id/zipView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="우편번호"
@@ -122,18 +122,18 @@
         android:backgroundTint="#51BDB3"
         android:text="주소 검색"
         android:textColor="#FFFFFF"
-        app:layout_constraintBaseline_toBaselineOf="@id/editZip"
+        app:layout_constraintBaseline_toBaselineOf="@id/zipView"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 상세주소 -->
-    <EditText
-        android:id="@+id/editAddress"
+    <TextView
+        android:id="@+id/addressView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:hint="주소"
         android:inputType="textPostalAddress"
-        app:layout_constraintTop_toBottomOf="@id/editZip"
+        app:layout_constraintTop_toBottomOf="@id/zipView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -149,7 +149,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editZip" />
+        app:layout_constraintTop_toBottomOf="@id/zipView" />
 
     <!-- 수어통화 여부 -->
 
