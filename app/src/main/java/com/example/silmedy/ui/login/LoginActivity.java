@@ -71,48 +71,44 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
+// 응답 처리 부분 수정
             JsonObjectRequest request = new JsonObjectRequest(
-                Request.Method.POST,
-                url,
-                loginData,
-                response -> {
-                    try {
-                        Log.d("LOGIN_RESPONSE", response.toString());
+                    Request.Method.POST,
+                    url,
+                    loginData,
+                    response -> {
+                        try {
+                            Log.d("LOGIN_RESPONSE", response.toString());
 
-                        if (!response.has("statusCode")) {
-                            Toast.makeText(LoginActivity.this, "응답에 statusCode 없음", Toast.LENGTH_SHORT).show();
-                            return;
+                            int statusCode = response.optInt("statusCode", -1);
+                            String bodyString = response.optString("body", "");
+
+                            if (statusCode == -1 || bodyString.isEmpty()) {
+                                Toast.makeText(LoginActivity.this, "응답 오류: 필드 누락", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+
+                            // body는 문자열로 감싸진 JSON이므로 다시 파싱
+                            JSONObject body = new JSONObject(bodyString);
+
+                            if (statusCode == 200) {
+                                goToMain();
+                            } else {
+                                String errorMsg = body.optString("error", "로그인 실패");
+                                Toast.makeText(LoginActivity.this, "로그인 실패: " + errorMsg, Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (Exception e) {
+                            Toast.makeText(LoginActivity.this, "응답 처리 중 오류", Toast.LENGTH_SHORT).show();
+                            Log.e("LOGIN_ERROR", "파싱 예외", e);
                         }
-
-                        int statusCode = response.getInt("statusCode");
-
-                        if (!response.has("body")) {
-                            Toast.makeText(LoginActivity.this, "응답에 body 없음", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-
-                        String bodyString = response.getString("body");
-                        Log.d("LOGIN_BODY", bodyString);
-                        JSONObject body = new JSONObject(bodyString);
-
-                        if (statusCode == 200) {
-//                            saveInfo(editId.getText().toString().trim(), editPassword.getText().toString().trim());
-                            goToMain(); // editId.getText().toString().trim());
-                        } else {
-                            String errorMsg = body.has("error") ? body.getString("error") : "로그인 실패";
-                            Toast.makeText(LoginActivity.this, "로그인 실패: " + errorMsg, Toast.LENGTH_SHORT).show();
-                        }
-
-                    } catch (Exception e) {
-                        Toast.makeText(LoginActivity.this, "응답 처리 중 오류", Toast.LENGTH_SHORT).show();
-                        Log.e("LOGIN_ERROR", "파싱 예외", e);
+                    },
+                    error -> {
+                        Toast.makeText(LoginActivity.this, "로그인 요청 실패", Toast.LENGTH_SHORT).show();
+                        Log.e("LOGIN_FAIL", "네트워크 오류", error);
                     }
-                },
-                error -> {
-                    Toast.makeText(this, "로그인 요청 실패", Toast.LENGTH_SHORT).show();
-                    error.printStackTrace();
-                }
             );
+
 
             Volley.newRequestQueue(this).add(request);
         });
