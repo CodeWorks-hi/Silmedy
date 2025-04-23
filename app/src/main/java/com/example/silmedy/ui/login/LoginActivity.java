@@ -3,6 +3,7 @@ package com.example.silmedy.ui.login;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,14 +15,16 @@ import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.login.FindPasswordActivity;
 import com.example.silmedy.ui.login.SignupActivity;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.android.volley.Request;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
     EditText editId, editPassword;
     Button btnLogin;
     TextView btnJoin, btnFindPassword;
-    FirebaseFirestore db;
     SharedPreferences prefs;
 
     @Override
@@ -36,8 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         btnJoin = findViewById(R.id.btnJoin);
         btnFindPassword = findViewById(R.id.btnFindPassword);
 
-        // 파이어스토어 및 SharedPreferences 초기화
-        db = FirebaseFirestore.getInstance();
+        // SharedPreferences 초기화
         prefs = getSharedPreferences("SilmedyPrefs", MODE_PRIVATE);
 
         // 저장된 정보로 자동 로그인
@@ -50,23 +52,69 @@ public class LoginActivity extends AppCompatActivity {
 
         // 로그인 버튼 이벤트
         btnLogin.setOnClickListener(v -> {
-            String nickname = editId.getText().toString().trim();
+            String email = editId.getText().toString().trim();
             String password = editPassword.getText().toString().trim();
 
-            if (nickname.isEmpty() || password.isEmpty()) {
+            if (email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "아이디와 비밀번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            String userDoc = nickname + "_room";
-            db.collection("rooms").document(userDoc).get().addOnSuccessListener(doc -> {
-                if (doc.exists() && password.equals(doc.getString("password"))) {
-                    saveInfo(nickname, password);
-                    goToMain(nickname);
-                } else {
-                    Toast.makeText(this, "로그인 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+            String url = "https://pnzx78swvl.execute-api.ap-northeast-2.amazonaws.com/dev/patient/login"; // 수정 필요
+
+            JSONObject loginData = new JSONObject();
+            try {
+                loginData.put("email", email);
+                loginData.put("password", password);
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+
+            JsonObjectRequest request = new JsonObjectRequest(
+                Request.Method.POST,
+                url,
+                loginData,
+                response -> {
+                    try {
+                        Log.d("LOGIN_RESPONSE", response.toString());
+
+                        if (!response.has("statusCode")) {
+                            Toast.makeText(LoginActivity.this, "응답에 statusCode 없음", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        int statusCode = response.getInt("statusCode");
+
+                        if (!response.has("body")) {
+                            Toast.makeText(LoginActivity.this, "응답에 body 없음", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        String bodyString = response.getString("body");
+                        Log.d("LOGIN_BODY", bodyString);
+                        JSONObject body = new JSONObject(bodyString);
+
+                        if (statusCode == 200) {
+//                            saveInfo(editId.getText().toString().trim(), editPassword.getText().toString().trim());
+                            goToMain(); // editId.getText().toString().trim());
+                        } else {
+                            String errorMsg = body.has("error") ? body.getString("error") : "로그인 실패";
+                            Toast.makeText(LoginActivity.this, "로그인 실패: " + errorMsg, Toast.LENGTH_SHORT).show();
+                        }
+
+                    } catch (Exception e) {
+                        Toast.makeText(LoginActivity.this, "응답 처리 중 오류", Toast.LENGTH_SHORT).show();
+                        Log.e("LOGIN_ERROR", "파싱 예외", e);
+                    }
+                },
+                error -> {
+                    Toast.makeText(this, "로그인 요청 실패", Toast.LENGTH_SHORT).show();
+                    error.printStackTrace();
                 }
-            });
+            );
+
+            Volley.newRequestQueue(this).add(request);
         });
 
         // 회원가입 버튼
@@ -83,12 +131,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void autoLogin(String nickname, String password) {
-        String userDoc = nickname + "_room";
-        db.collection("rooms").document(userDoc).get().addOnSuccessListener(doc -> {
-            if (doc.exists() && password.equals(doc.getString("password"))) {
-                goToMain(nickname);
-            }
-        });
+        // 기존 Firestore 기반 자동 로그인은 유지하거나, 필요에 따라 AWS Lambda 기반으로 변경하세요.
+        // 이 부분은 AWS Lambda 로그인 API로 대체할 수 있습니다.
     }
 
     private void saveInfo(String nickname, String password) {
@@ -98,9 +142,8 @@ public class LoginActivity extends AppCompatActivity {
                 .apply();
     }
 
-    private void goToMain(String nickname) {
+    private void goToMain() {
         Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
-        intent.putExtra("nickname", nickname);
         startActivity(intent);
         finish();
     }
