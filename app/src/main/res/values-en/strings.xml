@@ -42,6 +42,7 @@
     <string name="label_confirm_password">Confirm Password</string>
     <string name="label_name">Name</string>
     <string name="label_phone">Phone</string>
+    <string name="label_postal_code">Postal Code</string>
     <string name="label_address">Address</string>
     <string name="label_detail_address">Detail Address</string>
 
