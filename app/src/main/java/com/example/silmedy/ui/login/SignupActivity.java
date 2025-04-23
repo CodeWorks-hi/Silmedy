@@ -1,14 +1,17 @@
 package com.example.silmedy.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.silmedy.PostalCodeActivity;
 import com.example.silmedy.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -16,6 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SignupActivity extends AppCompatActivity {
+
+    private static final int POSTCODE_REQUEST_CODE = 1001;
 
     private EditText editEmail, editPassword, editConfirmPassword, editName, editPhone, editZip, editDetailAddress;
     private Button btnSignup, btnZipSearch, btnCheckEmail, btnVerifyPhone;
@@ -57,10 +62,11 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(this, "본인확인 기능은 아직 구현되지 않았습니다.", Toast.LENGTH_SHORT).show()
         );
 
-        // 우편번호 검색 (임시 기능)
-        btnZipSearch.setOnClickListener(v ->
-                Toast.makeText(this, "우편번호 검색 기능은 아직 구현되지 않았습니다.", Toast.LENGTH_SHORT).show()
-        );
+        // 우편번호 검색 (미완성)
+        btnZipSearch.setOnClickListener(v -> {
+            Intent intent = new Intent(SignupActivity.this, PostalCodeActivity.class);
+            startActivityForResult(intent, POSTCODE_REQUEST_CODE);
+        });
 
         // 회원가입 버튼 클릭
         btnSignup.setOnClickListener(v -> {
@@ -103,5 +109,16 @@ public class SignupActivity extends AppCompatActivity {
                         Toast.makeText(this, getString(R.string.toast_signup_fail) + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == POSTCODE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            String zipCode = data.getStringExtra("zipCode");
+            String address = data.getStringExtra("address");
+            TextView resultView = findViewById(R.id.resultView);
+            resultView.setText("우편번호: " + zipCode + "\n주소: " + address);
+        }
     }
 }
