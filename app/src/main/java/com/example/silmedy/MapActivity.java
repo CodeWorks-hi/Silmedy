@@ -23,6 +23,10 @@ public class MapActivity extends AppCompatActivity {
         setContentView(webView);
 
         webView.getSettings().setJavaScriptEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true); // 추가
+        webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true); // 추가
+        webView.getSettings().setAllowFileAccessFromFileURLs(true); // 추가
+        webView.getSettings().setAllowUniversalAccessFromFileURLs(true); // 추가 ✅ 가장 중요
         webView.setWebChromeClient(new WebChromeClient());
         webView.setWebViewClient(new WebViewClient());
 

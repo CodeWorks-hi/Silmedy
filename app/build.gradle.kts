@@ -79,4 +79,5 @@ dependencies {
 
     implementation("com.google.firebase:firebase-messaging:23.4.1")
     implementation("com.android.volley:volley:1.2.1")
+    implementation("com.google.android.gms:play-services-location:21.0.1")
 }
