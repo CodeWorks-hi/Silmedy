@@ -11,12 +11,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.silmedy.PostalCodeActivity;
 import com.example.silmedy.R;
-import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.HashMap;
-import java.util.Map;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -26,15 +29,11 @@ public class SignupActivity extends AppCompatActivity {
     private TextView zipView, addressView;
     private Button btnSignup, btnZipSearch, btnCheckEmail, btnVerifyPhone;
     private ImageView btnBack;
-    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-
-        // Firestore 초기화
-        db = FirebaseFirestore.getInstance();
 
         // 뷰 바인딩
         editEmail = findViewById(R.id.editEmail);
@@ -81,10 +80,12 @@ public class SignupActivity extends AppCompatActivity {
             String address = addressView.getText().toString().trim();
             String addressDetail = editDetailAddress.getText().toString().trim();
 
+            Toast.makeText(this, "환자 등록 요청 중...", Toast.LENGTH_SHORT).show();
+
             // 입력 유효성 검사
             if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)
                     || TextUtils.isEmpty(name) || TextUtils.isEmpty(phone)
-                    || TextUtils.isEmpty(zip) || TextUtils.isEmpty(address) || TextUtils.isEmpty(addressDetail)) {
+                    || TextUtils.isEmpty(zip) || TextUtils.isEmpty(address)) {
                 Toast.makeText(this, getString(R.string.toast_all_fields_required), Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -94,24 +95,34 @@ public class SignupActivity extends AppCompatActivity {
                 return;
             }
 
-            // Firestore에 유저 정보 저장
-            Map<String, Object> user = new HashMap<>();
-            user.put("email", email);
-            user.put("password", password); // 실제 서비스에서는 암호화 필요
-            user.put("name", name);
-            user.put("phone", phone);
-            user.put("zip", zip);
-            user.put("address", address);
-            user.put("addressDetail", addressDetail);
+            // Lambda 연동으로 사용자 정보 저장
+            JSONObject userJson = new JSONObject();
+            try {
+                userJson.put("email", email);
+                userJson.put("password", password); // 실제 서비스에서는 암호화 필요
+                userJson.put("name", name);
+                userJson.put("phone", phone);
+                userJson.put("postal_code", zip);
+                userJson.put("address", address);
+                userJson.put("address_detail", addressDetail);
+            } catch (JSONException e) {
+                Toast.makeText(this, "JSON 생성 중 오류: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-            db.collection("users").document(email).set(user)
-                    .addOnSuccessListener(unused -> {
-                        Toast.makeText(this, getString(R.string.toast_signup_success), Toast.LENGTH_SHORT).show();
-                        finish(); // 회원가입 후 종료
-                    })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(this, getString(R.string.toast_signup_fail) + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
+            RequestQueue queue = Volley.newRequestQueue(this);
+            String url = "https://pnzx78swvl.execute-api.ap-northeast-2.amazonaws.com/dev/patient";
+
+            JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, userJson,
+                response -> {
+                    Toast.makeText(this, getString(R.string.toast_signup_success), Toast.LENGTH_SHORT).show();
+                    finish();
+                },
+                error -> {
+                    Toast.makeText(this, getString(R.string.toast_signup_fail) + ": " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                });
+
+            queue.add(request);
         });
     }
 
