@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
@@ -24,8 +25,9 @@ class PhoneUtils {
 public class FindPasswordActivity extends AppCompatActivity {
 
     // For manual verification/testing without Firebase
-    private final String sentCode = "123456"; // Replace with dynamic value if needed
+    private final String sentCode = "123456"; // 임시비밀번호 고정값
 
+    EditText editEmail;
     EditText editPhone, editCode;
     Button btnVerifyPhone, btnVerifyCode;
     View inputCodeLayout, newPasswordSection;
@@ -40,26 +42,35 @@ public class FindPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_find_password);
 
         // View 연결
+        editEmail = findViewById(R.id.editEmail);
         editPhone = findViewById(R.id.editPhone);
-        btnVerifyPhone = findViewById(R.id.btnVerifyPhone);
+        btnVerifyPhone = findViewById(R.id.btnVerify);
         editCode = findViewById(R.id.editCode);
-        btnVerifyCode = findViewById(R.id.btnVerifyCode);
+        btnVerifyCode = findViewById(R.id.btnCode);
 
-        inputCodeLayout = findViewById(R.id.inputCodeLayout);
+        inputCodeLayout = findViewById(R.id.codeBlock);
         newPasswordSection = findViewById(R.id.inputNewPasswordLayout);
         newPasswordSection.setVisibility(View.GONE);
         findViewById(R.id.labelNewPassword).setVisibility(View.GONE);
         findViewById(R.id.labelConfirmPassword).setVisibility(View.GONE);
         findViewById(R.id.inputConfirmPasswordLayout).setVisibility(View.GONE);
-        btnChangePassword = findViewById(R.id.btnChangePassword);
-        btnChangePassword.setVisibility(View.GONE);
+        findViewById(R.id.btnChangePassword).setVisibility(View.GONE);
 
         editNewPassword = findViewById(R.id.editNewPassword);
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
+
         btnChangePassword = findViewById(R.id.btnChangePassword);
+
+        ImageView btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
 
         // 본인확인 버튼 클릭
         btnVerifyPhone.setOnClickListener(v -> {
+            String email = editEmail.getText().toString().trim();
+            if (TextUtils.isEmpty(email) || !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "올바른 이메일을 입력해주세요", Toast.LENGTH_SHORT).show();
+                return;
+            }
             String rawPhone = editPhone.getText().toString().trim();
             String phone = PhoneUtils.convertToE164Format(rawPhone);
             if (TextUtils.isEmpty(phone)) {
