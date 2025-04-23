@@ -28,9 +28,7 @@
 
     <!-- 섀도우 및 강조 -->
     <color name="card_shadow">#33000000</color>
-
-
-
+    <color name="main_color">#57C6C5</color>
 
 
 </resources>

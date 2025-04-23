@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.silmedy.CheckIdentityActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -71,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
 
         // 회원가입 버튼 클릭 → SingupActivity로 이동
         btnJoin.setOnClickListener(v -> {
-            Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+            Intent intent = new Intent(LoginActivity.this, CheckIdentityActivity.class);
             startActivity(intent);
         });
 

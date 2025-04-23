@@ -26,8 +26,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private static final int POSTCODE_REQUEST_CODE = 1001;
 
-    private EditText editEmail, editPassword, editConfirmPassword, editName, editPhone, editDetailAddress;
-    private TextView zipView, addressView;
+    private EditText editEmail, editPassword, editConfirmPassword, editName, editDetailAddress;
+    private TextView contactView, zipView, addressView;
     private Button btnSignup, btnZipSearch, btnCheckEmail;
     private CheckBox checkboxSignLang;
     private ImageView btnBack;
@@ -46,7 +46,7 @@ public class SignupActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.editPassword);
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
         editName = findViewById(R.id.editName);
-        editPhone = findViewById(R.id.editPhone);
+        contactView = findViewById(R.id.contactView);
         zipView = findViewById(R.id.zipView);
         addressView = findViewById(R.id.addressView);
         editDetailAddress = findViewById(R.id.editDetailAddress);
@@ -56,6 +56,13 @@ public class SignupActivity extends AppCompatActivity {
         checkboxSignLang = findViewById(R.id.checkboxSignLang);
         btnBack = findViewById(R.id.btnBack);
         CheckBox checkboxSignLang = findViewById(R.id.checkboxSignLang);
+
+
+        Intent intent = getIntent();
+        if (intent != null && intent.hasExtra("contact")) {
+            String receivedContact = intent.getStringExtra("contact");
+            contactView.setText(receivedContact);
+        }
 
         // 뒤로가기
         btnBack.setOnClickListener(v -> finish());
@@ -87,8 +94,8 @@ public class SignupActivity extends AppCompatActivity {
 
         // 우편번호 검색
         btnZipSearch.setOnClickListener(v -> {
-            Intent intent = new Intent(SignupActivity.this, PostalCodeActivity.class);
-            startActivityForResult(intent, POSTCODE_REQUEST_CODE);
+            Intent newIntent = new Intent(SignupActivity.this, PostalCodeActivity.class);
+            startActivityForResult(newIntent, POSTCODE_REQUEST_CODE);
         });
 
         // 회원가입 버튼 클릭
@@ -97,7 +104,7 @@ public class SignupActivity extends AppCompatActivity {
             String password = editPassword.getText().toString().trim();
             String confirmPassword = editConfirmPassword.getText().toString().trim();
             String name = editName.getText().toString().trim();
-            String contact = editPhone.getText().toString().trim();
+            String contact = contactView.getText().toString().trim();
             String postalCode = zipView.getText().toString().trim();
             String address = addressView.getText().toString().trim();
             String addressDetail = editDetailAddress.getText().toString().trim();
