@@ -44,21 +44,21 @@ public class FindPasswordActivity extends AppCompatActivity {
         // View 연결
         editEmail = findViewById(R.id.editEmail);
         editPhone = findViewById(R.id.editPhone);
-        btnVerifyPhone = findViewById(R.id.btnVerifyPhone);
+        btnVerifyPhone = findViewById(R.id.btnVerify);
         editCode = findViewById(R.id.editCode);
-        btnVerifyCode = findViewById(R.id.btnVerifyCode);
+        btnVerifyCode = findViewById(R.id.btnCode);
 
-        inputCodeLayout = findViewById(R.id.inputCodeLayout);
+        inputCodeLayout = findViewById(R.id.codeBlock);
         newPasswordSection = findViewById(R.id.inputNewPasswordLayout);
         newPasswordSection.setVisibility(View.GONE);
         findViewById(R.id.labelNewPassword).setVisibility(View.GONE);
         findViewById(R.id.labelConfirmPassword).setVisibility(View.GONE);
         findViewById(R.id.inputConfirmPasswordLayout).setVisibility(View.GONE);
-        btnChangePassword = findViewById(R.id.btnChangePassword);
-        btnChangePassword.setVisibility(View.GONE);
+        findViewById(R.id.btnChangePassword).setVisibility(View.GONE);
 
         editNewPassword = findViewById(R.id.editNewPassword);
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
+
         btnChangePassword = findViewById(R.id.btnChangePassword);
 
         ImageView btnBack = findViewById(R.id.btnBack);
