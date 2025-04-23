@@ -111,9 +111,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void goToMain(String email) {
-        Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class); // 로그인 후 메인 페이지
-        intent.putExtra("email", email);
-        startActivity(intent);
-        finish();
+        db.collection("patients").document(email).get().addOnSuccessListener(doc -> {
+            if (doc.exists()) {
+                String userName = doc.getString("name"); // Firestore에 저장된 사용자 이름
+                Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
+                intent.putExtra("userName", userName);  // 사용자 이름 전달
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 }
