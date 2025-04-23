@@ -44,6 +44,7 @@
 
             <!-- 증상 카드 1 -->
             <LinearLayout
+                android:id="@+id/cardCold"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -70,6 +71,7 @@
 
             <!-- 증상 카드 2 -->
             <LinearLayout
+                android:id="@+id/cardIndigestion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -96,6 +98,7 @@
 
             <!-- 증상 카드 3 -->
             <LinearLayout
+                android:id="@+id/cardHeat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -122,6 +125,7 @@
 
             <!-- 증상 카드 4 -->
             <LinearLayout
+                android:id="@+id/cardHeadache"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -148,6 +152,7 @@
 
             <!-- 증상 카드 5 -->
             <LinearLayout
+                android:id="@+id/cardDiabetes"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -174,6 +179,7 @@
 
             <!-- 증상 카드 6 -->
             <LinearLayout
+                android:id="@+id/cardHighBlood"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
