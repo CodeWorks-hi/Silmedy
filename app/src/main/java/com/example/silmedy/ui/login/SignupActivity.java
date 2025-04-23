@@ -42,13 +42,12 @@ public class SignupActivity extends AppCompatActivity {
         editConfirmPassword = findViewById(R.id.editConfirmPassword);
         editName = findViewById(R.id.editName);
         editPhone = findViewById(R.id.editPhone);
-        zipView = findViewById(R.id.zipView);
-        addressView = findViewById(R.id.addressView);
+        zipView = findViewById(R.id.editZip);
+        addressView = findViewById(R.id.editAddress);
         editDetailAddress = findViewById(R.id.editDetailAddress);
         btnSignup = findViewById(R.id.btnSignup);
         btnZipSearch = findViewById(R.id.btnZipSearch);
         btnCheckEmail = findViewById(R.id.btnCheckEmail);
-        btnVerifyPhone = findViewById(R.id.btnVerifyPhone);
         btnBack = findViewById(R.id.btnBack);
         CheckBox checkboxSignLang = findViewById(R.id.checkboxSignLang);
 
