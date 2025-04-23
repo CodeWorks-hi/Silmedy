@@ -1,7 +1,6 @@
 plugins {
-    alias(libs.plugins.android.application)
-    // Add the Google services Gradle plugin
-    id("com.google.gms.google-services")
+    id("com.android.application")
+    id("com.google.gms.google-services") // Firebase 연동용
 }
 
 android {
@@ -54,7 +53,7 @@ dependencies {
 
     // Firebase BoM (Bill of Materials)
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
-    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.android.material:material:1.11.0") // 버전은 네 프로젝트에 맞춰서
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
@@ -69,7 +68,7 @@ dependencies {
 
     // 사용 Firebase SDK (예: Analytics + Auth + Firestore 등)
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-auth:22.1.2") // SNS 인증위해 최신 버전 사용
     implementation("com.google.firebase:firebase-firestore")
 
     implementation("com.google.firebase:firebase-messaging:23.4.1")

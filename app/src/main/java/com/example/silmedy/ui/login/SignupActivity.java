@@ -115,7 +115,7 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             if (!isValidEmail.get()) {
-                Toast.makeText(this, getString(R.string.toast_wrong_email), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "유효하지 않은 이메일입니다.", Toast.LENGTH_SHORT).show();
                 return;
             }
 

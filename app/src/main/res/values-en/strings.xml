@@ -14,6 +14,9 @@
     <string name="hint_phone">Enter your phone number</string>
     <string name="hint_zip">Postal code</string>
     <string name="hint_address_detail">Enter detailed address</string>
+    <string name="hint_verification_code">Enter verification code</string>
+    <string name="hint_new_password">Enter a 6-digit password with lowercase letters and numbers</string>
+    <string name="hint_new_password_confirm">Re-enter the new password</string>
 
     <!-- Buttons -->
     <string name="btn_login">Login</string>
@@ -22,10 +25,13 @@
     <string name="btn_find_password">Find Password</string>
     <string name="btn_save">Save</string>
     <string name="btn_back">Back</string>
+    <string name="btn_verify_code">Verify</string>
+    <string name="btn_change_password">Change Password</string>
 
     <!-- Screen Titles -->
     <string name="title_activity_login">Login</string>
     <string name="title_activity_signup">Sign Up</string>
+    <string name="title_activity_find_password">Find Password</string>
 
     <!-- Toast Messages -->
     <string name="toast_login_empty">Please enter email and password</string>
@@ -35,6 +41,11 @@
     <string name="toast_password_mismatch">Passwords do not match</string>
     <string name="toast_all_fields_required">Please fill out all fields</string>
     <string name="toast_address_search_pending">Address search is not yet available</string>
+    <string name="toast_verification_code_sent">Verification code sent</string>
+    <string name="toast_verification_success">Verification successful</string>
+    <string name="toast_verification_fail">Verification failed</string>
+    <string name="toast_password_change_success">Password changed successfully</string>
+    <string name="toast_password_change_fail">Failed to change password</string>
 
     <!-- Labels -->
     <string name="label_email">Email</string>
@@ -45,6 +56,9 @@
     <string name="label_postal_code">Postal Code</string>
     <string name="label_address">Address</string>
     <string name="label_detail_address">Detail Address</string>
+    <string name="label_verification_code">Verification Code</string>
+    <string name="label_new_password">New Password</string>
+    <string name="label_new_password_confirm">Confirm New Password</string>
 
     <!-- Required for login/signup layout compatibility -->
     <string name="prompt_email">Email</string>
