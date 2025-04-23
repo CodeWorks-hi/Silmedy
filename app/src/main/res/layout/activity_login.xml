@@ -106,6 +106,21 @@
                 android:textSize="13sp" />
 
             <TextView
+                android:id="@+id/btnFindId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="아이디 찾기"
+                android:textColor="#666666"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="  |  "
+                android:textColor="#AAAAAA"
+                android:textSize="13sp" />
+
+            <TextView
                 android:id="@+id/btnFindPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -113,6 +128,7 @@
                 android:textColor="#666666"
                 android:textSize="13sp" />
         </LinearLayout>
+
     </LinearLayout>
 
     <!-- 하단 여백 -->

@@ -28,6 +28,7 @@
     <!--  로그인 화면 -->
     <string name="title_activity_login">로그인</string>
     <string name="btn_login">로그인</string>
+    <string name="btn_find_id">아이디 찾기</string>
     <string name="btn_find_password">비밀번호 찾기</string>
 
     <string name="toast_login_empty">이메일과 비밀번호를 입력해주세요</string>
@@ -76,5 +77,13 @@
     <string name="toast_verification_fail">인증에 실패했습니다</string>
     <string name="toast_password_change_success">비밀번호가 변경되었습니다</string>
     <string name="toast_password_change_fail">비밀번호 변경에 실패했습니다</string>
+
+    <!-- 아이디 찾기 화면 -->
+    <string name="title_activity_find_id">아이디 찾기</string>
+    <string name="label_my_id">내 아이디</string>
+    <string name="btn_go_login">로그인하러 가기</string>
+
+
+
 
 </resources>
