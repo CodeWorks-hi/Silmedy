@@ -111,7 +111,7 @@ public class SignupActivity extends AppCompatActivity {
             }
 
             RequestQueue queue = Volley.newRequestQueue(this);
-            String url = "https://pnzx78swvl.execute-api.ap-northeast-2.amazonaws.com/dev/patient";
+            String url = "https://pnzx78swvl.execute-api.ap-northeast-2.amazonaws.com/dev/patient/signup";
 
             JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, url, userJson,
                 response -> {
