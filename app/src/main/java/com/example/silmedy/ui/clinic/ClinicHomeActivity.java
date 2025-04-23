@@ -31,22 +31,15 @@ public class ClinicHomeActivity extends AppCompatActivity {
             btnBack.setOnClickListener(v -> onBackPressed());
         }
 
-        // 🧍 터치로 증상확인 카드 클릭 시 BodyMain 이동
+        // 🧍 터치로 증상확인 카드 클릭 및 🤧 일상질환 카드 클릭 리스너를 Java에서 직접 설정합니다.
         CardView cardTouchSymptom = findViewById(R.id.card_touch_symptom);
         if (cardTouchSymptom != null) {
-            cardTouchSymptom.setOnClickListener(v -> {
-                Intent intent = new Intent(ClinicHomeActivity.this, BodyMain.class);
-                startActivity(intent);
-            });
+            cardTouchSymptom.setOnClickListener(v -> onTouchSymptomClick(v));
         }
 
-        // 🤧 일상질환 카드 클릭 시 SymptomChoiceActivity 이동
         CardView cardCold = findViewById(R.id.card_cold);
         if (cardCold != null) {
-            cardCold.setOnClickListener(v -> {
-                Intent intent = new Intent(ClinicHomeActivity.this, SymptomChoiceActivity.class);
-                startActivity(intent);
-            });
+            cardCold.setOnClickListener(v -> onColdClick(v));
         }
 
 
@@ -71,5 +64,17 @@ public class ClinicHomeActivity extends AppCompatActivity {
             // 홈을 기본 선택 상태로 설정
             bottomNavigation.setSelectedItemId(R.id.nav_home);
         }
+    }
+
+    // 🧍 터치로 증상확인 카드 클릭 -> BodyMain 이동 (XML의 android:onClick 사용)
+    public void onTouchSymptomClick(View view) {
+        Intent intent = new Intent(this, BodyMain.class);
+        startActivity(intent);
+    }
+
+    // 🤧 일상질환 카드 클릭 -> SymptomChoiceActivity 이동 (XML의 android:onClick 사용)
+    public void onColdClick(View view) {
+        Intent intent = new Intent(this, SymptomChoiceActivity.class);
+        startActivity(intent);
     }
 }

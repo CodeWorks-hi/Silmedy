@@ -63,7 +63,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onTouchSymptomClick">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -115,7 +118,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onColdClick">
 
             <LinearLayout
                 android:layout_width="match_parent"
