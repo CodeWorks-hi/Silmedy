@@ -11,7 +11,7 @@ import com.example.silmedy.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final int SPLASH_DELAY = 2000; // 스플래시 딜레이 시간 (2초)
+    private static final long SPLASH_DELAY = 2000L; // 스플래시 딜레이 시간 (2초)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
