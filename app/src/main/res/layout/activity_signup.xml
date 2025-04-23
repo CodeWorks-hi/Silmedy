@@ -6,24 +6,44 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
+    android:background="@android:color/white"
     tools:context=".ui.login.SignupActivity">
 
-    <!-- 🔙 뒤로가기 버튼 -->
-
+    <!-- 한정 버튼 -->
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
         android:contentDescription="@string/btn_back"
-        android:src="@drawable/ic_arrow_back" />
-
-
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- 제목 -->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <!-- 이메일 + 중복확인 -->
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toStartOf="@id/btnCheckEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle" />
 
     <Button
         android:id="@+id/btnCheckEmail"
@@ -36,171 +56,141 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 비밀번호 -->
-
-    <!-- 비밀번호 확인 -->
-
-    <!-- 이름 -->
-
-    <!-- 연락처 + 본인확인 -->
-
-    <!-- 우편번호 + 주소 검색 -->
-
-
-    <!-- 회원가입 버튼 -->
-
     <EditText
         android:id="@+id/editPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="@string/label_password"
+        android:hint="비밀번호"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toBottomOf="@id/editEmail"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editEmail" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- 비밀번호 확인 -->
     <EditText
         android:id="@+id/editConfirmPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:hint="@string/label_confirm_password"
+        android:layout_marginTop="12dp"
+        android:hint="비밀번호 확인"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toBottomOf="@id/editPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editPassword" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/btnSignup"
+    <!-- 이름 -->
+    <EditText
+        android:id="@+id/editName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#51BDB3"
-        android:text="@string/btn_signup"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="12dp"
+        android:hint="이름"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@id/editConfirmPassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDetailAddress" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    <View
+    <!-- 연락처 -->
+    <EditText
+        android:id="@+id/editPhone"
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="60dp"
-        android:background="#000000"
-        app:layout_constraintEnd_toEndOf="@id/zipView"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@id/zipView"
-        app:layout_constraintTop_toBottomOf="@id/zipView" />
-
-    <TextView
-        android:id="@+id/textTitle"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="회원가입"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        android:hint="연락처"
+        android:inputType="phone"
+        app:layout_constraintTop_toBottomOf="@id/editName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnBack" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 우편번호 + 주소 검색 -->
+    <EditText
+        android:id="@+id/editZip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="우편번호"
+        app:layout_constraintTop_toBottomOf="@id/editPhone"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnZipSearch" />
 
     <Button
         android:id="@+id/btnZipSearch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
         android:backgroundTint="#51BDB3"
         android:text="주소 검색"
         android:textColor="#FFFFFF"
-        app:layout_constraintBaseline_toBaselineOf="@id/zipView"
+        app:layout_constraintBaseline_toBaselineOf="@id/editZip"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/addressView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:hint="@string/label_address"
-        android:inputType="textPostalAddress"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/zipView" />
-
-    <TextView
-        android:id="@+id/zipView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="30dp"
-        android:hint="@string/label_postal_code"
-        android:inputType="text"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnZipSearch"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editPhone" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputEmailLayout"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <!-- 상세주소 -->
+    <EditText
+        android:id="@+id/editAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:hint="이메일"
-        app:layout_constraintEnd_toStartOf="@id/btnCheckEmail"
-        app:layout_constraintHorizontal_bias="1.0"
+        android:hint="주소"
+        android:inputType="textPostalAddress"
+        app:layout_constraintTop_toBottomOf="@id/editZip"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textTitle">
+        app:layout_constraintEnd_toEndOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editPhone"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="160dp"
-        android:layout_marginTop="36dp"
-        android:hint="@string/label_phone"
-        android:inputType="phone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editName" />
-
+    <!-- 상세주소 -->
     <EditText
         android:id="@+id/editDetailAddress"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:hint="@string/label_detail_address"
+        android:layout_marginTop="72dp"
+        android:hint="상세주소"
         android:inputType="textPostalAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addressView" />
+        app:layout_constraintTop_toBottomOf="@id/editZip" />
 
-    <EditText
-        android:id="@+id/editName"
+    <!-- 수어통화 여부 -->
+
+    <LinearLayout
+        android:id="@+id/layoutSignLang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editDetailAddress">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="12dp"
+            android:text="수어 통화 여부"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/checkboxSignLang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수어 통화"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <!-- 회원가입 버튼 -->
+
+    <Button
+        android:id="@+id/btnSignup"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="@string/label_name"
-        android:inputType="textPersonName"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#51BDB3"
+        android:text="회원가입"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editConfirmPassword" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/editEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="97dp" />
-
+        app:layout_constraintTop_toBottomOf="@id/layoutSignLang" />
 </androidx.constraintlayout.widget.ConstraintLayout>

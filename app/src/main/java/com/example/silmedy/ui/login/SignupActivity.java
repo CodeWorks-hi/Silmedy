@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -49,6 +50,7 @@ public class SignupActivity extends AppCompatActivity {
         btnCheckEmail = findViewById(R.id.btnCheckEmail);
         btnVerifyPhone = findViewById(R.id.btnVerifyPhone);
         btnBack = findViewById(R.id.btnBack);
+        CheckBox checkboxSignLang = findViewById(R.id.checkboxSignLang);
 
         // 뒤로가기
         btnBack.setOnClickListener(v -> finish());
@@ -79,6 +81,7 @@ public class SignupActivity extends AppCompatActivity {
             String zip = zipView.getText().toString().trim();
             String address = addressView.getText().toString().trim();
             String addressDetail = editDetailAddress.getText().toString().trim();
+            boolean isSignLangChecked = checkboxSignLang.isChecked();
 
             Toast.makeText(this, "환자 등록 요청 중...", Toast.LENGTH_SHORT).show();
 
@@ -105,6 +108,7 @@ public class SignupActivity extends AppCompatActivity {
                 userJson.put("postal_code", zip);
                 userJson.put("address", address);
                 userJson.put("address_detail", addressDetail);
+                userJson.put("sign_language_needed", isSignLangChecked);
             } catch (JSONException e) {
                 Toast.makeText(this, "JSON 생성 중 오류: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 return;
