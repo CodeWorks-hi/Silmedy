@@ -47,7 +47,7 @@ public class CheckIdentityActivity extends AppCompatActivity {
             String rawPhone = phoneInput.getText().toString().trim().replaceAll("-", "");
             String formattedPhone = formatPhoneWithHyphen(rawPhone);
             Intent intent = new Intent(CheckIdentityActivity.this, SignupActivity.class);
-            intent.putExtra("phoneNumber", formattedPhone);
+            intent.putExtra("contact", formattedPhone);
             startActivity(intent);
             finish();
         });
