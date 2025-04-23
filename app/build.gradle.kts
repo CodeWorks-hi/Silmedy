@@ -69,7 +69,7 @@ dependencies {
 
     // 사용 Firebase SDK (예: Analytics + Auth + Firestore 등)
     implementation("com.google.firebase:firebase-analytics")
-    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-auth:22.3.0")
     implementation("com.google.firebase:firebase-firestore")
 
     implementation("com.google.firebase:firebase-messaging:23.4.1")
