@@ -1,0 +1,39 @@
+package com.example.silmedy.model;
+
+/**
+ * DoctorListActivity에서 사용하는 의사 정보 모델 클래스
+ * - RecyclerView에 바인딩되는 데이터 구조
+ * - 이미지, 이름, 보건소명, 진료 시간 정보를 포함
+ */
+public class Doctor {
+
+    private int imageResId;       // 이미지 리소스 ID
+    private String name;          // 이름
+    private String center;        // 소속 보건소
+    private String schedule;      // 진료 가능 시간
+
+    // 생성자
+    public Doctor(int imageResId, String name, String center, String schedule) {
+        this.imageResId = imageResId;
+        this.name = name;
+        this.center = center;
+        this.schedule = schedule;
+    }
+
+    // getter
+    public int getImageResId() {
+        return imageResId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCenter() {
+        return center;
+    }
+
+    public String getSchedule() {
+        return schedule;
+    }
+}

@@ -30,5 +30,7 @@
     <color name="card_shadow">#33000000</color>
     <color name="main_color">#57C6C5</color>
 
+    <color name="filter_button_text">#333333</color>
+
 
 </resources>
