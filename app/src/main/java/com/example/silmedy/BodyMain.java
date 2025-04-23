@@ -3,7 +3,7 @@ package com.example.silmedy;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class BobyMain extends AppCompatActivity {
+public class BodyMain extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
