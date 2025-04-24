@@ -10,6 +10,7 @@
     <color name="mint_500">#8CD8D0</color>  <!-- 메인 민트 -->
     <color name="mint_700">#46B8AF</color>  <!-- 진한 민트 -->
     <color name="mint_900">#278A83</color>  <!-- 강조용 텍스트 -->
+    <color name="mint_primary">#51BDB3</color>
 
     <!-- 그라데이션 컬러 -->
     <color name="gradient_start">#E8F8F7</color>
@@ -31,6 +32,11 @@
     <color name="main_color">#57C6C5</color>
 
     <color name="filter_button_text">#333333</color>
+
+    <!-- 채팅 -->
+
+
+
 
 
 </resources>
