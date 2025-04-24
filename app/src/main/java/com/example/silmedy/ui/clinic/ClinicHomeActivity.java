@@ -34,8 +34,9 @@ public class ClinicHomeActivity extends AppCompatActivity {
         }
 
         // 👋 사용자 이름 환영 메시지 세팅 (예: "홍길동님, 환영합니다.")
+        Intent intent = getIntent();
         textGreeting = findViewById(R.id.text_greeting);
-        String username = getIntent().getStringExtra("username");
+        String username = intent.getStringExtra("userName");
         if (username != null && !username.isEmpty()) {
             textGreeting.setText(String.format("%s님, 환영합니다.", username));
         }
