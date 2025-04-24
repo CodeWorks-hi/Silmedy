@@ -1,4 +1,4 @@
-diagnosis_id,request_id,doctor_id,patient_id,symptom_part,summary_text,notes,diagnosed_at
+diagnosis_id,request_id,doctor_id,patient_id,symptoms,summary_text,notes,diagnosed_at
 1,78,64,22,"['물집', '건조함']","['증상 반복됨', '증상 악화', '불편감 있음']",표재성 상처 관련 증상 지속. 환자 경과 관찰 필요.,2025-01-21 12:25:20
 2,52,51,98,"['통증', '딱딱함']",['초기 증상'],색소 질환 관련 증상 지속. 환자 경과 관찰 필요.,2025-01-04 02:05:32
 3,20,70,26,['발적'],"['증상 악화', '불편감 있음', '발열 호소']",색소 질환 관련 증상 지속. 환자 경과 관찰 필요.,2025-04-14 10:58:56

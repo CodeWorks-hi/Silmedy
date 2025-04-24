@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Firebase 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -17,18 +16,16 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Silmedy"
-        android:localeConfig="@xml/locales_config"
         tools:targetApi="31">
 
         <!-- Default locale for Android 13+ -->
         <meta-data
             android:name="locale"
-            android:value="ko" />
-
-        <!--  Kakao SDK AppKey 등록 -->
+            android:value="ko" /> <!-- Kakao SDK AppKey 등록 -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_key_manifest_placeholder" />
@@ -55,9 +52,8 @@
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
-
-
             </intent-filter>
         </activity>
         <activity android:name=".SymptomChoiceActivity" />
@@ -66,6 +62,11 @@
         <activity android:name=".CareRequestCompleteActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".BodyMain" />
+        <!--  AI 챗봇 증상 문진 액티비티 -->
+        <activity
+            android:name=".llama.LlamaActivity"
+            android:exported="false"
+            android:label="AI 증상 확인" />
         <activity
             android:name=".ui.login.SignupActivity"
             android:exported="false"

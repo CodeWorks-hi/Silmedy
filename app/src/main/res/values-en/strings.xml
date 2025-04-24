@@ -133,5 +133,16 @@
     <string name="btn_tomorrow">Tomorrow</string>
 
 
+    <!-- Chat-related -->
+    <string name="btn_menu">Open menu</string>
+    <string name="btn_share">Share chat room</string>
+    <string name="btn_addatt">Add attachment</string>
+    <string name="btn_send">Send message</string>
+    <string name="hint_chat_input">Enter your message</string>
+    <string name="chat_toolbar_title">Silmedy</string>
+    <string name="chat_toolbar_status">Online</string>
+
+
+
 </resources>
 
