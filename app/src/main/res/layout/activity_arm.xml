@@ -47,7 +47,7 @@
             android:src="@drawable/arm_2" />
 
         <View
-            android:id="@+id/btnHand"
+            android:id="@+id/btnThighs"
             android:layout_width="131dp"
             android:layout_height="118dp"
             android:layout_gravity="center_vertical"
@@ -62,7 +62,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <View
-            android:id="@+id/btnArm"
+            android:id="@+id/btnMouth"
             android:layout_width="83dp"
             android:layout_height="155dp"
             android:layout_gravity="right"

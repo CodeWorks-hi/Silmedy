@@ -22,9 +22,14 @@
         android:theme="@style/Theme.Silmedy"
         tools:targetApi="31">
         <activity
-            android:name=".BodyActivity"
+            android:name=".LegActivity"
             android:exported="false" />
-        <!-- Default locale for Android 13+ -->
+        <activity
+            android:name=".HeadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BodyActivity"
+            android:exported="false" /> <!-- Default locale for Android 13+ -->
         <meta-data
             android:name="locale"
             android:value="ko" /> <!-- Kakao SDK AppKey 등록 -->
