@@ -128,4 +128,9 @@
     <string name="btn_retry">다시 시도</string>
     <string name="btn_next">다음</string>
     <string name="btn_previous">이전</string>
+
+    <!-- 버튼 관련 문자열 리소스 -->
+    <string name="btn_today">오늘</string>
+    <string name="btn_tomorrow">내일</string>
+
 </resources>
