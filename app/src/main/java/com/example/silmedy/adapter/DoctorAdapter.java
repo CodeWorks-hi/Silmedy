@@ -1,5 +1,6 @@
 package com.example.silmedy.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.silmedy.CareRequestActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 
@@ -21,11 +23,17 @@ import java.util.List;
  */
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder> {
 
-    private final List<Doctor> doctorList;
+    public final List<Doctor> doctorList;
+    public final OnDoctorClickListener listener;
 
-    // 생성자: 외부에서 의사 리스트를 주입받음
-    public DoctorAdapter(List<Doctor> doctorList) {
+    public interface OnDoctorClickListener {
+        void onDoctorClick(Doctor doctor);
+    }
+
+    // 생성자: 의사 리스트와 클릭 리스너를 주입받음
+    public DoctorAdapter(List<Doctor> doctorList, OnDoctorClickListener listener) {
         this.doctorList = doctorList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -46,6 +54,15 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         holder.center.setText(doctor.getCenter());
         holder.schedule.setText(doctor.getSchedule());
         holder.image.setImageResource(doctor.getImageResId());
+
+        // 아이템 클릭 시 CareRequestActivity로 이동
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), CareRequestActivity.class);
+            intent.putExtra("doctor_name", doctor.getName());
+            intent.putExtra("doctor_clinic", doctor.getCenter());
+            intent.putExtra("doctor_time", doctor.getSchedule());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override

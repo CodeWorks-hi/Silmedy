@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <!-- 뒤로가기 -->
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/back_icon"
+        android:contentDescription="@string/btn_back"
+        android:background="?attr/selectableItemBackgroundBorderless" />
+
+    <!-- 제목 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비대면 진료 예약"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/text_primary" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비대면 진료 예약"
+        android:textSize="14sp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_secondary" />
+
+    <!-- 의사 카드뷰 -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        card_view:cardCornerRadius="12dp"
+        card_view:cardElevation="0dp"
+        android:backgroundTint="@color/input_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="12dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/doctorImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/doc"
+                android:scaleType="centerCrop"
+                android:clipToOutline="true"
+                android:background="@drawable/circle_bg"
+                android:contentDescription="의사 사진"
+                android:layout_marginEnd="16dp" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/doctorName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="최유진"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/text_primary" />
+
+                <TextView
+                    android:id="@+id/doctorClinic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="성남시 노인보건센터 의원"
+                    android:textSize="14sp"
+                    android:textColor="@color/text_secondary" />
+
+                <TextView
+                    android:id="@+id/doctorTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="진료 가능 | (수) 09:00 ~ 15:30"
+                    android:textSize="13sp"
+                    android:textColor="@color/mint_700" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 날짜 선택 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/btnToday"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/btn_today"
+            android:textStyle="bold"
+            android:background="@drawable/tab_left_selector"
+            android:textColor="@color/time_slot_text_selector" />
+
+        <Button
+            android:id="@+id/btnTomorrow"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:text="@string/btn_tomorrow"
+            android:background="@drawable/tab_right_selector"
+            android:textStyle="bold"
+            android:textColor="@color/time_slot_text_selector" />
+    </LinearLayout>
+
+    <!-- 시간 선택 영역 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/timeSlotRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:overScrollMode="never" />
+
+    <!-- 수어 체크박스 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp">
+
+        <CheckBox
+            android:id="@+id/checkSignLanguage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_sign_language"
+            android:layout_marginStart="8dp"
+            android:contentDescription="수어" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수어"
+            android:textSize="14sp"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/text_primary" />
+    </LinearLayout>
+
+    <!-- 예약 버튼 -->
+    <Button
+        android:id="@+id/btnReserve"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:text="예약하기"
+        android:enabled="false"
+        android:textColor="@color/white"
+        android:background="@drawable/button_disabled_bg" />
+</LinearLayout>

@@ -99,4 +99,7 @@
     <string name="home_ai_desc">AI와 채팅하며 증상예측</string>
     <string name="home_ai_note">(내상만 예측 가능)</string>
     <string name="kakao_key_manifest_placeholder">6431bb7769b5d3fcef0c0bb560cc97b1</string>
+
+    <string name="btn_today">오늘</string>
+    <string name="btn_tomorrow">내일</string>
 </resources>

@@ -99,4 +99,7 @@
     <string name="home_ai_desc">Chat with AI to analyze your symptoms</string>
     <string name="home_ai_note">(Internal symptoms only)</string>
     <string name="kakao_key_manifest_placeholder">6431bb7769b5d3fcef0c0bb560cc97b1</string>
+
+    <string name="btn_today">Today</string>
+    <string name="btn_tomorrow">Tomorrow</string>
 </resources>

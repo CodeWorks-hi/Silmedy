@@ -1,4 +1,5 @@
 package com.example.silmedy;
+import com.example.silmedy.CareRequestActivity;
 
 import android.Manifest;
 import android.content.Intent;
@@ -17,9 +18,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
-
-import com.example.silmedy.adapter.DoctorAdapter;
 import com.example.silmedy.model.Doctor;
+import com.example.silmedy.adapter.DoctorAdapter;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
 
 public class DoctorListActivity extends AppCompatActivity {
 
@@ -68,7 +69,13 @@ public class DoctorListActivity extends AppCompatActivity {
         doctorList.add(new Doctor(R.drawable.doc, "김정훈", "분당구보건소", "진료 가능 (수) 09:00 ~ 18:00"));
         doctorList.add(new Doctor(R.drawable.doc, "박지윤", "수정구보건소", "진료 가능 (금) 13:00 ~ 17:00"));
         doctorList.add(new Doctor(R.drawable.doc, "이상우", "중원구보건소", "진료 가능 (화) 10:00 ~ 16:00"));
-        adapter = new DoctorAdapter(doctorList);
+        adapter = new DoctorAdapter(doctorList, doctor -> {
+            Intent intent = new Intent(DoctorListActivity.this, CareRequestActivity.class);
+            intent.putExtra("doctor_name", doctor.getName());
+            intent.putExtra("doctor_clinic", doctor.getCenter());
+            intent.putExtra("doctor_time", doctor.getSchedule());
+            startActivity(intent);
+        });
         doctorRecyclerView.setAdapter(adapter);
 
         // 위치 클라이언트 초기화
@@ -90,6 +97,12 @@ public class DoctorListActivity extends AppCompatActivity {
 
     // 현재 위치 가져오기
     private void getCurrentLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // 권한이 없을 경우 처리 생략
+            return;
+        }
+
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
             if (location != null) {
                 updateLocationTextWithAddress(location);
