@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/armLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +6,7 @@
     android:padding="16dp"
     android:background="#FFFFFF">
 
-    <!-- 🔹 안내 텍스트 -->
+    <!--  뒤로가기 버튼 -->
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="20dp"
@@ -18,8 +17,7 @@
         android:contentDescription="@string/btn_back"
         android:src="@drawable/ic_arrow_back" />
 
-
-    <!-- 🔹 팔 이미지 -->
+    <!--  안내 문구 -->
     <TextView
         android:id="@+id/guideText"
         android:layout_width="match_parent"
@@ -32,13 +30,12 @@
         android:gravity="center"
         android:textAlignment="center" />
 
-
-
-    <!-- 신체 이미지 (가장 아래 깔림) -->
+    <!--  신체 이미지 및 터치 버튼 영역 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- 신체 이미지 -->
         <ImageView
             android:id="@+id/body_image"
             android:layout_width="match_parent"
@@ -46,6 +43,27 @@
             android:scaleType="fitCenter"
             android:src="@drawable/body_2" />
 
-    </FrameLayout>
+        <!-- 허벅지 클릭 영역 -->
+        <View
+            android:id="@+id/btnThighs"
+            android:layout_width="313dp"
+            android:layout_height="164dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
 
+        <!-- 입 클릭 영역 -->
+        <View
+            android:id="@+id/btnMouth"
+            android:layout_width="276dp"
+            android:layout_height="245dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="30dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </FrameLayout>
 </LinearLayout>

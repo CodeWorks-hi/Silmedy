@@ -3,7 +3,6 @@ package com.example.silmedy;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -13,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class ArmActivity extends AppCompatActivity {
 
     ImageView armImage;
-    View btnArm, btnHand;
+    Button btnArm, btnHand;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,9 +20,9 @@ public class ArmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_arm);
 
         // 이미지 및 버튼 참조
-        armImage = findViewById(R.id.armImage);
-        btnArm = findViewById(R.id.btnArm);
-        btnHand = findViewById(R.id.btnHand);
+        armImage = findViewById(R.id.body_image);
+        btnArm = findViewById(R.id.btnMouth);
+        btnHand = findViewById(R.id.btnThighs);
 
         // 팔 이미지 터치 → 손 부위 클릭 시 이동
         armImage.setOnTouchListener((v, event) -> {

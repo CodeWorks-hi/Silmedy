@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/armLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +6,7 @@
     android:padding="16dp"
     android:background="#FFFFFF">
 
-    <!-- 🔹 안내 텍스트 -->
+    <!--  안내 텍스트 -->
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="20dp"
@@ -18,8 +17,7 @@
         android:contentDescription="@string/btn_back"
         android:src="@drawable/ic_arrow_back" />
 
-
-    <!-- 🔹 팔 이미지 -->
+    <!--  안내 문구 -->
     <TextView
         android:id="@+id/guideText"
         android:layout_width="match_parent"
@@ -32,47 +30,39 @@
         android:gravity="center"
         android:textAlignment="center" />
 
-
-
-    <!-- 신체 이미지 (가장 아래 깔림) -->
+    <!--  신체 이미지와 터치 영역 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/armImage"
+            android:id="@+id/body_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
             android:src="@drawable/arm_2" />
 
         <View
-            android:id="@+id/btnHand"
+            android:id="@+id/btnThighs"
             android:layout_width="131dp"
             android:layout_height="118dp"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="left|center_vertical"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="53dp"
+            android:layout_marginBottom="100dp"
             android:background="@android:color/transparent"
             android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintHorizontal_bias="0.15"
-            android:contentDescription="손 부위 선택"/>
+            android:focusable="true" />
 
         <View
-            android:id="@+id/btnArm"
+            android:id="@+id/btnMouth"
             android:layout_width="83dp"
             android:layout_height="155dp"
             android:layout_gravity="right"
             android:layout_marginTop="280dp"
             android:background="@android:color/transparent"
             android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6"
-            android:contentDescription="팔 부위 선택"/>
+            android:focusable="true" />
 
         <View
             android:id="@+id/btnArm2"
@@ -83,12 +73,7 @@
             android:layout_marginRight="70dp"
             android:background="@android:color/transparent"
             android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6"
-            android:contentDescription="팔 부위 선택"/>
+            android:focusable="true" />
 
         <View
             android:id="@+id/btnShoulder"
@@ -98,13 +83,7 @@
             android:layout_marginTop="200dp"
             android:background="@android:color/transparent"
             android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25"
-            android:contentDescription="어깨 부위 선택"/>
+            android:focusable="true" />
 
     </FrameLayout>
-
 </LinearLayout>

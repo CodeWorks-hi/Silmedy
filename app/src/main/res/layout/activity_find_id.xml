@@ -149,8 +149,8 @@
     <!-- 비밀번호 찾기 버튼 -->
     <Button
         android:id="@+id/btnFindPassword"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_width="358dp"
+        android:layout_height="64dp"
         android:layout_below="@id/textMyId"
         android:layout_marginTop="85dp"
         android:backgroundTint="#51BDB3"
@@ -161,13 +161,13 @@
     <!-- 로그인하러 가기 버튼 -->
     <Button
         android:id="@+id/btnGoToLogin"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_width="358dp"
+        android:layout_height="65dp"
         android:layout_below="@id/btnFindPassword"
         android:layout_marginTop="16dp"
+        android:backgroundTint="#51BDB3"
         android:text="@string/btn_go_login"
         android:textColor="#FFFFFF"
-        android:backgroundTint="#51BDB3"
         app:cornerRadius="12dp" />
 
 </RelativeLayout>

@@ -1,5 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/armLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +6,7 @@
     android:padding="16dp"
     android:background="#FFFFFF">
 
-    <!-- 🔹 안내 텍스트 -->
+    <!--  안내 텍스트 -->
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="20dp"
@@ -18,8 +17,7 @@
         android:contentDescription="@string/btn_back"
         android:src="@drawable/ic_arrow_back" />
 
-
-    <!-- 🔹 팔 이미지 -->
+    <!--  안내 문구 -->
     <TextView
         android:id="@+id/guideText"
         android:layout_width="match_parent"
@@ -32,9 +30,7 @@
         android:gravity="center"
         android:textAlignment="center" />
 
-
-
-    <!-- 신체 이미지 (가장 아래 깔림) -->
+    <!--  신체 이미지 및 버튼 영역 -->
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -46,6 +42,51 @@
             android:scaleType="fitCenter"
             android:src="@drawable/face_2" />
 
-    </FrameLayout>
+        <View
+            android:id="@+id/btnThighs"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="45dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
 
+        <View
+            android:id="@+id/btnMouth"
+            android:layout_width="81dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="30dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:id="@+id/btnFoot"
+            android:layout_width="173dp"
+            android:layout_height="79dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="135dp"
+            android:layout_marginEnd="5dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:id="@+id/btnCalf"
+            android:layout_width="43dp"
+            android:layout_height="89dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="88dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="105dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </FrameLayout>
 </LinearLayout>

@@ -26,6 +26,7 @@
             android:src="@drawable/ic_arrow_back" />
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -35,20 +36,31 @@
             <TextView
                 android:id="@+id/textRoomCode"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:text="@string/chat_toolbar_title"
-                android:textStyle="bold"
+                android:textColor="#000000"
                 android:textSize="16sp"
-                android:textColor="#51BDB3" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textRoomName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chat_toolbar_status"
-                android:textSize="12sp"
-                android:textColor="#666666" />
+                android:textColor="@color/mint_primary"
+                android:textSize="12sp" />
         </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageProfile"
+            android:layout_width="78dp"
+            android:layout_height="54dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="48dp"
+            android:layout_toStartOf="@+id/linearLayout"
+            android:scaleType="centerCrop"
+            android:src="@drawable/silmedy_circle" />
     </RelativeLayout>
 
     <!-- 메시지 목록 -->
@@ -81,7 +93,7 @@
             android:scaleType="fitCenter" />
 
         <EditText
-            android:id="@+id/editMessage"
+            android:id="@+id/edit_message"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_weight="1"

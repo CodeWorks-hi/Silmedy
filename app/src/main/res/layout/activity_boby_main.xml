@@ -46,7 +46,7 @@
                 android:layout_marginTop="40dp"
                 android:src="@drawable/wholebody" />
 
-            <View
+            <ImageButton
                 android:id="@+id/btn_head"
                 android:layout_width="80dp"
                 android:layout_height="95dp"
@@ -54,7 +54,7 @@
                 android:layout_marginTop="50dp"
                 android:background="@android:color/transparent" />
 
-            <View
+            <ImageButton
                 android:id="@+id/btn_arm"
                 android:layout_width="45dp"
                 android:layout_height="251dp"
@@ -62,7 +62,7 @@
                 android:layout_marginTop="150dp"
                 android:background="@android:color/transparent" />
 
-            <View
+            <ImageButton
                 android:id="@+id/btn_arm2"
                 android:layout_width="42dp"
                 android:layout_height="250dp"
@@ -70,7 +70,7 @@
                 android:layout_marginTop="150dp"
                 android:background="@android:color/transparent" />
 
-            <View
+            <ImageButton
                 android:id="@+id/btn_body"
                 android:layout_width="102dp"
                 android:layout_height="123dp"
@@ -87,7 +87,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <View
+            <ImageButton
                 android:id="@+id/btn_leg"
                 android:layout_width="106dp"
                 android:layout_height="264dp"

@@ -143,5 +143,13 @@
     <string name="chat_toolbar_title">Silmedy</string>
     <string name="chat_toolbar_status">Online</string>
 
+    <string name="sample_my_msg">요즘 가끔 어지럽고 머리가 땡해</string>
+    <string name="sample_ai_msg">정확한 진단은 의료진을 통해 받아보시길 바랍니다. 비대면 진료 예약을 원하시나요?</string>
+    <string name="silmedy_profile_image">실메디 프로필 이미지</string>
+    <string name="sample_time">오전 9:30</string>
+
+
+    <string name="desc_profile_image">프로필 이미지</string>
+    <string name="sample_ai_sender">Silmedy</string>
 
 </resources>
