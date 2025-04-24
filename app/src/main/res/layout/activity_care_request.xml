@@ -109,8 +109,10 @@
             android:layout_weight="1"
             android:text="@string/btn_today"
             android:textStyle="bold"
-            android:background="@drawable/tab_left_selector"
-            android:textColor="@color/time_slot_text_selector" />
+            android:background="@drawable/tab_selector"
+            android:textColor="@color/tab_text_selector"
+            android:stateListAnimator="@null"
+            android:layout_marginEnd="4dp" />
 
         <Button
             android:id="@+id/btnTomorrow"
@@ -118,9 +120,11 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:text="@string/btn_tomorrow"
-            android:background="@drawable/tab_right_selector"
             android:textStyle="bold"
-            android:textColor="@color/time_slot_text_selector" />
+            android:background="@drawable/tab_selector"
+            android:textColor="@color/tab_text_selector"
+            android:stateListAnimator="@null"
+            android:layout_marginStart="4dp" />
     </LinearLayout>
 
     <!-- 시간 선택 영역 -->

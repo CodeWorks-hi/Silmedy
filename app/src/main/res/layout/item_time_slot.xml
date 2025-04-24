@@ -7,5 +7,5 @@
     android:layout_weight="1"
     android:text="시간"
     android:textSize="14sp"
-    android:textColor="@color/time_slot_text_selector"
+    android:textColor="@color/tab_text_selector"
     android:background="@drawable/time_slot_selector" />

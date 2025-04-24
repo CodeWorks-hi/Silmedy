@@ -33,28 +33,30 @@ public class ClinicHomeActivity extends AppCompatActivity {
             btnBack.setOnClickListener(v -> onBackPressed());
         }
 
-        // 🔐 사용자 이름 인텐트에서 받아오기
+        // 👋 사용자 이름 환영 메시지 세팅 (예: "홍길동님, 환영합니다.")
         Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
-
-        // 👋 인사 텍스트 설정
-        TextView greetingText = findViewById(R.id.text_greeting);
-        if (userName != null && greetingText != null) {
-            String greeting = getString(R.string.greeting_user, userName);
-            greetingText.setText(greeting);
+        textGreeting = findViewById(R.id.text_greeting);
+        String username = intent.getStringExtra("userName");
+        if (username != null && !username.isEmpty()) {
+            textGreeting.setText(String.format("%s님, 환영합니다.", username));
         }
-
 
         // 🧍 터치로 증상확인 카드 클릭
         CardView cardTouchSymptom = findViewById(R.id.card_touch_symptom);
         if (cardTouchSymptom != null) {
-            cardTouchSymptom.setOnClickListener(v -> onTouchSymptomClick(v));
+            cardTouchSymptom.setOnClickListener(v -> {
+                Intent body_intent = new Intent(this, BodyMain.class);
+                startActivity(body_intent);
+            });
         }
 
         // 🤧 일상질환 카드 클릭
         CardView cardCold = findViewById(R.id.card_cold);
         if (cardCold != null) {
-            cardCold.setOnClickListener(v -> onColdClick(v));
+            cardCold.setOnClickListener(v -> {
+                Intent cold_intent = new Intent(this, SymptomChoiceActivity.class);
+                startActivity(cold_intent);
+            });
         }
 
         // 🧠 AI 증상확인 카드 클릭 리스너 추가 필요 시 아래와 같이:
