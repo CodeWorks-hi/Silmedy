@@ -7,6 +7,16 @@
     android:background="#FFFFFF">
 
     <!-- 🔹 안내 텍스트 -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/btn_back"
+        android:src="@drawable/ic_arrow_back" />
+
 
     <!-- 🔹 팔 이미지 -->
     <TextView
@@ -27,9 +37,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:src="@drawable/arms"
+        android:contentDescription="팔 이미지"
         android:scaleType="fitCenter"
-        android:contentDescription="팔 이미지" />
+        android:src="@drawable/arm_2" />
 
     <!-- 🔹 버튼 영역 -->
     <LinearLayout

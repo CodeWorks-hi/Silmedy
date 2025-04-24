@@ -1,13 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="#FFFFFF">
 
     <!-- 🔼 콘텐츠 전체를 감싸는 영역 -->
-
-    <!-- ⬇️ 하단 네비게이션 바 고정 -->
-
     <LinearLayout
         android:id="@+id/content_layout"
         android:layout_width="match_parent"
@@ -19,25 +19,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="25dp"
-                app:srcCompat="@drawable/back_icon" />
-
-            <TextView
-                android:id="@+id/title_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="70dp"
-                android:layout_marginTop="16dp"
-                android:text="증상 부위를 눌러주세요."
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:paddingTop="40dp"> <!-- 👈 여기에 공백 추가 -->
 
         </LinearLayout>
 
@@ -50,8 +33,9 @@
                 android:id="@+id/btnBack"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_alignParentStart="true"
+                android:layout_gravity="start"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:contentDescription="@string/btn_back"
                 android:src="@drawable/ic_arrow_back" />
 
@@ -65,54 +49,68 @@
             <ImageButton
                 android:id="@+id/btn_head"
                 android:layout_width="80dp"
-                android:layout_height="109dp"
+                android:layout_height="95dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="50dp"
                 android:background="@android:color/transparent" />
 
             <ImageButton
                 android:id="@+id/btn_arm"
                 android:layout_width="45dp"
                 android:layout_height="251dp"
-                android:layout_marginStart="101dp"
-                android:layout_marginTop="190dp"
+                android:layout_marginStart="107dp"
+                android:layout_marginTop="150dp"
                 android:background="@android:color/transparent" />
 
             <ImageButton
                 android:id="@+id/btn_arm2"
                 android:layout_width="42dp"
                 android:layout_height="250dp"
-                android:layout_marginStart="265dp"
-                android:layout_marginTop="190dp"
+                android:layout_marginStart="255dp"
+                android:layout_marginTop="150dp"
                 android:background="@android:color/transparent" />
 
             <ImageButton
                 android:id="@+id/btn_body"
-                android:layout_width="118dp"
-                android:layout_height="141dp"
+                android:layout_width="102dp"
+                android:layout_height="123dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="190dp"
+                android:layout_marginTop="150dp"
                 android:background="@android:color/transparent" />
+
+            <TextView
+                android:id="@+id/title_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="증상 부위를 눌러주세요."
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/btn_leg"
-                android:layout_width="131dp"
-                android:layout_height="319dp"
+                android:layout_width="106dp"
+                android:layout_height="264dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="340dp"
+                android:layout_marginTop="275dp"
                 android:background="@android:color/transparent" />
 
         </FrameLayout>
     </LinearLayout>
 
+    <!-- ⬇️ 하단 네비게이션 바 -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="69dp"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/white"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/menu_bottom_nav"
         app:itemIconTint="@xml/selector_bottom_nav"
         app:itemTextColor="@xml/selector_bottom_nav"
         app:labelVisibilityMode="labeled"
-        app:menu="@menu/menu_bottom_nav" />
-</RelativeLayout>
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
