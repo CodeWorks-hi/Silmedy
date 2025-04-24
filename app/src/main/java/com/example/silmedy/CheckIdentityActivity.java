@@ -62,8 +62,6 @@ public class CheckIdentityActivity extends AppCompatActivity {
 
         // 뒤로가기 버튼 → 회원가입 화면으로 이동
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(CheckIdentityActivity.this, SignupActivity.class);
-            startActivity(intent);
             finish();
         });
     }

@@ -7,10 +7,10 @@ package com.example.silmedy.model;
  */
 public class Doctor {
 
-    private int imageResId;       // 이미지 리소스 ID
-    private String name;          // 이름
-    private String center;        // 소속 보건소
-    private String schedule;      // 진료 가능 시간
+    public int imageResId;       // 이미지 리소스 ID
+    public String name;          // 이름
+    public String center;        // 소속 보건소
+    public String schedule;      // 진료 가능 시간
 
     // 생성자
     public Doctor(int imageResId, String name, String center, String schedule) {

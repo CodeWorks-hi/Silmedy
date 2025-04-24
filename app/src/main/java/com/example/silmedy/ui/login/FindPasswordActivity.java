@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 class PhoneUtils {
     public static String convertToE164Format(String phone) {
@@ -128,8 +129,18 @@ public class FindPasswordActivity extends AppCompatActivity {
             }
 
             // 실제 서버 비밀번호 변경 요청 로직 필요
-            Toast.makeText(this, "비밀번호가 변경되었습니다", Toast.LENGTH_SHORT).show();
-            finish();
+            // Firebase Firestore에 비밀번호 업데이트
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            String email = editEmail.getText().toString().trim();
+            db.collection("patients").document(email)
+                .update("password", pw)
+                .addOnSuccessListener(unused -> {
+                    Toast.makeText(this, "비밀번호가 변경되었습니다", Toast.LENGTH_SHORT).show();
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "비밀번호 변경에 실패했습니다", Toast.LENGTH_SHORT).show();
+                });
         });
     }
 }
