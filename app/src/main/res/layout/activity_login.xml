@@ -109,7 +109,7 @@
                 android:id="@+id/btnFindId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="아이디 찾기"
+                android:text="@string/btn_find_id"
                 android:textColor="#666666"
                 android:textSize="13sp" />
 

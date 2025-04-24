@@ -66,7 +66,7 @@
             app:cardElevation="4dp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onTouchSymptomClick">
+            android:onClick="goToTouchSymptom">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -89,7 +89,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="터치로 증상확인"
+                        android:text="@string/home_touch_symptom_title"
                         android:textColor="#000000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -97,14 +97,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="직접 신체 부위 선택\n촬영하여 증상 확인"
+                        android:text="@string/home_touch_symptom_desc"
                         android:textColor="#000000"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(외상만 확인 가능)"
+                        android:text="@string/home_touch_symptom_note"
                         android:textColor="#888888"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -121,7 +121,7 @@
             app:cardElevation="4dp"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onColdClick">
+            android:onClick="goToColdClinic">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -144,7 +144,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="일상질환"
+                        android:text="@string/home_cold_title"
                         android:textColor="#000000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -152,7 +152,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="복잡한 과정 없이\n빠르게 진료 신청"
+                        android:text="@string/home_cold_desc"
                         android:textColor="#000000"
                         android:textSize="14sp" />
                 </LinearLayout>
@@ -165,7 +165,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="goToAiDiagnosis">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -188,7 +191,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AI 증상확인"
+                        android:text="@string/home_ai_title"
                         android:textColor="#000000"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -196,14 +199,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="AI와 채팅하며 증상예측"
+                        android:text="@string/home_ai_desc"
                         android:textColor="#000000"
                         android:textSize="14sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="(내상만 예측 가능)"
+                        android:text="@string/home_ai_note"
                         android:textColor="#888888"
                         android:textSize="12sp" />
                 </LinearLayout>
