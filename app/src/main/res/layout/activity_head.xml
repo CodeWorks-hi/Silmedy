@@ -46,68 +46,6 @@
             android:scaleType="fitCenter"
             android:src="@drawable/face_2" />
 
-        <View
-            android:id="@+id/btnThighs"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_gravity="center"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="45dp"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintBottom_margin="100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <View
-            android:id="@+id/btnMouth"
-            android:layout_width="81dp"
-            android:layout_height="28dp"
-            android:layout_gravity="center|center_horizontal"
-            android:layout_marginTop="88dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="30dp"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
-
-        <View
-            android:id="@+id/btnFoot"
-            android:layout_width="173dp"
-            android:layout_height="79dp"
-            android:layout_gravity="center|center_horizontal"
-            android:layout_marginTop="135dp"
-            android:layout_marginRight="5dp"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
-
-        <View
-            android:id="@+id/btnCalf"
-            android:layout_width="43dp"
-            android:layout_height="89dp"
-            android:layout_gravity="center|center_horizontal"
-            android:layout_marginTop="88dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="105dp"
-            android:background="@android:color/transparent"
-            android:clickable="true"
-            android:focusable="true"
-            app:layout_constraintHorizontal_bias="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
-
     </FrameLayout>
 
 </LinearLayout>

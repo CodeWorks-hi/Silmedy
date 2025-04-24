@@ -40,14 +40,14 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/body_image"
+            android:id="@+id/armImage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="fitCenter"
             android:src="@drawable/arm_2" />
 
         <View
-            android:id="@+id/btnThighs"
+            android:id="@+id/btnHand"
             android:layout_width="131dp"
             android:layout_height="118dp"
             android:layout_gravity="center_vertical"
@@ -56,13 +56,11 @@
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true"
-            app:layout_constraintBottom_margin="100dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.15"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:contentDescription="손 부위 선택"/>
 
         <View
-            android:id="@+id/btnMouth"
+            android:id="@+id/btnArm"
             android:layout_width="83dp"
             android:layout_height="155dp"
             android:layout_gravity="right"
@@ -73,7 +71,8 @@
             app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintVertical_bias="0.6"
+            android:contentDescription="팔 부위 선택"/>
 
         <View
             android:id="@+id/btnArm2"
@@ -88,7 +87,8 @@
             app:layout_constraintHorizontal_bias="0.3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.6" />
+            app:layout_constraintVertical_bias="0.6"
+            android:contentDescription="팔 부위 선택"/>
 
         <View
             android:id="@+id/btnShoulder"
@@ -102,7 +102,8 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintVertical_bias="0.25"
+            android:contentDescription="어깨 부위 선택"/>
 
     </FrameLayout>
 
