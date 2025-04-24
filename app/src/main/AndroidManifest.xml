@@ -56,8 +56,15 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
+
             </intent-filter>
         </activity>
+        <activity android:name=".SymptomChoiceActivity" />
+        <activity android:name=".DoctorListActivity" />
+        <activity android:name=".CareRequestActivity" />
+        <activity android:name=".CareRequestCompleteActivity" />
+        <activity android:name=".MapActivity" />
         <activity
             android:name=".ui.login.SignupActivity"
             android:exported="false"
