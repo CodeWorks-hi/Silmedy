@@ -44,13 +44,19 @@ public class ClinicHomeActivity extends AppCompatActivity {
         // 🧍 터치로 증상확인 카드 클릭
         CardView cardTouchSymptom = findViewById(R.id.card_touch_symptom);
         if (cardTouchSymptom != null) {
-            cardTouchSymptom.setOnClickListener(v -> onTouchSymptomClick(v));
+            cardTouchSymptom.setOnClickListener(v -> {
+                Intent body_intent = new Intent(this, BodyMain.class);
+                startActivity(body_intent);
+            });
         }
 
         // 🤧 일상질환 카드 클릭
         CardView cardCold = findViewById(R.id.card_cold);
         if (cardCold != null) {
-            cardCold.setOnClickListener(v -> onColdClick(v));
+            cardCold.setOnClickListener(v -> {
+                Intent cold_intent = new Intent(this, SymptomChoiceActivity.class);
+                startActivity(cold_intent);
+            });
         }
 
         // 🧠 AI 증상확인 카드 클릭 리스너 추가 필요 시 아래와 같이:
