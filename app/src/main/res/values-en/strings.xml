@@ -126,7 +126,7 @@
 
     <!-- Kakao placeholder -->
     <string name="kakao_key_manifest_placeholder">6431bb7769b5d3fcef0c0bb560cc97b1</string>
-    
+
 
     <!-- button related string resources -->
     <string name="btn_today">Today</string>
