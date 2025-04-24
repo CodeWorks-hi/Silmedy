@@ -21,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Silmedy"
         tools:targetApi="31">
-
+        <activity
+            android:name=".BodyActivity"
+            android:exported="false" />
         <!-- Default locale for Android 13+ -->
         <meta-data
             android:name="locale"
@@ -61,8 +63,7 @@
         <activity android:name=".CareRequestActivity" />
         <activity android:name=".CareRequestCompleteActivity" />
         <activity android:name=".MapActivity" />
-        <activity android:name=".BodyMain" />
-        <!--  AI 챗봇 증상 문진 액티비티 -->
+        <activity android:name=".BodyMain" /> <!-- AI 챗봇 증상 문진 액티비티 -->
         <activity
             android:name=".llama.LlamaActivity"
             android:exported="false"
