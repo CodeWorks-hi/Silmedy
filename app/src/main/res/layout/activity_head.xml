@@ -43,7 +43,7 @@
             android:src="@drawable/face_2" />
 
         <View
-            android:id="@+id/btnThighs"
+            android:id="@+id/btnHand"
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -54,7 +54,7 @@
             android:focusable="true" />
 
         <View
-            android:id="@+id/btnMouth"
+            android:id="@+id/btnUpperArm"
             android:layout_width="81dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
