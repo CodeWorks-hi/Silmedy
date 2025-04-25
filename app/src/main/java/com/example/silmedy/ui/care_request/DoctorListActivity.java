@@ -1,5 +1,4 @@
-package com.example.silmedy;
-import com.example.silmedy.CareRequestActivity;
+package com.example.silmedy.ui.care_request;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,11 +17,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 import com.example.silmedy.adapter.DoctorAdapter;
+import com.example.silmedy.ui.open_api.MapActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -70,6 +71,7 @@ public class DoctorListActivity extends AppCompatActivity {
 
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorList = new ArrayList<>();
+        // 매우 중요!!! 지금은 하드코딩이지만 실제 작동 과정에서는 license_number 및 hospital_id 통해서 정보 불러오고 넘겨주기.
         doctorList.add(new Doctor(R.drawable.doc, "김정훈", "분당구보건소", "진료 가능 (수) 09:00 ~ 18:00"));
         doctorList.add(new Doctor(R.drawable.doc, "박지윤", "수정구보건소", "진료 가능 (금) 13:00 ~ 17:00"));
         doctorList.add(new Doctor(R.drawable.doc, "이상우", "중원구보건소", "진료 가능 (화) 10:00 ~ 16:00"));
@@ -80,6 +82,7 @@ public class DoctorListActivity extends AppCompatActivity {
             bookIntent.putExtra("doctor_name", doctor.getName());
             bookIntent.putExtra("doctor_clinic", doctor.getCenter());
             bookIntent.putExtra("doctor_time", doctor.getSchedule());
+            bookIntent.putExtra("doctor_image", doctor.getImageResId());
             startActivity(bookIntent);
         });
         doctorRecyclerView.setAdapter(adapter);

@@ -1,4 +1,4 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.config;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;

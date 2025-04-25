@@ -1,13 +1,12 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.photo_clinic;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 
 public class BodyMain extends AppCompatActivity {

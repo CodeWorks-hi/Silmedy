@@ -1,4 +1,4 @@
-package com.example.silmedy.ui.login;
+package com.example.silmedy.ui.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.silmedy.PostalCodeActivity;
+import com.example.silmedy.ui.open_api.PostalCodeActivity;
 import com.example.silmedy.R;
 import com.google.firebase.firestore.FirebaseFirestore;
 

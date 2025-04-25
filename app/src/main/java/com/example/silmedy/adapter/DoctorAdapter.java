@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.silmedy.CareRequestActivity;
+import com.example.silmedy.ui.care_request.CareRequestActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 

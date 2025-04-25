@@ -1,4 +1,4 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.photo_clinic;
 
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.silmedy.R;
 
 public class HandActivity extends AppCompatActivity {
 

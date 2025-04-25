@@ -1,4 +1,4 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.photo_clinic;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,11 +7,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import com.example.silmedy.R;
 
 public class LegActivity extends AppCompatActivity {
 

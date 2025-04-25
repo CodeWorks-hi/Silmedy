@@ -1,4 +1,4 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.open_api;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;

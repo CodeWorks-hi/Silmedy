@@ -1,4 +1,4 @@
-package com.example.silmedy.ui.login;
+package com.example.silmedy.ui.auth;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.silmedy.CheckIdentityActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.google.firebase.firestore.FirebaseFirestore;

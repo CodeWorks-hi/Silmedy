@@ -1,14 +1,14 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.photo_clinic;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.silmedy.R;
 
 public class ArmActivity extends AppCompatActivity {
 
