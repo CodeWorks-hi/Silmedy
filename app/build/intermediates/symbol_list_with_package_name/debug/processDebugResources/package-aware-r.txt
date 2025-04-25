@@ -3562,7 +3562,6 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
-id imageMessage
 id imageProfile
 id imageView
 id image_diagnosis
@@ -3823,7 +3822,6 @@ id textMyIdLabel
 id textName
 id textRoomCode
 id textRoomName
-id textSender
 id textSpacerNoButtons
 id textSpacerNoTitle
 id textStart

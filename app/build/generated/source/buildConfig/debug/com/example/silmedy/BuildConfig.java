@@ -10,5 +10,9 @@ public final class BuildConfig {
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
   // Field from default config.
+  public static final String HUGGINGFACE_API_KEY = "";
+  // Field from default config.
+  public static final String HUGGINGFACE_API_URL = "";
+  // Field from default config.
   public static final String KAKAO_NATIVE_APP_KEY = "null";
 }

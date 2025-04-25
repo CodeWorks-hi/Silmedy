@@ -21,28 +21,19 @@ public final class MessageItemLlamaBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final ImageView imageMessage;
-
-  @NonNull
   public final ImageView imageProfile;
 
   @NonNull
   public final TextView textMessage;
 
   @NonNull
-  public final TextView textSender;
-
-  @NonNull
   public final TextView textTime;
 
-  private MessageItemLlamaBinding(@NonNull LinearLayout rootView, @NonNull ImageView imageMessage,
-      @NonNull ImageView imageProfile, @NonNull TextView textMessage, @NonNull TextView textSender,
-      @NonNull TextView textTime) {
+  private MessageItemLlamaBinding(@NonNull LinearLayout rootView, @NonNull ImageView imageProfile,
+      @NonNull TextView textMessage, @NonNull TextView textTime) {
     this.rootView = rootView;
-    this.imageMessage = imageMessage;
     this.imageProfile = imageProfile;
     this.textMessage = textMessage;
-    this.textSender = textSender;
     this.textTime = textTime;
   }
 
@@ -73,12 +64,6 @@ public final class MessageItemLlamaBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.imageMessage;
-      ImageView imageMessage = ViewBindings.findChildViewById(rootView, id);
-      if (imageMessage == null) {
-        break missingId;
-      }
-
       id = R.id.imageProfile;
       ImageView imageProfile = ViewBindings.findChildViewById(rootView, id);
       if (imageProfile == null) {
@@ -91,20 +76,14 @@ public final class MessageItemLlamaBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.textSender;
-      TextView textSender = ViewBindings.findChildViewById(rootView, id);
-      if (textSender == null) {
-        break missingId;
-      }
-
       id = R.id.textTime;
       TextView textTime = ViewBindings.findChildViewById(rootView, id);
       if (textTime == null) {
         break missingId;
       }
 
-      return new MessageItemLlamaBinding((LinearLayout) rootView, imageMessage, imageProfile,
-          textMessage, textSender, textTime);
+      return new MessageItemLlamaBinding((LinearLayout) rootView, imageProfile, textMessage,
+          textTime);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

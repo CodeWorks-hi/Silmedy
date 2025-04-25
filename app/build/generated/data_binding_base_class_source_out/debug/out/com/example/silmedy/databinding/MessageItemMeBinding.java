@@ -4,7 +4,6 @@ package com.example.silmedy.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -21,23 +20,15 @@ public final class MessageItemMeBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final ImageView imageMessage;
-
-  @NonNull
   public final TextView textMessage;
-
-  @NonNull
-  public final TextView textSender;
 
   @NonNull
   public final TextView textTime;
 
-  private MessageItemMeBinding(@NonNull LinearLayout rootView, @NonNull ImageView imageMessage,
-      @NonNull TextView textMessage, @NonNull TextView textSender, @NonNull TextView textTime) {
+  private MessageItemMeBinding(@NonNull LinearLayout rootView, @NonNull TextView textMessage,
+      @NonNull TextView textTime) {
     this.rootView = rootView;
-    this.imageMessage = imageMessage;
     this.textMessage = textMessage;
-    this.textSender = textSender;
     this.textTime = textTime;
   }
 
@@ -68,21 +59,9 @@ public final class MessageItemMeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.imageMessage;
-      ImageView imageMessage = ViewBindings.findChildViewById(rootView, id);
-      if (imageMessage == null) {
-        break missingId;
-      }
-
       id = R.id.textMessage;
       TextView textMessage = ViewBindings.findChildViewById(rootView, id);
       if (textMessage == null) {
-        break missingId;
-      }
-
-      id = R.id.textSender;
-      TextView textSender = ViewBindings.findChildViewById(rootView, id);
-      if (textSender == null) {
         break missingId;
       }
 
@@ -92,8 +71,7 @@ public final class MessageItemMeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new MessageItemMeBinding((LinearLayout) rootView, imageMessage, textMessage,
-          textSender, textTime);
+      return new MessageItemMeBinding((LinearLayout) rootView, textMessage, textTime);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

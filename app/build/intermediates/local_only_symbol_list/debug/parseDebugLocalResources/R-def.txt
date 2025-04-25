@@ -177,7 +177,6 @@ id guideOverlay
 id guideText
 id handImage
 id handLayout
-id imageMessage
 id imageProfile
 id imageView
 id image_diagnosis
@@ -213,7 +212,6 @@ id textMyIdLabel
 id textName
 id textRoomCode
 id textRoomName
-id textSender
 id textTime
 id textTitle
 id textView

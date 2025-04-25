@@ -3561,7 +3561,6 @@ int id ifRoom 0x7f080140
 int id ignore 0x7f080141
 int id ignoreRequest 0x7f080142
 int id image 0x7f080143
-int id imageMessage 0x7f080144
 int id imageProfile 0x7f080145
 int id imageView 0x7f080146
 int id image_diagnosis 0x7f080147
@@ -3822,7 +3821,6 @@ int id textMyIdLabel 0x7f080245
 int id textName 0x7f080246
 int id textRoomCode 0x7f080247
 int id textRoomName 0x7f080248
-int id textSender 0x7f080249
 int id textSpacerNoButtons 0x7f08024a
 int id textSpacerNoTitle 0x7f08024b
 int id textStart 0x7f08024c
