@@ -144,6 +144,7 @@
     <string name="sample_my_msg">I have been feeling dizzy lately.</string>
     <string name="sample_ai_msg">We recommend consulting a medical professional for an accurate diagnosis. Would you like to book a remote consultation?</string>
     <string name="silmedy_profile_image">Silmedy profile image</string>
+    <string name="sample_date">2025-04-25</string>
     <string name="sample_time">9:30 AM</string>
 
     <!-- Added missing string resources for resource linking -->
