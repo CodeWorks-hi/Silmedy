@@ -3,6 +3,8 @@ package com.example.silmedy.llama;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
 
 public class LlamaActivity extends AppCompatActivity {
     private EditText editMessage;
-    private Button btnSend;
+    private ImageButton btnSend;
     private static final String API_KEY = "";
     private static final String API_URL = "https://api-inference.huggingface.co/v1/chat/completions";
 

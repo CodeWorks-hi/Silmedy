@@ -40,6 +40,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         textGreeting = findViewById(R.id.text_greeting);
         String username = intent.getStringExtra("user_name");
+        String email = intent.getStringExtra("email");
         if (username != null && !username.isEmpty()) {
             textGreeting.setText(String.format("%s님, 환영합니다.", username));
         }
@@ -50,6 +51,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
             cardTouchSymptom.setOnClickListener(v -> {
                 Intent bodyIntent = new Intent(this, BodyMain.class);
                 bodyIntent.putExtra("user_name", username);
+                bodyIntent.putExtra("email", email);
                 startActivity(bodyIntent);
             });
         }
@@ -60,6 +62,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
             cardCold.setOnClickListener(v -> {
                 Intent coldIntent = new Intent(this, SymptomChoiceActivity.class);
                 coldIntent.putExtra("user_name", username);
+                coldIntent.putExtra("email", email);
                 startActivity(coldIntent);
             });
         }
@@ -71,6 +74,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
                 Log.d("ClinicHomeActivity", "AI 카드 클릭됨");
                 Intent aiIntent = new Intent(this, LlamaActivity.class);
                 aiIntent.putExtra("user_name", username);
+                intent.putExtra("email", email);
                 startActivity(aiIntent);
             });
         }
