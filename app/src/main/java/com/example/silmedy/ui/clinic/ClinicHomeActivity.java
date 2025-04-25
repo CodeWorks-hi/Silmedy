@@ -80,14 +80,20 @@ public class ClinicHomeActivity extends AppCompatActivity {
         if (bottomNavigation != null) {
             bottomNavigation.setOnItemSelectedListener(item -> {
                 int itemId = item.getItemId();
+                Intent navigationIntent = null;
+
                 if (itemId == R.id.nav_home) {
                     Toast.makeText(this, "🏠 현재 홈 화면입니다.", Toast.LENGTH_SHORT).show();
                     return true;
                 } else if (itemId == R.id.nav_history) {
-                    Toast.makeText(this, "📋 진료내역 페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
-                    return true;
+//                    navigationIntent = new Intent(this, HistoryActivity.class); // replace with actual history activity class
                 } else if (itemId == R.id.nav_mypage) {
-                    Toast.makeText(this, "👤 마이페이지로 이동합니다.", Toast.LENGTH_SHORT).show();
+//                    navigationIntent = new Intent(this, MypageActivity.class); // replace with actual mypage activity class
+                }
+
+                if (navigationIntent != null) {
+                    navigationIntent.putExtra("user_name", username);
+                    startActivity(navigationIntent);
                     return true;
                 }
                 return false;
