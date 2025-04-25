@@ -45,7 +45,7 @@
 
         <!-- 허벅지 클릭 영역 -->
         <View
-            android:id="@+id/btnHand"
+            android:id="@+id/btnChest"
             android:layout_width="313dp"
             android:layout_height="164dp"
             android:layout_gravity="center"
@@ -56,7 +56,7 @@
 
         <!-- 입 클릭 영역 -->
         <View
-            android:id="@+id/btnUpperArm"
+            android:id="@+id/btnAbdomen"
             android:layout_width="276dp"
             android:layout_height="245dp"
             android:layout_gravity="bottom|center_horizontal"

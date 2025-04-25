@@ -43,7 +43,7 @@
             android:src="@drawable/face_2" />
 
         <View
-            android:id="@+id/btnHand"
+            android:id="@+id/btnEyes"
             android:layout_width="150dp"
             android:layout_height="30dp"
             android:layout_gravity="center"
@@ -54,7 +54,7 @@
             android:focusable="true" />
 
         <View
-            android:id="@+id/btnUpperArm"
+            android:id="@+id/btnMouth"
             android:layout_width="81dp"
             android:layout_height="28dp"
             android:layout_gravity="center"
@@ -66,7 +66,7 @@
             android:focusable="true" />
 
         <View
-            android:id="@+id/btnFoot"
+            android:id="@+id/btnNeck"
             android:layout_width="173dp"
             android:layout_height="79dp"
             android:layout_gravity="center"
@@ -77,7 +77,7 @@
             android:focusable="true" />
 
         <View
-            android:id="@+id/btnCalf"
+            android:id="@+id/btnNose"
             android:layout_width="43dp"
             android:layout_height="89dp"
             android:layout_gravity="center"
