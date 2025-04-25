@@ -30,19 +30,31 @@ public class HeadActivity extends AppCompatActivity {
         btnNeck = findViewById(R.id.btnNeck);
 
         btnEyes.setOnClickListener(v -> {
-            Toast.makeText(this, "눈이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnNose.setOnClickListener(v -> {
-            Toast.makeText(this, "코가 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnMouth.setOnClickListener(v -> {
-            Toast.makeText(this, "입이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnNeck.setOnClickListener(v -> {
-            Toast.makeText(this, "목이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnBack.setOnClickListener(v -> {

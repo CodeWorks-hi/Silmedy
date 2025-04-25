@@ -40,15 +40,24 @@ public class LegActivity extends AppCompatActivity {
         });
 
         btnCalf.setOnClickListener(v -> {
-            Toast.makeText(this, "무릎이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnShin.setOnClickListener(v -> {
-            Toast.makeText(this, "정강이가 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnFoot.setOnClickListener(v -> {
-            Toast.makeText(this, "발이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnBack.setOnClickListener(v -> {

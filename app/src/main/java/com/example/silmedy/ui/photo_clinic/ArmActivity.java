@@ -32,19 +32,31 @@ public class ArmActivity extends AppCompatActivity {
 
         // 버튼 클릭 처리
         btnUpperArm.setOnClickListener(v -> {
-            Toast.makeText(this, "팔이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnLowerArm.setOnClickListener(v -> {
-            Toast.makeText(this, "팔이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnHand.setOnClickListener(v -> {
-            Toast.makeText(this, "손이 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnShoulder.setOnClickListener(v -> {
-            Toast.makeText(this, "어깨가 선택되었습니다", Toast.LENGTH_SHORT).show();
+            Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
 
