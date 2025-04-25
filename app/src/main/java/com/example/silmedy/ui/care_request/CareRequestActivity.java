@@ -95,6 +95,21 @@ public class CareRequestActivity extends AppCompatActivity {
         btnToday.setSelected(true);
         btnTomorrow.setSelected(false);
 
+        // Set button labels for 오늘/내일 with special handling for Friday/Saturday
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        int todayIndex = calendar.get(java.util.Calendar.DAY_OF_WEEK);
+
+        if (todayIndex == java.util.Calendar.FRIDAY) {
+            btnToday.setText("오늘 (금)");
+            btnTomorrow.setText("월요일");
+        } else if (todayIndex == java.util.Calendar.SATURDAY) {
+            btnToday.setText("월요일");
+            btnTomorrow.setText("화요일");
+        } else {
+            btnToday.setText("오늘");
+            btnTomorrow.setText("내일");
+        }
+
         btnToday.setOnClickListener(v -> {
             selectedDay = "today";
             btnToday.setSelected(true);
@@ -112,6 +127,7 @@ public class CareRequestActivity extends AppCompatActivity {
         btnReserve.setOnClickListener(v -> {
             if (selectedTime != null) {
                 boolean signRequested = checkSignLanguage.isChecked();
+
                 Intent confirmIntent = new Intent(CareRequestActivity.this, CareRequestCompleteActivity.class);
                 confirmIntent.putExtra("user_name", username);
                 confirmIntent.putExtra("email", email);
@@ -192,11 +208,21 @@ public class CareRequestActivity extends AppCompatActivity {
     private String getDayLabel(String dayType) {
         List<String> weekdays = Arrays.asList("월", "화", "수", "목", "금");
         java.util.Calendar cal = java.util.Calendar.getInstance();
-        int todayIndex = cal.get(java.util.Calendar.DAY_OF_WEEK) - 2;
-        if (todayIndex < 0 || todayIndex >= weekdays.size()) return "";
+        int todayIndex = cal.get(java.util.Calendar.DAY_OF_WEEK);
 
-        return (dayType.equals("today")) ? weekdays.get(todayIndex)
-                : (todayIndex + 1 < weekdays.size()) ? weekdays.get(todayIndex + 1) : weekdays.get(0);
+        if (dayType.equals("today")) {
+            if (todayIndex == java.util.Calendar.SATURDAY) {
+                return "월";
+            } else {
+                return (todayIndex >= java.util.Calendar.MONDAY && todayIndex <= java.util.Calendar.FRIDAY) ? weekdays.get(todayIndex - 2) : "";
+            }
+        } else {
+            if (todayIndex == java.util.Calendar.FRIDAY || todayIndex == java.util.Calendar.SATURDAY) {
+                return (todayIndex == java.util.Calendar.FRIDAY) ? "월" : "화";
+            } else {
+                return (todayIndex >= java.util.Calendar.MONDAY && todayIndex <= java.util.Calendar.THURSDAY) ? weekdays.get(todayIndex - 1) : "";
+            }
+        }
     }
 
     private String buildScheduleText(String timeStr) {
@@ -205,8 +231,17 @@ public class CareRequestActivity extends AppCompatActivity {
         int todayIndex = cal.get(java.util.Calendar.DAY_OF_WEEK) - 2;
         if (todayIndex < 0 || todayIndex >= weekdays.size()) return "진료 없음";
 
-        String today = weekdays.get(todayIndex);
-        String tomorrow = (todayIndex + 1 < weekdays.size()) ? weekdays.get(todayIndex + 1) : weekdays.get(0);
+        String today, tomorrow;
+        if (todayIndex == 4) { // Friday
+            today = weekdays.get(todayIndex);
+            tomorrow = "월";
+        } else if (todayIndex == 5 || todayIndex == 6) { // Saturday
+            today = "월";
+            tomorrow = "화";
+        } else {
+            today = weekdays.get(todayIndex);
+            tomorrow = (todayIndex + 1 < weekdays.size()) ? weekdays.get(todayIndex + 1) : weekdays.get(0);
+        }
 
         StringBuilder sb = new StringBuilder();
         if (timeStr.contains(today)) {
@@ -267,8 +302,10 @@ public class CareRequestActivity extends AppCompatActivity {
         int todayIndex = cal.get(java.util.Calendar.DAY_OF_WEEK) - 2;
 
         String today, tomorrow;
-
-        if (todayIndex == 5 || todayIndex == 6) { // Saturday or Sunday
+        if (todayIndex == 4) { // Friday
+            today = "월";
+            tomorrow = "화";
+        } else if (todayIndex == 5) { // Saturday
             today = "월";
             tomorrow = "화";
         } else {
