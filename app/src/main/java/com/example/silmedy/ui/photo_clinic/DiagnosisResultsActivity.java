@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class DiagnosisResultsActivity extends AppCompatActivity {
 
-    ImageButton btnBack;
+    ImageView btnBack;
     Button btnReservation;
 
 
@@ -62,7 +63,6 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
             backIntent.putExtra("user_name", username);
             backIntent.putExtra("email", email);
             backIntent.putExtra("part", part);
-            backIntent.putExtra("image_path", imagePath);
             startActivity(backIntent);
         });
     }

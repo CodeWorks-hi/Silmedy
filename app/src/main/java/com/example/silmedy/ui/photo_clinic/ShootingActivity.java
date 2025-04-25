@@ -178,7 +178,9 @@ public class ShootingActivity extends AppCompatActivity {
             imageView.setImageBitmap(bitmap);
         } else if (requestCode == REQUEST_ALBUM && resultCode == RESULT_OK && data != null) {
             Uri albumUri = data.getData();
+            File albumFile = new File(getCacheDir(), "album_image.jpg");
             loadImageFromUri(albumUri);
+            photoFile = albumFile;
         }
     }
 
