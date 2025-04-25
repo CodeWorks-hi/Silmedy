@@ -125,7 +125,7 @@
 
     <!-- 본인 인증 완료 버튼 -->
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnConfirm"
+        android:id="@+id/btnResult"
         android:layout_width="363dp"
         android:layout_height="61dp"
         android:layout_alignParentBottom="true"

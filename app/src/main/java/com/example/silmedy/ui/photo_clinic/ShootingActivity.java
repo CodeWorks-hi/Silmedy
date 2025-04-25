@@ -41,7 +41,7 @@ public class ShootingActivity extends AppCompatActivity {
     private static final int REQUEST_ALBUM = 300;
 
     private LinearLayout guideOverlay;
-    private Button btnHome, btnNext, btnCamera, btnAlbum;
+    private Button btnHome, btnNext, btnCamera, btnAlbum,btnResult;
     private ImageView btnBack, imageView;
 
     private File photoFile;
@@ -64,13 +64,28 @@ public class ShootingActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         btnCamera = findViewById(R.id.btnCamera);
         btnAlbum = findViewById(R.id.btnAlbum);
+        btnResult = findViewById(R.id.btnResult);
 
-        // 버튼 리스너 연결
+        // 카메라, 앨범, 결과 확인가 버튼
         btnCamera.setOnClickListener(v -> camera());
         btnAlbum.setOnClickListener(v -> album());
+        btnResult.setOnClickListener(v -> {
+            Intent resultIntent = new Intent(ShootingActivity.this,DiagnosisResultsActivity.class);
+            resultIntent.putExtra("user_name", username);
+            startActivity(resultIntent);
+            finish();
+        });
+
+        // 가이드 카드 버튼
         btnHome.setOnClickListener(v -> finish());
         btnNext.setOnClickListener(v -> guideOverlay.setVisibility(View.GONE));
-        btnBack.setOnClickListener(v -> navigateToBodyMain());
+
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(ShootingActivity.this, BodyMain.class);
+            backIntent.putExtra("user_name", username);
+            startActivity(backIntent);
+            finish();
+        });
 
         // 초기 가이드 카드 보여주기
         guideOverlay.setVisibility(View.VISIBLE);
@@ -177,11 +192,4 @@ public class ShootingActivity extends AppCompatActivity {
         }
     }
 
-    // 뒤로가기 - BodyMain으로
-    private void navigateToBodyMain() {
-        Intent intent = new Intent(ShootingActivity.this, BodyMain.class);
-        intent.putExtra("user_name", username);
-        startActivity(intent);
-        finish();
-    }
 }

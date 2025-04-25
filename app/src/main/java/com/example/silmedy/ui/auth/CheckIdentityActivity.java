@@ -41,7 +41,7 @@ public class CheckIdentityActivity extends AppCompatActivity {
         codeInput = findViewById(R.id.editCode);
         verifyButton = findViewById(R.id.btnVerify);
         codeConfirmButton = findViewById(R.id.btnCode);
-        confirmButton = findViewById(R.id.btnConfirm);
+        confirmButton = findViewById(R.id.btnResult);
         btnBack = findViewById(R.id.btnBack);  // 뒤로가기 버튼 바인딩
 
         // 인증 코드 전송 버튼
