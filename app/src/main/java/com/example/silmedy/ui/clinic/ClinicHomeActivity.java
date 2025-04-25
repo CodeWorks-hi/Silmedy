@@ -46,6 +46,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         if (cardTouchSymptom != null) {
             cardTouchSymptom.setOnClickListener(v -> {
                 Intent bodyIntent = new Intent(this, BodyMain.class);
+                bodyIntent.putExtra("userName", username);
                 startActivity(bodyIntent);
             });
         }
@@ -55,6 +56,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         if (cardCold != null) {
             cardCold.setOnClickListener(v -> {
                 Intent coldIntent = new Intent(this, SymptomChoiceActivity.class);
+                coldIntent.putExtra("userName", username);
                 startActivity(coldIntent);
             });
         }

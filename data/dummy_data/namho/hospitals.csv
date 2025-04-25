@@ -1,4 +1,4 @@
-﻿hospital_id,map_id,name,contact,address,enrolled_at
+﻿hospital_id,map_id,name,contact,address,created_at
 1,13520782,장안구보건소,031-228-5716,경기 수원시 장안구 조원동 888,2022-01-01
 2,7967132,권선구보건소,031-228-6717,경기 수원시 권선구 탑동 910,2022-01-01
 3,8575091,팔달구보건소,031-228-7716,경기 수원시 팔달구 교동 56-1,2022-01-01

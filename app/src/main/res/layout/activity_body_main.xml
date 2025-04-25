@@ -40,14 +40,14 @@
                 android:src="@drawable/ic_arrow_back" />
 
             <ImageView
-                android:id="@+id/body_image"
+                android:id="@+id/bodyImage"
                 android:layout_width="match_parent"
                 android:layout_height="507dp"
                 android:layout_marginTop="40dp"
                 android:src="@drawable/wholebody" />
 
             <ImageButton
-                android:id="@+id/btn_head"
+                android:id="@+id/btnHead"
                 android:layout_width="80dp"
                 android:layout_height="95dp"
                 android:layout_gravity="center_horizontal"
@@ -55,7 +55,7 @@
                 android:background="@android:color/transparent" />
 
             <ImageButton
-                android:id="@+id/btn_arm"
+                android:id="@+id/btnLeftArm"
                 android:layout_width="45dp"
                 android:layout_height="251dp"
                 android:layout_marginStart="107dp"
@@ -63,7 +63,7 @@
                 android:background="@android:color/transparent" />
 
             <ImageButton
-                android:id="@+id/btn_arm2"
+                android:id="@+id/btnRightArm"
                 android:layout_width="42dp"
                 android:layout_height="250dp"
                 android:layout_marginStart="255dp"
@@ -71,7 +71,7 @@
                 android:background="@android:color/transparent" />
 
             <ImageButton
-                android:id="@+id/btn_body"
+                android:id="@+id/btnBody"
                 android:layout_width="102dp"
                 android:layout_height="123dp"
                 android:layout_gravity="center_horizontal"
@@ -79,7 +79,7 @@
                 android:background="@android:color/transparent" />
 
             <TextView
-                android:id="@+id/title_text"
+                android:id="@+id/titleText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -88,7 +88,7 @@
                 android:textStyle="bold" />
 
             <ImageButton
-                android:id="@+id/btn_leg"
+                android:id="@+id/btnLeg"
                 android:layout_width="106dp"
                 android:layout_height="264dp"
                 android:layout_gravity="center_horizontal"
