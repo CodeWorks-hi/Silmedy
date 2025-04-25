@@ -48,3 +48,5 @@ local.properties
 *.dex
 *.class
 *.log
+*.bin
+*.lock
