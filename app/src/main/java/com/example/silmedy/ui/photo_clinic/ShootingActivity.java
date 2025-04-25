@@ -29,6 +29,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ShootingActivity extends AppCompatActivity {
@@ -43,7 +44,6 @@ public class ShootingActivity extends AppCompatActivity {
     private ImageView btnBack, imageView;
 
     private File photoFile;
-    private String username;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -51,8 +51,11 @@ public class ShootingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shooting);
 
+        Intent intent = getIntent();
         // 사용자 이름 받기
-        username = getIntent().getStringExtra("user_name");
+        String username = intent.getStringExtra("user_name");
+        String email = intent.getStringExtra("email");
+        ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
 
         // 뷰 연결
         imageView = findViewById(R.id.imageView);
@@ -68,8 +71,13 @@ public class ShootingActivity extends AppCompatActivity {
         btnCamera.setOnClickListener(v -> camera());
         btnAlbum.setOnClickListener(v -> album());
         btnResult.setOnClickListener(v -> {
-            Intent resultIntent = new Intent(ShootingActivity.this,DiagnosisResultsActivity.class);
+            Intent resultIntent = new Intent(ShootingActivity.this, DiagnosisResultsActivity.class);
             resultIntent.putExtra("user_name", username);
+            resultIntent.putExtra("email", email);
+            resultIntent.putExtra("part", part);
+            if (photoFile != null && photoFile.exists()) {
+                resultIntent.putExtra("image_path", photoFile.getAbsolutePath());
+            }
             startActivity(resultIntent);
             finish();
         });
