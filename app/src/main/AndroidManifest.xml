@@ -21,14 +21,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Silmedy"
         tools:targetApi="31">
+        <activity
+            android:name=".ui.photo_clinic.ShootingActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- Default locale for Android 13+ -->
         <meta-data
             android:name="locale"
-            android:value="ko" />
-
-
-        <!-- Kakao SDK AppKey 등록 -->
+            android:value="ko" /> <!-- Kakao SDK AppKey 등록 -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_key_manifest_placeholder" />
@@ -68,8 +73,7 @@
         <activity android:name=".ui.photo_clinic.ArmActivity" />
         <activity android:name=".ui.photo_clinic.BodyActivity" />
         <activity android:name=".ui.photo_clinic.HeadActivity" />
-        <activity android:name=".ui.photo_clinic.LegActivity" />
-        <!-- AI 챗봇 증상 문진 액티비티 -->
+        <activity android:name=".ui.photo_clinic.LegActivity" /> <!-- AI 챗봇 증상 문진 액티비티 -->
         <activity
             android:name=".llama.LlamaActivity"
             android:exported="false"
