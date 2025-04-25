@@ -1,8 +1,10 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.photo_clinic;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.silmedy.R;
 
 public class ShootingActivity extends AppCompatActivity {
 
