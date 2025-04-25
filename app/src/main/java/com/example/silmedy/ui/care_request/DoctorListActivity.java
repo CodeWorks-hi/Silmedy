@@ -27,8 +27,10 @@ import com.google.android.gms.location.LocationServices;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.io.Serializable;
 
 
 public class DoctorListActivity extends AppCompatActivity {
@@ -72,16 +74,34 @@ public class DoctorListActivity extends AppCompatActivity {
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorList = new ArrayList<>();
         // 매우 중요!!! 지금은 하드코딩이지만 실제 작동 과정에서는 license_number 및 hospital_id 통해서 정보 불러오고 넘겨주기.
-        doctorList.add(new Doctor(R.drawable.doc, "김정훈", "분당구보건소", "진료 가능 (수) 09:00 ~ 18:00"));
-        doctorList.add(new Doctor(R.drawable.doc, "박지윤", "수정구보건소", "진료 가능 (금) 13:00 ~ 17:00"));
-        doctorList.add(new Doctor(R.drawable.doc, "이상우", "중원구보건소", "진료 가능 (화) 10:00 ~ 16:00"));
+        HashMap<String, String> schedule_kim = new HashMap<>();
+        schedule_kim.put("월", "09:00-18:00");
+        schedule_kim.put("화", "09:00-18:00");
+        schedule_kim.put("수", "09:00-18:00");
+        schedule_kim.put("목", "09:00-18:00");
+        schedule_kim.put("금", "휴진");
+        HashMap<String, String> schedule_park = new HashMap<>();
+        schedule_park.put("월", "09:00-18:00");
+        schedule_park.put("화", "09:00-18:00");
+        schedule_park.put("수", "휴진");
+        schedule_park.put("목", "09:00-18:00");
+        schedule_park.put("금", "09:00-18:00");
+        HashMap<String, String> schedule_lee = new HashMap<>();
+        schedule_lee.put("월", "09:00-18:00");
+        schedule_lee.put("화", "휴진");
+        schedule_lee.put("수", "09:00-18:00");
+        schedule_lee.put("목", "09:00-18:00");
+        schedule_lee.put("금", "09:00-18:00");
+        doctorList.add(new Doctor(R.drawable.doc, "김정훈", "분당구보건소", schedule_kim));
+        doctorList.add(new Doctor(R.drawable.doc, "박지윤", "수정구보건소", schedule_park));
+        doctorList.add(new Doctor(R.drawable.doc, "이상우", "중원구보건소", schedule_lee));
         adapter = new DoctorAdapter(doctorList, doctor -> {
             Intent bookIntent = new Intent(DoctorListActivity.this, CareRequestActivity.class);
             bookIntent.putExtra("user_name", username);
             bookIntent.putExtra("symptom", symptom);
             bookIntent.putExtra("doctor_name", doctor.getName());
             bookIntent.putExtra("doctor_clinic", doctor.getCenter());
-            bookIntent.putExtra("doctor_time", doctor.getSchedule());
+            bookIntent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
             bookIntent.putExtra("doctor_image", doctor.getImageResId());
             startActivity(bookIntent);
         });
@@ -90,6 +110,13 @@ public class DoctorListActivity extends AppCompatActivity {
         // 위치 클라이언트 초기화
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         checkLocationPermissionAndGetCurrentLocation();
+
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
+            backIntent.putExtra("user_name", username);
+            startActivity(backIntent);
+            finish();
+        });
     }
 
     // 위치 권한 확인 및 요청

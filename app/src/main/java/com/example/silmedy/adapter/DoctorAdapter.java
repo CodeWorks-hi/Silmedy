@@ -14,7 +14,10 @@ import com.example.silmedy.ui.care_request.CareRequestActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 
+import java.io.Serializable;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 /**
  * DoctorListActivity에서 사용하는 RecyclerView 어댑터
@@ -52,7 +55,42 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         // 뷰에 데이터 바인딩
         holder.name.setText(doctor.getName());
         holder.center.setText(doctor.getCenter());
-        holder.schedule.setText(doctor.getSchedule());
+        Map<String, String> scheduleMap = doctor.getSchedule();
+        Calendar calendar = java.util.Calendar.getInstance();
+        String[] weekdays = {"일", "월", "화", "수", "목", "금", "토"};
+
+        int todayIdx = calendar.get(java.util.Calendar.DAY_OF_WEEK) - 1;
+
+        int firstIdx, secondIdx;
+
+        if (todayIdx == 6) { // Saturday
+            firstIdx = 1; // Monday
+            secondIdx = 2; // Tuesday
+        } else if (todayIdx == 0) { // Sunday
+            firstIdx = 1; // Monday
+            secondIdx = 2; // Tuesday
+        } else if (todayIdx == 5) { // Friday
+            firstIdx = 5; // Friday
+            secondIdx = 1; // Monday
+        } else {
+            firstIdx = todayIdx;
+            secondIdx = (todayIdx + 1) % 7;
+            if (secondIdx == 0 || secondIdx == 6) { // if next is Sunday or Saturday
+                secondIdx = (secondIdx == 6) ? 1 : 2; // skip to Monday or Tuesday
+            }
+        }
+
+        String firstDay = weekdays[firstIdx];
+        String secondDay = weekdays[secondIdx];
+
+        String firstSchedule = scheduleMap.getOrDefault(firstDay, "휴진");
+        String secondSchedule = scheduleMap.getOrDefault(secondDay, "휴진");
+
+        StringBuilder filteredSchedule = new StringBuilder();
+        filteredSchedule.append(firstDay).append(" : ").append(firstSchedule).append("\n");
+        filteredSchedule.append(secondDay).append(" : ").append(secondSchedule);
+
+        holder.schedule.setText(filteredSchedule.toString().trim());
         holder.image.setImageResource(doctor.getImageResId());
 
         // 아이템 클릭 시 CareRequestActivity로 이동
@@ -60,7 +98,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
             Intent intent = new Intent(v.getContext(), CareRequestActivity.class);
             intent.putExtra("doctor_name", doctor.getName());
             intent.putExtra("doctor_clinic", doctor.getCenter());
-            intent.putExtra("doctor_time", doctor.getSchedule());
+            intent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
             v.getContext().startActivity(intent);
         });
     }

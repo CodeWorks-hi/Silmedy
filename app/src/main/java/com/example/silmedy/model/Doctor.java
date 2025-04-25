@@ -1,19 +1,23 @@
 package com.example.silmedy.model;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.io.Serializable;
+
 /**
  * DoctorListActivity에서 사용하는 의사 정보 모델 클래스
  * - RecyclerView에 바인딩되는 데이터 구조
  * - 이미지, 이름, 보건소명, 진료 시간 정보를 포함
  */
-public class Doctor {
+public class Doctor implements Serializable {
 
     public int imageResId;       // 이미지 리소스 ID
     public String name;          // 이름
     public String center;        // 소속 보건소
-    public String schedule;      // 진료 가능 시간
+    public Map<String, String> schedule;      // 진료 가능 시간
 
     // 생성자
-    public Doctor(int imageResId, String name, String center, String schedule) {
+    public Doctor(int imageResId, String name, String center, Map schedule) {
         this.imageResId = imageResId;
         this.name = name;
         this.center = center;
@@ -33,7 +37,7 @@ public class Doctor {
         return center;
     }
 
-    public String getSchedule() {
+    public Map getSchedule() {
         return schedule;
     }
 }
