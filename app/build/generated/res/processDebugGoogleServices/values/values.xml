@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gcm_defaultSenderId" translatable="false">486158170661</string>
+    <string name="google_api_key" translatable="false">AIzaSyA_GSFnmPfbgB6LgME4R1A861yFyDgV69k</string>
+    <string name="google_app_id" translatable="false">1:486158170661:android:b4917157549c0562cfddcc</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA_GSFnmPfbgB6LgME4R1A861yFyDgV69k</string>
+    <string name="google_storage_bucket" translatable="false">silmedy-23a1b.firebasestorage.app</string>
+    <string name="project_id" translatable="false">silmedy-23a1b</string>
+</resources>
