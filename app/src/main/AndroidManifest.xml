@@ -69,11 +69,8 @@
         <activity android:name=".ui.photo_clinic.BodyActivity" />
         <activity android:name=".ui.photo_clinic.HeadActivity" />
         <activity android:name=".ui.photo_clinic.LegActivity" />
-        <!-- AI 챗봇 증상 문진 액티비티 -->
-        <activity
-            android:name=".llama.LlamaActivity"
-            android:exported="false"
-            android:label="@string/home_ai_title" />
+        <activity android:name=".llama.LlamaActivity" />
+
         <activity
             android:name=".ui.auth.SignupActivity"
             android:exported="false"

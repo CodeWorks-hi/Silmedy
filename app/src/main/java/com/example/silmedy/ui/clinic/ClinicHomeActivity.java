@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -21,6 +22,8 @@ public class ClinicHomeActivity extends AppCompatActivity {
     private ImageView btnBack;
     private BottomNavigationView bottomNavigation;
     private TextView textGreeting;
+
+    private CardView cardAI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +65,14 @@ public class ClinicHomeActivity extends AppCompatActivity {
         }
 
         // AI 증상확인 카드 클릭
-        CardView cardAI = findViewById(R.id.card_ai);
+        cardAI = findViewById(R.id.card_ai);
         if (cardAI != null) {
-            cardAI.setOnClickListener(this::goToAiDiagnosis);
+            cardAI.setOnClickListener(v -> {
+                Log.d("ClinicHomeActivity", "AI 카드 클릭됨");
+                Intent aiIntent = new Intent(this, LlamaActivity.class);
+                aiIntent.putExtra("user_name", username);
+                startActivity(aiIntent);
+            });
         }
 
         // 하단 네비게이션 바 설정
@@ -88,8 +96,5 @@ public class ClinicHomeActivity extends AppCompatActivity {
         }
     }
 
-    public void goToAiDiagnosis(View view) {
-        Intent intent = new Intent(this, LlamaActivity.class);
-        startActivity(intent);
-    }
+
 }
