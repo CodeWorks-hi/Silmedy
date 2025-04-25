@@ -78,6 +78,7 @@
         <activity android:name=".ui.photo_clinic.HeadActivity" />
         <activity android:name=".ui.photo_clinic.LegActivity" />
         <activity android:name=".ui.photo_clinic.ShootingActivity" />
+        <activity android:name=".ui.photo_clinic.DiagnosisResultsActivity" />
         <activity android:name=".llama.LlamaActivity" />
 
         <activity
