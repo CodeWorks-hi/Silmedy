@@ -2,10 +2,15 @@ package com.example.silmedy.ui.care_request;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.GridLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -27,14 +32,16 @@ public class CareRequestActivity extends AppCompatActivity {
     private ImageButton btnBack;
     private Button btnToday, btnTomorrow, btnReserve;
     private CheckBox checkSignLanguage;
-    private RecyclerView timeSlotRecycler;
+    // private RecyclerView timeSlotRecycler; // Removed unused variable
     private TextView doctorName, doctorClinic, doctorTime;
     private ImageView doctorImage;
+    private GridLayout timeButtonContainer;
 
     private String selectedTime = null;
     private String selectedDay = "today";
     private String doctorNameStr, doctorClinicStr, doctorTimeStr;
     private int doctorImageResId;
+    private HashMap<String, String> doctorTimeMapFormatted;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -46,15 +53,21 @@ public class CareRequestActivity extends AppCompatActivity {
         btnTomorrow = findViewById(R.id.btnTomorrow);
         btnReserve = findViewById(R.id.btnReserve);
         checkSignLanguage = findViewById(R.id.checkSignLanguage);
-        timeSlotRecycler = findViewById(R.id.timeSlotRecycler);
+        // timeSlotRecycler = findViewById(R.id.timeSlotRecycler); // Removed unused assignment
         doctorName = findViewById(R.id.doctorName);
         doctorClinic = findViewById(R.id.doctorClinic);
         doctorTime = findViewById(R.id.doctorTime);
         doctorImage = findViewById(R.id.doctorImage);
+        timeButtonContainer = (GridLayout) findViewById(R.id.time_button_container);
 
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
+            backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
+            startActivity(backIntent);
+            finish();
+        });
         btnReserve.setEnabled(false);
-        timeSlotRecycler.setLayoutManager(new GridLayoutManager(this, 3));
+        // timeSlotRecycler.setLayoutManager(new GridLayoutManager(this, 3)); // Removed unused assignment
 
         // 의사 정보 인텐트 처리
         Intent intent = getIntent();
@@ -62,8 +75,8 @@ public class CareRequestActivity extends AppCompatActivity {
         doctorClinicStr = intent.getStringExtra("doctor_clinic");
         Serializable serializedMap = intent.getSerializableExtra("doctor_time");
         if (serializedMap instanceof HashMap) {
-            HashMap<String, String> doctorTimeMap = (HashMap<String, String>) serializedMap;
-            doctorTimeStr = buildScheduleTextFromMap(doctorTimeMap);
+            doctorTimeMapFormatted = (HashMap<String, String>) serializedMap;
+            doctorTimeStr = buildScheduleTextFromMap(doctorTimeMapFormatted);
         }
         doctorImageResId = intent.getIntExtra("doctor_image", R.drawable.doc);
 
@@ -71,11 +84,11 @@ public class CareRequestActivity extends AppCompatActivity {
         doctorClinic.setText(doctorClinicStr);
         String scheduleText = buildScheduleText(doctorTimeStr);
         doctorTime.setText(scheduleText);
+        loadTimeSlots("today");
         doctorImage.setImageResource(doctorImageResId);
 
         btnToday.setSelected(true);
         btnTomorrow.setSelected(false);
-        loadTimeSlots("today");
 
         btnToday.setOnClickListener(v -> {
             selectedDay = "today";
@@ -105,25 +118,64 @@ public class CareRequestActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
-            backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
-            startActivity(backIntent);
-            finish();
-        });
     }
 
     private void loadTimeSlots(String day) {
-        String timeRange = extractTimeForDay(getDayLabel(day), doctorTimeStr);
+        selectedTime = null;
+        btnReserve.setEnabled(false);
+        timeButtonContainer.removeAllViews();
+
+        String label = getDayLabel(day);
+        String timeRange = doctorTimeMapFormatted != null && doctorTimeMapFormatted.containsKey(label)
+            ? doctorTimeMapFormatted.get(label)
+            : "휴진";
         List<String> timeList = generateTimeSlots(timeRange);
 
-        TimeSlotAdapter adapter = new TimeSlotAdapter(timeList, selected -> {
-            selectedTime = selected;
-            btnReserve.setEnabled(true);
-        });
+        renderTimeButtons(timeList);
+    }
 
-        timeSlotRecycler.setAdapter(adapter);
+    private void renderTimeButtons(List<String> timeList) {
+        timeButtonContainer.setColumnCount(3); // 3 buttons per row
+        LayoutInflater inflater = LayoutInflater.from(this);
+        timeButtonContainer.removeAllViews();
+
+        for (String time : timeList) {
+            View view = inflater.inflate(R.layout.time_button, timeButtonContainer, false);
+            Button timeButton = view.findViewById(R.id.timeButton);
+            timeButton.setText(time);
+            timeButton.setBackgroundResource(R.drawable.time_slot_selector);
+            // Set text color to white for all states
+            timeButton.setTextColor(getResources().getColor(R.color.white));
+
+            GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
+            gridParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+            gridParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            gridParams.setMargins(8, 8, 8, 8);
+            view.setLayoutParams(gridParams);
+
+            if (time.equals("휴진")) {
+                timeButton.setEnabled(false);
+                timeButton.setAlpha(0.5f);
+            } else {
+                timeButton.setEnabled(true);
+                timeButton.setAlpha(1f);
+                timeButton.setOnClickListener(v -> {
+                    selectedTime = time;
+                    btnReserve.setEnabled(true);
+                    // Deselect all buttons
+                    for (int i = 0; i < timeButtonContainer.getChildCount(); i++) {
+                        View child = timeButtonContainer.getChildAt(i);
+                        Button otherButton = child.findViewById(R.id.timeButton);
+                        if (otherButton != null) {
+                            otherButton.setSelected(false);
+                        }
+                    }
+                    timeButton.setSelected(true);
+                });
+            }
+
+            timeButtonContainer.addView(view);
+        }
     }
 
     private String getDayLabel(String dayType) {
@@ -168,7 +220,10 @@ public class CareRequestActivity extends AppCompatActivity {
 
     private List<String> generateTimeSlots(String timeRange) {
         List<String> slots = new ArrayList<>();
-        if (timeRange.equals("휴진")) return slots;
+        if (timeRange.equals("휴진")) {
+            slots.add("휴진");
+            return slots;
+        }
 
         String[] parts = timeRange.split("-");
         if (parts.length != 2) return slots;
@@ -181,7 +236,10 @@ public class CareRequestActivity extends AppCompatActivity {
             java.util.Calendar cal = java.util.Calendar.getInstance();
             cal.setTime(start);
             while (cal.getTime().before(end)) {
-                slots.add(sdf.format(cal.getTime()));
+                String formattedTime = String.format("%02d:%02d",
+                    cal.get(java.util.Calendar.HOUR_OF_DAY),
+                    cal.get(java.util.Calendar.MINUTE));
+                slots.add(formattedTime);
                 cal.add(java.util.Calendar.MINUTE, 30);
             }
         } catch (Exception e) {
@@ -194,10 +252,16 @@ public class CareRequestActivity extends AppCompatActivity {
         List<String> weekdays = Arrays.asList("월", "화", "수", "목", "금");
         java.util.Calendar cal = java.util.Calendar.getInstance();
         int todayIndex = cal.get(java.util.Calendar.DAY_OF_WEEK) - 2;
-        if (todayIndex < 0 || todayIndex >= weekdays.size()) return "진료 없음";
 
-        String today = weekdays.get(todayIndex);
-        String tomorrow = (todayIndex + 1 < weekdays.size()) ? weekdays.get(todayIndex + 1) : weekdays.get(0);
+        String today, tomorrow;
+
+        if (todayIndex == 5 || todayIndex == 6) { // Saturday or Sunday
+            today = "월";
+            tomorrow = "화";
+        } else {
+            today = weekdays.get(todayIndex);
+            tomorrow = (todayIndex + 1 < weekdays.size()) ? weekdays.get(todayIndex + 1) : weekdays.get(0);
+        }
 
         StringBuilder sb = new StringBuilder();
         if (timeMap.containsKey(today)) {

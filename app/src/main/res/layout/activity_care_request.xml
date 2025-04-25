@@ -88,7 +88,7 @@
                     android:id="@+id/doctorTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="진료 가능 | (수) 09:00 ~ 15:30"
+                    android:text="진료 가능 시간"
                     android:textSize="13sp"
                     android:textColor="@color/mint_700" />
             </LinearLayout>
@@ -112,7 +112,8 @@
             android:background="@drawable/tab_selector"
             android:textColor="@color/tab_text_selector"
             android:stateListAnimator="@null"
-            android:layout_marginEnd="4dp" />
+            android:layout_marginEnd="4dp"
+            android:onClick="onClickDateSelect" />
 
         <Button
             android:id="@+id/btnTomorrow"
@@ -124,16 +125,45 @@
             android:background="@drawable/tab_selector"
             android:textColor="@color/tab_text_selector"
             android:stateListAnimator="@null"
-            android:layout_marginStart="4dp" />
+            android:layout_marginStart="4dp"
+            android:onClick="onClickDateSelect" />
     </LinearLayout>
 
     <!-- 시간 선택 영역 -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/timeSlotRecycler"
+    <GridLayout
+        android:id="@+id/time_button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:overScrollMode="never" />
+        android:layout_marginTop="8dp"
+        android:padding="4dp"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:alignmentMode="alignMargins"
+        android:rowOrderPreserved="false"
+        android:visibility="visible"
+        android:gravity="center">
+
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="09:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="09:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="10:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="10:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="11:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="11:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="12:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="12:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="13:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="13:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="14:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="14:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="15:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="15:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="16:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="16:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="17:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="17:30" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="18:00" android:background="@drawable/time_slot_selector" android:textSize="14sp" android:textColor="@color/text_primary" />
+    </GridLayout>
+
 
     <!-- 수어 체크박스 -->
     <LinearLayout

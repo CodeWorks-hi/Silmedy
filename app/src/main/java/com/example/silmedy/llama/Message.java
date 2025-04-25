@@ -3,28 +3,18 @@ package com.example.silmedy.llama;
 import com.google.firebase.firestore.PropertyName;
 
 public class Message {
-    private String sender;
-    private String text;
-    private long timestamp;
-    private boolean isDateSeparator;
-    private boolean isImage;
+    public  String sender;
 
-    @PropertyName("isImage")
-    public boolean isImage() {
-        return isImage;
-    }
+    public String text;
+    public  long timestamp;
+    public boolean isDateSeparator;
 
-    @PropertyName("isImage")
-    public void setImage(boolean isImage) {
-        this.isImage = isImage;
-    }
 
     //  프로필 이미지 URL
-    private String profileImageUrl;
+    public  String profileImageUrl;
 
     //  이미지 전송 기능을 위한 추가 필드
-    private String type;     // "text" 또는 "image"
-    private String imageUrl; // 이미지 전송용 Firebase Storage URL
+    public  String type;
 
     //  기본 생성자 (Firestore에서 필요)
     public Message() {
@@ -90,15 +80,7 @@ public class Message {
         isDateSeparator = dateSeparator;
     }
 
-    @PropertyName("profileImageUrl")
-    public String getProfileImageUrl() {
-        return profileImageUrl;
-    }
 
-    @PropertyName("profileImageUrl")
-    public void setProfileImageUrl(String profileImageUrl) {
-        this.profileImageUrl = profileImageUrl;
-    }
 
     @PropertyName("type")
     public String getType() {
@@ -108,16 +90,6 @@ public class Message {
     @PropertyName("type")
     public void setType(String type) {
         this.type = type;
-    }
-
-    @PropertyName("imageUrl")
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    @PropertyName("imageUrl")
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
 }

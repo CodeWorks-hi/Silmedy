@@ -4,22 +4,17 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CenterCrop;
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.example.silmedy.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
-
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageViewHolder> {
 
@@ -49,7 +44,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
         if (viewType == 0) {
             view = LayoutInflater.from(context).inflate(R.layout.message_item_me, parent, false);
         } else if (viewType == 1) {
-            view = LayoutInflater.from(context).inflate(R.layout.message_item_other, parent, false);
+            view = LayoutInflater.from(context).inflate(R.layout.message_item_llama, parent, false);
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.message_item_date, parent, false);
         }
@@ -67,46 +62,8 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
         holder.textSender.setText(msg.getSender());
         holder.textTime.setText(getTime(msg.getTimestamp()));
-
-        String imageUrl = msg.getImageUrl();
-        String text = msg.getText();
-
-        boolean isImage = imageUrl != null && !imageUrl.isEmpty();
-
-        if (isImage) {
-            if (holder.imageView != null) {
-                holder.imageView.setVisibility(View.VISIBLE);
-                holder.textMessage.setVisibility(View.GONE);
-
-                Glide.with(context)
-                        .load(msg.getImageUrl())
-                        .transform(new CenterCrop(), new RoundedCorners(30))
-                        .into(holder.imageView);
-            }
-        } else {
-            holder.textMessage.setVisibility(View.VISIBLE);
-            holder.imageView.setVisibility(View.GONE);
-            holder.textMessage.setText(text);
-        }
-
-        // 프로필 이미지는 오직 AI(상대방) 메시지에만 표시
-        if (getItemViewType(position) == 1 && holder.imageProfile != null) {
-            holder.imageProfile.setVisibility(View.VISIBLE);
-            String imageUrlProfile = msg.getProfileImageUrl();
-            if (imageUrlProfile != null && !imageUrlProfile.isEmpty()) {
-                Glide.with(context)
-                        .load(imageUrlProfile)
-                        .circleCrop()
-                        .placeholder(R.drawable.silmedy_circle)
-                        .into(holder.imageProfile);
-            } else {
-                holder.imageProfile.setImageResource(R.drawable.silmedy_circle);
-            }
-        } else if (holder.imageProfile != null) {
-            holder.imageProfile.setVisibility(View.GONE);
-        }
+        holder.textMessage.setText(msg.getText());
     }
-
 
     @Override
     public int getItemCount() {
@@ -125,11 +82,9 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
 
     public static class MessageViewHolder extends RecyclerView.ViewHolder {
         TextView textSender, textMessage, textTime, textDate;
-        ImageView imageProfile, imageView;
 
         public MessageViewHolder(@NonNull View itemView) {
             super(itemView);
-
             if (itemView.findViewById(R.id.textSender) != null)
                 textSender = itemView.findViewById(R.id.textSender);
             if (itemView.findViewById(R.id.textMessage) != null)
@@ -138,10 +93,6 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MessageV
                 textTime = itemView.findViewById(R.id.textTime);
             if (itemView.findViewById(R.id.textDate) != null)
                 textDate = itemView.findViewById(R.id.textDate);
-            if (itemView.findViewById(R.id.imageProfile) != null)
-                imageProfile = itemView.findViewById(R.id.imageProfile);
-            if (itemView.findViewById(R.id.imageMessage) != null)
-                imageView = itemView.findViewById(R.id.imageMessage);
         }
     }
 }

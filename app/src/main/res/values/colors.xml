@@ -22,6 +22,10 @@
     <color name="button_mint">#4DB8B2</color>
     <color name="button_mint_pressed">#3AAFAA</color>
 
+    <!-- 버튼 텍스트 -->
+    <color name="time_slot_default">#CCE4F6</color> <!-- 연한 파란색 -->
+    <color name="time_slot_selected">#1976D2</color> <!-- 진한 파란색 -->
+
     <!-- 텍스트용 -->
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
