@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="24dp"
+    android:background="@android:color/white"
+    tools:context=".ui.auth.SignupActivity">
+
+    <!-- 한정 버튼 -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:contentDescription="@string/btn_back"
+        android:src="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- 제목 -->
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- 이메일 + 중복확인 -->
+    <EditText
+        android:id="@+id/editEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toStartOf="@id/btnCheckEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textTitle" />
+
+    <Button
+        android:id="@+id/btnCheckEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#51BDB3"
+        android:text="중복확인"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/editEmail"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 비밀번호 -->
+    <EditText
+        android:id="@+id/editPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/editEmail"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 비밀번호 확인 -->
+    <EditText
+        android:id="@+id/editConfirmPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/editPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 이름 -->
+    <EditText
+        android:id="@+id/editName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="이름"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@id/editConfirmPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 연락처 -->
+    <TextView
+        android:id="@+id/contactView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="연락처"
+        android:inputType="phone"
+        app:layout_constraintTop_toBottomOf="@id/editName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 우편번호 + 주소 검색 -->
+    <TextView
+        android:id="@+id/zipView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="우편번호"
+        app:layout_constraintTop_toBottomOf="@id/contactView"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnZipSearch" />
+
+    <Button
+        android:id="@+id/btnZipSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#51BDB3"
+        android:text="주소 검색"
+        android:textColor="#FFFFFF"
+        app:layout_constraintBaseline_toBaselineOf="@id/zipView"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- 상세주소 -->
+    <TextView
+        android:id="@+id/addressView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="주소"
+        android:inputType="textPostalAddress"
+        app:layout_constraintTop_toBottomOf="@id/zipView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <!-- 상세주소 -->
+    <EditText
+        android:id="@+id/editDetailAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:hint="상세주소"
+        android:inputType="textPostalAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/zipView" />
+
+    <!-- 수어통화 여부 -->
+
+    <LinearLayout
+        android:id="@+id/layoutSignLang"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editDetailAddress">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="12dp"
+            android:text="수어 통화 여부"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/checkboxSignLang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수어 통화"
+            android:textColor="#000000"
+            android:textSize="16sp" />
+    </LinearLayout>
+    <!-- 회원가입 버튼 -->
+
+    <Button
+        android:id="@+id/btnSignup"
+        android:layout_width="364dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="#51BDB3"
+        android:text="회원가입"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutSignLang" />
+</androidx.constraintlayout.widget.ConstraintLayout>

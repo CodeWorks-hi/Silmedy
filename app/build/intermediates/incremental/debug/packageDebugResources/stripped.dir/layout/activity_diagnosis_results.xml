@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!-- 상단 콘텐츠 -->
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!--  뒤로가기 버튼 -->
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="start"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/btn_back"
+                android:src="@drawable/ic_arrow_back" />
+
+
+            <!-- 타이틀 -->
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="16dp"
+                android:text="상처진단결과"
+                android:textAllCaps="false"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/image_diagnosis"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/scratch"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/scratch" />
+
+                <TextView
+                    android:id="@+id/text_part_disease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="부위: 손"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="134dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:text="병명: 찰과상"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 찰과상 vs 타박상 이미지 비교 -->
+            <ImageView
+                android:layout_width="280dp"
+                android:layout_height="314dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/superficial" />
+
+            <!-- 추천 진료과 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="추천 진료과 1 : 외과"
+                android:textSize="16sp"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="추천 진료과 2 : 응급의학과"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- 안내 문구 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="( 정확한 진단을 위해 비대면진료를 추천합니다. )"
+                android:textSize="14sp"
+                android:textAlignment="center"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- 진료 예약 버튼 -->
+            <Button
+                android:id="@+id/button_reservation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="진료 예약"
+                android:backgroundTint="#85D8CE"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:layout_marginBottom="32dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 하단 네비게이션 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:menu="@menu/menu_bottom_nav"
+        app:itemIconTint="@xml/selector_bottom_nav"
+        app:itemTextColor="@xml/selector_bottom_nav"
+        app:labelVisibilityMode="labeled"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

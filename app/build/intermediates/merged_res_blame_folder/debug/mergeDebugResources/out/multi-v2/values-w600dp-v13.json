@@ -4,7 +4,7 @@
             "outputFile": "com.example.silmedy.app-mergeDebugResources-46:/values-w600dp-v13/values-w600dp-v13.xml",
             "map": [
                 {
-                    "source": "/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/res/values-w600dp/dimens.xml",
+                    "source": "/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/res/values-w600dp/dimens.xml",
                     "from": {
                         "startLines": "1",
                         "startColumns": "4",

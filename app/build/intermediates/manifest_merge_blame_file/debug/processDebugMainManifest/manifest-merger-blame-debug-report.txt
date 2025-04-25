@@ -9,681 +9,681 @@
 9        android:targetSdkVersion="35" />
 10    <!-- Firebase 권한 -->
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:5:5-67
-11-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:5:22-64
+11-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:5:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:6:5-79
-12-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:6:22-76
+12-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:6:5-79
+12-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:6:22-76
 13    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-13-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:7:5-77
-13-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:7:22-74
+13-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:7:5-77
+13-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:7:22-74
 14    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-14-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:5-76
-14-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:22-73
+14-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:8:5-76
+14-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:8:22-73
 15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:5-80
-15-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:22-77
+15-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:9:5-80
+15-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:9:22-77
 16    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-16-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:10:5-79
-16-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:10:22-76
+16-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:10:5-79
+16-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:10:22-76
 17    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-17-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:11:5-81
-17-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:11:22-78
+17-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:11:5-81
+17-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:11:22-78
 18
 19    <uses-feature
-19-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:13:5-15:35
+19-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:13:5-15:35
 20        android:name="android.hardware.camera"
-20-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:9-47
+20-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:14:9-47
 21        android:required="true" />
-21-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:9-32
+21-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:15:9-32
 22
 23    <uses-permission android:name="android.permission.CAMERA" />
-23-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:5-64
-23-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:22-62
+23-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:16:5-64
+23-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:16:22-62
 24    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-24-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:5-80
-24-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:22-77
+24-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:9:5-80
+24-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:9:22-77
 25    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-25-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:18:5-80
-25-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:18:22-78
+25-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:18:5-80
+25-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:18:22-78
 26    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-26-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:5-76
-26-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:22-73
+26-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:8:5-76
+26-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:8:22-73
 27    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-27-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:5-68
-27-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:22-65
+27-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:5-68
+27-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:22-65
 28    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-28-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:5-82
-28-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:22-79
+28-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:5-82
+28-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:22-79
 29    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-29-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:5-110
-29-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:22-107
+29-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:5-110
+29-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:22-107
 30    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-30-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:5-79
-30-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:22-76
+30-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:5-79
+30-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:22-76
 31    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
-31-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:5-88
-31-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:22-85
+31-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:5-88
+31-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:22-85
 32    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
-32-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:5-82
-32-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:22-79
+32-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:5-82
+32-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:22-79
 33    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-33-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:5-98
-33-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:22-95
+33-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:5-98
+33-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:22-95
 34
 35    <permission
-35-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:22:5-24:47
+35-->[androidx.core:core:1.13.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:22:5-24:47
 36        android:name="com.example.silmedy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-36-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:23:9-81
+36-->[androidx.core:core:1.13.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:23:9-81
 37        android:protectionLevel="signature" />
-37-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:24:9-44
+37-->[androidx.core:core:1.13.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:24:9-44
 38
 39    <uses-permission android:name="com.example.silmedy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-39-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:5-97
-39-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:22-94
+39-->[androidx.core:core:1.13.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:5-97
+39-->[androidx.core:core:1.13.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:22-94
 40
 41    <application
-41-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:21:5-101:19
+41-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:21:5-101:19
 42        android:allowBackup="true"
-42-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:22:9-35
+42-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:22:9-35
 43        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-43-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
+43-->[androidx.core:core:1.13.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
 44        android:dataExtractionRules="@xml/data_extraction_rules"
-44-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:23:9-65
+44-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:23:9-65
 45        android:debuggable="true"
 46        android:extractNativeLibs="false"
 47        android:fullBackupContent="@xml/backup_rules"
-47-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:24:9-54
+47-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:24:9-54
 48        android:icon="@drawable/silmedy_circle"
-48-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:25:9-48
+48-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:25:9-48
 49        android:label="@string/app_name"
-49-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:26:9-41
+49-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:26:9-41
 50        android:localeConfig="@xml/locales_config"
-50-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:27:9-51
+50-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:27:9-51
 51        android:roundIcon="@drawable/silmedy_circle"
-51-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:28:9-53
+51-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:28:9-53
 52        android:supportsRtl="true"
-52-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:29:9-35
+52-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:29:9-35
 53        android:testOnly="true"
 54        android:theme="@style/Theme.Silmedy" >
-54-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:30:9-45
+54-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:30:9-45
 55
 56        <!-- Default locale for Android 13+ -->
 57        <meta-data
-57-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:34:9-36:34
+57-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:34:9-36:34
 58            android:name="locale"
-58-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:35:13-34
+58-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:35:13-34
 59            android:value="ko" />
-59-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:36:13-31
+59-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:36:13-31
 60
 61        <!-- Kakao SDK AppKey 등록 -->
 62        <meta-data
-62-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:40:9-42:70
+62-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:40:9-42:70
 63            android:name="com.kakao.sdk.AppKey"
-63-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:41:13-48
+63-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:41:13-48
 64            android:value="@string/kakao_key_manifest_placeholder" />
-64-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:42:13-67
+64-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:42:13-67
 65
 66        <activity
-66-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:44:9-47:62
+66-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:44:9-47:62
 67            android:name="com.example.silmedy.ui.auth.FindIdActivity"
-67-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:45:13-51
+67-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:45:13-51
 68            android:exported="false"
-68-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:46:13-37
+68-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:46:13-37
 69            android:label="@string/title_activity_find_id" />
-69-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:47:13-59
+69-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:47:13-59
 70        <activity
-70-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:48:9-51:69
+70-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:48:9-51:69
 71            android:name="com.example.silmedy.ui.auth.CheckIdentityActivity"
-71-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:49:13-58
+71-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:49:13-58
 72            android:exported="false"
-72-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:50:13-37
+72-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:50:13-37
 73            android:label="@string/title_activity_check_identity" />
-73-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:13-66
+73-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:51:13-66
 74        <activity
-74-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:52:9-55:66
+74-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:52:9-55:66
 75            android:name="com.example.silmedy.ui.open_api.PostalCodeActivity"
-75-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:53:13-59
+75-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:53:13-59
 76            android:exported="false"
-76-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:54:13-37
+76-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:54:13-37
 77            android:label="@string/title_activity_postal_code" />
-77-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:55:13-63
+77-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:55:13-63
 78        <activity
-78-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:56:9-59:48
+78-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:56:9-59:48
 79            android:name="com.example.silmedy.ui.clinic.ClinicHomeActivity"
-79-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:57:13-57
+79-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:57:13-57
 80            android:exported="false"
-80-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:58:13-37
+80-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:58:13-37
 81            android:label="@string/app_name" /> <!-- 앱 시작 액티비티: 로그인 화면 -->
-81-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:59:13-45
+81-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:59:13-45
 82        <activity
-82-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:60:9-69:20
+82-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:60:9-69:20
 83            android:name="com.example.silmedy.ui.auth.LoginActivity"
-83-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:61:13-50
+83-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:61:13-50
 84            android:exported="true"
-84-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:62:13-36
+84-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:62:13-36
 85            android:label="@string/title_activity_login" >
-85-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:63:13-57
+85-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:63:13-57
 86            <intent-filter>
-86-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:64:13-68:29
+86-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:64:13-68:29
 87                <action android:name="android.intent.action.MAIN" />
-87-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:65:17-69
-87-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:65:25-66
+87-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:65:17-69
+87-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:65:25-66
 88
 89                <category android:name="android.intent.category.LAUNCHER" />
-89-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:67:17-77
-89-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:67:27-74
+89-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:67:17-77
+89-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:67:27-74
 90            </intent-filter>
 91        </activity>
 92        <activity android:name="com.example.silmedy.ui.care_request.SymptomChoiceActivity" />
-92-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:70:9-75
-92-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:70:19-72
+92-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:70:9-75
+92-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:70:19-72
 93        <activity android:name="com.example.silmedy.ui.care_request.DoctorListActivity" />
-93-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:71:9-72
-93-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:71:19-69
+93-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:71:9-72
+93-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:71:19-69
 94        <activity android:name="com.example.silmedy.ui.care_request.CareRequestActivity" />
-94-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:72:9-73
-94-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:72:19-70
+94-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:72:9-73
+94-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:72:19-70
 95        <activity android:name="com.example.silmedy.ui.care_request.CareRequestCompleteActivity" />
-95-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:73:9-81
-95-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:73:19-78
+95-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:73:9-81
+95-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:73:19-78
 96        <activity android:name="com.example.silmedy.ui.open_api.MapActivity" />
-96-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:74:9-61
-96-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:74:19-58
+96-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:74:9-61
+96-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:74:19-58
 97        <activity android:name="com.example.silmedy.ui.photo_clinic.BodyMain" />
-97-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:75:9-62
-97-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:75:19-59
+97-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:75:9-62
+97-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:75:19-59
 98        <activity android:name="com.example.silmedy.ui.photo_clinic.ArmActivity" />
-98-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:76:9-65
-98-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:76:19-62
+98-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:76:9-65
+98-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:76:19-62
 99        <activity android:name="com.example.silmedy.ui.photo_clinic.BodyActivity" />
-99-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:77:9-66
-99-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:77:19-63
+99-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:77:9-66
+99-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:77:19-63
 100        <activity android:name="com.example.silmedy.ui.photo_clinic.HeadActivity" />
-100-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:78:9-66
-100-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:78:19-63
+100-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:78:9-66
+100-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:78:19-63
 101        <activity android:name="com.example.silmedy.ui.photo_clinic.LegActivity" />
-101-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:79:9-65
-101-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:79:19-62
+101-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:79:9-65
+101-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:79:19-62
 102        <activity android:name="com.example.silmedy.ui.photo_clinic.ShootingActivity" />
-102-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:80:9-70
-102-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:80:19-67
+102-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:80:9-70
+102-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:80:19-67
 103        <activity android:name="com.example.silmedy.llama.LlamaActivity" />
-103-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:81:9-57
-103-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:81:19-54
+103-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:81:9-57
+103-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:81:19-54
 104        <activity
-104-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:83:9-86:61
+104-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:83:9-86:61
 105            android:name="com.example.silmedy.ui.auth.SignupActivity"
-105-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:84:13-51
+105-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:84:13-51
 106            android:exported="false"
-106-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:13-37
+106-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:85:13-37
 107            android:label="@string/title_activity_signup" />
-107-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:13-58
+107-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:86:13-58
 108        <activity
-108-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:9-90:68
+108-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:87:9-90:68
 109            android:name="com.example.silmedy.ui.auth.FindPasswordActivity"
-109-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:88:13-57
+109-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:88:13-57
 110            android:exported="false"
-110-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:89:13-37
+110-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:89:13-37
 111            android:label="@string/title_activity_find_password" />
-111-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:90:13-65
+111-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:90:13-65
 112
 113        <provider
-113-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:9-100:20
+113-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:92:9-100:20
 114            android:name="androidx.core.content.FileProvider"
-114-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:13-62
+114-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:93:13-62
 115            android:authorities="com.example.silmedy.fileprovider"
-115-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:13-67
+115-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:94:13-67
 116            android:exported="false"
-116-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:13-37
+116-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:95:13-37
 117            android:grantUriPermissions="true" >
-117-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:13-47
+117-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:96:13-47
 118            <meta-data
-118-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:13-99:54
+118-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:97:13-99:54
 119                android:name="android.support.FILE_PROVIDER_PATHS"
-119-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:98:17-67
+119-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:98:17-67
 120                android:resource="@xml/file_paths" />
-120-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:99:17-51
+120-->/Users/ENZO/KOOKIZ/GITHUB/Silmedy/app/src/main/AndroidManifest.xml:99:17-51
 121        </provider>
 122
 123        <activity
-123-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:29:9-46:20
+123-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:29:9-46:20
 124            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-124-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:30:13-80
+124-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:30:13-80
 125            android:excludeFromRecents="true"
-125-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:31:13-46
+125-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:31:13-46
 126            android:exported="true"
-126-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:32:13-36
+126-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:32:13-36
 127            android:launchMode="singleTask"
-127-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:33:13-44
+127-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:33:13-44
 128            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-128-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:34:13-72
+128-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:34:13-72
 129            <intent-filter>
-129-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:35:13-45:29
+129-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:35:13-45:29
 130                <action android:name="android.intent.action.VIEW" />
-130-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
-130-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
+130-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
+130-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
 131
 132                <category android:name="android.intent.category.DEFAULT" />
-132-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
-132-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
+132-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
+132-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
 133                <category android:name="android.intent.category.BROWSABLE" />
-133-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
-133-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
+133-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
+133-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
 134
 135                <data
-135-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
+135-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
 136                    android:host="firebase.auth"
-136-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
+136-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
 137                    android:path="/"
-137-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
+137-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
 138                    android:scheme="genericidp" />
-138-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
+138-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
 139            </intent-filter>
 140        </activity>
 141        <activity
-141-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:47:9-64:20
+141-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:47:9-64:20
 142            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-142-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:48:13-79
+142-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:48:13-79
 143            android:excludeFromRecents="true"
-143-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:49:13-46
+143-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:49:13-46
 144            android:exported="true"
-144-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:50:13-36
+144-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:50:13-36
 145            android:launchMode="singleTask"
-145-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:51:13-44
+145-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:51:13-44
 146            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-146-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:52:13-72
+146-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:52:13-72
 147            <intent-filter>
-147-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:53:13-63:29
+147-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:53:13-63:29
 148                <action android:name="android.intent.action.VIEW" />
-148-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
-148-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
+148-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
+148-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
 149
 150                <category android:name="android.intent.category.DEFAULT" />
-150-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
-150-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
+150-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
+150-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
 151                <category android:name="android.intent.category.BROWSABLE" />
-151-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
-151-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
+151-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
+151-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
 152
 153                <data
-153-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
+153-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
 154                    android:host="firebase.auth"
-154-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
+154-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
 155                    android:path="/"
-155-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
+155-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
 156                    android:scheme="recaptcha" />
-156-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
+156-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
 157            </intent-filter>
 158        </activity>
 159
 160        <service
-160-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:66:9-72:19
+160-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:66:9-72:19
 161            android:name="com.google.firebase.components.ComponentDiscoveryService"
-161-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:67:13-84
+161-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:67:13-84
 162            android:directBootAware="true"
-162-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:32:13-43
+162-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:32:13-43
 163            android:exported="false" >
-163-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:68:13-37
+163-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:68:13-37
 164            <meta-data
-164-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:69:13-71:85
+164-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:69:13-71:85
 165                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-165-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:70:17-109
+165-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:70:17-109
 166                android:value="com.google.firebase.components.ComponentRegistrar" />
-166-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:71:17-82
+166-->[com.google.firebase:firebase-auth:23.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:71:17-82
 167            <meta-data
-167-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:17:13-19:85
+167-->[com.google.firebase:firebase-firestore:25.1.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:17:13-19:85
 168                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
-168-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:18:17-122
+168-->[com.google.firebase:firebase-firestore:25.1.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:18:17-122
 169                android:value="com.google.firebase.components.ComponentRegistrar" />
-169-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:19:17-82
+169-->[com.google.firebase:firebase-firestore:25.1.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:19:17-82
 170            <meta-data
-170-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:20:13-22:85
+170-->[com.google.firebase:firebase-firestore:25.1.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:20:13-22:85
 171                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-171-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:21:17-111
+171-->[com.google.firebase:firebase-firestore:25.1.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:21:17-111
 172                android:value="com.google.firebase.components.ComponentRegistrar" />
-172-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:22:17-82
+172-->[com.google.firebase:firebase-firestore:25.1.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:22:17-82
 173            <meta-data
-173-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:57:13-59:85
+173-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:57:13-59:85
 174                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-174-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:58:17-122
+174-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:58:17-122
 175                android:value="com.google.firebase.components.ComponentRegistrar" />
-175-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:59:17-82
+175-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:59:17-82
 176            <meta-data
-176-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:60:13-62:85
+176-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:60:13-62:85
 177                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-177-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:61:17-119
+177-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:61:17-119
 178                android:value="com.google.firebase.components.ComponentRegistrar" />
-178-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:62:17-82
+178-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:62:17-82
 179            <meta-data
-179-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:33:13-35:85
+179-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:33:13-35:85
 180                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-180-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:34:17-139
+180-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:34:17-139
 181                android:value="com.google.firebase.components.ComponentRegistrar" />
-181-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:35:17-82
+181-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:35:17-82
 182            <meta-data
-182-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:30:13-32:85
+182-->[com.google.firebase:firebase-storage:21.0.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:30:13-32:85
 183                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
-183-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:31:17-118
+183-->[com.google.firebase:firebase-storage:21.0.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:31:17-118
 184                android:value="com.google.firebase.components.ComponentRegistrar" />
-184-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:32:17-82
+184-->[com.google.firebase:firebase-storage:21.0.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:32:17-82
 185            <meta-data
-185-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:33:13-35:85
+185-->[com.google.firebase:firebase-storage:21.0.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:33:13-35:85
 186                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-186-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:34:17-107
+186-->[com.google.firebase:firebase-storage:21.0.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:34:17-107
 187                android:value="com.google.firebase.components.ComponentRegistrar" />
-187-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:35:17-82
+187-->[com.google.firebase:firebase-storage:21.0.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:35:17-82
 188            <meta-data
-188-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:15:13-17:85
+188-->[com.google.firebase:firebase-installations:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:15:13-17:85
 189                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
-189-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:16:17-130
+189-->[com.google.firebase:firebase-installations:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:16:17-130
 190                android:value="com.google.firebase.components.ComponentRegistrar" />
-190-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:17:17-82
+190-->[com.google.firebase:firebase-installations:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:17:17-82
 191            <meta-data
-191-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:18:13-20:85
+191-->[com.google.firebase:firebase-installations:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:18:13-20:85
 192                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-192-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:19:17-127
+192-->[com.google.firebase:firebase-installations:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:19:17-127
 193                android:value="com.google.firebase.components.ComponentRegistrar" />
-193-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:20:17-82
+193-->[com.google.firebase:firebase-installations:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:20:17-82
 194            <meta-data
-194-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:25:13-27:85
+194-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:25:13-27:85
 195                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
-195-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:26:17-120
+195-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:26:17-120
 196                android:value="com.google.firebase.components.ComponentRegistrar" />
-196-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:27:17-82
+196-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:27:17-82
 197            <meta-data
-197-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:28:13-30:85
+197-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:28:13-30:85
 198                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
-198-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:29:17-117
+198-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:29:17-117
 199                android:value="com.google.firebase.components.ComponentRegistrar" />
-199-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:30:17-82
+199-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:30:17-82
 200            <meta-data
-200-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
+200-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
 201                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
-201-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
+201-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
 202                android:value="com.google.firebase.components.ComponentRegistrar" />
-202-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
+202-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
 203            <meta-data
-203-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
+203-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
 204                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-204-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:36:17-109
+204-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:36:17-109
 205                android:value="com.google.firebase.components.ComponentRegistrar" />
-205-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:37:17-82
+205-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:37:17-82
 206            <meta-data
-206-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
+206-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
 207                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-207-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:26:17-115
+207-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:26:17-115
 208                android:value="com.google.firebase.components.ComponentRegistrar" />
-208-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:27:17-82
+208-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:27:17-82
 209        </service>
 210
 211        <receiver
-211-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:29:9-40:20
+211-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:29:9-40:20
 212            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-212-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:30:13-78
+212-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:30:13-78
 213            android:exported="true"
-213-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:31:13-36
+213-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:31:13-36
 214            android:permission="com.google.android.c2dm.permission.SEND" >
-214-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:32:13-73
+214-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:32:13-73
 215            <intent-filter>
-215-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:33:13-35:29
+215-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:33:13-35:29
 216                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-216-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:17-81
-216-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:25-78
+216-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:17-81
+216-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:25-78
 217            </intent-filter>
 218
 219            <meta-data
-219-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:37:13-39:40
+219-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:37:13-39:40
 220                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-220-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:38:17-92
+220-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:38:17-92
 221                android:value="true" />
-221-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:39:17-37
+221-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:39:17-37
 222        </receiver>
 223        <!--
 224             FirebaseMessagingService performs security checks at runtime,
 225             but set to not exported to explicitly avoid allowing another app to call it.
 226        -->
 227        <service
-227-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:46:9-53:19
+227-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:46:9-53:19
 228            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-228-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:47:13-82
+228-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:47:13-82
 229            android:directBootAware="true"
-229-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:48:13-43
+229-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:48:13-43
 230            android:exported="false" >
-230-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:49:13-37
+230-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:49:13-37
 231            <intent-filter android:priority="-500" >
-231-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:13-52:29
-231-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:28-51
+231-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:13-52:29
+231-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:28-51
 232                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-232-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:17-78
-232-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:25-75
+232-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:17-78
+232-->[com.google.firebase:firebase-messaging:24.1.1] /Users/ENZO/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:25-75
 233            </intent-filter>
 234        </service>
 235
 236        <receiver
-236-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:29:9-33:20
+236-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:29:9-33:20
 237            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-237-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:30:13-85
+237-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:30:13-85
 238            android:enabled="true"
-238-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:31:13-35
+238-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:31:13-35
 239            android:exported="false" >
-239-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:32:13-37
+239-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:32:13-37
 240        </receiver>
 241
 242        <service
-242-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:35:9-38:40
+242-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:35:9-38:40
 243            android:name="com.google.android.gms.measurement.AppMeasurementService"
-243-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:36:13-84
+243-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:36:13-84
 244            android:enabled="true"
-244-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:37:13-35
+244-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:37:13-35
 245            android:exported="false" />
-245-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:38:13-37
+245-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:38:13-37
 246        <service
-246-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:39:9-43:72
+246-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:39:9-43:72
 247            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-247-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:40:13-87
+247-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:40:13-87
 248            android:enabled="true"
-248-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:41:13-35
+248-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:41:13-35
 249            android:exported="false"
-249-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:42:13-37
+249-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:42:13-37
 250            android:permission="android.permission.BIND_JOB_SERVICE" />
-250-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:43:13-69
+250-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:43:13-69
 251        <service
-251-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
+251-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
 252            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
-252-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:25:13-94
+252-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:25:13-94
 253            android:enabled="true"
-253-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:26:13-35
+253-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:26:13-35
 254            android:exported="false" >
-254-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:27:13-37
+254-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:27:13-37
 255            <meta-data
-255-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:29:13-31:104
+255-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:29:13-31:104
 256                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
-256-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:30:17-76
+256-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:30:17-76
 257                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
-257-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:31:17-101
+257-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:31:17-101
 258        </service>
 259
 260        <activity
-260-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:34:9-41:20
+260-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:34:9-41:20
 261            android:name="androidx.credentials.playservices.HiddenActivity"
-261-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:35:13-76
+261-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:35:13-76
 262            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-262-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:36:13-87
+262-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:36:13-87
 263            android:enabled="true"
-263-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:37:13-35
+263-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:37:13-35
 264            android:exported="false"
-264-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:38:13-37
+264-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:38:13-37
 265            android:fitsSystemWindows="true"
-265-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:39:13-45
+265-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:39:13-45
 266            android:theme="@style/Theme.Hidden" >
-266-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:40:13-48
+266-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/ENZO/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:40:13-48
 267        </activity>
 268        <activity
-268-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
+268-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
 269            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-269-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
+269-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
 270            android:excludeFromRecents="true"
-270-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
+270-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
 271            android:exported="false"
-271-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
+271-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
 272            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-272-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
+272-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
 273        <!--
 274            Service handling Google Sign-In user revocation. For apps that do not integrate with
 275            Google Sign-In, this service will never be started.
 276        -->
 277        <service
-277-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
+277-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
 278            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-278-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
+278-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
 279            android:exported="true"
-279-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
+279-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
 280            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-280-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
+280-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
 281            android:visibleToInstantApps="true" />
-281-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
+281-->[com.google.android.gms:play-services-auth:20.7.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
 282
 283        <provider
-283-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
+283-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
 284            android:name="com.google.firebase.provider.FirebaseInitProvider"
-284-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:24:13-77
+284-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:24:13-77
 285            android:authorities="com.example.silmedy.firebaseinitprovider"
-285-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:25:13-72
+285-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:25:13-72
 286            android:directBootAware="true"
-286-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:26:13-43
+286-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:26:13-43
 287            android:exported="false"
-287-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:27:13-37
+287-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:27:13-37
 288            android:initOrder="100" />
-288-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:28:13-36
+288-->[com.google.firebase:firebase-common:21.0.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:28:13-36
 289        <provider
-289-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+289-->[androidx.emoji2:emoji2:1.3.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
 290            android:name="androidx.startup.InitializationProvider"
-290-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+290-->[androidx.emoji2:emoji2:1.3.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
 291            android:authorities="com.example.silmedy.androidx-startup"
-291-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+291-->[androidx.emoji2:emoji2:1.3.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
 292            android:exported="false" >
-292-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+292-->[androidx.emoji2:emoji2:1.3.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
 293            <meta-data
-293-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+293-->[androidx.emoji2:emoji2:1.3.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
 294                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-294-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+294-->[androidx.emoji2:emoji2:1.3.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
 295                android:value="androidx.startup" />
-295-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+295-->[androidx.emoji2:emoji2:1.3.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
 296            <meta-data
-296-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:29:13-31:52
+296-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/ENZO/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:29:13-31:52
 297                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-297-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:30:17-78
+297-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/ENZO/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:30:17-78
 298                android:value="androidx.startup" />
-298-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:31:17-49
+298-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/ENZO/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:31:17-49
 299            <meta-data
-299-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+299-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
 300                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-300-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+300-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
 301                android:value="androidx.startup" />
-301-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+301-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
 302        </provider>
 303
 304        <uses-library
-304-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:23:9-25:40
+304-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/ENZO/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:23:9-25:40
 305            android:name="android.ext.adservices"
-305-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:24:13-50
+305-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/ENZO/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:24:13-50
 306            android:required="false" />
-306-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:25:13-37
+306-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/ENZO/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:25:13-37
 307
 308        <activity
-308-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
+308-->[com.google.android.gms:play-services-base:18.5.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
 309            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-309-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+309-->[com.google.android.gms:play-services-base:18.5.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
 310            android:exported="false"
-310-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
+310-->[com.google.android.gms:play-services-base:18.5.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
 311            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-311-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
+311-->[com.google.android.gms:play-services-base:18.5.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
 312
 313        <meta-data
-313-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:21:9-23:69
+313-->[com.google.android.gms:play-services-basement:18.5.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:21:9-23:69
 314            android:name="com.google.android.gms.version"
-314-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:22:13-58
+314-->[com.google.android.gms:play-services-basement:18.5.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:22:13-58
 315            android:value="@integer/google_play_services_version" />
-315-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:23:13-66
+315-->[com.google.android.gms:play-services-basement:18.5.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:23:13-66
 316
 317        <receiver
-317-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+317-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
 318            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-318-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+318-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
 319            android:directBootAware="false"
-319-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+319-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
 320            android:enabled="true"
-320-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+320-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
 321            android:exported="true"
-321-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+321-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
 322            android:permission="android.permission.DUMP" >
-322-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+322-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
 323            <intent-filter>
-323-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+323-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
 324                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-324-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
-324-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+324-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+324-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
 325            </intent-filter>
 326            <intent-filter>
-326-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+326-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
 327                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-327-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
-327-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+327-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+327-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
 328            </intent-filter>
 329            <intent-filter>
-329-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+329-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
 330                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-330-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
-330-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+330-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+330-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
 331            </intent-filter>
 332            <intent-filter>
-332-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+332-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
 333                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-333-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
-333-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+333-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+333-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/ENZO/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
 334            </intent-filter>
 335        </receiver>
 336
 337        <service
-337-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
+337-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
 338            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-338-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
+338-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
 339            android:exported="false" >
-339-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
+339-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
 340            <meta-data
-340-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
+340-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
 341                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-341-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
+341-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
 342                android:value="cct" />
-342-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
+342-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
 343        </service>
 344        <service
-344-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
+344-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
 345            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-345-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
+345-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
 346            android:exported="false"
-346-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
+346-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
 347            android:permission="android.permission.BIND_JOB_SERVICE" >
-347-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
+347-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
 348        </service>
 349
 350        <receiver
-350-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
+350-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
 351            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-351-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
+351-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
 352            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
-352-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
+352-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/ENZO/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
 353        <activity
-353-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:14:9-18:65
+353-->[com.google.android.play:core-common:2.0.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:14:9-18:65
 354            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
-354-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:15:13-93
+354-->[com.google.android.play:core-common:2.0.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:15:13-93
 355            android:exported="false"
-355-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:16:13-37
+355-->[com.google.android.play:core-common:2.0.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:16:13-37
 356            android:stateNotNeeded="true"
-356-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:17:13-42
+356-->[com.google.android.play:core-common:2.0.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:17:13-42
 357            android:theme="@style/Theme.PlayCore.Transparent" />
-357-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:18:13-62
+357-->[com.google.android.play:core-common:2.0.3] /Users/ENZO/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:18:13-62
 358    </application>
 359
 360</manifest>
