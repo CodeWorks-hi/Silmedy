@@ -1,15 +1,15 @@
 [
     {
-        "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/drawable_wholebody.png.flat",
-        "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/drawable/wholebody.png"
+        "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/layout_item_member.xml.flat",
+        "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/item_member.xml"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/drawable_ic_addatt.png.flat",
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/drawable/ic_addatt.png"
     },
     {
-        "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/layout_item_member.xml.flat",
-        "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/item_member.xml"
+        "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/drawable_wholebody.png.flat",
+        "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/drawable/wholebody.png"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/drawable_scratch.png.flat",
@@ -18,10 +18,6 @@
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/xml_ic_launcher_foreground.xml.flat",
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/xml/ic_launcher_foreground.xml"
-    },
-    {
-        "merged": "com.example.silmedy.app-debug-48:/xml_bg_message_bubble_right.xml.flat",
-        "source": "com.example.silmedy.app-main-50:/xml/bg_message_bubble_right.xml"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/layout_activity_shooting.xml.flat",
@@ -350,6 +346,10 @@
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/drawable_bg_button_unselected.xml.flat",
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/drawable/bg_button_unselected.xml"
+    },
+    {
+        "merged": "com.example.silmedy.app-debug-48:/layout_activity_shooting.xml.flat",
+        "source": "com.example.silmedy.app-main-50:/layout/activity_shooting.xml"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-debug-48:/layout_activity_find_id.xml.flat",

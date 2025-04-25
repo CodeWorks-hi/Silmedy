@@ -4,12 +4,12 @@
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/activity_care_request.xml"
     },
     {
-        "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/activity_signup.xml",
-        "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/activity_signup.xml"
-    },
-    {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/activity_doctor_list.xml",
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/activity_doctor_list.xml"
+    },
+    {
+        "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/activity_signup.xml",
+        "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/activity_signup.xml"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/item_doctor.xml",
@@ -76,20 +76,12 @@
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/activity_body.xml"
     },
     {
-        "merged": "com.example.silmedy.app-mergeDebugResources-47:/layout/message_item_llama.xml",
-        "source": "com.example.silmedy.app-main-50:/layout/message_item_llama.xml"
-    },
-    {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/activity_head.xml",
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/activity_head.xml"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/item_member.xml",
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/item_member.xml"
-    },
-    {
-        "merged": "com.example.silmedy.app-mergeDebugResources-47:/layout/message_item_me.xml",
-        "source": "com.example.silmedy.app-main-50:/layout/message_item_me.xml"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/item_address.xml",
@@ -122,6 +114,10 @@
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/activity_leg.xml",
         "source": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-main-50:/layout/activity_leg.xml"
+    },
+    {
+        "merged": "com.example.silmedy.app-mergeDebugResources-47:/layout/activity_shooting.xml",
+        "source": "com.example.silmedy.app-main-50:/layout/activity_shooting.xml"
     },
     {
         "merged": "/Users/mi-yeonlim/.gradle/daemon/8.11.1/com.example.silmedy.app-mergeDebugResources-47:/layout/activity_main.xml",

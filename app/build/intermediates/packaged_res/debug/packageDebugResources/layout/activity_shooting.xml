@@ -95,10 +95,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="촬영된 사지은 저장되지 않으며, 진단목적에만 사용됩니다."
+            android:layout_marginBottom="24dp"
+            android:text="촬영된 사진은 저장되지 않으며, 진단목적에만 사용됩니다."
             android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:layout_marginBottom="24dp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="wrap_content"

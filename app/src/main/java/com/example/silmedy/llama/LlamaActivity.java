@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.silmedy.BuildConfig;
-import com.example.silmedy.llama.Message;
-import com.example.silmedy.adapter.MessageAdapter;
+
 import com.example.silmedy.R;
 
 import org.json.JSONArray;
@@ -44,9 +43,9 @@ public class LlamaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llama);
 
-        editMessage       = findViewById(R.id.editMessage);
-        btnSend           = findViewById(R.id.btnSend);
-        recyclerMessages  = findViewById(R.id.recyclerMessages);
+        editMessage      = findViewById(R.id.editMessage);
+        btnSend          = findViewById(R.id.btnSend);
+        recyclerMessages = findViewById(R.id.recyclerMessages);
 
         // 메시지 리스트 & 어댑터 초기화
         messageList = new ArrayList<>();
@@ -55,7 +54,6 @@ public class LlamaActivity extends AppCompatActivity {
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(adapter);
 
-        // 전송 버튼 클릭 → 메시지 추가 + API 요청
         btnSend.setOnClickListener(v -> {
             String userText = editMessage.getText().toString().trim();
             if (!userText.isEmpty()) {
@@ -73,6 +71,7 @@ public class LlamaActivity extends AppCompatActivity {
             }
         });
     }
+
 
     private void sendRequest(String messageText) {
         OkHttpClient client = new OkHttpClient();
