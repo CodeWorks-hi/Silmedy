@@ -34,6 +34,8 @@ local.properties
 
 # Android Studio files
 .idea/
+/build/reports/
+/**/build/reports/
 *.iml
 .cxx/
 .DS_Store
