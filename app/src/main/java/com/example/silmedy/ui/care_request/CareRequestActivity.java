@@ -250,7 +250,9 @@ public class CareRequestActivity extends AppCompatActivity {
                 String formattedTime = String.format("%02d:%02d",
                     cal.get(java.util.Calendar.HOUR_OF_DAY),
                     cal.get(java.util.Calendar.MINUTE));
-                slots.add(formattedTime);
+                if (!formattedTime.equals("12:00") && !formattedTime.equals("12:30")) {
+                    slots.add(formattedTime);
+                }
                 cal.add(java.util.Calendar.MINUTE, 30);
             }
         } catch (Exception e) {
