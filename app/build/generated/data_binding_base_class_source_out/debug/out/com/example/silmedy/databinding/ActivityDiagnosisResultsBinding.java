@@ -29,10 +29,19 @@ public final class ActivityDiagnosisResultsBinding implements ViewBinding {
   public final ImageView btnBack;
 
   @NonNull
-  public final Button buttonReservation;
+  public final Button btnReservation;
 
   @NonNull
-  public final ImageView imageDiagnosis;
+  public final TextView editMedical1;
+
+  @NonNull
+  public final TextView editMedical2;
+
+  @NonNull
+  public final ImageView imgDiagnosis;
+
+  @NonNull
+  public final ImageView imgResult;
 
   @NonNull
   public final TextView textPartDisease;
@@ -45,13 +54,17 @@ public final class ActivityDiagnosisResultsBinding implements ViewBinding {
 
   private ActivityDiagnosisResultsBinding(@NonNull ConstraintLayout rootView,
       @NonNull BottomNavigationView bottomNavigation, @NonNull ImageView btnBack,
-      @NonNull Button buttonReservation, @NonNull ImageView imageDiagnosis,
+      @NonNull Button btnReservation, @NonNull TextView editMedical1,
+      @NonNull TextView editMedical2, @NonNull ImageView imgDiagnosis, @NonNull ImageView imgResult,
       @NonNull TextView textPartDisease, @NonNull TextView textView2, @NonNull TextView title) {
     this.rootView = rootView;
     this.bottomNavigation = bottomNavigation;
     this.btnBack = btnBack;
-    this.buttonReservation = buttonReservation;
-    this.imageDiagnosis = imageDiagnosis;
+    this.btnReservation = btnReservation;
+    this.editMedical1 = editMedical1;
+    this.editMedical2 = editMedical2;
+    this.imgDiagnosis = imgDiagnosis;
+    this.imgResult = imgResult;
     this.textPartDisease = textPartDisease;
     this.textView2 = textView2;
     this.title = title;
@@ -96,15 +109,33 @@ public final class ActivityDiagnosisResultsBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.button_reservation;
-      Button buttonReservation = ViewBindings.findChildViewById(rootView, id);
-      if (buttonReservation == null) {
+      id = R.id.btnReservation;
+      Button btnReservation = ViewBindings.findChildViewById(rootView, id);
+      if (btnReservation == null) {
         break missingId;
       }
 
-      id = R.id.image_diagnosis;
-      ImageView imageDiagnosis = ViewBindings.findChildViewById(rootView, id);
-      if (imageDiagnosis == null) {
+      id = R.id.editMedical1;
+      TextView editMedical1 = ViewBindings.findChildViewById(rootView, id);
+      if (editMedical1 == null) {
+        break missingId;
+      }
+
+      id = R.id.editMedical2;
+      TextView editMedical2 = ViewBindings.findChildViewById(rootView, id);
+      if (editMedical2 == null) {
+        break missingId;
+      }
+
+      id = R.id.imgDiagnosis;
+      ImageView imgDiagnosis = ViewBindings.findChildViewById(rootView, id);
+      if (imgDiagnosis == null) {
+        break missingId;
+      }
+
+      id = R.id.imgResult;
+      ImageView imgResult = ViewBindings.findChildViewById(rootView, id);
+      if (imgResult == null) {
         break missingId;
       }
 
@@ -127,7 +158,8 @@ public final class ActivityDiagnosisResultsBinding implements ViewBinding {
       }
 
       return new ActivityDiagnosisResultsBinding((ConstraintLayout) rootView, bottomNavigation,
-          btnBack, buttonReservation, imageDiagnosis, textPartDisease, textView2, title);
+          btnBack, btnReservation, editMedical1, editMedical2, imgDiagnosis, imgResult,
+          textPartDisease, textView2, title);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

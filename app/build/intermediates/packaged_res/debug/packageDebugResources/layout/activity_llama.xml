@@ -24,6 +24,7 @@
             android:contentDescription="@string/btn_back"
             android:src="@drawable/ic_arrow_back" />
 
+
         <ImageView
             android:id="@+id/imageProfile"
             android:layout_width="40dp"

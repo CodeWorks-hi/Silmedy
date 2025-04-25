@@ -1,11 +1,11 @@
 package com.example.silmedy.llama;
 
 public class Message {
-    private String sender;
-    private String text;
-    private long timestamp;
-    private boolean isDateSeparator;
-    private String type;
+    public String sender;
+    public String text;
+    public long timestamp;
+    public boolean isDateSeparator;
+    public String type;
 
     public Message() { }
 

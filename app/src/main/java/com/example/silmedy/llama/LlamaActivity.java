@@ -4,136 +4,93 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.silmedy.BuildConfig;
-
 import com.example.silmedy.R;
+import com.example.silmedy.adapter.MessageAdapter;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
-
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
 
 public class LlamaActivity extends AppCompatActivity {
 
-    public EditText editMessage;
-    public ImageButton btnSend;
-    public RecyclerView recyclerMessages;
-    public MessageAdapter adapter;
-    public ArrayList<Message> messageList;
+    private EditText editMessage;
+    private ImageButton btnSend;
+    private RecyclerView recyclerMessages;
+    private MessageAdapter adapter;
+    private ArrayList<Message> messageList;
 
-    public final String nickname = "나";
-    public static final String API_KEY = BuildConfig.HUGGINGFACE_API_KEY;
-    public static final String API_URL = BuildConfig.HUGGINGFACE_API_URL;
+    private final String nickname = "나";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llama);
 
+        // 뒤로가기
+        ImageView btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
+
+        // 뷰 초기화
         editMessage      = findViewById(R.id.editMessage);
         btnSend          = findViewById(R.id.btnSend);
         recyclerMessages = findViewById(R.id.recyclerMessages);
 
-        // 메시지 리스트 & 어댑터 초기화
+        // 메시지 리스트 & 어댑터
         messageList = new ArrayList<>();
         adapter     = new MessageAdapter(this, messageList, nickname);
 
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(adapter);
 
+        // 전송 버튼
         btnSend.setOnClickListener(v -> {
             String userText = editMessage.getText().toString().trim();
-            if (!userText.isEmpty()) {
-                // 1) 사용자 메시지 추가
-                Message userMsg = new Message(nickname, userText, System.currentTimeMillis());
-                messageList.add(userMsg);
-                adapter.notifyItemInserted(messageList.size() - 1);
-                recyclerMessages.scrollToPosition(messageList.size() - 1);
+            if (userText.isEmpty()) return;
 
-                // 2) AI 요청
-                sendRequest(userText);
+            // 1) 사용자 메시지 추가
+            Message userMsg = new Message(nickname, userText, System.currentTimeMillis());
+            messageList.add(userMsg);
+            adapter.notifyItemInserted(messageList.size() - 1);
+            recyclerMessages.scrollToPosition(messageList.size() - 1);
 
-                // 3) 입력창 초기화
-                editMessage.setText("");
-            }
-        });
-    }
+            // 2) AI 응답 버블 미리 추가
+            Message aiMsg = new Message("AI", "", System.currentTimeMillis());
+            messageList.add(aiMsg);
+            int aiIndex = messageList.size() - 1;
+            adapter.notifyItemInserted(aiIndex);
+            recyclerMessages.scrollToPosition(aiIndex);
 
+            // 3) 스트리밍 호출 → 메서드 이름을 sendChatStream 으로 변경
+            LlamaPromptHelper.sendChatStream(userText, new LlamaPromptHelper.StreamCallback() {
+                StringBuilder buffer = new StringBuilder();
 
-    private void sendRequest(String messageText) {
-        OkHttpClient client = new OkHttpClient();
-        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-        try {
-            // 요청 페이로드 생성
-            JSONObject userObj = new JSONObject()
-                    .put("role", "user")
-                    .put("content", messageText);
-
-            JSONArray messagesArray = new JSONArray().put(userObj);
-
-            JSONObject bodyJson = new JSONObject()
-                    .put("provider", "novita")
-                    .put("model", "meta-llama/Llama-3.1-8B-Instruct")
-                    .put("messages", messagesArray)
-                    .put("max_tokens", 512);
-
-            RequestBody body = RequestBody.create(bodyJson.toString(), JSON);
-            Request request = new Request.Builder()
-                    .url(API_URL)
-                    .addHeader("Authorization", "Bearer " + API_KEY)
-                    .post(body)
-                    .build();
-
-            client.newCall(request).enqueue(new Callback() {
                 @Override
-                public void onFailure(Call call, IOException e) {
-                    Log.e("LlamaActivity", "API 요청 실패", e);
+                public void onChunk(String chunk) {
+                    buffer.append(chunk);
+                    runOnUiThread(() -> {
+                        aiMsg.setText(buffer.toString());
+                        adapter.notifyItemChanged(aiIndex);
+                        recyclerMessages.scrollToPosition(aiIndex);
+                    });
                 }
 
                 @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    if (!response.isSuccessful()) {
-                        Log.e("LlamaActivity", "API 응답 오류: " + response.code());
-                        return;
-                    }
-                    String resp = response.body().string();
-                    try {
-                        JSONObject json = new JSONObject(resp);
-                        JSONArray choices = json.getJSONArray("choices");
-                        String reply = choices
-                                .getJSONObject(0)
-                                .getJSONObject("message")
-                                .getString("content")
-                                .trim();
+                public void onComplete() {
+                    // 완료 시 추가 처리 필요하면 여기에
+                }
 
-                        // UI 스레드에서 AI 메시지 추가
-                        runOnUiThread(() -> {
-                            Message aiMsg = new Message("AI", reply, System.currentTimeMillis());
-                            messageList.add(aiMsg);
-                            adapter.notifyItemInserted(messageList.size() - 1);
-                            recyclerMessages.scrollToPosition(messageList.size() - 1);
-                        });
-                    } catch (Exception e) {
-                        Log.e("LlamaActivity", "응답 파싱 실패", e);
-                    }
+                @Override
+                public void onError(Exception e) {
+                    Log.e("LlamaActivity", "스트리밍 에러", e);
                 }
             });
-        } catch (Exception e) {
-            Log.e("LlamaActivity", "요청 구성 실패", e);
-        }
+
+            // 4) 입력창 초기화
+            editMessage.setText("");
+        });
     }
 }

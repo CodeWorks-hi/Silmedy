@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-103:12
-INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-103:12
-INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-103:12
-INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-103:12
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-127:12
+INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-127:12
+INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-127:12
+INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:1-127:12
 MERGED from [androidx.databinding:viewbinding:8.9.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/2c8e60e8eb6186a08fe25ed85ca09405/transformed/viewbinding-8.9.1/AndroidManifest.xml:2:1-7:12
 MERGED from [com.android.volley:volley:1.2.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/490c052f4e229f7579255a2238d6507a/transformed/volley-1.2.1/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.12.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/2a73c6aa624a52e662e5a60aa91b0ed4/transformed/material-1.12.0/AndroidManifest.xml:17:1-24:12
@@ -87,6 +87,9 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mi-yeonlim/.gradle/c
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/21bd489c3844eea2274e816b564d3655/transformed/tracing-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d85654ac2cee86fbb8a69533e64a486f/transformed/gifdecoder-4.16.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/61b4be325fcf6fcef0446da1b4a41ba6/transformed/exifinterface-1.3.6/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.sqlite:sqlite-framework:2.3.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/f5395c6abcb17e42f81f30657a011431/transformed/sqlite-framework-2.3.1/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.3.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/71afc56b7acf214ea3a6644a0bf16880/transformed/sqlite-2.3.1/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/296d6000a8cca09c04496931406f8faa/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/5853ce0e830a5ee404121a9665e964a2/transformed/firebase-components-18.0.0/AndroidManifest.xml:15:1-20:12
 MERGED from [com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:15:1-31:12
@@ -106,17 +109,18 @@ MERGED from [io.grpc:grpc-android:1.62.2] /Users/mi-yeonlim/.gradle/caches/8.11.
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3c5f3a2fff309032d7a5a852e61ccb8f/transformed/protolite-well-known-types-18.0.1/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:2:1-21:12
 	package
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:5:5-34
 		INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml
 	xmlns:tools
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:3:5-51
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:4:5-51
 	android:versionCode
 		INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:3:5-63
 uses-permission#android.permission.INTERNET
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:5:5-67
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:5-67
 MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:25:5-67
 MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:25:5-67
 MERGED from [com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:11:5-67
@@ -140,9 +144,9 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:22.4.0] /U
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:25:5-67
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:25:5-67
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:5:22-64
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:6:5-79
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:5-79
 MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:26:5-79
 MERGED from [com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:26:5-79
 MERGED from [com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:10:5-79
@@ -172,46 +176,42 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi
 MERGED from [io.grpc:grpc-android:1.62.2] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/fc4895844164381d0737c5d0ba683a72/transformed/grpc-android-1.62.2/AndroidManifest.xml:7:5-79
 MERGED from [io.grpc:grpc-android:1.62.2] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/fc4895844164381d0737c5d0ba683a72/transformed/grpc-android-1.62.2/AndroidManifest.xml:7:5-79
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:6:22-76
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:22-76
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:7:5-77
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:12:5-77
 MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:23:5-77
 MERGED from [com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:23:5-77
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:7:22-74
-uses-permission#android.permission.READ_MEDIA_IMAGES
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:5-76
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:8:22-73
-uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:5-80
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:9:22-77
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:10:5-79
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:10:22-76
-uses-permission#android.permission.ACCESS_COARSE_LOCATION
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:11:5-81
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:11:22-78
-uses-feature#android.hardware.camera
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:13:5-15:35
-	android:required
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:9-32
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:9-47
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:12:22-74
 uses-permission#android.permission.CAMERA
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:5-64
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:13:5-65
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:22-62
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:13:22-62
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:5-80
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:22-77
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:18:5-80
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:5-81
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:18:22-78
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:5-79
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:22-76
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:17:5-81
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:17:22-78
+uses-feature#android.hardware.camera
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:20:5-84
+	android:required
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:20:58-81
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:20:19-57
 application
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:21:5-101:19
-INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:21:5-101:19
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:22:5-126:19
+INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:22:5-126:19
 MERGED from [com.google.android.material:material:1.12.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/2a73c6aa624a52e662e5a60aa91b0ed4/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/2a73c6aa624a52e662e5a60aa91b0ed4/transformed/material-1.12.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/e39afe58037a9fcfba3c6cc96c7fbb4e/transformed/constraintlayout-2.2.1/AndroidManifest.xml:7:5-20
@@ -284,6 +284,8 @@ MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:23:5-53:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3311e0563a56be5e7f5db9540a026150/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3311e0563a56be5e7f5db9540a026150/transformed/startup-runtime-1.1.1/AndroidManifest.xml:25:5-31:19
+MERGED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:23:5-29:19
+MERGED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:23:5-29:19
 MERGED from [com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:21:5-29:19
 MERGED from [com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:21:5-29:19
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:27:5-35:19
@@ -296,170 +298,190 @@ MERGED from [com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradl
 MERGED from [com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:11:5-19:19
 	android:extractNativeLibs
 		INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml
+	android:roundIcon
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:31:9-53
+	android:icon
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:28:9-48
+	android:networkSecurityConfig
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:25:9-69
 	android:localeConfig
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:27:9-51
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:30:9-51
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:29:9-35
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:32:9-35
 	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:26:9-41
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:29:9-41
 	android:fullBackupContent
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:24:9-54
-	android:roundIcon
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:28:9-53
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:27:9-54
 	tools:targetApi
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:31:9-29
-	android:icon
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:25:9-48
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:34:9-29
 	android:allowBackup
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:22:9-35
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:23:9-35
 	android:theme
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:30:9-45
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:33:9-45
 	android:dataExtractionRules
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:23:9-65
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:26:9-65
+	android:usesCleartextTraffic
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:24:9-44
 meta-data#locale
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:34:9-36:34
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:37:9-63
 	android:value
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:36:13-31
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:37:42-60
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:35:13-34
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:37:20-41
 meta-data#com.kakao.sdk.AppKey
 ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:40:9-42:70
 	android:value
 		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:42:13-67
 	android:name
 		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:41:13-48
+activity#com.example.silmedy.MainActivity
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:45:9-53:20
+	android:label
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:48:13-45
+	android:exported
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:47:13-36
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:46:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:49:13-52:29
+action#android.intent.action.MAIN
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:50:17-69
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:50:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:17-77
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:27-74
 activity#com.example.silmedy.ui.auth.FindIdActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:44:9-47:62
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:56:9-59:62
 	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:47:13-59
-	android:exported
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:46:13-37
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:45:13-51
-activity#com.example.silmedy.ui.auth.CheckIdentityActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:48:9-51:69
-	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:13-66
-	android:exported
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:50:13-37
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:49:13-58
-activity#com.example.silmedy.ui.open_api.PostalCodeActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:52:9-55:66
-	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:55:13-63
-	android:exported
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:54:13-37
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:53:13-59
-activity#com.example.silmedy.ui.clinic.ClinicHomeActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:56:9-59:48
-	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:59:13-45
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:59:13-59
 	android:exported
 		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:58:13-37
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:57:13-57
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:57:13-51
+activity#com.example.silmedy.ui.auth.CheckIdentityActivity
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:60:9-63:69
+	android:label
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:63:13-66
+	android:exported
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:62:13-37
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:61:13-58
+activity#com.example.silmedy.ui.open_api.PostalCodeActivity
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:66:9-69:66
+	android:label
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:69:13-63
+	android:exported
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:68:13-37
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:67:13-59
+activity#com.example.silmedy.ui.clinic.ClinicHomeActivity
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:72:9-75:48
+	android:label
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:75:13-45
+	android:exported
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:74:13-37
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:73:13-57
 activity#com.example.silmedy.ui.auth.LoginActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:60:9-69:20
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:78:9-81:60
 	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:63:13-57
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:81:13-57
 	android:exported
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:62:13-36
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:80:13-37
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:61:13-50
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:64:13-68:29
-action#android.intent.action.MAIN
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:65:17-69
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:65:25-66
-category#android.intent.category.LAUNCHER
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:67:17-77
-	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:67:27-74
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:79:13-50
 activity#com.example.silmedy.ui.care_request.SymptomChoiceActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:70:9-75
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:84:9-75
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:70:19-72
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:84:19-72
 activity#com.example.silmedy.ui.care_request.DoctorListActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:71:9-72
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:9-72
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:71:19-69
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:19-69
 activity#com.example.silmedy.ui.care_request.CareRequestActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:72:9-73
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:9-73
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:72:19-70
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:19-70
 activity#com.example.silmedy.ui.care_request.CareRequestCompleteActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:73:9-81
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:9-81
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:73:19-78
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:19-78
 activity#com.example.silmedy.ui.open_api.MapActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:74:9-61
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:90:9-61
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:74:19-58
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:90:19-58
 activity#com.example.silmedy.ui.photo_clinic.BodyMain
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:75:9-62
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:91:9-62
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:75:19-59
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:91:19-59
 activity#com.example.silmedy.ui.photo_clinic.ArmActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:76:9-65
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:9-65
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:76:19-62
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:19-62
 activity#com.example.silmedy.ui.photo_clinic.BodyActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:77:9-66
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:9-66
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:77:19-63
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:19-63
 activity#com.example.silmedy.ui.photo_clinic.HeadActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:78:9-66
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:9-66
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:78:19-63
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:19-63
 activity#com.example.silmedy.ui.photo_clinic.LegActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:79:9-65
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:9-65
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:79:19-62
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:19-62
 activity#com.example.silmedy.ui.photo_clinic.ShootingActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:80:9-70
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:9-70
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:80:19-67
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:19-67
+activity#com.example.silmedy.ui.photo_clinic.DiagnosisResultsActivity
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:9-78
+	android:name
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:19-75
 activity#com.example.silmedy.llama.LlamaActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:81:9-57
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:100:9-103:53
+	android:label
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:103:13-50
+	android:exported
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:102:13-37
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:81:19-54
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:101:13-48
 activity#com.example.silmedy.ui.auth.SignupActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:83:9-86:61
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:106:9-109:61
 	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:13-58
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:109:13-58
 	android:exported
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:13-37
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:108:13-37
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:84:13-51
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:107:13-51
 activity#com.example.silmedy.ui.auth.FindPasswordActivity
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:9-90:68
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:110:9-113:68
 	android:label
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:90:13-65
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:113:13-65
 	android:exported
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:89:13-37
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:112:13-37
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:88:13-57
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:111:13-57
 provider#androidx.core.content.FileProvider
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:9-100:20
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:116:9-124:20
 	android:grantUriPermissions
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:13-47
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:120:13-47
 	android:authorities
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:13-67
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:118:13-67
 	android:exported
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:13-37
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:119:13-37
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:13-62
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:117:13-62
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:13-99:54
+ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:121:13-123:54
 	android:resource
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:99:17-51
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:123:17-51
 	android:name
-		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:98:17-67
+		ADDED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:122:17-67
 uses-sdk
 INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml
@@ -630,6 +652,12 @@ MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/mi-yeonlim/.gra
 MERGED from [com.github.bumptech.glide:gifdecoder:4.16.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d85654ac2cee86fbb8a69533e64a486f/transformed/gifdecoder-4.16.0/AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/61b4be325fcf6fcef0446da1b4a41ba6/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.exifinterface:exifinterface:1.3.6] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/61b4be325fcf6fcef0446da1b4a41ba6/transformed/exifinterface-1.3.6/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:21:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.3.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/f5395c6abcb17e42f81f30657a011431/transformed/sqlite-framework-2.3.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite-framework:2.3.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/f5395c6abcb17e42f81f30657a011431/transformed/sqlite-framework-2.3.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.3.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/71afc56b7acf214ea3a6644a0bf16880/transformed/sqlite-2.3.1/AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.3.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/71afc56b7acf214ea3a6644a0bf16880/transformed/sqlite-2.3.1/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/296d6000a8cca09c04496931406f8faa/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/296d6000a8cca09c04496931406f8faa/transformed/localbroadcastmanager-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-components:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/5853ce0e830a5ee404121a9665e964a2/transformed/firebase-components-18.0.0/AndroidManifest.xml:18:5-44
@@ -1118,6 +1146,16 @@ action#androidx.profileinstaller.action.BENCHMARK_OPERATION
 ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
 	android:name
 		ADDED from [androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+service#androidx.room.MultiInstanceInvalidationService
+ADDED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:24:9-28:63
+	android:exported
+		ADDED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:27:13-37
+	tools:ignore
+		ADDED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:28:13-60
+	android:directBootAware
+		ADDED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:26:13-43
+	android:name
+		ADDED from [androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:25:13-74
 meta-data#com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar
 ADDED from [com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
 	android:value

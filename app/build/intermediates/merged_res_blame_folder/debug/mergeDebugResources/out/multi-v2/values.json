@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.silmedy.app-mergeDebugResources-46:/values/values.xml",
+            "outputFile": "com.example.silmedy.app-mergeDebugResources-49:/values/values.xml",
             "map": [
                 {
                     "source": "/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/res/values/themes.xml",

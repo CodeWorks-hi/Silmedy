@@ -126,6 +126,7 @@ id btnNeck
 id btnNext
 id btnNose
 id btnRash
+id btnReservation
 id btnReserve
 id btnResult
 id btnRightArm
@@ -141,7 +142,6 @@ id btnTomorrow
 id btnUpperArm
 id btnVerify
 id btnZipSearch
-id button_reservation
 id cardCold
 id cardDiabetes
 id cardHeadache
@@ -167,6 +167,8 @@ id editCode
 id editConfirmPassword
 id editDetailAddress
 id editEmail
+id editMedical1
+id editMedical2
 id editMessage
 id editName
 id editNewPassword
@@ -179,7 +181,8 @@ id handImage
 id handLayout
 id imageProfile
 id imageView
-id image_diagnosis
+id imgDiagnosis
+id imgResult
 id inputAddress
 id inputBlock
 id inputConfirmPasswordLayout
@@ -399,4 +402,5 @@ xml ic_launcher_background
 xml ic_launcher_foreground
 xml locales_config
 xml menu_bottom_nav
+xml network_security_config
 xml selector_bottom_nav

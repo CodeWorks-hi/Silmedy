@@ -87,4 +87,6 @@ dependencies {
     implementation("com.android.volley:volley:1.2.1")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation ("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation ("androidx.room:room-runtime:2.5.1")
+    implementation ("com.google.firebase:firebase-firestore:24.4.5")
 }

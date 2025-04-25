@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-    <!-- Firebase 권한 -->
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.silmedy">
+
+    <!-- 네트워크 권한 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 기타 권한들 -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- 카메라 필수 기기 설정 -->
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
 
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/silmedy_circle"
@@ -30,17 +33,26 @@
         android:theme="@style/Theme.Silmedy"
         tools:targetApi="31">
 
-        <!-- Default locale for Android 13+ -->
-        <meta-data
-            android:name="locale"
-            android:value="ko" />
+        <!-- Android 13+ 기본 로케일 -->
+        <meta-data android:name="locale" android:value="ko" />
 
-
-        <!-- Kakao SDK AppKey 등록 -->
+        <!-- Kakao SDK AppKey -->
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_key_manifest_placeholder" />
 
+        <!-- ▶▶▶ 런처 액티비티: MainActivity ◀◀◀ -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 인증 & 아이디 찾기 -->
         <activity
             android:name=".ui.auth.FindIdActivity"
             android:exported="false"
@@ -49,28 +61,32 @@
             android:name=".ui.auth.CheckIdentityActivity"
             android:exported="false"
             android:label="@string/title_activity_check_identity" />
+
+        <!-- 우편번호 조회 -->
         <activity
             android:name=".ui.open_api.PostalCodeActivity"
             android:exported="false"
             android:label="@string/title_activity_postal_code" />
+
+        <!-- 의료 홈 -->
         <activity
             android:name=".ui.clinic.ClinicHomeActivity"
             android:exported="false"
-            android:label="@string/app_name" /> <!-- 앱 시작 액티비티: 로그인 화면 -->
+            android:label="@string/app_name" />
+
+        <!-- 로그인 (이제 런처가 아님) -->
         <activity
             android:name=".ui.auth.LoginActivity"
-            android:exported="true"
-            android:label="@string/title_activity_login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"
+            android:label="@string/title_activity_login" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!-- 진료 요청 흐름 -->
         <activity android:name=".ui.care_request.SymptomChoiceActivity" />
         <activity android:name=".ui.care_request.DoctorListActivity" />
         <activity android:name=".ui.care_request.CareRequestActivity" />
         <activity android:name=".ui.care_request.CareRequestCompleteActivity" />
+
+        <!-- 지도, 사진 진료 흐름 -->
         <activity android:name=".ui.open_api.MapActivity" />
         <activity android:name=".ui.photo_clinic.BodyMain" />
         <activity android:name=".ui.photo_clinic.ArmActivity" />
@@ -79,8 +95,14 @@
         <activity android:name=".ui.photo_clinic.LegActivity" />
         <activity android:name=".ui.photo_clinic.ShootingActivity" />
         <activity android:name=".ui.photo_clinic.DiagnosisResultsActivity" />
-        <activity android:name=".llama.LlamaActivity" />
 
+        <!-- AI 대화 화면 -->
+        <activity
+            android:name=".llama.LlamaActivity"
+            android:exported="false"
+            android:label="@string/home_ai_title" />
+
+        <!-- 회원가입 / 비밀번호 찾기 -->
         <activity
             android:name=".ui.auth.SignupActivity"
             android:exported="false"
@@ -90,6 +112,7 @@
             android:exported="false"
             android:label="@string/title_activity_find_password" />
 
+        <!-- FileProvider (사진 업로드 등) -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.silmedy.fileprovider"
@@ -99,6 +122,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-    </application>
 
+    </application>
 </manifest>

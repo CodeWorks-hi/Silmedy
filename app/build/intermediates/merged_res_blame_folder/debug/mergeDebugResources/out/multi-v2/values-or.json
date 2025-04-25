@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.silmedy.app-mergeDebugResources-46:/values-or/values-or.xml",
+            "outputFile": "com.example.silmedy.app-mergeDebugResources-49:/values-or/values-or.xml",
             "map": [
                 {
                     "source": "/Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/843f3c10ffc79b54b856979c8c5c6e95/transformed/browser-1.4.0/res/values-or/values-or.xml",

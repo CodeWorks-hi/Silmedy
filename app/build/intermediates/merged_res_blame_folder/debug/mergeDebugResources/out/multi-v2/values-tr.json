@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.silmedy.app-mergeDebugResources-46:/values-tr/values-tr.xml",
+            "outputFile": "com.example.silmedy.app-mergeDebugResources-49:/values-tr/values-tr.xml",
             "map": [
                 {
                     "source": "/Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/res/values-tr/values.xml",

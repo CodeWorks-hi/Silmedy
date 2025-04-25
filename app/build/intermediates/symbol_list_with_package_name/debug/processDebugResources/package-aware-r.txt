@@ -3385,6 +3385,7 @@ id btnNeck
 id btnNext
 id btnNose
 id btnRash
+id btnReservation
 id btnReserve
 id btnResult
 id btnRightArm
@@ -3401,7 +3402,6 @@ id btnUpperArm
 id btnVerify
 id btnZipSearch
 id buttonPanel
-id button_reservation
 id cache_measures
 id callMeasure
 id cancel_button
@@ -3499,6 +3499,8 @@ id editCode
 id editConfirmPassword
 id editDetailAddress
 id editEmail
+id editMedical1
+id editMedical2
 id editMessage
 id editName
 id editNewPassword
@@ -3564,7 +3566,8 @@ id ignoreRequest
 id image
 id imageProfile
 id imageView
-id image_diagnosis
+id imgDiagnosis
+id imgResult
 id immediateStop
 id included
 id indeterminate
@@ -5740,4 +5743,5 @@ xml ic_launcher_foreground
 xml image_share_filepaths
 xml locales_config
 xml menu_bottom_nav
+xml network_security_config
 xml selector_bottom_nav

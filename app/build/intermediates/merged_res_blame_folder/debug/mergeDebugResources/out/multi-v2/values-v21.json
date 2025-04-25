@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.silmedy.app-mergeDebugResources-46:/values-v21/values-v21.xml",
+            "outputFile": "com.example.silmedy.app-mergeDebugResources-49:/values-v21/values-v21.xml",
             "map": [
                 {
                     "source": "/Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/res/values-v21/values-v21.xml",

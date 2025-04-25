@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.silmedy.app-mergeDebugResources-46:/values-et/values-et.xml",
+            "outputFile": "com.example.silmedy.app-mergeDebugResources-49:/values-et/values-et.xml",
             "map": [
                 {
                     "source": "/Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/res/values-et/values-et.xml",

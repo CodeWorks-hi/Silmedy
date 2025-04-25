@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.silmedy.app-mergeDebugResources-46:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "com.example.silmedy.app-mergeDebugResources-49:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "/Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/res/values-en-rGB/values.xml",
