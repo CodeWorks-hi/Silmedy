@@ -20,7 +20,7 @@ public class HeadActivity extends AppCompatActivity {
         setContentView(R.layout.activity_head);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("userName");
+        String username = intent.getStringExtra("user_name");
 
         btnBack = findViewById(R.id.btnBack);
 
@@ -28,7 +28,7 @@ public class HeadActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(HeadActivity.this, BodyMain.class);
-            backIntent.putExtra("userName", username);
+            backIntent.putExtra("user_name", username);
             startActivity(backIntent);
             finish();
         });

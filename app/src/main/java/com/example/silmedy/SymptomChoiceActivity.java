@@ -20,7 +20,7 @@ public class SymptomChoiceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_symptom_choice);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("userName");
+        String username = intent.getStringExtra("user_name");
 
         cardCold = findViewById(R.id.cardCold);
         cardIndigestion = findViewById(R.id.cardIndigestion);
@@ -45,7 +45,7 @@ public class SymptomChoiceActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(SymptomChoiceActivity.this, ClinicHomeActivity.class);
-            backIntent.putExtra("userName", username);
+            backIntent.putExtra("user_name", username);
             startActivity(backIntent);
             finish();
         });
@@ -54,7 +54,7 @@ public class SymptomChoiceActivity extends AppCompatActivity {
     private void moveToDoctorList(String symptom, String username) {
         Intent intent = new Intent(SymptomChoiceActivity.this, DoctorListActivity.class);
         intent.putExtra("symptom", symptom);
-        intent.putExtra("userName", username);
+        intent.putExtra("user_name", username);
         startActivity(intent);
     }
 }
