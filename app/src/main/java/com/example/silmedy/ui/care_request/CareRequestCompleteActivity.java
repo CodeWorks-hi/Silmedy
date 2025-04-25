@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -75,8 +76,8 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
 
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(CareRequestCompleteActivity.this, ClinicHomeActivity.class);
-            intent.putExtra("user_name", userName);
-            intent.putExtra("email", email);
+            backIntent.putExtra("user_name", userName);
+            backIntent.putExtra("email", email);
             startActivity(backIntent);
             finish();
         });

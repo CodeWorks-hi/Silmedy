@@ -41,6 +41,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         textGreeting = findViewById(R.id.text_greeting);
         String username = intent.getStringExtra("user_name");
         String email = intent.getStringExtra("email");
+        Log.d("ClinicHome", "userName: " + username + ", email: " + email);
         if (username != null && !username.isEmpty()) {
             textGreeting.setText(String.format("%s님, 환영합니다.", username));
         }
