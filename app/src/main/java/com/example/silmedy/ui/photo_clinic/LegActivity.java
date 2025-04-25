@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,7 +14,7 @@ public class LegActivity extends AppCompatActivity {
 
     ImageView btnBack;
 
-    View btnThings, btnCalf, btnShin, btnFoot;
+    View btnThighs, btnCalf, btnShin, btnFoot;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -25,16 +24,19 @@ public class LegActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
+        String email = intent.getStringExtra("email");
 
         btnBack = findViewById(R.id.btnBack);
-        btnThings = findViewById(R.id.btnThings);
+        btnThighs = findViewById(R.id.btnThighs);
         btnCalf = findViewById(R.id.btnCalf);
         btnShin = findViewById(R.id.btnShin);
         btnFoot = findViewById(R.id.btnFoot);
 
-        btnThings.setOnClickListener(v -> {
+        btnThighs.setOnClickListener(v -> {
             Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "허벅지");
             startActivity(shootIntent);
             finish();
         });
@@ -42,6 +44,8 @@ public class LegActivity extends AppCompatActivity {
         btnCalf.setOnClickListener(v -> {
             Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "무릎");
             startActivity(shootIntent);
             finish();
         });
@@ -49,6 +53,8 @@ public class LegActivity extends AppCompatActivity {
         btnShin.setOnClickListener(v -> {
             Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "종아리");
             startActivity(shootIntent);
             finish();
         });
@@ -56,6 +62,8 @@ public class LegActivity extends AppCompatActivity {
         btnFoot.setOnClickListener(v -> {
             Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "발");
             startActivity(shootIntent);
             finish();
         });
@@ -63,6 +71,7 @@ public class LegActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(LegActivity.this, BodyMain.class);
             backIntent.putExtra("user_name", username);
+            backIntent.putExtra("email", email);
             startActivity(backIntent);
             finish();
         });

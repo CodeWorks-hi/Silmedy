@@ -37,10 +37,15 @@
 
     <color name="filter_button_text">#333333</color>
 
+    <color name="light_purple">#D1C4E9</color> <!-- 연한 보라 -->
+    <color name="deep_purple">#673AB7</color> <!-- 진한 보라 -->
+
+    <color name="light_blue">#BBDEFB</color>
+    <color name="deep_blue">#1976D2</color>
+
     <!-- 채팅 -->
 
-
-
-
+    <color name="colorPrimaryLight">#CCE4F6</color> <!-- 연한 파란색 -->
+    <color name="colorPrimaryDark">#1976D2</color> <!-- 진한 파란색 -->
 
 </resources>

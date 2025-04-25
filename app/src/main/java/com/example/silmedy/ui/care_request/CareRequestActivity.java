@@ -71,6 +71,8 @@ public class CareRequestActivity extends AppCompatActivity {
 
         // 의사 정보 인텐트 처리
         Intent intent = getIntent();
+        String username = intent.getStringExtra("user_name");
+        String symptom = intent.getStringExtra("symptom");
         doctorNameStr = intent.getStringExtra("doctor_name");
         doctorClinicStr = intent.getStringExtra("doctor_clinic");
         Serializable serializedMap = intent.getSerializableExtra("doctor_time");
@@ -108,9 +110,10 @@ public class CareRequestActivity extends AppCompatActivity {
             if (selectedTime != null) {
                 boolean signRequested = checkSignLanguage.isChecked();
                 Intent confirmIntent = new Intent(CareRequestActivity.this, CareRequestCompleteActivity.class);
+                confirmIntent.putExtra("user_name", username);
+                confirmIntent.putExtra("symptom", symptom);
                 confirmIntent.putExtra("doctor_name", doctorNameStr);
                 confirmIntent.putExtra("doctor_clinic", doctorClinicStr);
-                confirmIntent.putExtra("doctor_time", doctorTimeStr);
                 confirmIntent.putExtra("selected_time", selectedTime);
                 confirmIntent.putExtra("selected_day", selectedDay);
                 confirmIntent.putExtra("sign_language_requested", signRequested);
@@ -148,8 +151,9 @@ public class CareRequestActivity extends AppCompatActivity {
             timeButton.setTextColor(getResources().getColor(R.color.white));
 
             GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
-            gridParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
+            gridParams.width = 0;
             gridParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+            gridParams.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
             gridParams.setMargins(8, 8, 8, 8);
             view.setLayoutParams(gridParams);
 
@@ -167,7 +171,7 @@ public class CareRequestActivity extends AppCompatActivity {
                         View child = timeButtonContainer.getChildAt(i);
                         Button otherButton = child.findViewById(R.id.timeButton);
                         if (otherButton != null) {
-                            otherButton.setSelected(false);
+                            otherButton.setSelected(false); // 이게 핵심
                         }
                     }
                     timeButton.setSelected(true);

@@ -22,6 +22,7 @@ public class HeadActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
+        String email = intent.getStringExtra("email");
 
         btnBack = findViewById(R.id.btnBack);
         btnEyes = findViewById(R.id.btnEyes);
@@ -32,6 +33,8 @@ public class HeadActivity extends AppCompatActivity {
         btnEyes.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "눈");
             startActivity(shootIntent);
             finish();
         });
@@ -39,6 +42,8 @@ public class HeadActivity extends AppCompatActivity {
         btnNose.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "코");
             startActivity(shootIntent);
             finish();
         });
@@ -46,6 +51,8 @@ public class HeadActivity extends AppCompatActivity {
         btnMouth.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "입");
             startActivity(shootIntent);
             finish();
         });
@@ -53,6 +60,8 @@ public class HeadActivity extends AppCompatActivity {
         btnNeck.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "목");
             startActivity(shootIntent);
             finish();
         });
@@ -60,6 +69,7 @@ public class HeadActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(HeadActivity.this, BodyMain.class);
             backIntent.putExtra("user_name", username);
+            backIntent.putExtra("email", email);
             startActivity(backIntent);
             finish();
         });

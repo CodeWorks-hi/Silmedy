@@ -22,6 +22,7 @@ public class ArmActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
+        String email = intent.getStringExtra("email");
 
         // 이미지 및 버튼 참조
         btnBack = findViewById(R.id.btnBack);
@@ -34,6 +35,8 @@ public class ArmActivity extends AppCompatActivity {
         btnUpperArm.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "팔");
             startActivity(shootIntent);
             finish();
         });
@@ -41,6 +44,8 @@ public class ArmActivity extends AppCompatActivity {
         btnLowerArm.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "팔");
             startActivity(shootIntent);
             finish();
         });
@@ -48,6 +53,8 @@ public class ArmActivity extends AppCompatActivity {
         btnHand.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "손");
             startActivity(shootIntent);
             finish();
         });
@@ -55,17 +62,17 @@ public class ArmActivity extends AppCompatActivity {
         btnShoulder.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
+            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("part", "어깨");
             startActivity(shootIntent);
             finish();
         });
 
 
-
-
-
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(ArmActivity.this, BodyMain.class);
             backIntent.putExtra("user_name", username);
+            backIntent.putExtra("email", email);
             startActivity(backIntent);
             finish();
         });

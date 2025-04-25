@@ -115,6 +115,7 @@ public class LoginActivity extends AppCompatActivity {
                 String username = doc.getString("name"); // Firestore에 저장된 사용자 이름
                 Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
                 intent.putExtra("user_name", username);  // 사용자 이름 전달
+                intent.putExtra("email", email);
                 startActivity(intent);
                 finish();
             }

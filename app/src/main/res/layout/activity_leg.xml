@@ -43,7 +43,7 @@
             android:src="@drawable/leg_2" />
 
         <View
-            android:id="@+id/btnThings"
+            android:id="@+id/btnThighs"
             android:layout_width="284dp"
             android:layout_height="88dp"
             android:layout_gravity="center_horizontal|top"
