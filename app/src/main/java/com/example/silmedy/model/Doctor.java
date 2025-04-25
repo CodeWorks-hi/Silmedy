@@ -11,20 +11,26 @@ import java.io.Serializable;
  */
 public class Doctor implements Serializable {
 
+    public int license_number; // 의사 면허 번호
     public int imageResId;       // 이미지 리소스 ID
     public String name;          // 이름
     public String center;        // 소속 보건소
+    public String department;    // 진료과목
     public Map<String, String> schedule;      // 진료 가능 시간
 
     // 생성자
-    public Doctor(int imageResId, String name, String center, Map schedule) {
+    public Doctor(int license_number, int imageResId, String name, String center,
+                  String department, Map schedule) {
+        this.license_number = license_number;
         this.imageResId = imageResId;
         this.name = name;
         this.center = center;
+        this.department = department;
         this.schedule = schedule;
     }
 
     // getter
+    public int getLicenseNumber() {return license_number; }
     public int getImageResId() {
         return imageResId;
     }
@@ -36,8 +42,7 @@ public class Doctor implements Serializable {
     public String getCenter() {
         return center;
     }
+    public String getDepartment() { return department; }
 
-    public Map getSchedule() {
-        return schedule;
-    }
+    public Map getSchedule() {return schedule; }
 }

@@ -96,9 +96,12 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         // 아이템 클릭 시 CareRequestActivity로 이동
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), CareRequestActivity.class);
+            intent.putExtra("license_number", doctor.getLicenseNumber());
             intent.putExtra("doctor_name", doctor.getName());
             intent.putExtra("doctor_clinic", doctor.getCenter());
             intent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
+            intent.putExtra("doctor_image", doctor.getImageResId());
+            intent.putExtra("department", doctor.getDepartment());
             v.getContext().startActivity(intent);
         });
     }

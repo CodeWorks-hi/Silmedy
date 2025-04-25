@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
 
+import java.util.ArrayList;
+
 public class BodyActivity extends AppCompatActivity {
 
     ImageView btnBack;
@@ -32,7 +34,9 @@ public class BodyActivity extends AppCompatActivity {
             Intent shootIntent = new Intent(BodyActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
             shootIntent.putExtra("email", email);
-            shootIntent.putExtra("part", "가슴");
+            ArrayList<String> parts = new ArrayList<>();
+            parts.add("가슴");
+            shootIntent.putExtra("part", parts);
             startActivity(shootIntent);
             finish();
         });
@@ -41,7 +45,9 @@ public class BodyActivity extends AppCompatActivity {
             Intent shootIntent = new Intent(BodyActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
             shootIntent.putExtra("email", email);
-            shootIntent.putExtra("part", "복부");
+            ArrayList<String> parts = new ArrayList<>();
+            parts.add("복부");
+            shootIntent.putExtra("part", parts);
             startActivity(shootIntent);
             finish();
         });
