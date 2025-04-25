@@ -53,8 +53,11 @@ public class DoctorListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_list);
 
         Intent intent = getIntent();
-        String symptom = intent.getStringExtra("symptom");
+        ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
+        ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
         String username = intent.getStringExtra("user_name");
+        String email = intent.getStringExtra("email");
+        String department = intent.getStringExtra("department");
 
         btnBack = findViewById(R.id.btnBack);
         locationText = findViewById(R.id.locationText);
@@ -92,14 +95,18 @@ public class DoctorListActivity extends AppCompatActivity {
         schedule_lee.put("수", "09:00-18:00");
         schedule_lee.put("목", "09:00-18:00");
         schedule_lee.put("금", "09:00-18:00");
-        doctorList.add(new Doctor(R.drawable.doc, "김정훈", "분당구보건소", schedule_kim));
-        doctorList.add(new Doctor(R.drawable.doc, "박지윤", "수정구보건소", schedule_park));
-        doctorList.add(new Doctor(R.drawable.doc, "이상우", "중원구보건소", schedule_lee));
+        doctorList.add(new Doctor(123456, R.drawable.doc, "김정훈", "분당구보건소", "내과", schedule_kim));
+        doctorList.add(new Doctor(234567, R.drawable.doc, "박지윤", "수정구보건소", "내과", schedule_park));
+        doctorList.add(new Doctor(345678, R.drawable.doc, "이상우", "중원구보건소", "내과", schedule_lee));
         adapter = new DoctorAdapter(doctorList, doctor -> {
             Intent bookIntent = new Intent(DoctorListActivity.this, CareRequestActivity.class);
             bookIntent.putExtra("user_name", username);
+            bookIntent.putExtra("email", email);
+            bookIntent.putExtra("part", part);
             bookIntent.putExtra("symptom", symptom);
+            bookIntent.putExtra("license_number", doctor.getLicenseNumber());
             bookIntent.putExtra("doctor_name", doctor.getName());
+            bookIntent.putExtra("doctor_department", doctor.getDepartment());
             bookIntent.putExtra("doctor_clinic", doctor.getCenter());
             bookIntent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
             bookIntent.putExtra("doctor_image", doctor.getImageResId());
@@ -114,6 +121,9 @@ public class DoctorListActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
             backIntent.putExtra("user_name", username);
+            backIntent.putExtra("email", email);
+            backIntent.putExtra("part", part);
+            backIntent.putExtra("symptom", symptom);
             startActivity(backIntent);
             finish();
         });

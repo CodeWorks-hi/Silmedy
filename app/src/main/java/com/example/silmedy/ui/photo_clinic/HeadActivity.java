@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
 
+import java.util.ArrayList;
+
 public class HeadActivity extends AppCompatActivity {
 
     ImageView btnBack;
@@ -34,7 +36,9 @@ public class HeadActivity extends AppCompatActivity {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
             shootIntent.putExtra("email", email);
-            shootIntent.putExtra("part", "눈");
+            ArrayList<String> parts = new ArrayList<>();
+            parts.add("눈");
+            shootIntent.putExtra("part", parts);
             startActivity(shootIntent);
             finish();
         });
@@ -43,7 +47,9 @@ public class HeadActivity extends AppCompatActivity {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
             shootIntent.putExtra("email", email);
-            shootIntent.putExtra("part", "코");
+            ArrayList<String> parts = new ArrayList<>();
+            parts.add("코");
+            shootIntent.putExtra("part", parts);
             startActivity(shootIntent);
             finish();
         });
@@ -52,7 +58,9 @@ public class HeadActivity extends AppCompatActivity {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
             shootIntent.putExtra("email", email);
-            shootIntent.putExtra("part", "입");
+            ArrayList<String> parts = new ArrayList<>();
+            parts.add("입");
+            shootIntent.putExtra("part", parts);
             startActivity(shootIntent);
             finish();
         });
@@ -61,8 +69,9 @@ public class HeadActivity extends AppCompatActivity {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
             shootIntent.putExtra("email", email);
-            shootIntent.putExtra("part", "목");
-            startActivity(shootIntent);
+            ArrayList<String> parts = new ArrayList<>();
+            parts.add("목");
+            shootIntent.putExtra("part", parts);startActivity(shootIntent);
             finish();
         });
 

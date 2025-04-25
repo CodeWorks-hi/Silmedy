@@ -9,17 +9,13 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.silmedy.R;
-import com.example.silmedy.adapter.TimeSlotAdapter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -63,6 +59,9 @@ public class CareRequestActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
             backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
+            backIntent.putExtra("email", getIntent().getStringExtra("email"));
+            backIntent.putExtra("part", getIntent().getSerializableExtra("part"));
+            backIntent.putExtra("symptom", getIntent().getSerializableExtra("symptom"));
             startActivity(backIntent);
             finish();
         });
@@ -72,7 +71,10 @@ public class CareRequestActivity extends AppCompatActivity {
         // 의사 정보 인텐트 처리
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String symptom = intent.getStringExtra("symptom");
+        String email = intent.getStringExtra("email");
+        ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
+        ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
+        String license_number = intent.getStringExtra("license_number");
         doctorNameStr = intent.getStringExtra("doctor_name");
         doctorClinicStr = intent.getStringExtra("doctor_clinic");
         Serializable serializedMap = intent.getSerializableExtra("doctor_time");
@@ -81,6 +83,7 @@ public class CareRequestActivity extends AppCompatActivity {
             doctorTimeStr = buildScheduleTextFromMap(doctorTimeMapFormatted);
         }
         doctorImageResId = intent.getIntExtra("doctor_image", R.drawable.doc);
+        String department = intent.getStringExtra("doctor_department");
 
         doctorName.setText(doctorNameStr);
         doctorClinic.setText(doctorClinicStr);
@@ -111,9 +114,13 @@ public class CareRequestActivity extends AppCompatActivity {
                 boolean signRequested = checkSignLanguage.isChecked();
                 Intent confirmIntent = new Intent(CareRequestActivity.this, CareRequestCompleteActivity.class);
                 confirmIntent.putExtra("user_name", username);
+                confirmIntent.putExtra("email", email);
+                confirmIntent.putExtra("part", part);
                 confirmIntent.putExtra("symptom", symptom);
+                confirmIntent.putExtra("license_number", license_number);
                 confirmIntent.putExtra("doctor_name", doctorNameStr);
                 confirmIntent.putExtra("doctor_clinic", doctorClinicStr);
+                confirmIntent.putExtra("doctor_department", department);
                 confirmIntent.putExtra("selected_time", selectedTime);
                 confirmIntent.putExtra("selected_day", selectedDay);
                 confirmIntent.putExtra("sign_language_requested", signRequested);
