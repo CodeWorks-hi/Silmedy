@@ -15,7 +15,7 @@ public class LegActivity extends AppCompatActivity {
 
     ImageView btnBack;
 
-    View btnThighs, btnCalf, btnShin, btnFoot;
+    View btnThings, btnCalf, btnShin, btnFoot;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,13 +27,16 @@ public class LegActivity extends AppCompatActivity {
         String username = intent.getStringExtra("user_name");
 
         btnBack = findViewById(R.id.btnBack);
-        btnThighs = findViewById(R.id.btnThings);
+        btnThings = findViewById(R.id.btnThings);
         btnCalf = findViewById(R.id.btnCalf);
         btnShin = findViewById(R.id.btnShin);
         btnFoot = findViewById(R.id.btnFoot);
 
-        btnThighs.setOnClickListener(v -> {
-            Toast.makeText(this, "허벅지가 선택되었습니다", Toast.LENGTH_SHORT).show();
+        btnThings.setOnClickListener(v -> {
+            Intent shootIntent = new Intent(LegActivity.this, ShootingActivity.class);
+            shootIntent.putExtra("user_name", username);
+            startActivity(shootIntent);
+            finish();
         });
 
         btnCalf.setOnClickListener(v -> {
