@@ -21,7 +21,7 @@ public class ArmActivity extends AppCompatActivity {
         setContentView(R.layout.activity_arm);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("userName");
+        String username = intent.getStringExtra("user_name");
 
         // 이미지 및 버튼 참조
         btnBack = findViewById(R.id.btnBack);
@@ -52,8 +52,8 @@ public class ArmActivity extends AppCompatActivity {
 
 
         btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(ArmActivity.this, BodyActivity.class);
-            backIntent.putExtra("userName", username);
+            Intent backIntent = new Intent(ArmActivity.this, BodyMain.class);
+            backIntent.putExtra("user_name", username);
             startActivity(backIntent);
             finish();
         });

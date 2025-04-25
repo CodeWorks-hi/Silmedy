@@ -36,7 +36,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         // 사용자 이름 환영 메시지 세팅
         Intent intent = getIntent();
         textGreeting = findViewById(R.id.text_greeting);
-        String username = intent.getStringExtra("userName");
+        String username = intent.getStringExtra("user_name");
         if (username != null && !username.isEmpty()) {
             textGreeting.setText(String.format("%s님, 환영합니다.", username));
         }
@@ -46,7 +46,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         if (cardTouchSymptom != null) {
             cardTouchSymptom.setOnClickListener(v -> {
                 Intent bodyIntent = new Intent(this, BodyMain.class);
-                bodyIntent.putExtra("userName", username);
+                bodyIntent.putExtra("user_name", username);
                 startActivity(bodyIntent);
             });
         }
@@ -56,7 +56,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
         if (cardCold != null) {
             cardCold.setOnClickListener(v -> {
                 Intent coldIntent = new Intent(this, SymptomChoiceActivity.class);
-                coldIntent.putExtra("userName", username);
+                coldIntent.putExtra("user_name", username);
                 startActivity(coldIntent);
             });
         }

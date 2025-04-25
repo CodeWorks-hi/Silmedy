@@ -113,9 +113,9 @@ public class LoginActivity extends AppCompatActivity {
     private void goToMain(String email) {
         db.collection("patients").document(email).get().addOnSuccessListener(doc -> {
             if (doc.exists()) {
-                String userName = doc.getString("name"); // Firestore에 저장된 사용자 이름
+                String username = doc.getString("name"); // Firestore에 저장된 사용자 이름
                 Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
-                intent.putExtra("userName", userName);  // 사용자 이름 전달
+                intent.putExtra("user_name", username);  // 사용자 이름 전달
                 startActivity(intent);
                 finish();
             }

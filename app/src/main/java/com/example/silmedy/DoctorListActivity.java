@@ -49,6 +49,10 @@ public class DoctorListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_list);
 
+        Intent intent = getIntent();
+        String symptom = intent.getStringExtra("symptom");
+        String username = intent.getStringExtra("user_name");
+
         btnBack = findViewById(R.id.btnBack);
         locationText = findViewById(R.id.locationText);
         btnChangeLocation = findViewById(R.id.btnChangeLocation);
@@ -60,8 +64,8 @@ public class DoctorListActivity extends AppCompatActivity {
 
         // 위치 변경 클릭 시 카카오맵 실행
         btnChangeLocation.setOnClickListener(v -> {
-            Intent intent = new Intent(DoctorListActivity.this, MapActivity.class);
-            startActivityForResult(intent, REQUEST_CODE_MAP);
+            Intent kakaoIntent = new Intent(DoctorListActivity.this, MapActivity.class);
+            startActivityForResult(kakaoIntent, REQUEST_CODE_MAP);
         });
 
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -70,11 +74,13 @@ public class DoctorListActivity extends AppCompatActivity {
         doctorList.add(new Doctor(R.drawable.doc, "박지윤", "수정구보건소", "진료 가능 (금) 13:00 ~ 17:00"));
         doctorList.add(new Doctor(R.drawable.doc, "이상우", "중원구보건소", "진료 가능 (화) 10:00 ~ 16:00"));
         adapter = new DoctorAdapter(doctorList, doctor -> {
-            Intent intent = new Intent(DoctorListActivity.this, CareRequestActivity.class);
-            intent.putExtra("doctor_name", doctor.getName());
-            intent.putExtra("doctor_clinic", doctor.getCenter());
-            intent.putExtra("doctor_time", doctor.getSchedule());
-            startActivity(intent);
+            Intent bookIntent = new Intent(DoctorListActivity.this, CareRequestActivity.class);
+            bookIntent.putExtra("user_name", username);
+            bookIntent.putExtra("symptom", symptom);
+            bookIntent.putExtra("doctor_name", doctor.getName());
+            bookIntent.putExtra("doctor_clinic", doctor.getCenter());
+            bookIntent.putExtra("doctor_time", doctor.getSchedule());
+            startActivity(bookIntent);
         });
         doctorRecyclerView.setAdapter(adapter);
 
