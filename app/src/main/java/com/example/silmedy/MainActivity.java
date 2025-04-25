@@ -7,7 +7,7 @@ import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.silmedy.ui.login.LoginActivity;
+import com.example.silmedy.ui.auth.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -10,10 +10,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.silmedy.BodyMain;
+import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.example.silmedy.R;
 import com.example.silmedy.llama.LlamaActivity;
-import com.example.silmedy.SymptomChoiceActivity;
+import com.example.silmedy.ui.care_request.SymptomChoiceActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ClinicHomeActivity extends AppCompatActivity {

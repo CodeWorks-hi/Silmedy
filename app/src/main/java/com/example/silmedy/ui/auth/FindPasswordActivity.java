@@ -1,4 +1,4 @@
-package com.example.silmedy.ui.login;
+package com.example.silmedy.ui.auth;
 
 import android.os.Bundle;
 import android.text.TextUtils;

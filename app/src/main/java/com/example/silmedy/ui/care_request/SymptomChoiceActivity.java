@@ -1,4 +1,4 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.care_request;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 
 public class SymptomChoiceActivity extends AppCompatActivity {

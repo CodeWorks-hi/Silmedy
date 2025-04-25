@@ -1,23 +1,21 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.photo_clinic;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-public class HeadActivity extends AppCompatActivity {
+import com.example.silmedy.R;
+
+public class BodyActivity extends AppCompatActivity {
 
     ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_head);
+        setContentView(R.layout.activity_body);
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
@@ -27,7 +25,7 @@ public class HeadActivity extends AppCompatActivity {
 
 
         btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(HeadActivity.this, BodyMain.class);
+            Intent backIntent = new Intent(BodyActivity.this, BodyMain.class);
             backIntent.putExtra("user_name", username);
             startActivity(backIntent);
             finish();

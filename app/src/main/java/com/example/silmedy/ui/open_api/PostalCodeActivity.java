@@ -1,4 +1,4 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.open_api;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.silmedy.R;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

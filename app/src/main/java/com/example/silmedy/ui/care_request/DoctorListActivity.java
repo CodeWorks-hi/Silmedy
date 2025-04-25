@@ -1,5 +1,4 @@
-package com.example.silmedy;
-import com.example.silmedy.CareRequestActivity;
+package com.example.silmedy.ui.care_request;
 
 import android.Manifest;
 import android.content.Intent;
@@ -18,11 +17,13 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+
+import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 import com.example.silmedy.adapter.DoctorAdapter;
+import com.example.silmedy.ui.open_api.MapActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.IOException;
 import java.util.ArrayList;

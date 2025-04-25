@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="24dp"
     android:background="@android:color/white"
-    tools:context=".ui.login.SignupActivity">
+    tools:context=".ui.auth.SignupActivity">
 
     <!-- 한정 버튼 -->
     <ImageView

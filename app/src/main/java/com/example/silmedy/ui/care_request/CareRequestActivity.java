@@ -1,4 +1,4 @@
-package com.example.silmedy;
+package com.example.silmedy.ui.care_request;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,16 +7,15 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.silmedy.R;
 import com.example.silmedy.adapter.TimeSlotAdapter;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

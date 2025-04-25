@@ -34,15 +34,15 @@
             android:value="@string/kakao_key_manifest_placeholder" />
 
         <activity
-            android:name=".ui.login.FindIdActivity"
+            android:name=".ui.auth.FindIdActivity"
             android:exported="false"
             android:label="@string/title_activity_find_id" />
         <activity
-            android:name=".CheckIdentityActivity"
+            android:name=".ui.auth.CheckIdentityActivity"
             android:exported="false"
             android:label="@string/title_activity_check_identity" />
         <activity
-            android:name=".PostalCodeActivity"
+            android:name=".ui.open_api.PostalCodeActivity"
             android:exported="false"
             android:label="@string/title_activity_postal_code" />
         <activity
@@ -50,7 +50,7 @@
             android:exported="false"
             android:label="@string/app_name" /> <!-- 앱 시작 액티비티: 로그인 화면 -->
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".ui.auth.LoginActivity"
             android:exported="true"
             android:label="@string/title_activity_login">
             <intent-filter>
@@ -59,27 +59,27 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SymptomChoiceActivity" />
-        <activity android:name=".DoctorListActivity" />
-        <activity android:name=".CareRequestActivity" />
-        <activity android:name=".CareRequestCompleteActivity" />
-        <activity android:name=".MapActivity" />
-        <activity android:name=".BodyMain" />
-        <activity android:name=".ArmActivity" />
-        <activity android:name=".BodyActivity" />
-        <activity android:name=".HeadActivity" />
-        <activity android:name=".LegActivity" />
+        <activity android:name=".ui.care_request.SymptomChoiceActivity" />
+        <activity android:name=".ui.care_request.DoctorListActivity" />
+        <activity android:name=".ui.care_request.CareRequestActivity" />
+        <activity android:name=".ui.care_request.CareRequestCompleteActivity" />
+        <activity android:name=".ui.open_api.MapActivity" />
+        <activity android:name=".ui.photo_clinic.BodyMain" />
+        <activity android:name=".ui.photo_clinic.ArmActivity" />
+        <activity android:name=".ui.photo_clinic.BodyActivity" />
+        <activity android:name=".ui.photo_clinic.HeadActivity" />
+        <activity android:name=".ui.photo_clinic.LegActivity" />
         <!-- AI 챗봇 증상 문진 액티비티 -->
         <activity
             android:name=".llama.LlamaActivity"
             android:exported="false"
             android:label="@string/home_ai_title" />
         <activity
-            android:name=".ui.login.SignupActivity"
+            android:name=".ui.auth.SignupActivity"
             android:exported="false"
             android:label="@string/title_activity_signup" />
         <activity
-            android:name=".ui.login.FindPasswordActivity"
+            android:name=".ui.auth.FindPasswordActivity"
             android:exported="false"
             android:label="@string/title_activity_find_password" />
     </application>
