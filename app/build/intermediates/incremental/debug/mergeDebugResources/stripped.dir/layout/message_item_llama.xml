@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 상대방 메시지 (왼쪽 정렬) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="start">
+
+    <!-- 프로필 이미지 -->
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/silmedy_circle"
+        android:contentDescription="@string/desc_profile_image"/>
+
+    <!-- 메시지 본문 묶음 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- 발신자 이름 -->
+        <TextView
+            android:id="@+id/textSender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sample_ai_sender"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- 메시지 내용 + 시간 -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:orientation="horizontal"
+            android:gravity="start">
+
+            <!-- 텍스트 메시지 -->
+            <TextView
+                android:id="@+id/textMessage"
+                android:layout_width="wrap_content"
+                android:maxWidth="240dp"
+                android:layout_height="wrap_content"
+                android:background="@xml/bg_message_ai"
+                android:padding="12dp"
+                android:text="@string/sample_ai_msg"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <!-- 이미지 메시지 -->
+            <ImageView
+                android:id="@+id/imageMessage"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:visibility="gone" />
+
+            <!-- 시간 -->
+            <TextView
+                android:id="@+id/textTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/sample_time"
+                android:textSize="12sp"
+                android:textColor="#AAAAAA"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="6dp"
+                android:layout_marginBottom="2dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

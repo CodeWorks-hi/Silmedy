@@ -1,0 +1,91 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shootingLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="#FFFFFF">
+
+    <!--  안내 텍스트 -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/btn_back"
+        android:src="@drawable/ic_arrow_back" />
+
+    <!--  안내 문구 -->
+    <TextView
+        android:id="@+id/guideText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:text="증상 부위를 선택해주세요"
+        android:textColor="#333333"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center" />
+
+    <!--  신체 이미지 및 터치 영역 -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="624dp">
+
+        <ImageView
+            android:id="@+id/body_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/leg_2" />
+
+        <View
+            android:id="@+id/btnThighs"
+            android:layout_width="284dp"
+            android:layout_height="88dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="100dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:id="@+id/btnCalf"
+            android:layout_width="249dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="115dp"
+            android:layout_marginEnd="5dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:id="@+id/btnShin"
+            android:layout_width="269dp"
+            android:layout_height="283dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:layout_marginEnd="5dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+        <View
+            android:id="@+id/btnFoot"
+            android:layout_width="291dp"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="30dp"
+            android:background="@android:color/transparent"
+            android:clickable="true"
+            android:focusable="true" />
+
+    </FrameLayout>
+</LinearLayout>
