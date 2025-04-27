@@ -23,708 +23,714 @@
 17    <uses-permission android:name="android.permission.CAMERA" />
 17-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:13:5-65
 17-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:13:22-62
-18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-18-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:5-80
-18-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:22-77
-19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-19-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:5-81
-19-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:22-78
-20    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-20-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:5-79
-20-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:22-76
-21    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-21-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:17:5-81
-21-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:17:22-78
-22
-23    <!-- 카메라 필수 기기 설정 -->
-24    <uses-feature
-24-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:20:5-84
-25        android:name="android.hardware.camera"
-25-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:20:19-57
-26        android:required="true" />
-26-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:20:58-81
-27
-28    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-28-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:5-68
-28-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:22-65
-29    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-29-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:5-82
-29-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:22-79
-30    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-30-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:5-110
-30-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:22-107
-31    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-31-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:5-79
-31-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:22-76
-32    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
-32-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:5-88
-32-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:22-85
-33    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
-33-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:5-82
-33-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:22-79
-34    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-34-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:5-98
-34-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:22-95
-35
-36    <permission
-36-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:22:5-24:47
-37        android:name="com.example.silmedy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-37-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:23:9-81
-38        android:protectionLevel="signature" />
-38-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:24:9-44
-39
-40    <uses-permission android:name="com.example.silmedy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-40-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:5-97
-40-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:22-94
-41
-42    <application
-42-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:22:5-126:19
-43        android:allowBackup="true"
-43-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:23:9-35
-44        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-44-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
-45        android:dataExtractionRules="@xml/data_extraction_rules"
-45-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:26:9-65
-46        android:debuggable="true"
-47        android:extractNativeLibs="false"
-48        android:fullBackupContent="@xml/backup_rules"
-48-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:27:9-54
-49        android:icon="@drawable/silmedy_circle"
-49-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:28:9-48
-50        android:label="@string/app_name"
-50-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:29:9-41
-51        android:localeConfig="@xml/locales_config"
-51-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:30:9-51
-52        android:networkSecurityConfig="@xml/network_security_config"
-52-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:25:9-69
-53        android:roundIcon="@drawable/silmedy_circle"
-53-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:31:9-53
-54        android:supportsRtl="true"
-54-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:32:9-35
-55        android:testOnly="true"
-56        android:theme="@style/Theme.Silmedy"
-56-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:33:9-45
-57        android:usesCleartextTraffic="true" >
-57-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:24:9-44
-58
-59        <!-- Android 13+ 기본 로케일 -->
-60        <meta-data
-60-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:37:9-63
-61            android:name="locale"
-61-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:37:20-41
-62            android:value="ko" />
-62-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:37:42-60
-63
-64        <!-- Kakao SDK AppKey -->
-65        <meta-data
-65-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:40:9-42:70
-66            android:name="com.kakao.sdk.AppKey"
-66-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:41:13-48
-67            android:value="@string/kakao_key_manifest_placeholder" />
-67-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:42:13-67
-68
-69        <!-- ▶▶▶ 런처 액티비티: MainActivity ◀◀◀ -->
-70        <activity
-70-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:45:9-53:20
-71            android:name="com.example.silmedy.MainActivity"
-71-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:46:13-41
-72            android:exported="true"
-72-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:47:13-36
-73            android:label="@string/app_name" >
-73-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:48:13-45
-74            <intent-filter>
-74-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:49:13-52:29
-75                <action android:name="android.intent.action.MAIN" />
-75-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:50:17-69
-75-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:50:25-66
-76
-77                <category android:name="android.intent.category.LAUNCHER" />
-77-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:17-77
-77-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:27-74
-78            </intent-filter>
-79        </activity>
-80
-81        <!-- 인증 & 아이디 찾기 -->
-82        <activity
-82-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:56:9-59:62
-83            android:name="com.example.silmedy.ui.auth.FindIdActivity"
-83-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:57:13-51
-84            android:exported="false"
-84-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:58:13-37
-85            android:label="@string/title_activity_find_id" />
-85-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:59:13-59
-86        <activity
-86-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:60:9-63:69
-87            android:name="com.example.silmedy.ui.auth.CheckIdentityActivity"
-87-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:61:13-58
-88            android:exported="false"
-88-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:62:13-37
-89            android:label="@string/title_activity_check_identity" />
-89-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:63:13-66
-90
-91        <!-- 우편번호 조회 -->
-92        <activity
-92-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:66:9-69:66
-93            android:name="com.example.silmedy.ui.open_api.PostalCodeActivity"
-93-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:67:13-59
-94            android:exported="false"
-94-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:68:13-37
-95            android:label="@string/title_activity_postal_code" />
-95-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:69:13-63
-96
-97        <!-- 의료 홈 -->
-98        <activity
-98-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:72:9-75:48
-99            android:name="com.example.silmedy.ui.clinic.ClinicHomeActivity"
-99-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:73:13-57
-100            android:exported="false"
-100-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:74:13-37
-101            android:label="@string/app_name" />
-101-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:75:13-45
-102
-103        <!-- 로그인 (이제 런처가 아님) -->
-104        <activity
-104-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:78:9-81:60
-105            android:name="com.example.silmedy.ui.auth.LoginActivity"
-105-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:79:13-50
-106            android:exported="false"
-106-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:80:13-37
-107            android:label="@string/title_activity_login" />
-107-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:81:13-57
-108
-109        <!-- 진료 요청 흐름 -->
-110        <activity android:name="com.example.silmedy.ui.care_request.SymptomChoiceActivity" />
-110-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:84:9-75
-110-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:84:19-72
-111        <activity android:name="com.example.silmedy.ui.care_request.DoctorListActivity" />
-111-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:9-72
-111-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:19-69
-112        <activity android:name="com.example.silmedy.ui.care_request.CareRequestActivity" />
-112-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:9-73
-112-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:19-70
-113        <activity android:name="com.example.silmedy.ui.care_request.CareRequestCompleteActivity" />
-113-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:9-81
-113-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:19-78
-114
-115        <!-- 지도, 사진 진료 흐름 -->
-116        <activity android:name="com.example.silmedy.ui.open_api.MapActivity" />
-116-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:90:9-61
-116-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:90:19-58
-117        <activity android:name="com.example.silmedy.ui.photo_clinic.BodyMain" />
-117-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:91:9-62
-117-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:91:19-59
-118        <activity android:name="com.example.silmedy.ui.photo_clinic.ArmActivity" />
-118-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:9-65
-118-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:19-62
-119        <activity android:name="com.example.silmedy.ui.photo_clinic.BodyActivity" />
-119-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:9-66
-119-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:19-63
-120        <activity android:name="com.example.silmedy.ui.photo_clinic.HeadActivity" />
-120-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:9-66
-120-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:19-63
-121        <activity android:name="com.example.silmedy.ui.photo_clinic.LegActivity" />
-121-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:9-65
-121-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:19-62
-122        <activity android:name="com.example.silmedy.ui.photo_clinic.ShootingActivity" />
-122-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:9-70
-122-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:19-67
-123        <activity android:name="com.example.silmedy.ui.photo_clinic.DiagnosisResultsActivity" />
-123-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:9-78
-123-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:19-75
-124
-125        <!-- AI 대화 화면 -->
-126        <activity
-126-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:100:9-103:53
-127            android:name="com.example.silmedy.llama.LlamaActivity"
-127-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:101:13-48
-128            android:exported="false"
-128-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:102:13-37
-129            android:label="@string/home_ai_title" />
-129-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:103:13-50
-130
-131        <!-- 회원가입 / 비밀번호 찾기 -->
-132        <activity
-132-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:106:9-109:61
-133            android:name="com.example.silmedy.ui.auth.SignupActivity"
-133-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:107:13-51
-134            android:exported="false"
-134-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:108:13-37
-135            android:label="@string/title_activity_signup" />
-135-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:109:13-58
-136        <activity
-136-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:110:9-113:68
-137            android:name="com.example.silmedy.ui.auth.FindPasswordActivity"
-137-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:111:13-57
-138            android:exported="false"
-138-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:112:13-37
-139            android:label="@string/title_activity_find_password" />
-139-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:113:13-65
-140
-141        <!-- FileProvider (사진 업로드 등) -->
-142        <provider
-142-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:116:9-124:20
-143            android:name="androidx.core.content.FileProvider"
-143-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:117:13-62
-144            android:authorities="com.example.silmedy.fileprovider"
-144-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:118:13-67
-145            android:exported="false"
-145-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:119:13-37
-146            android:grantUriPermissions="true" >
-146-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:120:13-47
-147            <meta-data
-147-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:121:13-123:54
-148                android:name="android.support.FILE_PROVIDER_PATHS"
-148-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:122:17-67
-149                android:resource="@xml/file_paths" />
-149-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:123:17-51
-150        </provider>
-151
-152        <activity
-152-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:29:9-46:20
-153            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-153-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:30:13-80
-154            android:excludeFromRecents="true"
-154-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:31:13-46
-155            android:exported="true"
-155-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:32:13-36
-156            android:launchMode="singleTask"
-156-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:33:13-44
-157            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-157-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:34:13-72
-158            <intent-filter>
-158-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:35:13-45:29
-159                <action android:name="android.intent.action.VIEW" />
-159-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
-159-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
-160
-161                <category android:name="android.intent.category.DEFAULT" />
-161-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
-161-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
-162                <category android:name="android.intent.category.BROWSABLE" />
-162-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
-162-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
+18    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+18-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:5-76
+18-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:14:22-73
+19    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+19-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:5-80
+19-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:15:22-77
+20    <uses-permission
+20-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:5-108
+21        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+21-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:22-78
+22        android:maxSdkVersion="28" />
+22-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:16:79-105
+23    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+23-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:17:5-79
+23-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:17:22-76
+24    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+24-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:18:5-81
+24-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:18:22-78
+25
+26    <!-- 카메라 필수 기기 설정 -->
+27    <uses-feature
+27-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:21:5-84
+28        android:name="android.hardware.camera"
+28-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:21:19-57
+29        android:required="true" />
+29-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:21:58-81
+30
+31    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+31-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:5-68
+31-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:24:22-65
+32    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+32-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:5-82
+32-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:26:22-79
+33    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+33-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:5-110
+33-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:26:22-107
+34    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+34-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:5-79
+34-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:25:22-76
+35    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+35-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:5-88
+35-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:26:22-85
+36    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
+36-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:5-82
+36-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:27:22-79
+37    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+37-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:5-98
+37-->[com.google.android.recaptcha:recaptcha:18.6.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d0b1ff9db2553ead466e992f7dc00245/transformed/recaptcha-18.6.1/AndroidManifest.xml:9:22-95
+38
+39    <permission
+39-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:22:5-24:47
+40        android:name="com.example.silmedy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+40-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:23:9-81
+41        android:protectionLevel="signature" />
+41-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:24:9-44
+42
+43    <uses-permission android:name="com.example.silmedy.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+43-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:5-97
+43-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:26:22-94
+44
+45    <application
+45-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:23:5-127:19
+46        android:allowBackup="true"
+46-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:24:9-35
+47        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+47-->[androidx.core:core:1.13.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a0ed4ed9f83fd60e43830a7232950545/transformed/core-1.13.0/AndroidManifest.xml:28:18-86
+48        android:dataExtractionRules="@xml/data_extraction_rules"
+48-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:27:9-65
+49        android:debuggable="true"
+50        android:extractNativeLibs="false"
+51        android:fullBackupContent="@xml/backup_rules"
+51-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:28:9-54
+52        android:icon="@drawable/silmedy_circle"
+52-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:29:9-48
+53        android:label="@string/app_name"
+53-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:30:9-41
+54        android:localeConfig="@xml/locales_config"
+54-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:31:9-51
+55        android:networkSecurityConfig="@xml/network_security_config"
+55-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:26:9-69
+56        android:roundIcon="@drawable/silmedy_circle"
+56-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:32:9-53
+57        android:supportsRtl="true"
+57-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:33:9-35
+58        android:testOnly="true"
+59        android:theme="@style/Theme.Silmedy"
+59-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:34:9-45
+60        android:usesCleartextTraffic="true" >
+60-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:25:9-44
+61
+62        <!-- Android 13+ 기본 로케일 -->
+63        <meta-data
+63-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:38:9-63
+64            android:name="locale"
+64-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:38:20-41
+65            android:value="ko" />
+65-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:38:42-60
+66
+67        <!-- Kakao SDK AppKey -->
+68        <meta-data
+68-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:41:9-43:70
+69            android:name="com.kakao.sdk.AppKey"
+69-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:42:13-48
+70            android:value="@string/kakao_key_manifest_placeholder" />
+70-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:43:13-67
+71
+72        <!-- ▶▶▶ 런처 액티비티: MainActivity ◀◀◀ -->
+73        <activity
+73-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:46:9-54:20
+74            android:name="com.example.silmedy.MainActivity"
+74-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:47:13-41
+75            android:exported="true"
+75-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:48:13-36
+76            android:label="@string/app_name" >
+76-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:49:13-45
+77            <intent-filter>
+77-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:50:13-53:29
+78                <action android:name="android.intent.action.MAIN" />
+78-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:17-69
+78-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:51:25-66
+79
+80                <category android:name="android.intent.category.LAUNCHER" />
+80-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:52:17-77
+80-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:52:27-74
+81            </intent-filter>
+82        </activity>
+83
+84        <!-- 인증 & 아이디 찾기 -->
+85        <activity
+85-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:57:9-60:62
+86            android:name="com.example.silmedy.ui.auth.FindIdActivity"
+86-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:58:13-51
+87            android:exported="false"
+87-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:59:13-37
+88            android:label="@string/title_activity_find_id" />
+88-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:60:13-59
+89        <activity
+89-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:61:9-64:69
+90            android:name="com.example.silmedy.ui.auth.CheckIdentityActivity"
+90-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:62:13-58
+91            android:exported="false"
+91-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:63:13-37
+92            android:label="@string/title_activity_check_identity" />
+92-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:64:13-66
+93
+94        <!-- 우편번호 조회 -->
+95        <activity
+95-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:67:9-70:66
+96            android:name="com.example.silmedy.ui.open_api.PostalCodeActivity"
+96-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:68:13-59
+97            android:exported="false"
+97-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:69:13-37
+98            android:label="@string/title_activity_postal_code" />
+98-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:70:13-63
+99
+100        <!-- 의료 홈 -->
+101        <activity
+101-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:73:9-76:48
+102            android:name="com.example.silmedy.ui.clinic.ClinicHomeActivity"
+102-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:74:13-57
+103            android:exported="false"
+103-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:75:13-37
+104            android:label="@string/app_name" />
+104-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:76:13-45
+105
+106        <!-- 로그인 (이제 런처가 아님) -->
+107        <activity
+107-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:79:9-82:60
+108            android:name="com.example.silmedy.ui.auth.LoginActivity"
+108-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:80:13-50
+109            android:exported="false"
+109-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:81:13-37
+110            android:label="@string/title_activity_login" />
+110-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:82:13-57
+111
+112        <!-- 진료 요청 흐름 -->
+113        <activity android:name="com.example.silmedy.ui.care_request.SymptomChoiceActivity" />
+113-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:9-75
+113-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:85:19-72
+114        <activity android:name="com.example.silmedy.ui.care_request.DoctorListActivity" />
+114-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:9-72
+114-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:86:19-69
+115        <activity android:name="com.example.silmedy.ui.care_request.CareRequestActivity" />
+115-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:9-73
+115-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:87:19-70
+116        <activity android:name="com.example.silmedy.ui.care_request.CareRequestCompleteActivity" />
+116-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:88:9-81
+116-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:88:19-78
+117
+118        <!-- 지도, 사진 진료 흐름 -->
+119        <activity android:name="com.example.silmedy.ui.open_api.MapActivity" />
+119-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:91:9-61
+119-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:91:19-58
+120        <activity android:name="com.example.silmedy.ui.photo_clinic.BodyMain" />
+120-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:9-62
+120-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:92:19-59
+121        <activity android:name="com.example.silmedy.ui.photo_clinic.ArmActivity" />
+121-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:9-65
+121-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:93:19-62
+122        <activity android:name="com.example.silmedy.ui.photo_clinic.BodyActivity" />
+122-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:9-66
+122-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:94:19-63
+123        <activity android:name="com.example.silmedy.ui.photo_clinic.HeadActivity" />
+123-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:9-66
+123-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:95:19-63
+124        <activity android:name="com.example.silmedy.ui.photo_clinic.LegActivity" />
+124-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:9-65
+124-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:96:19-62
+125        <activity android:name="com.example.silmedy.ui.photo_clinic.ShootingActivity" />
+125-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:9-70
+125-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:97:19-67
+126        <activity android:name="com.example.silmedy.ui.photo_clinic.DiagnosisResultsActivity" />
+126-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:98:9-78
+126-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:98:19-75
+127
+128        <!-- AI 대화 화면 -->
+129        <activity
+129-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:101:9-104:53
+130            android:name="com.example.silmedy.llama.LlamaActivity"
+130-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:102:13-48
+131            android:exported="false"
+131-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:103:13-37
+132            android:label="@string/home_ai_title" />
+132-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:104:13-50
+133
+134        <!-- 회원가입 / 비밀번호 찾기 -->
+135        <activity
+135-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:107:9-110:61
+136            android:name="com.example.silmedy.ui.auth.SignupActivity"
+136-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:108:13-51
+137            android:exported="false"
+137-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:109:13-37
+138            android:label="@string/title_activity_signup" />
+138-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:110:13-58
+139        <activity
+139-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:111:9-114:68
+140            android:name="com.example.silmedy.ui.auth.FindPasswordActivity"
+140-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:112:13-57
+141            android:exported="false"
+141-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:113:13-37
+142            android:label="@string/title_activity_find_password" />
+142-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:114:13-65
+143
+144        <!-- FileProvider (사진 업로드 등) -->
+145        <provider
+145-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:117:9-125:20
+146            android:name="androidx.core.content.FileProvider"
+146-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:118:13-62
+147            android:authorities="com.example.silmedy.fileprovider"
+147-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:119:13-67
+148            android:exported="false"
+148-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:120:13-37
+149            android:grantUriPermissions="true" >
+149-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:121:13-47
+150            <meta-data
+150-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:122:13-124:54
+151                android:name="android.support.FILE_PROVIDER_PATHS"
+151-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:123:17-67
+152                android:resource="@xml/file_paths" />
+152-->/Users/mi-yeonlim/Documents/Github/Silmedy/app/src/main/AndroidManifest.xml:124:17-51
+153        </provider>
+154
+155        <activity
+155-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:29:9-46:20
+156            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+156-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:30:13-80
+157            android:excludeFromRecents="true"
+157-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:31:13-46
+158            android:exported="true"
+158-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:32:13-36
+159            android:launchMode="singleTask"
+159-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:33:13-44
+160            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+160-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:34:13-72
+161            <intent-filter>
+161-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:35:13-45:29
+162                <action android:name="android.intent.action.VIEW" />
+162-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
+162-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
 163
-164                <data
-164-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
-165                    android:host="firebase.auth"
-165-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
-166                    android:path="/"
-166-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
-167                    android:scheme="genericidp" />
-167-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
-168            </intent-filter>
-169        </activity>
-170        <activity
-170-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:47:9-64:20
-171            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-171-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:48:13-79
-172            android:excludeFromRecents="true"
-172-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:49:13-46
-173            android:exported="true"
-173-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:50:13-36
-174            android:launchMode="singleTask"
-174-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:51:13-44
-175            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-175-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:52:13-72
-176            <intent-filter>
-176-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:53:13-63:29
-177                <action android:name="android.intent.action.VIEW" />
-177-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
-177-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
-178
-179                <category android:name="android.intent.category.DEFAULT" />
-179-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
-179-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
-180                <category android:name="android.intent.category.BROWSABLE" />
-180-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
-180-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
+164                <category android:name="android.intent.category.DEFAULT" />
+164-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
+164-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
+165                <category android:name="android.intent.category.BROWSABLE" />
+165-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
+165-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
+166
+167                <data
+167-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
+168                    android:host="firebase.auth"
+168-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
+169                    android:path="/"
+169-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
+170                    android:scheme="genericidp" />
+170-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
+171            </intent-filter>
+172        </activity>
+173        <activity
+173-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:47:9-64:20
+174            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+174-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:48:13-79
+175            android:excludeFromRecents="true"
+175-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:49:13-46
+176            android:exported="true"
+176-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:50:13-36
+177            android:launchMode="singleTask"
+177-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:51:13-44
+178            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+178-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:52:13-72
+179            <intent-filter>
+179-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:53:13-63:29
+180                <action android:name="android.intent.action.VIEW" />
+180-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:17-69
+180-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:36:25-66
 181
-182                <data
-182-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
-183                    android:host="firebase.auth"
-183-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
-184                    android:path="/"
-184-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
-185                    android:scheme="recaptcha" />
-185-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
-186            </intent-filter>
-187        </activity>
-188
-189        <service
-189-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:66:9-72:19
-190            android:name="com.google.firebase.components.ComponentDiscoveryService"
-190-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:67:13-84
-191            android:directBootAware="true"
-191-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:32:13-43
-192            android:exported="false" >
-192-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:68:13-37
-193            <meta-data
-193-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:69:13-71:85
-194                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-194-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:70:17-109
-195                android:value="com.google.firebase.components.ComponentRegistrar" />
-195-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:71:17-82
+182                <category android:name="android.intent.category.DEFAULT" />
+182-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:17-76
+182-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:38:27-73
+183                <category android:name="android.intent.category.BROWSABLE" />
+183-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:17-78
+183-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:39:27-75
+184
+185                <data
+185-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:41:17-44:51
+186                    android:host="firebase.auth"
+186-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:42:21-49
+187                    android:path="/"
+187-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:43:21-37
+188                    android:scheme="recaptcha" />
+188-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:44:21-48
+189            </intent-filter>
+190        </activity>
+191
+192        <service
+192-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:66:9-72:19
+193            android:name="com.google.firebase.components.ComponentDiscoveryService"
+193-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:67:13-84
+194            android:directBootAware="true"
+194-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:32:13-43
+195            android:exported="false" >
+195-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:68:13-37
 196            <meta-data
-196-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:17:13-19:85
-197                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
-197-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:18:17-122
+196-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:69:13-71:85
+197                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+197-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:70:17-109
 198                android:value="com.google.firebase.components.ComponentRegistrar" />
-198-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:19:17-82
+198-->[com.google.firebase:firebase-auth:23.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/68a01e7f286490b647d2e9ad39b66ef2/transformed/firebase-auth-23.2.0/AndroidManifest.xml:71:17-82
 199            <meta-data
-199-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:20:13-22:85
-200                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-200-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:21:17-111
+199-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:17:13-19:85
+200                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+200-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:18:17-122
 201                android:value="com.google.firebase.components.ComponentRegistrar" />
-201-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:22:17-82
+201-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:19:17-82
 202            <meta-data
-202-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:57:13-59:85
-203                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-203-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:58:17-122
+202-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:20:13-22:85
+203                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+203-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:21:17-111
 204                android:value="com.google.firebase.components.ComponentRegistrar" />
-204-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:59:17-82
+204-->[com.google.firebase:firebase-firestore:25.1.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de31c28257d590ad76e59bb59f462ab5/transformed/firebase-firestore-25.1.3/AndroidManifest.xml:22:17-82
 205            <meta-data
-205-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:60:13-62:85
-206                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-206-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:61:17-119
+205-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:57:13-59:85
+206                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+206-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:58:17-122
 207                android:value="com.google.firebase.components.ComponentRegistrar" />
-207-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:62:17-82
+207-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:59:17-82
 208            <meta-data
-208-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:33:13-35:85
-209                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-209-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:34:17-139
+208-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:60:13-62:85
+209                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+209-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:61:17-119
 210                android:value="com.google.firebase.components.ComponentRegistrar" />
-210-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:35:17-82
+210-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:62:17-82
 211            <meta-data
-211-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:30:13-32:85
-212                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
-212-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:31:17-118
+211-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:33:13-35:85
+212                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+212-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:34:17-139
 213                android:value="com.google.firebase.components.ComponentRegistrar" />
-213-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:32:17-82
+213-->[com.google.android.gms:play-services-measurement-api:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/862c098ef8e4139dc14357214d8e734b/transformed/play-services-measurement-api-22.4.0/AndroidManifest.xml:35:17-82
 214            <meta-data
-214-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:33:13-35:85
-215                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-215-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:34:17-107
+214-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:30:13-32:85
+215                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+215-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:31:17-118
 216                android:value="com.google.firebase.components.ComponentRegistrar" />
-216-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:35:17-82
+216-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:32:17-82
 217            <meta-data
-217-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:15:13-17:85
-218                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
-218-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:16:17-130
+217-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:33:13-35:85
+218                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+218-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:34:17-107
 219                android:value="com.google.firebase.components.ComponentRegistrar" />
-219-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:17:17-82
+219-->[com.google.firebase:firebase-storage:21.0.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b9e87d97d6c5b593aef43580ae22f06c/transformed/firebase-storage-21.0.1/AndroidManifest.xml:35:17-82
 220            <meta-data
-220-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:18:13-20:85
-221                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-221-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:19:17-127
+220-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:15:13-17:85
+221                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+221-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:16:17-130
 222                android:value="com.google.firebase.components.ComponentRegistrar" />
-222-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:20:17-82
+222-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:17:17-82
 223            <meta-data
-223-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:25:13-27:85
-224                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
-224-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:26:17-120
+223-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:18:13-20:85
+224                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+224-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:19:17-127
 225                android:value="com.google.firebase.components.ComponentRegistrar" />
-225-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:27:17-82
+225-->[com.google.firebase:firebase-installations:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/7b2318ef857fcb6db35962a569219d04/transformed/firebase-installations-18.0.0/AndroidManifest.xml:20:17-82
 226            <meta-data
-226-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:28:13-30:85
-227                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
-227-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:29:17-117
+226-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:25:13-27:85
+227                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+227-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:26:17-120
 228                android:value="com.google.firebase.components.ComponentRegistrar" />
-228-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:30:17-82
+228-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:27:17-82
 229            <meta-data
-229-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
-230                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
-230-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
+229-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:28:13-30:85
+230                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+230-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:29:17-117
 231                android:value="com.google.firebase.components.ComponentRegistrar" />
-231-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
+231-->[com.google.firebase:firebase-appcheck:18.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/ddebee9fd458708f9051441c251ecc4b/transformed/firebase-appcheck-18.0.0/AndroidManifest.xml:30:17-82
 232            <meta-data
-232-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
-233                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-233-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:36:17-109
+232-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
+233                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+233-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
 234                android:value="com.google.firebase.components.ComponentRegistrar" />
-234-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:37:17-82
+234-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d311f69e6f49eebb38e9dfd4cad62529/transformed/firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
 235            <meta-data
-235-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
-236                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-236-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:26:17-115
+235-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
+236                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+236-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:36:17-109
 237                android:value="com.google.firebase.components.ComponentRegistrar" />
-237-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:27:17-82
-238        </service>
-239
-240        <receiver
-240-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:29:9-40:20
-241            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-241-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:30:13-78
-242            android:exported="true"
-242-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:31:13-36
-243            android:permission="com.google.android.c2dm.permission.SEND" >
-243-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:32:13-73
-244            <intent-filter>
-244-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:33:13-35:29
-245                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-245-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:17-81
-245-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:25-78
-246            </intent-filter>
-247
-248            <meta-data
-248-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:37:13-39:40
-249                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-249-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:38:17-92
-250                android:value="true" />
-250-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:39:17-37
-251        </receiver>
-252        <!--
-253             FirebaseMessagingService performs security checks at runtime,
-254             but set to not exported to explicitly avoid allowing another app to call it.
-255        -->
-256        <service
-256-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:46:9-53:19
-257            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-257-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:47:13-82
-258            android:directBootAware="true"
-258-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:48:13-43
-259            android:exported="false" >
-259-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:49:13-37
-260            <intent-filter android:priority="-500" >
-260-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:13-52:29
-260-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:28-51
-261                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-261-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:17-78
-261-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:25-75
-262            </intent-filter>
-263        </service>
-264
-265        <receiver
-265-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:29:9-33:20
-266            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-266-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:30:13-85
-267            android:enabled="true"
-267-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:31:13-35
-268            android:exported="false" >
-268-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:32:13-37
-269        </receiver>
-270
-271        <service
-271-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:35:9-38:40
-272            android:name="com.google.android.gms.measurement.AppMeasurementService"
-272-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:36:13-84
-273            android:enabled="true"
-273-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:37:13-35
-274            android:exported="false" />
-274-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:38:13-37
-275        <service
-275-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:39:9-43:72
-276            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-276-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:40:13-87
-277            android:enabled="true"
-277-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:41:13-35
-278            android:exported="false"
-278-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:42:13-37
-279            android:permission="android.permission.BIND_JOB_SERVICE" />
-279-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:43:13-69
-280        <service
-280-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
-281            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
-281-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:25:13-94
-282            android:enabled="true"
-282-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:26:13-35
-283            android:exported="false" >
-283-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:27:13-37
-284            <meta-data
-284-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:29:13-31:104
-285                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
-285-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:30:17-76
-286                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
-286-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:31:17-101
-287        </service>
-288
-289        <activity
-289-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:34:9-41:20
-290            android:name="androidx.credentials.playservices.HiddenActivity"
-290-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:35:13-76
-291            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-291-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:36:13-87
-292            android:enabled="true"
-292-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:37:13-35
-293            android:exported="false"
-293-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:38:13-37
-294            android:fitsSystemWindows="true"
-294-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:39:13-45
-295            android:theme="@style/Theme.Hidden" >
-295-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:40:13-48
-296        </activity>
-297        <activity
-297-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
-298            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-298-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
-299            android:excludeFromRecents="true"
-299-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
-300            android:exported="false"
-300-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
-301            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-301-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
-302        <!--
-303            Service handling Google Sign-In user revocation. For apps that do not integrate with
-304            Google Sign-In, this service will never be started.
-305        -->
-306        <service
-306-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
-307            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-307-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
-308            android:exported="true"
-308-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
-309            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-309-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
-310            android:visibleToInstantApps="true" />
-310-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
-311
-312        <provider
-312-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
-313            android:name="com.google.firebase.provider.FirebaseInitProvider"
-313-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:24:13-77
-314            android:authorities="com.example.silmedy.firebaseinitprovider"
-314-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:25:13-72
-315            android:directBootAware="true"
-315-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:26:13-43
-316            android:exported="false"
-316-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:27:13-37
-317            android:initOrder="100" />
-317-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:28:13-36
-318        <provider
-318-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
-319            android:name="androidx.startup.InitializationProvider"
-319-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
-320            android:authorities="com.example.silmedy.androidx-startup"
-320-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
-321            android:exported="false" >
-321-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
-322            <meta-data
-322-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
-323                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-323-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
-324                android:value="androidx.startup" />
-324-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+237-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:37:17-82
+238            <meta-data
+238-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
+239                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+239-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:26:17-115
+240                android:value="com.google.firebase.components.ComponentRegistrar" />
+240-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b684e31017a23498f900a9febafbbfea/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:27:17-82
+241        </service>
+242
+243        <receiver
+243-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:29:9-40:20
+244            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+244-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:30:13-78
+245            android:exported="true"
+245-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:31:13-36
+246            android:permission="com.google.android.c2dm.permission.SEND" >
+246-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:32:13-73
+247            <intent-filter>
+247-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:33:13-35:29
+248                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+248-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:17-81
+248-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:34:25-78
+249            </intent-filter>
+250
+251            <meta-data
+251-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:37:13-39:40
+252                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+252-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:38:17-92
+253                android:value="true" />
+253-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:39:17-37
+254        </receiver>
+255        <!--
+256             FirebaseMessagingService performs security checks at runtime,
+257             but set to not exported to explicitly avoid allowing another app to call it.
+258        -->
+259        <service
+259-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:46:9-53:19
+260            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+260-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:47:13-82
+261            android:directBootAware="true"
+261-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:48:13-43
+262            android:exported="false" >
+262-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:49:13-37
+263            <intent-filter android:priority="-500" >
+263-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:13-52:29
+263-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:50:28-51
+264                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+264-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:17-78
+264-->[com.google.firebase:firebase-messaging:24.1.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/1763ad0f46005deeb47e359a3baf3887/transformed/firebase-messaging-24.1.1/AndroidManifest.xml:51:25-75
+265            </intent-filter>
+266        </service>
+267
+268        <receiver
+268-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:29:9-33:20
+269            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+269-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:30:13-85
+270            android:enabled="true"
+270-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:31:13-35
+271            android:exported="false" >
+271-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:32:13-37
+272        </receiver>
+273
+274        <service
+274-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:35:9-38:40
+275            android:name="com.google.android.gms.measurement.AppMeasurementService"
+275-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:36:13-84
+276            android:enabled="true"
+276-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:37:13-35
+277            android:exported="false" />
+277-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:38:13-37
+278        <service
+278-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:39:9-43:72
+279            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+279-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:40:13-87
+280            android:enabled="true"
+280-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:41:13-35
+281            android:exported="false"
+281-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:42:13-37
+282            android:permission="android.permission.BIND_JOB_SERVICE" />
+282-->[com.google.android.gms:play-services-measurement:22.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/de77501004a7aae87e39ee22524675cc/transformed/play-services-measurement-22.4.0/AndroidManifest.xml:43:13-69
+283        <service
+283-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
+284            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+284-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:25:13-94
+285            android:enabled="true"
+285-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:26:13-35
+286            android:exported="false" >
+286-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:27:13-37
+287            <meta-data
+287-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:29:13-31:104
+288                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+288-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:30:17-76
+289                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+289-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:31:17-101
+290        </service>
+291
+292        <activity
+292-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:34:9-41:20
+293            android:name="androidx.credentials.playservices.HiddenActivity"
+293-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:35:13-76
+294            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+294-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:36:13-87
+295            android:enabled="true"
+295-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:37:13-35
+296            android:exported="false"
+296-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:38:13-37
+297            android:fitsSystemWindows="true"
+297-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:39:13-45
+298            android:theme="@style/Theme.Hidden" >
+298-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/938186b650c37fd869e79b0c803e7a77/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:40:13-48
+299        </activity>
+300        <activity
+300-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
+301            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+301-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
+302            android:excludeFromRecents="true"
+302-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
+303            android:exported="false"
+303-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
+304            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+304-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
+305        <!--
+306            Service handling Google Sign-In user revocation. For apps that do not integrate with
+307            Google Sign-In, this service will never be started.
+308        -->
+309        <service
+309-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
+310            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+310-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
+311            android:exported="true"
+311-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
+312            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+312-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
+313            android:visibleToInstantApps="true" />
+313-->[com.google.android.gms:play-services-auth:20.7.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/0b6380603f77eb4e91b9dd23633857e2/transformed/play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
+314
+315        <provider
+315-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
+316            android:name="com.google.firebase.provider.FirebaseInitProvider"
+316-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:24:13-77
+317            android:authorities="com.example.silmedy.firebaseinitprovider"
+317-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:25:13-72
+318            android:directBootAware="true"
+318-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:26:13-43
+319            android:exported="false"
+319-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:27:13-37
+320            android:initOrder="100" />
+320-->[com.google.firebase:firebase-common:21.0.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/9b0b56bedf86e02bb7ca76ed8be56ddf/transformed/firebase-common-21.0.0/AndroidManifest.xml:28:13-36
+321        <provider
+321-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+322            android:name="androidx.startup.InitializationProvider"
+322-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+323            android:authorities="com.example.silmedy.androidx-startup"
+323-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+324            android:exported="false" >
+324-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
 325            <meta-data
-325-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:29:13-31:52
-326                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-326-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:30:17-78
+325-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+326                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+326-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
 327                android:value="androidx.startup" />
-327-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:31:17-49
+327-->[androidx.emoji2:emoji2:1.3.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/6fd00b031636243b77a5da1368af0221/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
 328            <meta-data
-328-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
-329                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-329-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+328-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:29:13-31:52
+329                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+329-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:30:17-78
 330                android:value="androidx.startup" />
-330-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
-331        </provider>
-332
-333        <uses-library
-333-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:23:9-25:40
-334            android:name="android.ext.adservices"
-334-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:24:13-50
-335            android:required="false" />
-335-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:25:13-37
-336
-337        <activity
-337-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
-338            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-338-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
-339            android:exported="false"
-339-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
-340            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-340-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
-341
-342        <meta-data
-342-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:21:9-23:69
-343            android:name="com.google.android.gms.version"
-343-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:22:13-58
-344            android:value="@integer/google_play_services_version" />
-344-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:23:13-66
-345
-346        <receiver
-346-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
-347            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-347-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
-348            android:directBootAware="false"
-348-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
-349            android:enabled="true"
-349-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
-350            android:exported="true"
-350-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
-351            android:permission="android.permission.DUMP" >
-351-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
-352            <intent-filter>
-352-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
-353                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-353-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
-353-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
-354            </intent-filter>
+330-->[androidx.lifecycle:lifecycle-process:2.8.7] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/00c099f4c460ee74ab88a6a5ff55aa7a/transformed/lifecycle-process-2.8.7/AndroidManifest.xml:31:17-49
+331            <meta-data
+331-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+332                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+332-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+333                android:value="androidx.startup" />
+333-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+334        </provider>
+335
+336        <uses-library
+336-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:23:9-25:40
+337            android:name="android.ext.adservices"
+337-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:24:13-50
+338            android:required="false" />
+338-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/659dfae6f28179b322b77c47e9bfae7b/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:25:13-37
+339
+340        <activity
+340-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
+341            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+341-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+342            android:exported="false"
+342-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
+343            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+343-->[com.google.android.gms:play-services-base:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/aa3388a1dd7875cae721b0b61a2964e0/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
+344
+345        <meta-data
+345-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:21:9-23:69
+346            android:name="com.google.android.gms.version"
+346-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:22:13-58
+347            android:value="@integer/google_play_services_version" />
+347-->[com.google.android.gms:play-services-basement:18.5.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/a5a3b420988672745ea4510999c5fd58/transformed/play-services-basement-18.5.0/AndroidManifest.xml:23:13-66
+348
+349        <receiver
+349-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+350            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+350-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+351            android:directBootAware="false"
+351-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+352            android:enabled="true"
+352-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+353            android:exported="true"
+353-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+354            android:permission="android.permission.DUMP" >
+354-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
 355            <intent-filter>
-355-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
-356                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-356-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
-356-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+355-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+356                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+356-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+356-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
 357            </intent-filter>
 358            <intent-filter>
-358-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
-359                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-359-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
-359-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+358-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+359                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+359-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+359-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
 360            </intent-filter>
 361            <intent-filter>
-361-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
-362                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-362-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
-362-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+361-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+362                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+362-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+362-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
 363            </intent-filter>
-364        </receiver>
-365
-366        <service
-366-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:24:9-28:63
-367            android:name="androidx.room.MultiInstanceInvalidationService"
-367-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:25:13-74
-368            android:directBootAware="true"
-368-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:26:13-43
-369            android:exported="false" />
-369-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:27:13-37
-370        <service
-370-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
-371            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-371-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
-372            android:exported="false" >
-372-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
-373            <meta-data
-373-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
-374                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-374-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
-375                android:value="cct" />
-375-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
-376        </service>
-377        <service
-377-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
-378            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-378-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
-379            android:exported="false"
-379-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
-380            android:permission="android.permission.BIND_JOB_SERVICE" >
-380-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
-381        </service>
-382
-383        <receiver
-383-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
-384            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-384-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
-385            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
-385-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
-386        <activity
-386-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:14:9-18:65
-387            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
-387-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:15:13-93
-388            android:exported="false"
-388-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:16:13-37
-389            android:stateNotNeeded="true"
-389-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:17:13-42
-390            android:theme="@style/Theme.PlayCore.Transparent" />
-390-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:18:13-62
-391    </application>
-392
-393</manifest>
+364            <intent-filter>
+364-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+365                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+365-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+365-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/b624594f6e7accdaa7b38d1c8da11390/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+366            </intent-filter>
+367        </receiver>
+368
+369        <service
+369-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:24:9-28:63
+370            android:name="androidx.room.MultiInstanceInvalidationService"
+370-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:25:13-74
+371            android:directBootAware="true"
+371-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:26:13-43
+372            android:exported="false" />
+372-->[androidx.room:room-runtime:2.5.1] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/af4ae446c78df159c83f2b55b8821b1f/transformed/room-runtime-2.5.1/AndroidManifest.xml:27:13-37
+373        <service
+373-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
+374            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+374-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
+375            android:exported="false" >
+375-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
+376            <meta-data
+376-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
+377                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+377-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
+378                android:value="cct" />
+378-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/d3c606cf32a5685bec33a660235761ec/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
+379        </service>
+380        <service
+380-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
+381            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+381-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
+382            android:exported="false"
+382-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
+383            android:permission="android.permission.BIND_JOB_SERVICE" >
+383-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
+384        </service>
+385
+386        <receiver
+386-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
+387            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+387-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
+388            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
+388-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/cee8c22f3cd410a9ff65c3422cd2eff2/transformed/transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
+389        <activity
+389-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:14:9-18:65
+390            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+390-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:15:13-93
+391            android:exported="false"
+391-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:16:13-37
+392            android:stateNotNeeded="true"
+392-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:17:13-42
+393            android:theme="@style/Theme.PlayCore.Transparent" />
+393-->[com.google.android.play:core-common:2.0.3] /Users/mi-yeonlim/.gradle/caches/8.11.1/transforms/3faffb87b7d672b453fd2e8f0c06268a/transformed/core-common-2.0.3/AndroidManifest.xml:18:13-62
+394    </application>
+395
+396</manifest>
