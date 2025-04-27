@@ -1,11 +1,12 @@
+// Message.java
 package com.example.silmedy.llama;
 
 public class Message {
-    public String sender;
-    public String text;
-    public long timestamp;
-    public boolean isDateSeparator;
-    public String type;
+    private String sender;
+    private String text;
+    private long timestamp;
+    private boolean isDateSeparator;
+    private String type;
 
     public Message() { }
 
@@ -27,19 +28,39 @@ public class Message {
         return msg;
     }
 
-    // Getters & Setters
-    public String getSender() { return sender; }
-    public void setSender(String sender) { this.sender = sender; }
+    // --- getters & setters ---
+    public String getSender() {
+        return sender;
+    }
+    public void setSender(String sender) {
+        this.sender = sender;
+    }
 
-    public String getText() { return text; }
-    public void setText(String text) { this.text = text; }
+    public String getText() {
+        return text;
+    }
+    public void setText(String text) {
+        this.text = text;
+    }
 
-    public long getTimestamp() { return timestamp; }
-    public void setTimestamp(long timestamp) { this.timestamp = timestamp; }
+    public long getTimestamp() {
+        return timestamp;
+    }
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
+    }
 
-    public boolean isDateSeparator() { return isDateSeparator; }
-    public void setDateSeparator(boolean dateSeparator) { isDateSeparator = dateSeparator; }
+    public boolean isDateSeparator() {
+        return isDateSeparator;
+    }
+    public void setDateSeparator(boolean dateSeparator) {
+        isDateSeparator = dateSeparator;
+    }
 
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
+    public String getType() {
+        return type;
+    }
+    public void setType(String type) {
+        this.type = type;
+    }
 }
