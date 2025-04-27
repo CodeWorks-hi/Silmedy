@@ -3089,6 +3089,7 @@ int drawable common_google_signin_btn_text_light 0x7f07009b
 int drawable common_google_signin_btn_text_light_focused 0x7f07009c
 int drawable common_google_signin_btn_text_light_normal 0x7f07009d
 int drawable common_google_signin_btn_text_light_normal_background 0x7f07009e
+int drawable complete 0x7f070133
 int drawable consult 0x7f07009f
 int drawable delivery 0x7f0700a0
 int drawable design_fab_background 0x7f0700a1
@@ -3363,7 +3364,6 @@ int id btnCheckEmail 0x7f08007a
 int id btnChest 0x7f08007b
 int id btnClose 0x7f08007c
 int id btnCode 0x7f08007d
-int id btnCut 0x7f08007e
 int id btnEyes 0x7f08007f
 int id btnFindId 0x7f080080
 int id btnFindPassword 0x7f080081
@@ -3373,7 +3373,6 @@ int id btnGoToLogin 0x7f080084
 int id btnHand 0x7f080085
 int id btnHead 0x7f080086
 int id btnHome 0x7f080087
-int id btnItch 0x7f080088
 int id btnJoin 0x7f080089
 int id btnLeftArm 0x7f08008a
 int id btnLeg 0x7f08008b
@@ -3383,12 +3382,10 @@ int id btnMouth 0x7f08008e
 int id btnNeck 0x7f08008f
 int id btnNext 0x7f080090
 int id btnNose 0x7f080091
-int id btnRash 0x7f080092
 int id btnReservation 0x7f080293
 int id btnReserve 0x7f080093
 int id btnResult 0x7f080094
 int id btnRightArm 0x7f080095
-int id btnScratch 0x7f080096
 int id btnSend 0x7f080097
 int id btnShin 0x7f080098
 int id btnShoulder 0x7f080099
@@ -3496,8 +3493,11 @@ int id east 0x7f0800ff
 int id edge 0x7f080100
 int id editCode 0x7f080101
 int id editConfirmPassword 0x7f080102
+int id editDate 0x7f080298
 int id editDetailAddress 0x7f080103
+int id editDoctor 0x7f080299
 int id editEmail 0x7f080104
+int id editGroup 0x7f08029a
 int id editMedical1 0x7f080294
 int id editMedical2 0x7f080295
 int id editMessage 0x7f080105
@@ -3546,8 +3546,6 @@ int id grouping 0x7f08012f
 int id groups 0x7f080130
 int id guideOverlay 0x7f080131
 int id guideText 0x7f080132
-int id handImage 0x7f080133
-int id handLayout 0x7f080134
 int id header_title 0x7f080135
 int id hide_ime_id 0x7f080136
 int id hideable 0x7f080137
@@ -3565,6 +3563,7 @@ int id ignoreRequest 0x7f080142
 int id image 0x7f080143
 int id imageProfile 0x7f080145
 int id imageView 0x7f080146
+int id imageView2 0x7f08029b
 int id imgDiagnosis 0x7f080296
 int id imgResult 0x7f080297
 int id immediateStop 0x7f080148
@@ -3832,6 +3831,9 @@ int id textTitle 0x7f08024e
 int id textTop 0x7f08024f
 int id textView 0x7f080250
 int id textView2 0x7f080251
+int id textView3 0x7f08029c
+int id textView8 0x7f08029d
+int id textView9 0x7f08029e
 int id text_greeting 0x7f080252
 int id text_input_end_icon 0x7f080253
 int id text_input_error_icon 0x7f080254
@@ -4023,7 +4025,6 @@ int layout activity_diagnosis_results 0x7f0b0023
 int layout activity_doctor_list 0x7f0b0024
 int layout activity_find_id 0x7f0b0025
 int layout activity_find_password 0x7f0b0026
-int layout activity_hand 0x7f0b0027
 int layout activity_head 0x7f0b0028
 int layout activity_leg 0x7f0b0029
 int layout activity_llama 0x7f0b002a

@@ -22,45 +22,41 @@ import okhttp3.Response;
 public class LlamaPromptHelper {
 
     public interface StreamCallback {
-        /** 새로운 텍스트 델타 청크가 도착할 때마다 호출됩니다. */
         void onChunk(String chunk);
-        /** 스트리밍이 완전히 끝났을 때 호출됩니다. */
         void onComplete();
-        /** 네트워크 오류나 파싱 에러 시 호출됩니다. */
         void onError(Exception e);
     }
 
-    // build.gradle 에서 buildConfigField 로 주입된 값
     private static final String API_KEY = BuildConfig.HUGGINGFACE_API_KEY;
     private static final String API_URL = BuildConfig.HUGGINGFACE_API_URL;
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
 
-    /**
-     * Hugging Face Router(또는 self-hosted) 스트리밍 엔드포인트로 ChatCompletionStream 호출
-     *
-     * @param userMessage        실제 사용자가 입력한 질문
-     * @param callback           델타 청크/완료/에러를 받는 콜백
-     */
     public static void sendChatStream(String userMessage, StreamCallback callback) {
         OkHttpClient client = new OkHttpClient.Builder()
                 .retryOnConnectionFailure(true)
                 .build();
 
         try {
-            // 1) user 메시지
+            // 1) system prompt
+            String systemPrompt =
+                    "아래 형식에 맞춰 한국어로 답변해 주세요.\n\n" +
+                            "질문: " + userMessage + "\n" +
+                            "⸻\n" +
+                            "안녕하세요. " + userMessage + "에 대해 안내해 드릴게요. ... (중략)";
+
+            JSONObject systemObj = new JSONObject()
+                    .put("role", "system")
+                    .put("content", systemPrompt);
+
+            // 2) user prompt
             JSONObject userObj = new JSONObject()
                     .put("role", "user")
                     .put("content", userMessage);
 
-            // 2) assistant 메시지 (예시)
-            JSONObject assistantObj = new JSONObject()
-                    .put("role", "assistant")
-                    .put("content", "머리가아프고 배가 쓰려요\n");
-
-            // 3) messages 배열 조립
+            // 3) messages array
             JSONArray messages = new JSONArray()
-                    .put(userObj)
-                    .put(assistantObj);
+                    .put(systemObj)
+                    .put(userObj);
 
             // 4) request body
             JSONObject bodyJson = new JSONObject()
@@ -79,7 +75,7 @@ public class LlamaPromptHelper {
                     .post(body)
                     .build();
 
-            // 5) 비동기 호출 및 SSE 파싱
+            // 5) SSE 파싱
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
@@ -115,6 +111,7 @@ public class LlamaPromptHelper {
                     }
                 }
             });
+
         } catch (Exception e) {
             callback.onError(e);
         }

@@ -18,8 +18,8 @@ import java.util.Map;
  */
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
-    private static final String TAG = "FCMService";
-    private static final String COLLECTION_CHAT = "chatMessages";
+    public static final String TAG = "FCMService";
+    public static final String COLLECTION_CHAT = "chatMessages";
 
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {

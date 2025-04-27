@@ -98,20 +98,7 @@ public class DoctorListActivity extends AppCompatActivity {
         doctorList.add(new Doctor(123456, R.drawable.doc, "김정훈", "분당구보건소", "내과", schedule_kim));
         doctorList.add(new Doctor(234567, R.drawable.doc, "박지윤", "수정구보건소", "내과", schedule_park));
         doctorList.add(new Doctor(345678, R.drawable.doc, "이상우", "중원구보건소", "내과", schedule_lee));
-        adapter = new DoctorAdapter(doctorList, doctor -> {
-            Intent bookIntent = new Intent(DoctorListActivity.this, CareRequestActivity.class);
-            bookIntent.putExtra("user_name", username);
-            bookIntent.putExtra("email", email);
-            bookIntent.putExtra("part", part);
-            bookIntent.putExtra("symptom", symptom);
-            bookIntent.putExtra("license_number", doctor.getLicenseNumber());
-            bookIntent.putExtra("doctor_name", doctor.getName());
-            bookIntent.putExtra("doctor_department", doctor.getDepartment());
-            bookIntent.putExtra("doctor_clinic", doctor.getCenter());
-            bookIntent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
-            bookIntent.putExtra("doctor_image", doctor.getImageResId());
-            startActivity(bookIntent);
-        });
+        adapter = new DoctorAdapter(doctorList, username, email, part, symptom);
         doctorRecyclerView.setAdapter(adapter);
 
         // 위치 클라이언트 초기화

@@ -23,8 +23,6 @@ public class LlamaActivity extends AppCompatActivity {
     private MessageAdapter adapter;
     private ArrayList<Message> messageList;
 
-    private final String nickname = "나";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,49 +37,42 @@ public class LlamaActivity extends AppCompatActivity {
         btnSend          = findViewById(R.id.btnSend);
         recyclerMessages = findViewById(R.id.recyclerMessages);
 
-        // 메시지 리스트 & 어댑터
+        // 리스트 & 어댑터
         messageList = new ArrayList<>();
-        adapter     = new MessageAdapter(this, messageList, nickname);
-
+        adapter     = new MessageAdapter(this, messageList, "나");
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(adapter);
 
-        // 전송 버튼
         btnSend.setOnClickListener(v -> {
             String userText = editMessage.getText().toString().trim();
             if (userText.isEmpty()) return;
 
-            // 1) 사용자 메시지 추가
-            Message userMsg = new Message(nickname, userText, System.currentTimeMillis());
+            // 사용자 메시지
+            Message userMsg = new Message("나", userText, System.currentTimeMillis());
             messageList.add(userMsg);
-            adapter.notifyItemInserted(messageList.size() - 1);
-            recyclerMessages.scrollToPosition(messageList.size() - 1);
+            adapter.notifyItemInserted(messageList.size()-1);
 
-            // 2) AI 응답 버블 미리 추가
+            // AI 빈 버블 추가
             Message aiMsg = new Message("AI", "", System.currentTimeMillis());
             messageList.add(aiMsg);
-            int aiIndex = messageList.size() - 1;
+            int aiIndex = messageList.size()-1;
             adapter.notifyItemInserted(aiIndex);
-            recyclerMessages.scrollToPosition(aiIndex);
 
-            // 3) 스트리밍 호출 → 메서드 이름을 sendChatStream 으로 변경
+            // 스트리밍 호출
             LlamaPromptHelper.sendChatStream(userText, new LlamaPromptHelper.StreamCallback() {
-                StringBuilder buffer = new StringBuilder();
+                StringBuilder buf = new StringBuilder();
 
                 @Override
                 public void onChunk(String chunk) {
-                    buffer.append(chunk);
+                    buf.append(chunk);
                     runOnUiThread(() -> {
-                        aiMsg.setText(buffer.toString());
+                        aiMsg.setText(buf.toString());
                         adapter.notifyItemChanged(aiIndex);
-                        recyclerMessages.scrollToPosition(aiIndex);
                     });
                 }
 
                 @Override
-                public void onComplete() {
-                    // 완료 시 추가 처리 필요하면 여기에
-                }
+                public void onComplete() { /* 필요시 후처리 */ }
 
                 @Override
                 public void onError(Exception e) {
@@ -89,7 +80,6 @@ public class LlamaActivity extends AppCompatActivity {
                 }
             });
 
-            // 4) 입력창 초기화
             editMessage.setText("");
         });
     }

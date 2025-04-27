@@ -15,7 +15,9 @@ import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,16 +29,18 @@ import java.util.Map;
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder> {
 
     public final List<Doctor> doctorList;
-    public final OnDoctorClickListener listener;
+    public final String username;
+    public final String email;
+    public final ArrayList<String> part;
+    public final ArrayList<String> symptom;
 
-    public interface OnDoctorClickListener {
-        void onDoctorClick(Doctor doctor);
-    }
-
-    // 생성자: 의사 리스트와 클릭 리스너를 주입받음
-    public DoctorAdapter(List<Doctor> doctorList, OnDoctorClickListener listener) {
+    // 생성자: 의사 리스트와 사용자 정보만 주입받음
+    public DoctorAdapter(List<Doctor> doctorList, String username, String email, ArrayList<String> part, ArrayList<String> symptom) {
         this.doctorList = doctorList;
-        this.listener = listener;
+        this.username = username;
+        this.email = email;
+        this.part = part;
+        this.symptom = symptom;
     }
 
     @NonNull
@@ -96,12 +100,16 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         // 아이템 클릭 시 CareRequestActivity로 이동
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), CareRequestActivity.class);
+            intent.putExtra("user_name", username);
+            intent.putExtra("email", email);
+            intent.putExtra("part", part);
+            intent.putExtra("symptom", symptom);
             intent.putExtra("license_number", doctor.getLicenseNumber());
             intent.putExtra("doctor_name", doctor.getName());
+            intent.putExtra("doctor_department", doctor.getDepartment());
             intent.putExtra("doctor_clinic", doctor.getCenter());
             intent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
             intent.putExtra("doctor_image", doctor.getImageResId());
-            intent.putExtra("department", doctor.getDepartment());
             v.getContext().startActivity(intent);
         });
     }

@@ -3090,6 +3090,7 @@ drawable common_google_signin_btn_text_light
 drawable common_google_signin_btn_text_light_focused
 drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
+drawable complete
 drawable consult
 drawable delivery
 drawable design_fab_background
@@ -3364,7 +3365,6 @@ id btnCheckEmail
 id btnChest
 id btnClose
 id btnCode
-id btnCut
 id btnEyes
 id btnFindId
 id btnFindPassword
@@ -3374,7 +3374,6 @@ id btnGoToLogin
 id btnHand
 id btnHead
 id btnHome
-id btnItch
 id btnJoin
 id btnLeftArm
 id btnLeg
@@ -3384,12 +3383,10 @@ id btnMouth
 id btnNeck
 id btnNext
 id btnNose
-id btnRash
 id btnReservation
 id btnReserve
 id btnResult
 id btnRightArm
-id btnScratch
 id btnSend
 id btnShin
 id btnShoulder
@@ -3497,8 +3494,11 @@ id east
 id edge
 id editCode
 id editConfirmPassword
+id editDate
 id editDetailAddress
+id editDoctor
 id editEmail
+id editGroup
 id editMedical1
 id editMedical2
 id editMessage
@@ -3547,8 +3547,6 @@ id grouping
 id groups
 id guideOverlay
 id guideText
-id handImage
-id handLayout
 id header_title
 id hide_ime_id
 id hideable
@@ -3566,6 +3564,7 @@ id ignoreRequest
 id image
 id imageProfile
 id imageView
+id imageView2
 id imgDiagnosis
 id imgResult
 id immediateStop
@@ -3833,6 +3832,9 @@ id textTitle
 id textTop
 id textView
 id textView2
+id textView3
+id textView8
+id textView9
 id text_greeting
 id text_input_end_icon
 id text_input_error_icon
@@ -4024,7 +4026,6 @@ layout activity_diagnosis_results
 layout activity_doctor_list
 layout activity_find_id
 layout activity_find_password
-layout activity_hand
 layout activity_head
 layout activity_leg
 layout activity_llama
