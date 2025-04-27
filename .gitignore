@@ -1,32 +1,27 @@
-# ==============================
-# Java/IDE
-# ==============================
+# === Java / IDE ===
 *.class
 *.log
-*.xml~              # 에디터 백업 파일
+*.xml~                     # 에디터 백업 파일
 *.iml
 *.ipr
 *.iws
 .idea/
 
-# ==============================
-# Android
-# ==============================
+# === Android ===
 .gradle/
-/build/
-/**/build/
-captures/
+**/build/                  # 모든 모듈의 build 폴더
+/app/build/                # (필요시 명시)
+captures/                  # 화면 캡처
 .externalNativeBuild/
 .cxx/
 
-# 로컬 SDK 설정
+# Local SDK 설정
 local.properties
 
-# Android ARchive
+# === Android outputs ===
 *.apk
 *.ap_
 *.dex
-*.class
 *.jar
 *.war
 *.ear
@@ -34,29 +29,18 @@ local.properties
 # Native libs
 *.so
 
-# ==============================
-# OS
-# ==============================
+# === OS ===
 .DS_Store
 Thumbs.db
 
-# ==============================
-# Environment / API Keys
-# ==============================
-# 프로젝트 루트에 별도로 관리하는 gradle.properties, .env 등
-gradle.properties
-*.env
+# === Environment / API Keys ===
 .env
+*.env
+gradle.properties
 
-# ==============================
-# Firebase / Google Services
-# ==============================
-# (만약 google-services.json을 리포에 포함하지 않는다면)
-# google-services.json
+# === Firebase / Google Services ===
+// google-services.json     # 필요에 따라 주석 해제
 
-# ==============================
-# 기타
-# ==============================
-# 프로파일링, 잠금 파일
+# === 기타 ===
 *.lock
 *.bin
