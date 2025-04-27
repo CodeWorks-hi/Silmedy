@@ -15,6 +15,7 @@
         android:gravity="center_vertical"
         android:elevation="2dp">
 
+        <!-- 뒤로 가기 버튼 -->
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="32dp"
@@ -24,7 +25,7 @@
             android:contentDescription="@string/btn_back"
             android:src="@drawable/ic_arrow_back" />
 
-
+        <!-- 프로필 이미지 -->
         <ImageView
             android:id="@+id/imageProfile"
             android:layout_width="40dp"
@@ -35,6 +36,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/silmedy_circle" />
 
+        <!-- 채팅방 타이틀 -->
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
@@ -42,14 +44,14 @@
             android:layout_toEndOf="@id/imageProfile"
             android:layout_marginStart="8dp"
             android:layout_centerVertical="true"
-            android:gravity="center_vertical"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:gravity="center_vertical">
 
             <TextView
                 android:id="@+id/textRoomCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Silmedy"
+                android:text="@string/chat_toolbar_title"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -58,18 +60,21 @@
                 android:id="@+id/textRoomName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Online"
+                android:text="@string/chat_toolbar_status"
                 android:textColor="@color/mint_primary"
                 android:textSize="12sp" />
         </LinearLayout>
     </RelativeLayout>
 
-    <!-- 메시지 목록 -->
+    <!-- 메시지 목록: 수직 스크롤바와 NestedScrolling 허용 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMessages"
         android:layout_width="match_parent"
-        android:layout_height="693dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
+        android:scrollbars="vertical"
+        android:fadeScrollbars="false"
+        android:nestedScrollingEnabled="true"
         android:clipToPadding="false"
         android:padding="12dp" />
 
@@ -88,17 +93,19 @@
             android:layout_height="48dp"
             android:layout_weight="1"
             android:background="@xml/bg_edittext"
-            android:hint="메시지를 입력하세요"
+            android:hint="@string/hint_chat_input"
             android:padding="12dp"
             android:textColor="#000000"
-            android:textColorHint="#888888" />
+            android:textColorHint="#888888"
+            android:scrollbars="vertical"
+            android:overScrollMode="always" />
 
         <ImageButton
             android:id="@+id/btnSend"
             android:layout_width="43dp"
             android:layout_height="48dp"
             android:background="@android:color/transparent"
-            android:contentDescription="전송"
+            android:contentDescription="@string/btn_send"
             android:padding="8dp"
             android:rotation="-40"
             android:scaleType="fitCenter"
