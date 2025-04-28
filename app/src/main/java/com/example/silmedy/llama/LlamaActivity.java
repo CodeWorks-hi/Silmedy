@@ -38,6 +38,10 @@ public class LlamaActivity extends AppCompatActivity {
 
     private String sessionId = null;
     private String prevSymptom = null;
+    private boolean isPositiveAnswer(String userInput) {
+        String answer = userInput.trim().toLowerCase();
+        return answer.contains("예") || answer.contains("네") || answer.contains("진료") || answer.contains("진료할래요");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,32 +95,36 @@ public class LlamaActivity extends AppCompatActivity {
     private void continueConversation(String userText) {
         long now = System.currentTimeMillis();
 
+        // 첫 질문 저장
         if (prevSymptom == null) {
             prevSymptom = userText;
         }
 
+        // 1) UI 표시
         Message userMsg = new Message("나", userText, now);
         messageList.add(userMsg);
         adapter.notifyItemInserted(messageList.size() - 1);
         recyclerMessages.scrollToPosition(messageList.size() - 1);
 
+        // 2) 세션에 저장
         DocumentReference qaRef = db.collection(SESSION_COLLECTION)
                 .document(sessionId)
                 .collection("qa_pairs")
                 .document();
-
         Map<String, Object> qaEntry = new HashMap<>();
         qaEntry.put("question", userText);
         qaEntry.put("answer", null);
         qaEntry.put("timestamp", now);
         qaRef.set(qaEntry);
 
+        // 3) AI 빈 버블 준비
         Message aiPlaceholder = new Message("AI", "", now + 1);
         messageList.add(aiPlaceholder);
         int aiIndex = messageList.size() - 1;
         adapter.notifyItemInserted(aiIndex);
         recyclerMessages.scrollToPosition(aiIndex);
 
+        // 4) AI 스트리밍 호출
         LlamaPromptHelper.sendChatStream(prevSymptom, userText, new LlamaPromptHelper.StreamCallback() {
             final StringBuilder buffer = new StringBuilder();
 
@@ -138,11 +146,7 @@ public class LlamaActivity extends AppCompatActivity {
                 update.put("ai_timestamp", aiTs);
                 qaRef.update(update);
 
-                runOnUiThread(() -> {
-                    Intent intent = new Intent(LlamaActivity.this, DoctorListActivity.class);
-                    startActivity(intent);
-                    finish();
-                });
+                // --- 이동은 하지 않음 (사용자 입력 기다림)
             }
 
             @Override
@@ -151,6 +155,14 @@ public class LlamaActivity extends AppCompatActivity {
             }
         });
 
+        // 5) 입력창 초기화
         editMessage.setText("");
+
+        // 6) 환자가 "예"라고 하면 이동
+        if (isPositiveAnswer(userText)) {
+            Intent intent = new Intent(LlamaActivity.this, DoctorListActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }
