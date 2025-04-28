@@ -1,5 +1,7 @@
 package com.example.silmedy.llama;
 
+// (생략) import 들은 그대로
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,10 +40,9 @@ public class LlamaActivity extends AppCompatActivity {
 
     private String sessionId = null;
     private String prevSymptom = null;
-    private boolean isPositiveAnswer(String userInput) {
-        String answer = userInput.trim().toLowerCase();
-        return answer.contains("예") || answer.contains("네") || answer.contains("진료") || answer.contains("진료할래요");
-    }
+
+    // ✨ 추가: 대화 전체 기록용 리스트
+    public static ArrayList<String> fullChatHistory = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,11 @@ public class LlamaActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isPositiveAnswer(String userInput) {
+        String answer = userInput.trim().toLowerCase();
+        return answer.contains("예") || answer.contains("네") || answer.contains("진료") || answer.contains("진료할래요");
+    }
+
     private void onUserSend() {
         String userText = editMessage.getText().toString().trim();
         if (userText.isEmpty()) return;
@@ -95,18 +101,20 @@ public class LlamaActivity extends AppCompatActivity {
     private void continueConversation(String userText) {
         long now = System.currentTimeMillis();
 
-        // 첫 질문 저장
         if (prevSymptom == null) {
             prevSymptom = userText;
         }
 
-        // 1) UI 표시
+        // 1) 사용자 메시지
         Message userMsg = new Message("나", userText, now);
         messageList.add(userMsg);
         adapter.notifyItemInserted(messageList.size() - 1);
         recyclerMessages.scrollToPosition(messageList.size() - 1);
 
-        // 2) 세션에 저장
+        // ✨ 추가: 사용자 메시지 저장
+        fullChatHistory.add("나: " + userText);
+
+        // 2) 세션 저장
         DocumentReference qaRef = db.collection(SESSION_COLLECTION)
                 .document(sessionId)
                 .collection("qa_pairs")
@@ -117,14 +125,14 @@ public class LlamaActivity extends AppCompatActivity {
         qaEntry.put("timestamp", now);
         qaRef.set(qaEntry);
 
-        // 3) AI 빈 버블 준비
+        // 3) AI 빈 버블
         Message aiPlaceholder = new Message("AI", "", now + 1);
         messageList.add(aiPlaceholder);
         int aiIndex = messageList.size() - 1;
         adapter.notifyItemInserted(aiIndex);
         recyclerMessages.scrollToPosition(aiIndex);
 
-        // 4) AI 스트리밍 호출
+        // 4) AI 응답 받기
         LlamaPromptHelper.sendChatStream(prevSymptom, userText, new LlamaPromptHelper.StreamCallback() {
             final StringBuilder buffer = new StringBuilder();
 
@@ -146,7 +154,8 @@ public class LlamaActivity extends AppCompatActivity {
                 update.put("ai_timestamp", aiTs);
                 qaRef.update(update);
 
-                // --- 이동은 하지 않음 (사용자 입력 기다림)
+                // ✨ 추가: AI 메시지 저장
+                fullChatHistory.add("AI: " + buffer.toString());
             }
 
             @Override
@@ -158,11 +167,23 @@ public class LlamaActivity extends AppCompatActivity {
         // 5) 입력창 초기화
         editMessage.setText("");
 
-        // 6) 환자가 "예"라고 하면 이동
+        // 6) "예" 인식시 진료 예약으로 이동
         if (isPositiveAnswer(userText)) {
             Intent intent = new Intent(LlamaActivity.this, DoctorListActivity.class);
             startActivity(intent);
             finish();
         }
+    }
+
+    // ✨ 추가: ChatSummaryActivity에서 사용
+    public static String getFullChatSummary() {
+        if (fullChatHistory == null || fullChatHistory.isEmpty()) {
+            return "";
+        }
+        StringBuilder builder = new StringBuilder();
+        for (String line : fullChatHistory) {
+            builder.append(line).append("\n");
+        }
+        return builder.toString();
     }
 }
