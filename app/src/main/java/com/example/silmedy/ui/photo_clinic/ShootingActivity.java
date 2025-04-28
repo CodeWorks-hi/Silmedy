@@ -54,7 +54,7 @@ public class ShootingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         // 사용자 이름 받기
         String username = intent.getStringExtra("user_name");
-        String email = intent.getStringExtra("email");
+        String patient_id = intent.getStringExtra("patient_id");
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
 
         // 뷰 연결
@@ -71,13 +71,15 @@ public class ShootingActivity extends AppCompatActivity {
         btnCamera.setOnClickListener(v -> camera());
         btnAlbum.setOnClickListener(v -> album());
         btnResult.setOnClickListener(v -> {
+            if (photoFile == null || !photoFile.exists()) {
+                Toast.makeText(ShootingActivity.this, "이미지를 선택하거나 촬영해 주세요.", Toast.LENGTH_SHORT).show();
+                return;
+            }
             Intent resultIntent = new Intent(ShootingActivity.this, DiagnosisResultsActivity.class);
             resultIntent.putExtra("user_name", username);
-            resultIntent.putExtra("email", email);
+            resultIntent.putExtra("patient_id", patient_id);
             resultIntent.putExtra("part", part);
-            if (photoFile != null && photoFile.exists()) {
-                resultIntent.putExtra("image_path", photoFile.getAbsolutePath());
-            }
+            resultIntent.putExtra("image_path", photoFile.getAbsolutePath());
             startActivity(resultIntent);
             finish();
         });

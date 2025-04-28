@@ -24,7 +24,7 @@ public class BodyActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String email = intent.getStringExtra("email");
+        String patient_id = intent.getStringExtra("patient_id");
 
         btnBack = findViewById(R.id.btnBack);
         btnChest = findViewById(R.id.btnChest);
@@ -33,7 +33,7 @@ public class BodyActivity extends AppCompatActivity {
         btnChest.setOnClickListener(v -> {
             Intent shootIntent = new Intent(BodyActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("가슴");
             shootIntent.putExtra("part", parts);
@@ -44,7 +44,7 @@ public class BodyActivity extends AppCompatActivity {
         btnAbdomen.setOnClickListener(v -> {
             Intent shootIntent = new Intent(BodyActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("복부");
             shootIntent.putExtra("part", parts);
@@ -55,7 +55,7 @@ public class BodyActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(BodyActivity.this, BodyMain.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("email", email);
+            backIntent.putExtra("patient_id", patient_id);
             startActivity(backIntent);
             finish();
         });

@@ -56,7 +56,7 @@ public class DoctorListActivity extends AppCompatActivity {
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
         ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
         String username = intent.getStringExtra("user_name");
-        String email = intent.getStringExtra("email");
+        String patient_id = intent.getStringExtra("patient_id");
         String department = intent.getStringExtra("department");
 
         btnBack = findViewById(R.id.btnBack);
@@ -98,7 +98,7 @@ public class DoctorListActivity extends AppCompatActivity {
         doctorList.add(new Doctor(123456, R.drawable.doc, "김정훈", "분당구보건소", "내과", schedule_kim));
         doctorList.add(new Doctor(234567, R.drawable.doc, "박지윤", "수정구보건소", "내과", schedule_park));
         doctorList.add(new Doctor(345678, R.drawable.doc, "이상우", "중원구보건소", "내과", schedule_lee));
-        adapter = new DoctorAdapter(doctorList, username, email, part, symptom);
+        adapter = new DoctorAdapter(doctorList, username, patient_id, part, symptom);
         doctorRecyclerView.setAdapter(adapter);
 
         // 위치 클라이언트 초기화
@@ -108,7 +108,7 @@ public class DoctorListActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("email", email);
+            backIntent.putExtra("patient_id", patient_id);
             backIntent.putExtra("part", part);
             backIntent.putExtra("symptom", symptom);
             startActivity(backIntent);

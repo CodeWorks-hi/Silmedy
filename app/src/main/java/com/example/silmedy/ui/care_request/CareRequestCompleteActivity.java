@@ -31,7 +31,7 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("user_name");
-        String email = intent.getStringExtra("email");
+        String patient_id = intent.getStringExtra("patient_id");
         String part = intent.getStringExtra("part");
         String symptom = intent.getStringExtra("symptom");
         String licenseNumber = intent.getStringExtra("license_number");
@@ -77,7 +77,7 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(CareRequestCompleteActivity.this, ClinicHomeActivity.class);
             backIntent.putExtra("user_name", userName);
-            backIntent.putExtra("email", email);
+            backIntent.putExtra("patient_id", patient_id);
             startActivity(backIntent);
             finish();
         });

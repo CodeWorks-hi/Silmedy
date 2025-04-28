@@ -29,7 +29,7 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String email = intent.getStringExtra("email");
+        String patient_id = intent.getStringExtra("patient_id");
         String part = intent.getStringExtra("part");
         String imagePath = intent.getStringExtra("image_path");
 
@@ -48,7 +48,7 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
         btnReservation.setOnClickListener(v -> {
             Intent resultIntent = new Intent(DiagnosisResultsActivity.this, DoctorListActivity.class);
             resultIntent.putExtra("user_name", username);
-            resultIntent.putExtra("email", email);
+            resultIntent.putExtra("patient_id", patient_id);
             resultIntent.putExtra("part", part);
 //            resultIntent.putExtra("symptom", symptom);
 //            resultIntent.putExtra("department", department);
@@ -61,7 +61,7 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(DiagnosisResultsActivity.this, ShootingActivity.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("email", email);
+            backIntent.putExtra("patient_id", patient_id);
             backIntent.putExtra("part", part);
             startActivity(backIntent);
         });

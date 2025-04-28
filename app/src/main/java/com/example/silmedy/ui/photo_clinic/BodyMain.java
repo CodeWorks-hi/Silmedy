@@ -21,7 +21,7 @@ public class BodyMain extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String email = intent.getStringExtra("email");
+        String patient_id = intent.getStringExtra("patient_id");
 
         btnBack = findViewById(R.id.btnBack);
         btnLeftArm = findViewById(R.id.btnLeftArm);
@@ -33,7 +33,7 @@ public class BodyMain extends AppCompatActivity {
         btnRightArm.setOnClickListener(v -> {
             Intent ArmIntent = new Intent(BodyMain.this, ArmActivity.class);
             ArmIntent.putExtra("user_name", username);
-            ArmIntent.putExtra("email", email);
+            ArmIntent.putExtra("patient_id", patient_id);
             startActivity(ArmIntent);
             finish();
         });
@@ -41,7 +41,7 @@ public class BodyMain extends AppCompatActivity {
         btnLeftArm.setOnClickListener(v -> {
             Intent ArmIntent = new Intent(BodyMain.this, ArmActivity.class);
             ArmIntent.putExtra("user_name", username);
-            ArmIntent.putExtra("email", email);
+            ArmIntent.putExtra("patient_id", patient_id);
             startActivity(ArmIntent);
             finish();
         });
@@ -49,7 +49,7 @@ public class BodyMain extends AppCompatActivity {
         btnHead.setOnClickListener(v -> {
             Intent HeadIntent = new Intent(BodyMain.this, HeadActivity.class);
             HeadIntent.putExtra("user_name", username);
-            HeadIntent.putExtra("email", email);
+            HeadIntent.putExtra("patient_id", patient_id);
             startActivity(HeadIntent);
             finish();
         });
@@ -57,7 +57,7 @@ public class BodyMain extends AppCompatActivity {
         btnBody.setOnClickListener(v -> {
             Intent BodyIntent = new Intent(BodyMain.this, BodyActivity.class);
             BodyIntent.putExtra("user_name", username);
-            BodyIntent.putExtra("email", email);
+            BodyIntent.putExtra("patient_id", patient_id);
             startActivity(BodyIntent);
             finish();
         });
@@ -65,7 +65,7 @@ public class BodyMain extends AppCompatActivity {
         btnLeg.setOnClickListener(v -> {
             Intent LegIntent = new Intent(BodyMain.this, LegActivity.class);
             LegIntent.putExtra("user_name", username);
-            LegIntent.putExtra("email", email);
+            LegIntent.putExtra("patient_id", patient_id);
             startActivity(LegIntent);
             finish();
         });
@@ -74,7 +74,7 @@ public class BodyMain extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(BodyMain.this, ClinicHomeActivity.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("email", email);
+            backIntent.putExtra("patient_id", patient_id);
             startActivity(backIntent);
             finish();
         });

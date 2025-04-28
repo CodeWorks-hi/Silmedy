@@ -24,7 +24,7 @@ public class HeadActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String email = intent.getStringExtra("email");
+        String patient_id = intent.getStringExtra("patient_id");
 
         btnBack = findViewById(R.id.btnBack);
         btnEyes = findViewById(R.id.btnEyes);
@@ -35,7 +35,7 @@ public class HeadActivity extends AppCompatActivity {
         btnEyes.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("눈");
             shootIntent.putExtra("part", parts);
@@ -46,7 +46,7 @@ public class HeadActivity extends AppCompatActivity {
         btnNose.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("코");
             shootIntent.putExtra("part", parts);
@@ -57,7 +57,7 @@ public class HeadActivity extends AppCompatActivity {
         btnMouth.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("입");
             shootIntent.putExtra("part", parts);
@@ -68,7 +68,7 @@ public class HeadActivity extends AppCompatActivity {
         btnNeck.setOnClickListener(v -> {
             Intent shootIntent = new Intent(HeadActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("email", email);
+            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("목");
             shootIntent.putExtra("part", parts);startActivity(shootIntent);
@@ -78,7 +78,7 @@ public class HeadActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(HeadActivity.this, BodyMain.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("email", email);
+            backIntent.putExtra("patient_id", patient_id);
             startActivity(backIntent);
             finish();
         });
