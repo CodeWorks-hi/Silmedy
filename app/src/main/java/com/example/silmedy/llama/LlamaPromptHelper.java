@@ -16,7 +16,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class LlamaPromptHelper {
-    private static final String TAG     = "LlamaPromptHelper";
+    private static final String TAG = "LlamaPromptHelper";
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
     public static final String API_KEY = BuildConfig.HUGGINGFACE_API_KEY;
     public static final String API_URL = BuildConfig.HUGGINGFACE_API_URL;
@@ -35,14 +35,13 @@ public class LlamaPromptHelper {
         Log.d(TAG, "HF_API_KEY  = '" + API_KEY + "'");
         Log.d(TAG, "HF_API_URL  = '" + API_URL + "'");
 
-        // 1) baseURL 검증
         String rawBase = API_URL;
         if (rawBase == null || rawBase.isBlank() ||
                 !(rawBase.startsWith("http://") || rawBase.startsWith("https://"))) {
             callback.onError(new IllegalArgumentException("Invalid HF_API_URL: " + rawBase));
             return;
         }
-        // 2) 엔드포인트 조합
+
         final String endpoint = rawBase + "/chat/completions";
 
         OkHttpClient client = new OkHttpClient.Builder()
@@ -51,25 +50,28 @@ public class LlamaPromptHelper {
 
         try {
             String systemPrompt =
-                    "안녕하세요. 많이 힘드셨죠? 걱정하지 마세요. 😊\n\n" +
+                    "사용자가 입력한 증상에 대해,\n" +
+                            "1. 가능한 원인을 2~3개 정도 간단히 설명하고,\n" +
+                            "2. 집에서 할 수 있는 관리 방법을 2~3개 제시하고,\n" +
+                            "3. 병원에 가야 하는 경우를 2개 이상 안내하세요.\n\n" +
+                            "설명은 친절하고 불안하지 않게, 짧은 문장으로 작성합니다.\n" +
+                            "항목별로 ✔️, • 등을 사용해 시각적으로 구분합니다.\n" +
+                            "모든 대답 마지막에는 '비대면 의사 진료를 진행하시겠습니까?' 문구를 추가하세요. 🌷\n\n" +
                             "첫 번째 증상: " + prevSymptom + "\n" +
-                            "새로운 증상: "   + userMessage  + "\n" +
-                            "⸻\n" +
-                            "콧물과 가래, 두통은 서로 연관될 수 있어요. 몸이 병균과 싸우는 자연스러운 과정입니다.\n\n" +
-                            "왜 이런 증상이 생길까요?\n" +
-                            "   • 부비동염 → 코막힘·콧물·가래와 두통이 함께 나타날 수 있어요.\n" +
-                            "   • 근육 긴장성 두통 → 목·어깨 긴장으로 발생하기도 해요.\n\n" +
-                            "병원에 가야 할 때\n" +
-                            "   • 38℃ 이상의 고열이 있을 때\n" +
-                            "   • 숨쉬기 어렵거나 통증이 심할 때\n" +
-                            "   • 콧물·가래에 피가 섞이거나 1주일 이상 증상이 지속될 때\n\n" +
-                            "집에서 쉽게 해볼 수 있는 방법\n" +
-                            "   • 따뜻한 소금물로 코 세척하기\n" +
-                            "   • 따뜻한 물 자주 마시기\n" +
-                            "   • 목·어깨 스트레칭으로 긴장 풀기\n" +
-                            "   • 충분한 휴식과 수분 섭취 유지하기\n\n" +
-                            "대부분은 시간이 지나면 좋아져요. 🌷\n" +
-                            "혹시 가래 색깔이나 다른 증상이 있으면 알려주세요. 더 꼼꼼히 도와드릴게요! 🌼";
+                            "두 번째 증상: " + userMessage + "\n\n" +
+                            "예시)\n" +
+                            "첫 번째 증상: 배가 바늘로 찌르는 듯 아파요.\n" +
+                            "두 번째 증상: 속이 더부룩하고 답답해요.\n\n" +
+                            "✔️ 가능한 원인\n" +
+                            "• 위산 과다\n" +
+                            "• 급성 위염\n\n" +
+                            "✔️ 집에서 관리하는 방법\n" +
+                            "1. 따뜻한 물을 천천히 마시기\n" +
+                            "2. 식후 바로 눕지 않기\n\n" +
+                            "✔️ 병원에 가야 하는 경우\n" +
+                            "• 통증이 심하거나 1시간 이상 지속될 때\n" +
+                            "• 구토나 혈변이 있을 때\n\n" +
+                            "마지막에 '비대면 의사 진료를 진행하시겠습니까?' 라는 문구로 마무리하세요.";
 
             JSONObject systemObj = new JSONObject()
                     .put("role", "system")
