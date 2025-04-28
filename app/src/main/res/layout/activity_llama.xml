@@ -66,12 +66,15 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <!-- 메시지 목록: 수직 스크롤바와 NestedScrolling 허용 -->
+    <!-- 메시지 목록: 마우스 휠 스크롤 및 NestedScrolling 허용 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMessages"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:overScrollMode="always"
         android:scrollbars="vertical"
         android:fadeScrollbars="false"
         android:nestedScrollingEnabled="true"
@@ -97,8 +100,11 @@
             android:padding="12dp"
             android:textColor="#000000"
             android:textColorHint="#888888"
-            android:scrollbars="vertical"
-            android:overScrollMode="always" />
+            android:singleLine="true"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeOptions="actionSend"
+            android:gravity="start|center_vertical" />
 
         <ImageButton
             android:id="@+id/btnSend"

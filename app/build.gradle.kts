@@ -19,11 +19,13 @@ android {
         val kakaoKey: String? = project.findProperty("KAKAO_NATIVE_APP_KEY") as String?
         buildConfigField("String", "KAKAO_NATIVE_APP_KEY", "\"$kakaoKey\"")
 
-        val huggingfaceKey = project.findProperty("HUGGINGFACE_API_KEY") as String? ?: ""
-        val huggingfaceUrl = project.findProperty("HUGGINGFACE_API_URL") as String? ?: ""
+        val huggingfaceKey: String =
+            (project.findProperty("HUGGINGFACE_API_KEY") as? String).orEmpty()
+        val huggingfaceUrl: String =
+            (project.findProperty("HUGGINGFACE_API_URL") as? String).orEmpty()
+
         buildConfigField("String", "HUGGINGFACE_API_KEY", "\"$huggingfaceKey\"")
         buildConfigField("String", "HUGGINGFACE_API_URL", "\"$huggingfaceUrl\"")
-
     }
 
 

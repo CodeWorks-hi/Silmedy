@@ -17,14 +17,14 @@
         android:src="@drawable/silmedy_circle"
         android:contentDescription="@string/desc_profile_image" />
 
-    <!-- 버블 + 시간 -->
+    <!-- 메시지 버블 + 시간 -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- 메시지 버블 -->
+        <!-- AI 메시지 버블 -->
         <TextView
             android:id="@+id/textMessage"
             android:layout_width="wrap_content"
