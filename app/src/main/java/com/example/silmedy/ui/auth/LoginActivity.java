@@ -62,10 +62,29 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            db.collection("patients").document(email).get().addOnSuccessListener(doc -> {
-                if (doc.exists() && password.equals(doc.getString("password"))) {
+            db.collection("patients").get().addOnSuccessListener(querySnapshot -> {
+                boolean loginSuccess = false;
+                String foundDocId = null;
+                String foundUsername = null;
+
+                for (var doc : querySnapshot.getDocuments()) {
+                    String docEmail = doc.getString("email");
+                    String docPassword = doc.getString("password");
+                    if (email.equals(docEmail) && password.equals(docPassword)) {
+                        loginSuccess = true;
+                        foundDocId = doc.getId();
+                        foundUsername = doc.getString("name");
+                        break;
+                    }
+                }
+
+                if (loginSuccess) {
                     saveLoginInfo(email, password);
-                    goToMain(email);
+                    Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
+                    intent.putExtra("user_name", foundUsername);
+                    intent.putExtra("patient_id", foundDocId);
+                    startActivity(intent);
+                    finish();
                 } else {
                     Toast.makeText(this, "로그인 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
                 }
@@ -95,9 +114,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void autoLogin(String email, String password) {
-        db.collection("users").document(email).get().addOnSuccessListener(doc -> {
-            if (doc.exists() && password.equals(doc.getString("password"))) {
-                goToMain(email);
+        db.collection("patients").whereEqualTo("email", email).get().addOnSuccessListener(querySnapshot -> {
+            if (!querySnapshot.isEmpty()) {
+                var doc = querySnapshot.getDocuments().get(0);
+                String docPassword = doc.getString("password");
+                if (password.equals(docPassword)) {
+                    String patientId = doc.getId();
+                    goToMain(patientId);
+                }
             }
         });
     }
@@ -109,13 +133,13 @@ public class LoginActivity extends AppCompatActivity {
                 .apply();
     }
 
-    private void goToMain(String email) {
-        db.collection("patients").document(email).get().addOnSuccessListener(doc -> {
+    private void goToMain(String patientId) {
+        db.collection("patients").document(patientId).get().addOnSuccessListener(doc -> {
             if (doc.exists()) {
-                String username = doc.getString("name"); // Firestore에 저장된 사용자 이름
+                String username = doc.getString("name");
                 Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
-                intent.putExtra("user_name", username);  // 사용자 이름 전달
-                intent.putExtra("email", email);
+                intent.putExtra("user_name", username);
+                intent.putExtra("patient_id", patientId);
                 startActivity(intent);
                 finish();
             }
