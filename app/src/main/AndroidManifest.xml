@@ -37,7 +37,16 @@
         android:theme="@style/Theme.Silmedy"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+<<<<<<< Updated upstream
         <!-- Android 13+ 기본 로케일 -->
+=======
+        <activity
+            android:name=".ui.chat.ChatSummaryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.call.VideoCallActivity"
+            android:exported="false" /> <!-- Android 13+ 기본 로케일 -->
+>>>>>>> Stashed changes
         <meta-data
             android:name="locale"
             android:value="ko" />
