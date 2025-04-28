@@ -37,6 +37,7 @@ Thumbs.db
 .env
 *.env
 gradle.properties
+local.properties
 
 # === Firebase / Google Services ===
 // google-services.json     # 필요에 따라 주석 해제
@@ -44,3 +45,8 @@ gradle.properties
 # === 기타 ===
 *.lock
 *.bin
+
+# 추가된 빌드 아티팩트 무시
+app/build/
+*.dex
+*.class
