@@ -25,9 +25,23 @@ import com.example.silmedy.ui.open_api.MapActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.OutputStream;
+import java.io.InputStreamReader;
+import java.io.BufferedReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+import android.os.AsyncTask;
+import android.util.Log;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -57,6 +71,7 @@ public class DoctorListActivity extends AppCompatActivity {
         String username = intent.getStringExtra("user_name");
         String patient_id = intent.getStringExtra("patient_id");
         String department = intent.getStringExtra("department");
+        ArrayList<String> clinicList = (ArrayList<String>) intent.getSerializableExtra("clinic_list");
 
         btnBack = findViewById(R.id.btnBack);
         locationText = findViewById(R.id.locationText);
@@ -70,39 +85,21 @@ public class DoctorListActivity extends AppCompatActivity {
         // 위치 변경 클릭 시 카카오맵 실행
         btnChangeLocation.setOnClickListener(v -> {
             Intent kakaoIntent = new Intent(DoctorListActivity.this, MapActivity.class);
+            kakaoIntent.putExtra("department", department);
             startActivityForResult(kakaoIntent, REQUEST_CODE_MAP);
         });
-
-        doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        doctorList = new ArrayList<>();
-        // 매우 중요!!! 지금은 하드코딩이지만 실제 작동 과정에서는 license_number 및 hospital_id 통해서 정보 불러오고 넘겨주기.
-        HashMap<String, String> schedule_kim = new HashMap<>();
-        schedule_kim.put("월", "09:00-18:00");
-        schedule_kim.put("화", "09:00-18:00");
-        schedule_kim.put("수", "09:00-18:00");
-        schedule_kim.put("목", "09:00-18:00");
-        schedule_kim.put("금", "휴진");
-        HashMap<String, String> schedule_park = new HashMap<>();
-        schedule_park.put("월", "09:00-18:00");
-        schedule_park.put("화", "09:00-18:00");
-        schedule_park.put("수", "휴진");
-        schedule_park.put("목", "09:00-18:00");
-        schedule_park.put("금", "09:00-18:00");
-        HashMap<String, String> schedule_lee = new HashMap<>();
-        schedule_lee.put("월", "09:00-18:00");
-        schedule_lee.put("화", "휴진");
-        schedule_lee.put("수", "09:00-18:00");
-        schedule_lee.put("목", "09:00-18:00");
-        schedule_lee.put("금", "09:00-18:00");
-        doctorList.add(new Doctor(123456, R.drawable.doc, "김정훈", "분당구보건소", "내과", schedule_kim));
-        doctorList.add(new Doctor(234567, R.drawable.doc, "박지윤", "수정구보건소", "내과", schedule_park));
-        doctorList.add(new Doctor(345678, R.drawable.doc, "이상우", "중원구보건소", "내과", schedule_lee));
-        adapter = new DoctorAdapter(doctorList, username, patient_id, part, symptom);
-        doctorRecyclerView.setAdapter(adapter);
 
         // 위치 클라이언트 초기화
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         checkLocationPermissionAndGetCurrentLocation();
+
+        doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        doctorList = new ArrayList<>();
+
+        fetchDoctors(clinicList, department);
+
+        adapter = new DoctorAdapter(doctorList, username, patient_id, part, symptom);
+        doctorRecyclerView.setAdapter(adapter);
 
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
@@ -113,6 +110,75 @@ public class DoctorListActivity extends AppCompatActivity {
             startActivity(backIntent);
             finish();
         });
+    }
+
+    private void fetchDoctors(List<String> clinicList, String department) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    URL url = new URL("http://192.168.0.170:5000/request/doctors");
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("POST");
+                    conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+                    conn.setDoOutput(true);
+
+                    JSONObject jsonBody = new JSONObject();
+                    jsonBody.put("department", department);
+                    JSONArray clinicArray = new JSONArray();
+                    for (String clinic : clinicList) {
+                        clinicArray.put(clinic);
+                    }
+                    jsonBody.put("clinic_list", clinicArray);
+
+                    try (OutputStream os = conn.getOutputStream()) {
+                        byte[] input = jsonBody.toString().getBytes("utf-8");
+                        os.write(input, 0, input.length);
+                    }
+
+                    int responseCode = conn.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+                        StringBuilder response = new StringBuilder();
+                        String responseLine;
+                        while ((responseLine = br.readLine()) != null) {
+                            response.append(responseLine.trim());
+                        }
+
+                        JSONObject jsonResponse = new JSONObject(response.toString());
+                        JSONArray doctorsArray = jsonResponse.getJSONArray("doctors");
+
+                        doctorList.clear();
+                        for (int i = 0; i < doctorsArray.length(); i++) {
+                            JSONObject doctorJson = doctorsArray.getJSONObject(i);
+                            String name = doctorJson.getString("name");
+                            String center = doctorJson.getString("center");
+                            String dep = doctorJson.getString("department");
+                            String profileUrl = doctorJson.getString("profile_url");
+                            int licenseNumber = doctorJson.getString("license_number").hashCode();
+
+                            JSONObject availabilityObj = doctorJson.getJSONObject("availability");
+                            HashMap<String, String> schedule = new HashMap<>();
+                            Iterator<String> keys = availabilityObj.keys();
+                            while (keys.hasNext()) {
+                                String key = keys.next();
+                                schedule.put(key, availabilityObj.getString(key));
+                            }
+
+                            doctorList.add(new Doctor(licenseNumber, profileUrl, name, center, dep, schedule));
+                        }
+
+                        runOnUiThread(() -> adapter.notifyDataSetChanged());
+                    } else {
+                        Log.e("API_ERROR", "HTTP error code: " + responseCode);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    Log.e("API_EXCEPTION", e.toString());
+                }
+                return null;
+            }
+        }.execute();
     }
 
     // 위치 권한 확인 및 요청
@@ -185,8 +251,17 @@ public class DoctorListActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_MAP && resultCode == RESULT_OK) {
             String selectedAddress = data.getStringExtra("selected_address");
+            double latitude = data.getDoubleExtra("latitude", 0);
+            double longitude = data.getDoubleExtra("longitude", 0);
+            String department = data.getStringExtra("department");
+            ArrayList<String> clinicList = data.getStringArrayListExtra("clinic_list");
             if (selectedAddress != null && !selectedAddress.isEmpty()) {
                 locationText.setText(selectedAddress);
+            }
+
+            // 새 clinicList를 기반으로 API 재호출
+            if (clinicList != null) {
+                fetchDoctors(clinicList, department);
             }
         }
     }

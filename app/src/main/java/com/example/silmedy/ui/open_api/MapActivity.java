@@ -19,6 +19,9 @@ public class MapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Intent intent = getIntent();
+        String department = intent.getStringExtra("department");
+
         webView = new WebView(this);
         setContentView(webView);
 
@@ -39,9 +42,12 @@ public class MapActivity extends AppCompatActivity {
 
     public class WebAppInterface {
         @JavascriptInterface
-        public void onAddressSelected(String address) {
+        public void onAddressSelected(String address, double latitude, double longitude, String department) {
             Intent resultIntent = new Intent();
             resultIntent.putExtra("selected_address", address);
+            resultIntent.putExtra("latitude", latitude);
+            resultIntent.putExtra("longitude", longitude);
+            resultIntent.putExtra("department", department);
             setResult(RESULT_OK, resultIntent);
             finish();
         }

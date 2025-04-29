@@ -137,7 +137,7 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
             resultIntent.putExtra("patient_id", patient_id);
             resultIntent.putExtra("part", part);
             resultIntent.putStringArrayListExtra("symptom", symptoms);
-            resultIntent.putExtra("department", department);
+            resultIntent.putExtra("department", "외과");
             startActivity(resultIntent);
             finish();
         });
