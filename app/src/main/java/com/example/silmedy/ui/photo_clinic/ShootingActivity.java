@@ -23,6 +23,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.silmedy.R;
+import com.example.silmedy.ui.config.TokenManager;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -49,6 +50,7 @@ public class ShootingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_shooting);
 
         Intent intent = getIntent();

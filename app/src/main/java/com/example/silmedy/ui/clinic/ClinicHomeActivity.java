@@ -16,6 +16,7 @@ import com.example.silmedy.R;
 import com.example.silmedy.llama.LlamaActivity;
 import com.example.silmedy.ui.care_request.SymptomChoiceActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.silmedy.ui.config.TokenManager;
 
 public class ClinicHomeActivity extends AppCompatActivity {
 
@@ -28,6 +29,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_clinic_home);
 
         //  뒤로가기 버튼
@@ -40,8 +42,8 @@ public class ClinicHomeActivity extends AppCompatActivity {
         Intent intent = getIntent();
         textGreeting = findViewById(R.id.text_greeting);
         String username = intent.getStringExtra("user_name");
-        String patient_id = intent.getStringExtra("patient_id");
-        Log.d("ClinicHome", "userName: " + username + ", patient_id: " + patient_id);
+
+        Log.d("ClinicHome", "userName: " + username);
         if (username != null && !username.isEmpty()) {
             textGreeting.setText(String.format("%s님, 환영합니다.", username));
         }
@@ -52,7 +54,6 @@ public class ClinicHomeActivity extends AppCompatActivity {
             cardTouchSymptom.setOnClickListener(v -> {
                 Intent bodyIntent = new Intent(this, BodyMain.class);
                 bodyIntent.putExtra("user_name", username);
-                bodyIntent.putExtra("patient_id", patient_id);
                 startActivity(bodyIntent);
             });
         }
@@ -63,7 +64,6 @@ public class ClinicHomeActivity extends AppCompatActivity {
             cardCold.setOnClickListener(v -> {
                 Intent coldIntent = new Intent(this, SymptomChoiceActivity.class);
                 coldIntent.putExtra("user_name", username);
-                coldIntent.putExtra("patient_id", patient_id);
                 startActivity(coldIntent);
             });
         }
@@ -75,7 +75,6 @@ public class ClinicHomeActivity extends AppCompatActivity {
                 Log.d("ClinicHomeActivity", "AI 카드 클릭됨");
                 Intent aiIntent = new Intent(this, LlamaActivity.class);
                 aiIntent.putExtra("user_name", username);
-                intent.putExtra("patient_id", patient_id);
                 startActivity(aiIntent);
             });
         }

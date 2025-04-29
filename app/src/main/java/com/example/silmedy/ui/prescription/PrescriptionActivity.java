@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
+import com.example.silmedy.ui.config.TokenManager;
 
 public class PrescriptionActivity extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class PrescriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_prescription);
 
         btnVisit = findViewById(R.id.btnVisit);

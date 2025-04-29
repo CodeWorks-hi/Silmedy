@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 import com.example.silmedy.adapter.DoctorAdapter;
+import com.example.silmedy.ui.config.TokenManager;
 import com.example.silmedy.ui.open_api.MapActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -64,6 +65,7 @@ public class DoctorListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_doctor_list);
 
         Intent intent = getIntent();

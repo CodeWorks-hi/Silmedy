@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
+import com.example.silmedy.ui.config.TokenManager;
 
 import java.util.ArrayList;
 
@@ -20,6 +21,7 @@ public class BodyActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_body);
 
         Intent intent = getIntent();

@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
 import com.example.silmedy.ai_model.KerasModelPredict;
+import com.example.silmedy.ui.config.TokenManager;
 
 import java.util.ArrayList;
 import org.json.JSONObject;
@@ -36,6 +37,7 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_diagnosis_results);
         predictor = new KerasModelPredict(this);
 

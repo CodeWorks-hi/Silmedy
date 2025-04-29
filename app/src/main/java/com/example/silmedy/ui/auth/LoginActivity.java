@@ -11,10 +11,20 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
+import com.example.silmedy.model.LoginRequest;
+import com.example.silmedy.model.LoginResponse;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
+import com.example.silmedy.ui.config.ApiClient;
+import com.example.silmedy.ui.config.ApiService;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
+
+    ApiService apiService;
 
     private EditText editEmail, editPassword;
     private Button btnLogin;
@@ -52,6 +62,8 @@ public class LoginActivity extends AppCompatActivity {
             autoLogin(savedEmail, savedPw);
         }
 
+        apiService = ApiClient.getClient(getApplicationContext()).create(ApiService.class);
+
         // 로그인 버튼 클릭
         btnLogin.setOnClickListener(v -> {
             String email = editEmail.getText().toString().trim();
@@ -78,11 +90,31 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
 
+                LoginRequest loginRequest = new LoginRequest(email, password);
+
                 if (loginSuccess) {
+                    apiService.login(loginRequest).enqueue(new Callback<LoginResponse>() {
+                        @Override
+                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                            if (response.isSuccessful() && response.body() != null) {
+                                String accessToken = response.body().getAccessToken();
+                                String refreshToken = response.body().getRefreshToken();
+
+                                SharedPreferences.Editor editor = prefs.edit();
+                                editor.putString("access_token", accessToken);
+                                editor.putString("refresh_token", refreshToken);
+                                editor.apply();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<LoginResponse> call, Throwable t) {
+                            t.printStackTrace();
+                        }
+                    });
                     saveLoginInfo(email, password);
                     Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
                     intent.putExtra("user_name", foundUsername);
-                    intent.putExtra("patient_id", foundDocId);
                     startActivity(intent);
                     finish();
                 } else {
@@ -139,7 +171,6 @@ public class LoginActivity extends AppCompatActivity {
                 String username = doc.getString("name");
                 Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
                 intent.putExtra("user_name", username);
-                intent.putExtra("patient_id", patientId);
                 startActivity(intent);
                 finish();
             }

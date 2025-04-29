@@ -10,6 +10,8 @@ import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.silmedy.ui.config.TokenManager;
+
 public class MapActivity extends AppCompatActivity {
 
     private WebView webView;
@@ -18,6 +20,7 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
 
         webView = new WebView(this);
         setContentView(webView);

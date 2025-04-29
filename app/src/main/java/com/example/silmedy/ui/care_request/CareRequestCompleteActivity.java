@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.silmedy.MainActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
+import com.example.silmedy.ui.config.TokenManager;
 
 public class CareRequestCompleteActivity extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_care_request_complete);
 
         editDoctor = findViewById(R.id.editDoctor);

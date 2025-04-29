@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
+import com.example.silmedy.ui.config.TokenManager;
 
 public class BodyMain extends AppCompatActivity {
 
@@ -17,6 +18,7 @@ public class BodyMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessToken();
         setContentView(R.layout.activity_body_main); // ✔️ 반드시 존재해야 함
 
         Intent intent = getIntent();
