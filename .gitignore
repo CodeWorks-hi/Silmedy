@@ -15,9 +15,6 @@ captures/                  # 화면 캡처
 .externalNativeBuild/
 .cxx/
 
-# Local SDK 설정
-local.properties
-
 # === Android outputs ===
 *.apk
 *.ap_
@@ -53,3 +50,7 @@ app/build
 app/build/
 *.dex
 *.class
+
+build/reports
+.gradle/
+app/build/
