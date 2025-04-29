@@ -3,11 +3,12 @@ package com.example.silmedy.ui.care_request;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,7 +18,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.silmedy.MainActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
@@ -50,12 +50,41 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
         String userName = intent.getStringExtra("user_name");
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
         ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
-        String licenseNumber = intent.getStringExtra("license_number");
+        int licenseNumber = intent.getIntExtra("license_number", 0);
         String doctorName = intent.getStringExtra("doctor_name");
         String doctorClinic = intent.getStringExtra("doctor_clinic");
         String doctorDepartment = intent.getStringExtra("doctor_department");
         String selectedTime = intent.getStringExtra("selected_time");
         String selectedDay = intent.getStringExtra("selected_day");
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        final String bookDate;
+        int todayDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+
+        if ("today".equals(selectedDay)) {
+            if (todayDayOfWeek == Calendar.SATURDAY || todayDayOfWeek == Calendar.SUNDAY) {
+                // 오늘이 토요일/일요일이면 월요일로 이동
+                while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.MONDAY) {
+                    calendar.add(Calendar.DAY_OF_YEAR, 1);
+                }
+            }
+            bookDate = dateFormat.format(calendar.getTime());
+        } else if ("tomorrow".equals(selectedDay)) {
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+            int tomorrowDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+            if (tomorrowDayOfWeek == Calendar.SATURDAY || tomorrowDayOfWeek == Calendar.SUNDAY) {
+                // 내일이 토/일이면 화요일로 이동
+                while (calendar.get(Calendar.DAY_OF_WEEK) != Calendar.TUESDAY) {
+                    calendar.add(Calendar.DAY_OF_YEAR, 1);
+                }
+            } else if (tomorrowDayOfWeek == Calendar.FRIDAY) {
+                // 내일이 금요일이면 월요일로 이동
+                calendar.add(Calendar.DAY_OF_YEAR, 3);
+            }
+            bookDate = dateFormat.format(calendar.getTime());
+        } else {
+            bookDate = selectedDay;
+        }
         boolean signLanguageRequested = intent.getBooleanExtra("sign_language_requested", false);
 
         // 토큰 가져오기!!!
@@ -85,7 +114,7 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
                 jsonInput.put("department", doctorDepartment);
                 jsonInput.put("symptom_part", new JSONArray(part));
                 jsonInput.put("symptom_type", new JSONArray(symptom));
-                jsonInput.put("book_date", selectedDay);
+                jsonInput.put("book_date", bookDate);
                 jsonInput.put("book_hour", selectedTime);
                 jsonInput.put("sign_language_needed", signLanguageRequested);
                 Log.d("CareRequestComplete", "Sending request to /request/confirmed with payload: " + jsonInput.toString());
@@ -129,13 +158,13 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
 
         String displayDay = selectedDay;
         if (displayDay.equals("today")) {
-            Calendar calendar = Calendar.getInstance();
-            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+            Calendar calendarNew = Calendar.getInstance();
+            int dayOfWeek = calendarNew.get(Calendar.DAY_OF_WEEK);
             displayDay = (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) ? "월요일" : "오늘";
         } else if (displayDay.equals("tomorrow")) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
-            int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+            Calendar calendarNew = Calendar.getInstance();
+            calendarNew.add(Calendar.DAY_OF_YEAR, 1);
+            int dayOfWeek = calendarNew.get(Calendar.DAY_OF_WEEK);
             if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
                 displayDay = "화요일";
             } else if (dayOfWeek == Calendar.FRIDAY) {

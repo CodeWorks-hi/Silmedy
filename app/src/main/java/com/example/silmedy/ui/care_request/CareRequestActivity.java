@@ -88,7 +88,7 @@ public class CareRequestActivity extends AppCompatActivity {
         String username = intent.getStringExtra("user_name");
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
         ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
-        String license_number = intent.getStringExtra("license_number");
+        int license_number = intent.getIntExtra("license_number", 0);
         doctorNameStr = intent.getStringExtra("doctor_name");
         doctorClinicStr = intent.getStringExtra("doctor_clinic");
         Serializable serializedMap = intent.getSerializableExtra("doctor_time");

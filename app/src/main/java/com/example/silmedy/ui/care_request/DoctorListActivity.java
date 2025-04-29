@@ -150,12 +150,22 @@ public class DoctorListActivity extends AppCompatActivity {
                         doctorList.clear();
                         for (int i = 0; i < doctorsArray.length(); i++) {
                             JSONObject doctorJson = doctorsArray.getJSONObject(i);
-                            Log.d("DoctorListActivity", "Parsing doctor: " + doctorJson.toString());
-                            String name = doctorJson.getString("name");
-                            String center = doctorJson.getString("hospital_name");
-                            String dep = doctorJson.getString("department");
-                            String profileUrl = doctorJson.getString("profile_url");
-                            int licenseNumber = doctorJson.getString("hospital_id").hashCode();
+                        Log.d("DoctorListActivity", "Parsing doctor: " + doctorJson.toString());
+                        String name = doctorJson.getString("name");
+                        String center = doctorJson.getString("hospital_name");
+                        String dep = doctorJson.getString("department");
+                        String profileUrl = doctorJson.getString("profile_url");
+                        int licenseNumber = -1;
+                        if (doctorJson.has("license_number")) {
+                            String licenseStr = doctorJson.getString("license_number");
+                            try {
+                                licenseNumber = Integer.parseInt(licenseStr);
+                            } catch (NumberFormatException e) {
+                                Log.e("DoctorListActivity", "Invalid license_number format: " + licenseStr);
+                            }
+                        } else {
+                            Log.e("DoctorListActivity", "doctorJson에 license_number 없음: " + doctorJson.toString());
+                        }
 
                             JSONObject availabilityObj = doctorJson.getJSONObject("availability");
                             HashMap<String, String> schedule = new HashMap<>();
