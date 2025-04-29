@@ -1,7 +1,5 @@
 package com.example.silmedy.llama;
 
-// (생략) import 들은 그대로
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,171 +17,182 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.silmedy.R;
 import com.example.silmedy.adapter.MessageAdapter;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
-import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class LlamaActivity extends AppCompatActivity {
 
-    private static final String TAG = "LlamaActivity";
-    private static final String SESSION_COLLECTION = "consult_sessions";
+    private static final String TAG        = "LlamaActivity";
+    private static final String COLLECTION = "consult_text";
 
-    private EditText editMessage;
-    private ImageButton btnSend;
+    private String userId       = "unknown";
+    private String prevSymptom  = null;
+    public  static ArrayList<String> fullChatHistory = new ArrayList<>();
+
+    private EditText     editMessage;
+    private ImageButton  btnSend;
     private RecyclerView recyclerMessages;
     private MessageAdapter adapter;
     private ArrayList<Message> messageList;
-    private FirebaseFirestore db;
-
-    private String sessionId = null;
-    private String prevSymptom = null;
-
-    // ✨ 추가: 대화 전체 기록용 리스트
-    public static ArrayList<String> fullChatHistory = new ArrayList<>();
+    private FirebaseFirestore  db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llama);
 
+        // Firestore & Auth 초기화
         db = FirebaseFirestore.getInstance();
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        if (auth.getCurrentUser() != null) {
+            userId = auth.getCurrentUser().getUid();
+            Log.d(TAG, "Logged in as: " + userId);
+        } else {
+            Log.w(TAG, "No user logged in");
+        }
 
-        editMessage = findViewById(R.id.editMessage);
-        btnSend = findViewById(R.id.btnSend);
+        // 뷰 바인딩
+        editMessage      = findViewById(R.id.editMessage);
+        btnSend          = findViewById(R.id.btnSend);
         recyclerMessages = findViewById(R.id.recyclerMessages);
 
+        // RecyclerView 세팅
         messageList = new ArrayList<>();
-        adapter = new MessageAdapter(this, messageList, "나");
+        adapter     = new MessageAdapter(this, messageList, "나");
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(adapter);
+        recyclerMessages.setNestedScrollingEnabled(true);
+        recyclerMessages.setOverScrollMode(RecyclerView.OVER_SCROLL_ALWAYS);
 
-        ImageView btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
+        // 상단 뒤로가기 버튼
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        btnSend.setOnClickListener(v -> onUserSend());
-
-        editMessage.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
+        // 엔터 키를 전송으로
+        editMessage.setImeOptions(EditorInfo.IME_ACTION_SEND);
+        editMessage.setSingleLine(true);
+        editMessage.setOnEditorActionListener((TextView v, int actionId, KeyEvent ev) -> {
             if (actionId == EditorInfo.IME_ACTION_SEND ||
-                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                onUserSend();
+                    (ev != null && ev.getKeyCode() == KeyEvent.KEYCODE_ENTER && ev.getAction() == KeyEvent.ACTION_DOWN)) {
+                btnSend.performClick();
                 return true;
             }
             return false;
         });
-    }
 
-    private boolean isPositiveAnswer(String userInput) {
-        String answer = userInput.trim().toLowerCase();
-        return answer.contains("예") || answer.contains("네") || answer.contains("진료") || answer.contains("진료할래요");
+        // 전송 버튼 클릭
+        btnSend.setOnClickListener(v -> onUserSend());
     }
 
     private void onUserSend() {
         String userText = editMessage.getText().toString().trim();
-        if (userText.isEmpty()) return;
+        if (userText.isEmpty() || userId.equals("unknown")) return;
 
-        if (sessionId == null) {
-            db.collection(SESSION_COLLECTION)
-                    .add(new HashMap<>())
-                    .addOnSuccessListener(doc -> {
-                        sessionId = doc.getId();
-                        Log.d(TAG, "Session created: " + sessionId);
-                        continueConversation(userText);
-                    })
-                    .addOnFailureListener(e -> Log.e(TAG, "Session create failed", e));
-        } else {
-            continueConversation(userText);
-        }
-    }
-
-    private void continueConversation(String userText) {
         long now = System.currentTimeMillis();
-
         if (prevSymptom == null) {
             prevSymptom = userText;
         }
 
-        // 1) 사용자 메시지
-        Message userMsg = new Message("나", userText, now);
-        messageList.add(userMsg);
+        // 1) 사용자 메시지 UI에 추가
+        messageList.add(new Message("나", userText, now));
         adapter.notifyItemInserted(messageList.size() - 1);
         recyclerMessages.scrollToPosition(messageList.size() - 1);
-
-        // ✨ 추가: 사용자 메시지 저장
         fullChatHistory.add("나: " + userText);
 
-        // 2) 세션 저장
-        DocumentReference qaRef = db.collection(SESSION_COLLECTION)
-                .document(sessionId)
-                .collection("qa_pairs")
-                .document();
-        Map<String, Object> qaEntry = new HashMap<>();
-        qaEntry.put("question", userText);
-        qaEntry.put("answer", null);
-        qaEntry.put("timestamp", now);
-        qaRef.set(qaEntry);
+        // 2) 날짜 구분선 추가
+        messageList.add(Message.createDateSeparator(now));
+        adapter.notifyItemInserted(messageList.size() - 1);
 
-        // 3) AI 빈 버블
+        // 3) AI 응답 자리 표시
         Message aiPlaceholder = new Message("AI", "", now + 1);
         messageList.add(aiPlaceholder);
-        int aiIndex = messageList.size() - 1;
+        final int aiIndex = messageList.size() - 1;
         adapter.notifyItemInserted(aiIndex);
         recyclerMessages.scrollToPosition(aiIndex);
 
-        // 4) AI 응답 받기
-        LlamaPromptHelper.sendChatStream(prevSymptom, userText, new LlamaPromptHelper.StreamCallback() {
-            final StringBuilder buffer = new StringBuilder();
+        // 4) HF + 플라스크 백엔드 저장
+        LlamaPromptHelper.sendChatStream(
+                userId,
+                prevSymptom,
+                userText,
+                new LlamaPromptHelper.StreamCallback() {
+                    final StringBuilder buffer = new StringBuilder();
 
-            @Override
-            public void onChunk(String chunk) {
-                buffer.append(chunk);
-                runOnUiThread(() -> {
-                    aiPlaceholder.setText(buffer.toString());
-                    adapter.notifyItemChanged(aiIndex);
-                    recyclerMessages.scrollToPosition(aiIndex);
-                });
-            }
+                    @Override
+                    public void onChunk(String chunk) {
+                        buffer.append(chunk);
+                        runOnUiThread(() -> {
+                            aiPlaceholder.setText(buffer.toString());
+                            adapter.notifyItemChanged(aiIndex);
+                            recyclerMessages.scrollToPosition(aiIndex);
+                        });
+                    }
 
-            @Override
-            public void onComplete() {
-                long aiTs = System.currentTimeMillis();
-                Map<String, Object> update = new HashMap<>();
-                update.put("answer", buffer.toString());
-                update.put("ai_timestamp", aiTs);
-                qaRef.update(update);
+                    @Override
+                    public void onComplete() {
+                        long aiTs = System.currentTimeMillis();
+                        String aiText = buffer.toString();
 
-                // ✨ 추가: AI 메시지 저장
-                fullChatHistory.add("AI: " + buffer.toString());
-            }
+                        // 5) Firestore에 질문+답변 저장
+                        saveConsultData(userText, aiText, aiTs);
+                        fullChatHistory.add("AI: " + aiText);
 
-            @Override
-            public void onError(Exception e) {
-                Log.e(TAG, "Streaming error", e);
-            }
-        });
+                        // 6) "예" 문구 인식 시 진료 예약 화면으로
+                        if (isPositiveAnswer(aiText)) {
+                            startActivity(new Intent(LlamaActivity.this, DoctorListActivity.class));
+                            finish();
+                        }
+                    }
 
-        // 5) 입력창 초기화
+                    @Override
+                    public void onError(Exception e) {
+                        Log.e(TAG, "Streaming error", e);
+                    }
+                }
+        );
+
+        // 7) 입력창 비우기
         editMessage.setText("");
-
-        // 6) "예" 인식시 진료 예약으로 이동
-        if (isPositiveAnswer(userText)) {
-            Intent intent = new Intent(LlamaActivity.this, DoctorListActivity.class);
-            startActivity(intent);
-            finish();
-        }
     }
 
-    // ✨ 추가: ChatSummaryActivity에서 사용
+    private boolean isPositiveAnswer(String txt) {
+        txt = txt.toLowerCase(Locale.ROOT);
+        return txt.contains("예") || txt.contains("네") || txt.contains("진료");
+    }
+
+    private void saveConsultData(String patientText, String aiText, long timestamp) {
+        String chatId = new SimpleDateFormat("yyyyMMddHHmmssSSS", Locale.getDefault())
+                .format(new Date(timestamp));
+
+        Map<String,Object> data = new HashMap<>();
+        data.put("chat_id",      chatId);
+        data.put("created_at",   new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                .format(new Date(timestamp)));
+        data.put("is_separater", false);
+        data.put("patient_id",   userId);
+        data.put("patient_text", patientText);
+        data.put("ai_text",      aiText);
+
+        db.collection(COLLECTION)
+                .document(userId)
+                .collection("chats")
+                .document(chatId)
+                .set(data)
+                .addOnSuccessListener(r -> Log.d(TAG, "Consult Q&A saved"))
+                .addOnFailureListener(e -> Log.e(TAG, "Save failed", e));
+    }
+
+    /** 관리자 화면에서 전체 채팅 원문 꺼낼 때 사용 */
     public static String getFullChatSummary() {
-        if (fullChatHistory == null || fullChatHistory.isEmpty()) {
-            return "";
-        }
-        StringBuilder builder = new StringBuilder();
-        for (String line : fullChatHistory) {
-            builder.append(line).append("\n");
-        }
-        return builder.toString();
+        if (fullChatHistory.isEmpty()) return "";
+        StringBuilder sb = new StringBuilder();
+        for (String line : fullChatHistory) sb.append(line).append("\n");
+        return sb.toString();
     }
 }

@@ -1,40 +1,56 @@
 package com.example.silmedy.ui.chat;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
+
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.silmedy.R;
+import com.example.silmedy.llama.LlamaActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.example.silmedy.llama.LlamaActivity;
 
 public class ChatSummaryActivity extends AppCompatActivity {
 
     private TextView textViewSummary;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_summary);
 
-        // 관리자 인증
+        // 1) Toolbar 세팅
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(R.string.title_activity_chat_summary);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+        }
+        toolbar.setNavigationOnClickListener(v -> finish());
+
+        // 2) 관리자 체크
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
-
-        if (user == null || !user.getEmail().equals("admin@yourdomain.com")) {
-            finish(); // 관리자가 아니면 바로 종료
+        if (user == null || !"admin@yourdomain.com".equals(user.getEmail())) {
+            finish();
             return;
         }
 
+        // 3) 뷰 바인딩
         textViewSummary = findViewById(R.id.textViewSummary);
 
-        // LlamaActivity로부터 채팅 원문 가져오기
-        String chatOriginalText = LlamaActivity.getFullChatSummary();  // <- 여기!
+        // 4) 전체 채팅 원문 가져와 표시
+        String chatOriginalText = LlamaActivity.getFullChatSummary();
+        Log.d("ChatSummaryActivity", "chatOriginalText=\n" + chatOriginalText);
 
-        if (chatOriginalText != null && !chatOriginalText.isEmpty()) {
+        if (!chatOriginalText.isEmpty()) {
             textViewSummary.setText(chatOriginalText);
         } else {
-            textViewSummary.setText(getString(R.string.hint_no_summary));  // 요약 없을 때 기본 메시지
+            textViewSummary.setText(R.string.hint_no_summary);
         }
     }
 }

@@ -15,35 +15,28 @@
         android:gravity="center_vertical"
         android:elevation="2dp">
 
-        <!-- 뒤로 가기 버튼 -->
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="32dp"
             android:layout_height="36dp"
             android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
             android:contentDescription="@string/btn_back"
             android:src="@drawable/ic_arrow_back" />
 
-        <!-- 프로필 이미지 -->
         <ImageView
             android:id="@+id/imageProfile"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_toEndOf="@id/btnBack"
             android:layout_marginStart="12dp"
-            android:layout_centerVertical="true"
             android:scaleType="centerCrop"
             android:src="@drawable/silmedy_circle" />
 
-        <!-- 채팅방 타이틀 -->
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/imageProfile"
             android:layout_marginStart="8dp"
-            android:layout_centerVertical="true"
             android:orientation="vertical"
             android:gravity="center_vertical">
 
@@ -52,7 +45,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chat_toolbar_title"
-                android:textColor="#000000"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -61,25 +53,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chat_toolbar_status"
-                android:textColor="@color/mint_primary"
                 android:textSize="12sp" />
         </LinearLayout>
     </RelativeLayout>
 
-    <!-- 메시지 목록: 마우스 휠 스크롤 및 NestedScrolling 허용 -->
+    <!-- 메시지 목록 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerMessages"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:overScrollMode="always"
-        android:scrollbars="vertical"
-        android:fadeScrollbars="false"
+        android:padding="12dp"
         android:nestedScrollingEnabled="true"
-        android:clipToPadding="false"
-        android:padding="12dp" />
+        android:overScrollMode="always" />
 
     <!-- 메시지 입력창 -->
     <LinearLayout
@@ -98,13 +84,11 @@
             android:background="@xml/bg_edittext"
             android:hint="@string/hint_chat_input"
             android:padding="12dp"
-            android:textColor="#000000"
-            android:textColorHint="#888888"
+            android:textColor="#000"
+            android:textColorHint="#888"
             android:singleLine="true"
-            android:maxLines="1"
-            android:inputType="text"
             android:imeOptions="actionSend"
-            android:gravity="start|center_vertical" />
+            android:inputType="text" />
 
         <ImageButton
             android:id="@+id/btnSend"
