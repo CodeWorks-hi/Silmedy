@@ -19,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.silmedy.R;
-import com.example.silmedy.model.Doctor;
+import com.example.silmedy.entity.Doctor;
 import com.example.silmedy.adapter.DoctorAdapter;
 import com.example.silmedy.ui.open_api.MapActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.io.Serializable;
 
 
 public class DoctorListActivity extends AppCompatActivity {

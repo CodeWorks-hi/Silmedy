@@ -28,7 +28,6 @@ android {
         buildConfigField("String", "HUGGINGFACE_API_URL", "\"$huggingfaceUrl\"")
     }
 
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -46,10 +45,24 @@ android {
         viewBinding = true
         buildConfig = true
     }
+
+    // Packaging options to prevent duplicate resources and native-image issues with nd4j and protobuf
+    packaging {
+        resources {
+            excludes += "META-INF/native-image/**"
+            excludes += "META-INF/licenses/**"
+            excludes += "META-INF/DEPENDENCIES"
+            excludes += "META-INF/NOTICE"
+            excludes += "META-INF/LICENSE"
+            excludes += "META-INF/ASL2.0"
+            excludes += "META-INF/*.kotlin_module"
+            excludes += "google/protobuf/field_mask.proto"
+            excludes += "google/protobuf/descriptor.proto"
+        }
+    }
 }
 
 dependencies {
-
     // Volley networking library
     implementation("com.android.volley:volley:1.2.1")
 
@@ -64,15 +77,12 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-
     // Firebase BoM (Bill of Materials)
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
     implementation("com.google.android.material:material:1.11.0") // 버전은 네 프로젝트에 맞춰서
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
-    implementation ("com.github.bumptech.glide:glide:4.16.0") // 버전은 네 프로젝트에 맞춰서
-    annotationProcessor ("com.github.bumptech.glide:compiler:4.16.0")
 
     // transform 기능 쓰려면 이거도 추가
     implementation("jp.wasabeef:glide-transformations:4.3.0")
@@ -84,11 +94,17 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics")
     implementation("com.google.firebase:firebase-auth:22.1.2") // SNS 인증위해 최신 버전 사용
     implementation("com.google.firebase:firebase-firestore")
-
     implementation("com.google.firebase:firebase-messaging:23.4.1")
-    implementation("com.android.volley:volley:1.2.1")
     implementation("com.google.android.gms:play-services-location:21.0.1")
-    implementation ("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation ("androidx.room:room-runtime:2.5.1")
-    implementation ("com.google.firebase:firebase-firestore:24.4.5")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("androidx.room:room-runtime:2.5.1")
+
+    // TensorFlow Lite for Android
+    implementation("org.tensorflow:tensorflow-lite:2.14.0")
+    implementation("org.tensorflow:tensorflow-lite-support:0.4.4")
+    implementation("org.tensorflow:tensorflow-lite-select-tf-ops:2.14.0")
+}
+
+// Exclude Google's protobuf that conflicts with nd4j's protobuf and nd4j's bundled guava
+configurations.all {
 }

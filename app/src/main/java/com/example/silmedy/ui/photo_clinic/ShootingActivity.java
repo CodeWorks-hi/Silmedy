@@ -67,7 +67,7 @@ public class ShootingActivity extends AppCompatActivity {
         btnAlbum = findViewById(R.id.btnAlbum);
         btnResult = findViewById(R.id.btnResult);
 
-        // 카메라, 앨범, 결과 확인가 버튼
+        // 카메라, 앨범, 결과 확인 버튼
         btnCamera.setOnClickListener(v -> camera());
         btnAlbum.setOnClickListener(v -> album());
         btnResult.setOnClickListener(v -> {

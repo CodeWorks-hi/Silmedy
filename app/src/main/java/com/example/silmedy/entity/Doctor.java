@@ -1,6 +1,5 @@
-package com.example.silmedy.model;
+package com.example.silmedy.entity;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.io.Serializable;
 
