@@ -147,21 +147,24 @@ public class LlamaPromptHelper {
             prompt.append("✏️ [복합 증상 분석]\n")
                     .append("• 첫 번째 증상: ").append(prevSymptom).append("\n")
                     .append("• 두 번째 증상: ").append(userMessage).append("\n")
-                    .append("• 가능한 연관성:\n")
-                    .append("  1) ").append(prevSymptom).append(" → ").append(userMessage).append(" (원인 추정)\n")
-                    .append("  2) 별개 증상 동시 발생 가능성\n\n");
+                    .append("• 가능한 원인 :\n")
+                    // 원인 1: 증상 간 직접적 연관성
+                    .append("  1) ").append(prevSymptom).append("이 ").append(userMessage).append("를 유발할 수 있음\n")
+                    // 원인 2: 일반적 위험 요인
+                    .append("  2) 스트레스 또는 바이러스 감염의 영향\n\n");
         } else {
             prompt.append("✏️ [단일 증상 분석]\n")
-                    .append("• 주요 증상: ").append(userMessage).append("\n\n");
+                    .append("• 주요 증상: ").append(userMessage).append("\n")
+                    .append("• 가능한 원인 1가지:\n")
+                    .append("  1) 과로 또는 수면 부족\n\n"); // 단일 증상 예시
         }
 
         prompt.append("🏠 집에서 시도해 볼 응급 조치\n")
-                .append("• ").append(userMessage).append(" 증상 완화법\n")
-                .append("  → 1시간 누워 휴식 + 미지근한 물 마시기 (예시)\n\n")
+                .append("  → 30분 간격 미지근한 물 섭취\n\n") // 통합된 조치 항목
                 .append("⏰ 병원 방문이 필요한 경우\n")
-                .append("• 통증 강도가 7/10 이상\n")
-                .append("• 39℃ 이상 고열 12시간 지속\n\n")
-                .append("비대면 진료로 편하게 상담받아보시겠어요?\n");
+                .append("  • 증상이 6시간 이상 지속될 때\n\n") // 단순화된 기준
+                .append("비대면 진료를 원하시나요?");
+
 
         return prompt.toString();
     }

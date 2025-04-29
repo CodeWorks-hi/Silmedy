@@ -97,8 +97,10 @@
             android:padding="12dp"
             android:textColor="#000000"
             android:textColorHint="#888888"
-            android:scrollbars="vertical"
-            android:overScrollMode="always" />
+            android:singleLine="true"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            android:overScrollMode="never" />
 
         <ImageButton
             android:id="@+id/btnSend"
