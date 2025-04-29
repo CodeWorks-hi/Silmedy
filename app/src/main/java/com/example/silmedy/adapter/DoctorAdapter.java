@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.silmedy.ui.care_request.CareRequestActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.entity.Doctor;
+import com.bumptech.glide.Glide;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -94,7 +95,10 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         filteredSchedule.append(secondDay).append(" : ").append(secondSchedule);
 
         holder.schedule.setText(filteredSchedule.toString().trim());
-        holder.image.setImageResource(doctor.getImageResId());
+        Glide.with(holder.itemView.getContext())
+             .load(doctor.getImageUrl())
+             .placeholder(R.drawable.doc)
+             .into(holder.image);
 
         // 아이템 클릭 시 CareRequestActivity로 이동
         holder.itemView.setOnClickListener(v -> {
@@ -108,7 +112,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
             intent.putExtra("doctor_department", doctor.getDepartment());
             intent.putExtra("doctor_clinic", doctor.getCenter());
             intent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
-            intent.putExtra("doctor_image", doctor.getImageResId());
+            intent.putExtra("doctor_image", doctor.getImageUrl());
             v.getContext().startActivity(intent);
         });
     }

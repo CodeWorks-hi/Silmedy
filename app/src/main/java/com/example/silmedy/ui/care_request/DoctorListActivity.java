@@ -80,12 +80,9 @@ public class DoctorListActivity extends AppCompatActivity {
         btnGenderFilter = findViewById(R.id.btnGenderFilter);
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
 
-        btnBack.setOnClickListener(v -> finish());
-
         // 위치 변경 클릭 시 카카오맵 실행
         btnChangeLocation.setOnClickListener(v -> {
             Intent kakaoIntent = new Intent(DoctorListActivity.this, MapActivity.class);
-            kakaoIntent.putExtra("department", department);
             startActivityForResult(kakaoIntent, REQUEST_CODE_MAP);
         });
 
@@ -96,7 +93,14 @@ public class DoctorListActivity extends AppCompatActivity {
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorList = new ArrayList<>();
 
-        fetchDoctors(clinicList, department);
+        // fetchDoctors(clinicList, department);
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+            if (location != null) {
+                fetchDoctors(location.getLatitude(), location.getLongitude(), department);
+            } else {
+                Log.e("LOCATION", "Failed to get location");
+            }
+        });
 
         adapter = new DoctorAdapter(doctorList, username, patient_id, part, symptom);
         doctorRecyclerView.setAdapter(adapter);
@@ -112,29 +116,17 @@ public class DoctorListActivity extends AppCompatActivity {
         });
     }
 
-    private void fetchDoctors(List<String> clinicList, String department) {
+    private void fetchDoctors(double latitude, double longitude, String department) {
         new AsyncTask<Void, Void, Void>() {
             @Override
             protected Void doInBackground(Void... voids) {
                 try {
-                    URL url = new URL("http://192.168.0.170:5000/request/doctors");
+                    String urlStr = "http://192.168.0.170:5000/health-centers-with-doctors?lat="
+                            + latitude + "&lng=" + longitude + "&department=" + department;
+                    URL url = new URL(urlStr);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                    conn.setRequestMethod("POST");
-                    conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-                    conn.setDoOutput(true);
-
-                    JSONObject jsonBody = new JSONObject();
-                    jsonBody.put("department", department);
-                    JSONArray clinicArray = new JSONArray();
-                    for (String clinic : clinicList) {
-                        clinicArray.put(clinic);
-                    }
-                    jsonBody.put("clinic_list", clinicArray);
-
-                    try (OutputStream os = conn.getOutputStream()) {
-                        byte[] input = jsonBody.toString().getBytes("utf-8");
-                        os.write(input, 0, input.length);
-                    }
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Accept", "application/json");
 
                     int responseCode = conn.getResponseCode();
                     if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -152,10 +144,10 @@ public class DoctorListActivity extends AppCompatActivity {
                         for (int i = 0; i < doctorsArray.length(); i++) {
                             JSONObject doctorJson = doctorsArray.getJSONObject(i);
                             String name = doctorJson.getString("name");
-                            String center = doctorJson.getString("center");
+                            String center = doctorJson.getString("hospital_name");
                             String dep = doctorJson.getString("department");
                             String profileUrl = doctorJson.getString("profile_url");
-                            int licenseNumber = doctorJson.getString("license_number").hashCode();
+                            int licenseNumber = doctorJson.getString("hospital_id").hashCode();
 
                             JSONObject availabilityObj = doctorJson.getJSONObject("availability");
                             HashMap<String, String> schedule = new HashMap<>();
@@ -258,10 +250,13 @@ public class DoctorListActivity extends AppCompatActivity {
             if (selectedAddress != null && !selectedAddress.isEmpty()) {
                 locationText.setText(selectedAddress);
             }
+            Log.d("DoctorListActivity", "Selected location: " + selectedAddress + ", lat: " + latitude + ", lng: " + longitude);
+            Log.d("DoctorListActivity", "Clinic List: " + clinicList);
 
             // 새 clinicList를 기반으로 API 재호출
             if (clinicList != null) {
-                fetchDoctors(clinicList, department);
+                Log.d("DoctorListActivity", "Calling fetchDoctors with lat: " + latitude + ", lng: " + longitude + " and department: " + department);
+                fetchDoctors(latitude, longitude, department);
             }
         }
     }

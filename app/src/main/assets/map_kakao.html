@@ -39,6 +39,8 @@
 
 <script>
     let selectedAddress = null;
+    let selectedLat = null;
+    let selectedLng = null;
 
     kakao.maps.load(function () {
         const container = document.getElementById('map');
@@ -54,11 +56,12 @@
             const latlng = mouseEvent.latLng;
             marker.setPosition(latlng);
 
+            selectedLat = latlng.getLat();
+            selectedLng = latlng.getLng();
+
             geocoder.coord2Address(latlng.getLng(), latlng.getLat(), function(result, status) {
-                console.log("지오코딩 상태:", status);
                 if (status === kakao.maps.services.Status.OK) {
                     selectedAddress = result[0].address.address_name;
-                    console.log("선택된 주소:", selectedAddress);
                     document.getElementById('confirmBtn').disabled = false;
                 } else {
                     console.log("지오코딩 실패 상태:", status);
@@ -68,12 +71,14 @@
     });
 
     document.getElementById('confirmBtn').addEventListener('click', function () {
-    if (selectedAddress && window.Android && window.Android.onAddressSelected) {
-        console.log("선택된 주소:", selectedAddress);
-        window.Android.onAddressSelected(selectedAddress);
-    } else {
-        alert("주소가 선택되지 않았거나, 연결 실패");
-    }
+        if (selectedAddress && selectedLat !== null && selectedLng !== null && window.Android && window.Android.onAddressSelected) {
+            console.log("선택된 주소:", selectedAddress);
+            console.log("위도:", selectedLat);
+            console.log("경도:", selectedLng);
+            window.Android.onAddressSelected(selectedAddress, selectedLat, selectedLng);
+        } else {
+            alert("주소가 선택되지 않았거나, 연결 실패");
+        }
     });
 </script>
 </body>
