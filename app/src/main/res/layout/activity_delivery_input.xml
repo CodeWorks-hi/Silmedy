@@ -44,7 +44,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/card_bg"
+            android:background="@drawable/tab_selector"
             android:orientation="vertical"
             android:padding="12dp">
 
