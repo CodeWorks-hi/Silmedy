@@ -56,7 +56,6 @@ public class ShootingActivity extends AppCompatActivity {
         Intent intent = getIntent();
         // 사용자 이름 받기
         String username = intent.getStringExtra("user_name");
-        String patient_id = intent.getStringExtra("patient_id");
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
 
         // 뷰 연결
@@ -79,7 +78,6 @@ public class ShootingActivity extends AppCompatActivity {
             }
             Intent resultIntent = new Intent(ShootingActivity.this, DiagnosisResultsActivity.class);
             resultIntent.putExtra("user_name", username);
-            resultIntent.putExtra("patient_id", patient_id);
             resultIntent.putExtra("part", part);
             resultIntent.putExtra("image_path", photoFile.getAbsolutePath());
             startActivity(resultIntent);

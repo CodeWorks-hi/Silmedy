@@ -47,7 +47,7 @@ import java.util.Locale;
 
 public class DoctorListActivity extends AppCompatActivity {
 
-    private String username, patient_id, department;
+    private String username, department;
     private ArrayList<String> part, symptom;
 
     private static final int REQUEST_CODE_MAP = 1001;
@@ -72,7 +72,6 @@ public class DoctorListActivity extends AppCompatActivity {
         part = (ArrayList<String>) intent.getSerializableExtra("part");
         symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
         username = intent.getStringExtra("user_name");
-        patient_id = intent.getStringExtra("patient_id");
         department = intent.getStringExtra("department");
 
         btnBack = findViewById(R.id.btnBack);
@@ -94,7 +93,7 @@ public class DoctorListActivity extends AppCompatActivity {
 
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorList = new ArrayList<>();
-        adapter = new DoctorAdapter(doctorList, username, patient_id, part, symptom);
+        adapter = new DoctorAdapter(doctorList, username, part, symptom);
         doctorRecyclerView.setAdapter(adapter);
 
         fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
@@ -109,7 +108,6 @@ public class DoctorListActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("patient_id", patient_id);
             backIntent.putExtra("part", part);
             backIntent.putExtra("symptom", symptom);
             startActivity(backIntent);

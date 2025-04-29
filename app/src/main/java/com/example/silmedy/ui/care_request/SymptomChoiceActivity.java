@@ -26,7 +26,6 @@ public class SymptomChoiceActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String patient_id = intent.getStringExtra("patient_id");
 
         cardCold = findViewById(R.id.cardCold);
         cardIndigestion = findViewById(R.id.cardIndigestion);
@@ -42,55 +41,53 @@ public class SymptomChoiceActivity extends AppCompatActivity {
         cardCold.setOnClickListener(v -> {
             ArrayList<String> symptoms = new ArrayList<>();
             symptoms.add("감기");
-            moveToDoctorList(parts, symptoms, username, patient_id);
+            moveToDoctorList(parts, symptoms, username);
         });
         // 소화불량
         cardIndigestion.setOnClickListener(v -> {
             ArrayList<String> symptoms = new ArrayList<>();
             symptoms.add("소화불량");
-            moveToDoctorList(parts, symptoms, username, patient_id);
+            moveToDoctorList(parts, symptoms, username);
         });
         // 열
         cardHeat.setOnClickListener(v -> {
             ArrayList<String> symptoms = new ArrayList<>();
             symptoms.add("열");
-            moveToDoctorList(parts, symptoms, username, patient_id);
+            moveToDoctorList(parts, symptoms, username);
         });
         // 두통
         cardHeadache.setOnClickListener(v -> {
             ArrayList<String> symptoms = new ArrayList<>();
             symptoms.add("두통");
-            moveToDoctorList(parts, symptoms, username, patient_id);
+            moveToDoctorList(parts, symptoms, username);
         });
         // 당뇨
         cardDiabetes.setOnClickListener(v -> {
             ArrayList<String> symptoms = new ArrayList<>();
             symptoms.add("당뇨");
-            moveToDoctorList(parts, symptoms, username, patient_id);
+            moveToDoctorList(parts, symptoms, username);
         });
         // 고혈압
         cardHighBlood.setOnClickListener(v -> {
             ArrayList<String> symptoms = new ArrayList<>();
             symptoms.add("고혈압");
-            moveToDoctorList(parts, symptoms, username, patient_id);
+            moveToDoctorList(parts, symptoms, username);
         });
 
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(SymptomChoiceActivity.this, ClinicHomeActivity.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("patient_id", patient_id);
             startActivity(backIntent);
             finish();
         });
     }
 
     private void moveToDoctorList(ArrayList<String> parts, ArrayList<String> symptoms,
-                                  String username, String patient_id) {
+                                  String username) {
         Intent intent = new Intent(SymptomChoiceActivity.this, DoctorListActivity.class);
         intent.putExtra("part", parts);
         intent.putExtra("symptom", symptoms);
         intent.putExtra("user_name", username);
-        intent.putExtra("patient_id", patient_id);
         intent.putExtra("department", "내과");
         startActivity(intent);
     }

@@ -31,15 +31,13 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
 
     public final List<Doctor> doctorList;
     public final String username;
-    public final String email;
     public final ArrayList<String> part;
     public final ArrayList<String> symptom;
 
     // 생성자: 의사 리스트와 사용자 정보만 주입받음
-    public DoctorAdapter(List<Doctor> doctorList, String username, String email, ArrayList<String> part, ArrayList<String> symptom) {
+    public DoctorAdapter(List<Doctor> doctorList, String username, ArrayList<String> part, ArrayList<String> symptom) {
         this.doctorList = doctorList;
         this.username = username;
-        this.email = email;
         this.part = part;
         this.symptom = symptom;
     }
@@ -111,7 +109,6 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), CareRequestActivity.class);
             intent.putExtra("user_name", username);
-            intent.putExtra("email", email);
             intent.putExtra("part", part);
             intent.putExtra("symptom", symptom);
             intent.putExtra("license_number", doctor.getLicenseNumber());

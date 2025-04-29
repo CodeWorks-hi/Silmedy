@@ -30,7 +30,6 @@ public class CareRequestActivity extends AppCompatActivity {
     private ImageButton btnBack;
     private Button btnToday, btnTomorrow, btnReserve;
     private CheckBox checkSignLanguage;
-    // private RecyclerView timeSlotRecycler; // Removed unused variable
     private TextView doctorName, doctorClinic, doctorTime;
     private ImageView doctorImage;
     private GridLayout timeButtonContainer;

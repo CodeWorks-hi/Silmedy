@@ -26,7 +26,6 @@ public class ArmActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String patient_id = intent.getStringExtra("patient_id");
 
         // 이미지 및 버튼 참조
         btnBack = findViewById(R.id.btnBack);
@@ -39,7 +38,6 @@ public class ArmActivity extends AppCompatActivity {
         btnUpperArm.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("팔");
             shootIntent.putExtra("part", parts);
@@ -50,7 +48,6 @@ public class ArmActivity extends AppCompatActivity {
         btnLowerArm.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("팔");
             shootIntent.putExtra("part", parts);
@@ -61,7 +58,6 @@ public class ArmActivity extends AppCompatActivity {
         btnHand.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("손");
             shootIntent.putExtra("part", parts);
@@ -72,7 +68,6 @@ public class ArmActivity extends AppCompatActivity {
         btnShoulder.setOnClickListener(v -> {
             Intent shootIntent = new Intent(ArmActivity.this, ShootingActivity.class);
             shootIntent.putExtra("user_name", username);
-            shootIntent.putExtra("patient_id", patient_id);
             ArrayList<String> parts = new ArrayList<>();
             parts.add("어깨");
             shootIntent.putExtra("part", parts);
@@ -84,7 +79,6 @@ public class ArmActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(ArmActivity.this, BodyMain.class);
             backIntent.putExtra("user_name", username);
-            backIntent.putExtra("patient_id", patient_id);
             startActivity(backIntent);
             finish();
         });
