@@ -1,4 +1,4 @@
-package com.example.silmedy.entity;
+package com.example.silmedy.model;
 
 import java.util.Map;
 import java.io.Serializable;

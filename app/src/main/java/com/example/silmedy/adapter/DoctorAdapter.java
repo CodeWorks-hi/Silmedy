@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.silmedy.ui.care_request.CareRequestActivity;
 import com.example.silmedy.R;
-import com.example.silmedy.entity.Doctor;
+import com.example.silmedy.model.Doctor;
 import com.bumptech.glide.Glide;
 
 import java.io.Serializable;

@@ -5,11 +5,9 @@ import android.content.SharedPreferences;
 
 import org.json.JSONObject;
 
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import java.io.IOException;
+
+import okhttp3.*;
 
 public class TokenManager {
     private final SharedPreferences prefs;
@@ -28,12 +26,15 @@ public class TokenManager {
         return prefs.getString("refresh_token", null);
     }
 
+    public void saveAccessToken(String token) {
+        prefs.edit().putString("access_token", token).apply();
+    }
+
     public String refreshAccessToken() {
         try {
-            // 동기적으로 /token/refresh 호출
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
-                    .url("http://YOUR_IP:5000/token/refresh")
+                    .url("http://192.168.0.170:5000/token/refresh")
                     .post(RequestBody.create("", MediaType.parse("application/json")))
                     .addHeader("Authorization", "Bearer " + getRefreshToken())
                     .build();
@@ -43,9 +44,7 @@ public class TokenManager {
                 String body = response.body().string();
                 JSONObject json = new JSONObject(body);
                 String newAccessToken = json.getString("access_token");
-
-                // 저장
-                prefs.edit().putString("access_token", newAccessToken).apply();
+                saveAccessToken(newAccessToken);
                 return newAccessToken;
             }
         } catch (Exception e) {

@@ -1,4 +1,4 @@
-package com.example.silmedy.entity;
+package com.example.silmedy.model;
 
 public class TimeSlot {
     private String time;

@@ -5,7 +5,6 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import okhttp3.FormBody;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
-import com.example.silmedy.model.KerasModelPredict;
+import com.example.silmedy.ai_model.KerasModelPredict;
 
 import java.util.ArrayList;
 import org.json.JSONObject;

@@ -1,4 +1,4 @@
-package com.example.silmedy.model;
+package com.example.silmedy.ai_model;
 
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;

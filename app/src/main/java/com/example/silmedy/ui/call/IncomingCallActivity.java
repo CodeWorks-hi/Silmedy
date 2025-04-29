@@ -2,25 +2,22 @@ package com.example.silmedy.ui.call;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.silmedy.R;
+import com.example.silmedy.ui.config.ApiClient;
+import com.example.silmedy.ui.config.ApiService;
+
 
 public class IncomingCallActivity extends AppCompatActivity {
+
+    ApiService apiService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        apiService = ApiClient.getClient(getApplicationContext()).create(ApiService.class);
         setContentView(R.layout.activity_incoming_call);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
     }
 }
