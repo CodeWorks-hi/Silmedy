@@ -13,19 +13,16 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
+        // 기존 buildConfigField 은 그대로 두세요
         val kakaoKey: String? = project.findProperty("KAKAO_NATIVE_APP_KEY") as String?
         buildConfigField("String", "KAKAO_NATIVE_APP_KEY", "\"$kakaoKey\"")
 
-        val huggingfaceKey: String =
-            (project.findProperty("HUGGINGFACE_API_KEY") as? String).orEmpty()
-        val huggingfaceUrl: String =
-            (project.findProperty("HUGGINGFACE_API_URL") as? String).orEmpty()
-
-        buildConfigField("String", "HUGGINGFACE_API_KEY", "\"$huggingfaceKey\"")
-        buildConfigField("String", "HUGGINGFACE_API_URL", "\"$huggingfaceUrl\"")
+        val hfKey = (project.findProperty("HUGGINGFACE_API_KEY") as? String).orEmpty()
+        val hfUrl = (project.findProperty("HUGGINGFACE_API_URL") as? String).orEmpty()
+        buildConfigField("String", "HUGGINGFACE_API_KEY", "\"$hfKey\"")
+        buildConfigField("String", "HUGGINGFACE_API_URL", "\"$hfUrl\"")
     }
 
     buildTypes {
@@ -46,18 +43,28 @@ android {
         buildConfig = true
     }
 
-    // Packaging options to prevent duplicate resources and native-image issues with nd4j and protobuf
+    // —— debug 변형에서 src/debug/assets 완전 제외 ——
+    sourceSets {
+        getByName("debug").apply {
+            assets.setSrcDirs(emptyList<Any>())
+        }
+    }
+
+
     packaging {
         resources {
-            excludes += "META-INF/native-image/**"
-            excludes += "META-INF/licenses/**"
-            excludes += "META-INF/DEPENDENCIES"
-            excludes += "META-INF/NOTICE"
-            excludes += "META-INF/LICENSE"
-            excludes += "META-INF/ASL2.0"
-            excludes += "META-INF/*.kotlin_module"
-            excludes += "google/protobuf/field_mask.proto"
-            excludes += "google/protobuf/descriptor.proto"
+            // 중복된 모델 파일을 첫 번째만 포함하도록
+            pickFirsts.add("assets/model_unquant.tflite")
+            // 기존 excludes 는 그대로 두세요
+            excludes.add("META-INF/native-image/**")
+            excludes.add("META-INF/licenses/**")
+            excludes.add("META-INF/DEPENDENCIES")
+            excludes.add("META-INF/NOTICE")
+            excludes.add("META-INF/LICENSE")
+            excludes.add("META-INF/ASL2.0")
+            excludes.add("META-INF/*.kotlin_module")
+            excludes.add("google/protobuf/field_mask.proto")
+            excludes.add("google/protobuf/descriptor.proto")
         }
     }
 }
