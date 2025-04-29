@@ -33,7 +33,6 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String userName = intent.getStringExtra("user_name");
-        String patient_id = intent.getStringExtra("patient_id");
         String part = intent.getStringExtra("part");
         String symptom = intent.getStringExtra("symptom");
         String licenseNumber = intent.getStringExtra("license_number");
@@ -44,9 +43,12 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
         String selectedDay = intent.getStringExtra("selected_day");
         boolean signLanguageRequested = intent.getBooleanExtra("sign_language_requested", false);
 
-        // API로 신청 내용 저장
-        // -->
+        // 토큰 가져오기!!!
+        TokenManager tokenManager = new TokenManager(getApplicationContext());
+        String accessToken = tokenManager.getAccessToken();
 
+        // API로 신청 내용 저장!!!!
+        // -->
 
         // 화면 표출 데이터 변환
         editDoctor.setText("의사 : " + doctorName);
@@ -79,7 +81,6 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(CareRequestCompleteActivity.this, ClinicHomeActivity.class);
             backIntent.putExtra("user_name", userName);
-            backIntent.putExtra("patient_id", patient_id);
             startActivity(backIntent);
             finish();
         });

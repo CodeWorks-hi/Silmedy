@@ -59,10 +59,13 @@ public class CareRequestActivity extends AppCompatActivity {
         doctorImage = findViewById(R.id.doctorImage);
         timeButtonContainer = (GridLayout) findViewById(R.id.time_button_container);
 
+        // 수어 필요 여부 확인 위해 토큰 필요!!!!!
+        TokenManager tokenManager = new TokenManager(getApplicationContext());
+        String accessToken = tokenManager.getAccessToken();
+
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
             backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
-            backIntent.putExtra("patient_id", getIntent().getStringExtra("patient_id"));
             backIntent.putExtra("part", getIntent().getSerializableExtra("part"));
             backIntent.putExtra("symptom", getIntent().getSerializableExtra("symptom"));
             startActivity(backIntent);
@@ -74,7 +77,6 @@ public class CareRequestActivity extends AppCompatActivity {
         // 의사 정보 인텐트 처리
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
-        String patient_id = intent.getStringExtra("patient_id");
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
         ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
         String license_number = intent.getStringExtra("license_number");
@@ -133,7 +135,6 @@ public class CareRequestActivity extends AppCompatActivity {
 
                 Intent confirmIntent = new Intent(CareRequestActivity.this, CareRequestCompleteActivity.class);
                 confirmIntent.putExtra("user_name", username);
-                confirmIntent.putExtra("patient_id", patient_id);
                 confirmIntent.putExtra("part", part);
                 confirmIntent.putExtra("symptom", symptom);
                 confirmIntent.putExtra("license_number", license_number);
