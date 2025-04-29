@@ -39,6 +39,8 @@ Thumbs.db
 gradle.properties
 local.properties
 .DS_Store
+.gradle/
+app/build
 
 # === Firebase / Google Services ===
 // google-services.json     # 필요에 따라 주석 해제
