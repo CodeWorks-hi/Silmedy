@@ -83,12 +83,13 @@
             android:layout_weight="1"
             android:background="@xml/bg_edittext"
             android:hint="@string/hint_chat_input"
+            android:imeOptions="actionSend"
+            android:imeActionLabel="@string/btn_send"
+            android:inputType="text"
+            android:singleLine="true"
             android:padding="12dp"
             android:textColor="#000"
-            android:textColorHint="#888"
-            android:singleLine="true"
-            android:imeOptions="actionSend"
-            android:inputType="text" />
+            android:textColorHint="#888" />
 
         <ImageButton
             android:id="@+id/btnSend"
@@ -100,7 +101,7 @@
             android:rotation="-40"
             android:scaleType="fitCenter"
             android:tint="@color/mint_primary"
-            android:src="@drawable/ic_send" />
+            android:src="@drawable/ic_send"
+            android:enabled="false" />
     </LinearLayout>
-
 </LinearLayout>
