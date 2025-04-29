@@ -19,68 +19,63 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.silmedy.R;
 import com.example.silmedy.adapter.MessageAdapter;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class LlamaActivity extends AppCompatActivity {
-    private static final String TAG        = "LlamaActivity";
-    private static final String COLLECTION = "consult_text";
 
-    private EditText     editMessage;
-    private ImageButton  btnSend;
+    private static final String TAG = "LlamaActivity";
+    private static final String SESSION_COLLECTION = "consult_sessions";
+
+    private EditText editMessage;
+    private ImageButton btnSend;
     private RecyclerView recyclerMessages;
     private MessageAdapter adapter;
     private ArrayList<Message> messageList;
-    private FirebaseFirestore  db;
-    private String userId      = "unknown";
+    private FirebaseFirestore db;
+
+    private String sessionId = null;
     private String prevSymptom = null;
-    public  static ArrayList<String> fullChatHistory = new ArrayList<>();
+    private String userId = null; // Firebase Auth 에서 가져올 userId
+
+    private boolean isPositiveAnswer(String userInput) {
+        String answer = userInput.trim().toLowerCase();
+        return answer.contains("예") || answer.contains("네") || answer.contains("진료") || answer.contains("진료할래요");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llama);
 
-        // Initialize Firestore & Auth
         db = FirebaseFirestore.getInstance();
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user != null) {
-            userId = user.getUid();
-            Log.d(TAG, "User logged in: " + userId);
-        }
 
-        // Display userId in toolbar
-        TextView tvRoomName = findViewById(R.id.textRoomName);
-        tvRoomName.setText("ID: " + userId);
+        // userId 초기화 (필요시 FirebaseAuth 연동)
+        // userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        // View binding
-        editMessage      = findViewById(R.id.editMessage);
-        btnSend          = findViewById(R.id.btnSend);
+        editMessage = findViewById(R.id.editMessage);
+        btnSend = findViewById(R.id.btnSend);
         recyclerMessages = findViewById(R.id.recyclerMessages);
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
 
-        // RecyclerView setup
         messageList = new ArrayList<>();
-        adapter     = new MessageAdapter(this, messageList, "나");
+        adapter = new MessageAdapter(this, messageList, "나");
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(adapter);
 
-        // Disable send by default
+        ImageView btnBack = findViewById(R.id.btnBack);
+        btnBack.setOnClickListener(v -> finish());
+
+        // Send 버튼 활성화/비활성화
         btnSend.setEnabled(false);
         btnSend.setAlpha(0.5f);
-
-        // Enable/disable send based on input
         editMessage.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+            @Override public void beforeTextChanged(CharSequence s, int st, int b, int c) {}
+            @Override
+            public void onTextChanged(CharSequence s, int st, int b, int c) {
                 boolean hasText = s.toString().trim().length() > 0;
                 btnSend.setEnabled(hasText);
                 btnSend.setAlpha(hasText ? 1f : 0.5f);
@@ -88,14 +83,12 @@ public class LlamaActivity extends AppCompatActivity {
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        // Send click & enter key
         btnSend.setOnClickListener(v -> onUserSend());
-        editMessage.setImeOptions(EditorInfo.IME_ACTION_SEND);
-        editMessage.setSingleLine(true);
-        editMessage.setOnEditorActionListener((v, actionId, event) -> {
+
+        editMessage.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEND ||
                     (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
-                if (btnSend.isEnabled()) btnSend.performClick();
+                if (btnSend.isEnabled()) onUserSend();
                 return true;
             }
             return false;
@@ -104,42 +97,54 @@ public class LlamaActivity extends AppCompatActivity {
 
     private void onUserSend() {
         String userText = editMessage.getText().toString().trim();
-        if (userText.isEmpty() || userId.equals("unknown")) return;
+        if (userText.isEmpty()) return;
 
+        if (sessionId == null) {
+            db.collection(SESSION_COLLECTION)
+                    .add(new HashMap<>())
+                    .addOnSuccessListener(doc -> {
+                        sessionId = doc.getId();
+                        Log.d(TAG, "Session created: " + sessionId);
+                        continueConversation(userText);
+                    })
+                    .addOnFailureListener(e -> Log.e(TAG, "Session create failed", e));
+        } else {
+            continueConversation(userText);
+        }
+    }
+
+    private void continueConversation(String userText) {
         long now = System.currentTimeMillis();
-        if (prevSymptom == null) prevSymptom = userText;
 
-        // Save patient message
-        Map<String, Object> patientData = new HashMap<>();
-        patientData.put("sender", "patient");
-        patientData.put("text", userText);
-        patientData.put("timestamp", now);
-        db.collection(COLLECTION)
-                .document(userId)
-                .collection("chats")
-                .document(String.valueOf(now))
-                .set(patientData)
-                .addOnSuccessListener(d -> Log.d(TAG, "Saved patient message"))
-                .addOnFailureListener(e -> Log.e(TAG, "Error saving patient message", e));
+        if (prevSymptom == null) {
+            prevSymptom = userText;
+        }
 
-        // Show patient message
-        messageList.add(new Message("나", userText, now));
+        // 사용자 메시지 표시
+        Message userMsg = new Message("나", userText, now);
+        messageList.add(userMsg);
         adapter.notifyItemInserted(messageList.size() - 1);
         recyclerMessages.scrollToPosition(messageList.size() - 1);
-        fullChatHistory.add("나: " + userText);
 
-        // Date separator
-        messageList.add(Message.createDateSeparator(now));
-        adapter.notifyItemInserted(messageList.size() - 1);
+        // Firestore QA 초기 저장
+        DocumentReference qaRef = db.collection(SESSION_COLLECTION)
+                .document(sessionId)
+                .collection("qa_pairs")
+                .document();
+        Map<String, Object> qaEntry = new HashMap<>();
+        qaEntry.put("question", userText);
+        qaEntry.put("answer", null);
+        qaEntry.put("timestamp", now);
+        qaRef.set(qaEntry);
 
-        // AI placeholder
+        // AI 버블 추가
         Message aiPlaceholder = new Message("AI", "", now + 1);
         messageList.add(aiPlaceholder);
-        final int aiIndex = messageList.size() - 1;
+        int aiIndex = messageList.size() - 1;
         adapter.notifyItemInserted(aiIndex);
         recyclerMessages.scrollToPosition(aiIndex);
 
-        // AI stream
+        // AI 스트리밍 호출 (userId 추가)
         LlamaPromptHelper.sendChatStream(
                 userId,
                 prevSymptom,
@@ -147,7 +152,8 @@ public class LlamaActivity extends AppCompatActivity {
                 new LlamaPromptHelper.StreamCallback() {
                     final StringBuilder buffer = new StringBuilder();
 
-                    @Override public void onChunk(String chunk) {
+                    @Override
+                    public void onChunk(String chunk) {
                         buffer.append(chunk);
                         runOnUiThread(() -> {
                             aiPlaceholder.setText(buffer.toString());
@@ -156,42 +162,29 @@ public class LlamaActivity extends AppCompatActivity {
                         });
                     }
 
-                    @Override public void onComplete() {
+                    @Override
+                    public void onComplete() {
                         long aiTs = System.currentTimeMillis();
-                        String aiText = buffer.toString();
-
-                        // Save AI message
-                        Map<String, Object> aiData = new HashMap<>();
-                        aiData.put("sender", "AI");
-                        aiData.put("text", aiText);
-                        aiData.put("timestamp", aiTs);
-                        db.collection(COLLECTION)
-                                .document(userId)
-                                .collection("chats")
-                                .document(String.valueOf(aiTs))
-                                .set(aiData)
-                                .addOnSuccessListener(d -> Log.d(TAG, "Saved AI message"))
-                                .addOnFailureListener(e -> Log.e(TAG, "Error saving AI message", e));
-
-                        fullChatHistory.add("AI: " + aiText);
-                        if (isPositiveAnswer(aiText)) {
-                            startActivity(new Intent(LlamaActivity.this, DoctorListActivity.class));
-                            finish();
-                        }
+                        Map<String, Object> update = new HashMap<>();
+                        update.put("answer", buffer.toString());
+                        update.put("ai_timestamp", aiTs);
+                        qaRef.update(update);
                     }
 
-                    @Override public void onError(Exception e) {
+                    @Override
+                    public void onError(Exception e) {
                         Log.e(TAG, "Streaming error", e);
                     }
                 }
         );
 
-        // Clear input
+        // 입력창 초기화
         editMessage.setText("");
-    }
 
-    private boolean isPositiveAnswer(String text) {
-        String lower = text.trim().toLowerCase(Locale.ROOT);
-        return lower.contains("예") || lower.contains("네") || lower.contains("진료");
+        // 긍정 답변인 경우 진료 예약 화면으로 이동
+        if (isPositiveAnswer(userText)) {
+            startActivity(new Intent(LlamaActivity.this, DoctorListActivity.class));
+            finish();
+        }
     }
 }
