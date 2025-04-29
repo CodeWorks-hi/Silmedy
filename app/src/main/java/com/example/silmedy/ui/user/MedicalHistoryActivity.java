@@ -1,4 +1,4 @@
-package com.example.silmedy.ui.prescription;
+package com.example.silmedy.ui.user;
 
 import android.os.Bundle;
 
@@ -10,11 +10,12 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.silmedy.R;
 
-public class DeilveryCompletedActivity extends AppCompatActivity {
+public class MedicalHistoryActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_deilvery_completed);
+        setContentView(R.layout.activity_medical_history);
+
     }
 }
