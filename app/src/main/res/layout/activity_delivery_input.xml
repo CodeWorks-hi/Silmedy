@@ -107,7 +107,8 @@
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/hint_name" />
+            android:contentDescription="@string/hint_name"
+            android:hint="받는분 이름" />
 
         <TextView
             android:id="@+id/textView24"
@@ -120,8 +121,9 @@
             android:id="@+id/editContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/hint_phone"
             android:ems="10"
+            android:hint="연락처"
+            android:contentDescription="@string/hint_phone"
             android:inputType="text" />
 
         <LinearLayout
@@ -135,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="배송지 주소"
+
                 android:textStyle="bold" />
 
             <EditText
@@ -143,7 +146,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:contentDescription="@string/hint_zip"
                 android:inputType="text" />
 
             <Button
