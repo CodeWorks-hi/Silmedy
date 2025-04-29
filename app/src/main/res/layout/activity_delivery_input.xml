@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7F7F8"
     tools:context=".ui.prescription.DeliveryInputActivity">
@@ -121,9 +121,9 @@
             android:id="@+id/editContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:contentDescription="@string/hint_phone"
             android:ems="10"
             android:hint="연락처"
-            android:contentDescription="@string/hint_phone"
             android:inputType="text" />
 
         <LinearLayout
@@ -140,13 +140,12 @@
 
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/editPostCode"
-                android:layout_width="171dp"
+            <TextView
+                android:id="@+id/txtPostalCode"
+                android:layout_width="173dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="text" />
+                android:text="우편번호" />
 
             <Button
                 android:id="@+id/btnFinedAddress"
@@ -168,8 +167,8 @@
             android:id="@+id/editAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
             android:contentDescription="@string/hint_address_detail"
+            android:ems="10"
             android:inputType="text" />
 
         <TextView
