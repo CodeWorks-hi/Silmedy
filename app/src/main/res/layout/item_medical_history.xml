@@ -26,18 +26,31 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/medicalDate"
+                android:id="@+id/txtMedicalDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
                 android:text="2024-10-13"
                 android:textColor="#222222"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/medicalContact"
+                android:id="@+id/txtMedicalCenter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="3dp"
+                android:text="성남시 노인보건센터 의원"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/txtMedical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
                 android:layout_marginTop="2dp"
                 android:text="진료 정보 : 감기"
                 android:textColor="@color/black"
