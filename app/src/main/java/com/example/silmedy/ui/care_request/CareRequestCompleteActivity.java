@@ -105,10 +105,6 @@ public class CareRequestCompleteActivity extends AppCompatActivity {
                 conn.setRequestProperty("Accept", "application/json");
                 conn.setDoOutput(true);
 
-                // 임시 하드 코딩
-                symptom.add("감기");
-                part.add("전신");
-
                 JSONObject jsonInput = new JSONObject();
                 jsonInput.put("doctor_id", licenseNumber);
                 jsonInput.put("department", doctorDepartment);

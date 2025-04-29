@@ -41,6 +41,7 @@ public class SymptomChoiceActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         
         ArrayList<String> parts = new ArrayList<>();
+        parts.add("전신");
 
         // 감기
         cardCold.setOnClickListener(v -> {
