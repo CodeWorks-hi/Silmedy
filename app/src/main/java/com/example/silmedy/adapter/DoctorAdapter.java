@@ -1,6 +1,7 @@
 package com.example.silmedy.adapter;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,12 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
         // 리스트에서 해당 위치의 Doctor 객체 가져오기
         Doctor doctor = doctorList.get(position);
+
+        // Log statements before binding views
+        Log.d("DoctorAdapter", "Binding position: " + position);
+        Log.d("DoctorAdapter", "Doctor name: " + doctor.getName());
+        Log.d("DoctorAdapter", "Doctor imageUrl: " + doctor.getImageUrl());
+        Log.d("DoctorAdapter", "Doctor schedule: " + doctor.getSchedule().toString());
 
         // 뷰에 데이터 바인딩
         holder.name.setText(doctor.getName());

@@ -48,6 +48,9 @@ import java.util.Locale;
 
 public class DoctorListActivity extends AppCompatActivity {
 
+    private String username, patient_id, department;
+    private ArrayList<String> part, symptom;
+
     private static final int REQUEST_CODE_MAP = 1001;
     private static final int REQUEST_LOCATION_PERMISSION = 1002;
 
@@ -66,12 +69,11 @@ public class DoctorListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_list);
 
         Intent intent = getIntent();
-        ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
-        ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
-        String username = intent.getStringExtra("user_name");
-        String patient_id = intent.getStringExtra("patient_id");
-        String department = intent.getStringExtra("department");
-        ArrayList<String> clinicList = (ArrayList<String>) intent.getSerializableExtra("clinic_list");
+        part = (ArrayList<String>) intent.getSerializableExtra("part");
+        symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
+        username = intent.getStringExtra("user_name");
+        patient_id = intent.getStringExtra("patient_id");
+        department = intent.getStringExtra("department");
 
         btnBack = findViewById(R.id.btnBack);
         locationText = findViewById(R.id.locationText);
@@ -92,18 +94,17 @@ public class DoctorListActivity extends AppCompatActivity {
 
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorList = new ArrayList<>();
+        adapter = new DoctorAdapter(doctorList, username, patient_id, part, symptom);
+        doctorRecyclerView.setAdapter(adapter);
 
-        // fetchDoctors(clinicList, department);
-        fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
+        fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
             if (location != null) {
+                Log.d("DoctorListActivity", "location: " + location.getLatitude() + ", " + location.getLongitude());
                 fetchDoctors(location.getLatitude(), location.getLongitude(), department);
             } else {
                 Log.e("LOCATION", "Failed to get location");
             }
         });
-
-        adapter = new DoctorAdapter(doctorList, username, patient_id, part, symptom);
-        doctorRecyclerView.setAdapter(adapter);
 
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
@@ -121,12 +122,14 @@ public class DoctorListActivity extends AppCompatActivity {
             @Override
             protected Void doInBackground(Void... voids) {
                 try {
+                    Log.d("DoctorListActivity", "Fetching doctors with lat=" + latitude + ", lng=" + longitude + ", department=" + department);
                     String urlStr = "http://192.168.0.170:5000/health-centers-with-doctors?lat="
                             + latitude + "&lng=" + longitude + "&department=" + department;
                     URL url = new URL(urlStr);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setRequestMethod("GET");
                     conn.setRequestProperty("Accept", "application/json");
+                    // Authorization header removed as per instructions
 
                     int responseCode = conn.getResponseCode();
                     if (responseCode == HttpURLConnection.HTTP_OK) {
@@ -136,13 +139,15 @@ public class DoctorListActivity extends AppCompatActivity {
                         while ((responseLine = br.readLine()) != null) {
                             response.append(responseLine.trim());
                         }
+                        Log.d("DoctorListActivity", "Response: " + response.toString());
 
-                        JSONObject jsonResponse = new JSONObject(response.toString());
-                        JSONArray doctorsArray = jsonResponse.getJSONArray("doctors");
+                        JSONArray doctorsArray = new JSONArray(response.toString());
+                        Log.d("DoctorListActivity", "Number of doctors received: " + doctorsArray.length());
 
                         doctorList.clear();
                         for (int i = 0; i < doctorsArray.length(); i++) {
                             JSONObject doctorJson = doctorsArray.getJSONObject(i);
+                            Log.d("DoctorListActivity", "Parsing doctor: " + doctorJson.toString());
                             String name = doctorJson.getString("name");
                             String center = doctorJson.getString("hospital_name");
                             String dep = doctorJson.getString("department");
@@ -160,13 +165,17 @@ public class DoctorListActivity extends AppCompatActivity {
                             doctorList.add(new Doctor(licenseNumber, profileUrl, name, center, dep, schedule));
                         }
 
-                        runOnUiThread(() -> adapter.notifyDataSetChanged());
+                        runOnUiThread(() -> {
+                            Log.d("DoctorListActivity", "Successfully fetched doctor data, updating adapter");
+                            Log.d("DoctorListActivity", "doctorList size after fetch: " + doctorList.size());
+                            adapter.notifyDataSetChanged();
+                        });
                     } else {
                         Log.e("API_ERROR", "HTTP error code: " + responseCode);
                     }
                     conn.disconnect();
                 } catch (Exception e) {
-                    Log.e("API_EXCEPTION", e.toString());
+                    runOnUiThread(() -> Log.e("DoctorListActivity", "Exception in fetchDoctors: " + e.getMessage()));
                 }
                 return null;
             }
@@ -245,18 +254,16 @@ public class DoctorListActivity extends AppCompatActivity {
             String selectedAddress = data.getStringExtra("selected_address");
             double latitude = data.getDoubleExtra("latitude", 0);
             double longitude = data.getDoubleExtra("longitude", 0);
-            String department = data.getStringExtra("department");
-            ArrayList<String> clinicList = data.getStringArrayListExtra("clinic_list");
+            // department is already stored as a member variable
             if (selectedAddress != null && !selectedAddress.isEmpty()) {
                 locationText.setText(selectedAddress);
             }
             Log.d("DoctorListActivity", "Selected location: " + selectedAddress + ", lat: " + latitude + ", lng: " + longitude);
-            Log.d("DoctorListActivity", "Clinic List: " + clinicList);
-
-            // 새 clinicList를 기반으로 API 재호출
-            if (clinicList != null) {
-                Log.d("DoctorListActivity", "Calling fetchDoctors with lat: " + latitude + ", lng: " + longitude + " and department: " + department);
+            Log.d("DoctorListActivity", "Department: " + department);
+            if(latitude != 0 && longitude != 0 && department != null && !department.isEmpty()) {
                 fetchDoctors(latitude, longitude, department);
+            } else {
+                Log.e("DoctorListActivity", "Invalid coordinates or department, fetchDoctors not called");
             }
         }
     }
