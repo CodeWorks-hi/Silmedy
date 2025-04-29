@@ -3,6 +3,7 @@ package com.example.silmedy.ui.auth;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -55,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         editPassword.setText(prefs.getString("password", ""));
 
         // 자동 로그인 시도
-        String savedEmail = prefs.getString("email", "");
-        String savedPw = prefs.getString("password", "");
+        // String savedEmail = prefs.getString("email", "");
+        // String savedPw = prefs.getString("password", "");
 
-        if (!savedEmail.isEmpty() && !savedPw.isEmpty()) {
-            autoLogin(savedEmail, savedPw);
-        }
+        // if (!savedEmail.isEmpty() && !savedPw.isEmpty()) {
+        //     autoLogin(savedEmail, savedPw);
+        // }
 
         apiService = ApiClient.getClient(getApplicationContext()).create(ApiService.class);
 
@@ -74,51 +75,39 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            db.collection("patients").get().addOnSuccessListener(querySnapshot -> {
-                boolean loginSuccess = false;
-                String foundDocId = null;
-                String foundUsername = null;
+            LoginRequest loginRequest = new LoginRequest(email, password);
 
-                for (var doc : querySnapshot.getDocuments()) {
-                    String docEmail = doc.getString("email");
-                    String docPassword = doc.getString("password");
-                    if (email.equals(docEmail) && password.equals(docPassword)) {
-                        loginSuccess = true;
-                        foundDocId = doc.getId();
-                        foundUsername = doc.getString("name");
-                        break;
+            apiService.login(loginRequest).enqueue(new Callback<LoginResponse>() {
+                @Override
+                public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        String accessToken = response.body().getAccessToken();
+                        String refreshToken = response.body().getRefreshToken();
+                        String username = response.body().getUserName();
+
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("access_token", accessToken);
+                        editor.putString("refresh_token", refreshToken);
+                        editor.putString("email", email);
+                        editor.putString("password", password);
+                        editor.apply();
+
+                        Log.d("LoginActivity", "Saved access token: " + accessToken);
+                        Log.d("LoginActivity", "Saved refresh token: " + refreshToken);
+
+                        Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
+                        intent.putExtra("user_name", username);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "로그인 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
                     }
                 }
 
-                LoginRequest loginRequest = new LoginRequest(email, password);
-
-                if (loginSuccess) {
-                    apiService.login(loginRequest).enqueue(new Callback<LoginResponse>() {
-                        @Override
-                        public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                            if (response.isSuccessful() && response.body() != null) {
-                                String accessToken = response.body().getAccessToken();
-                                String refreshToken = response.body().getRefreshToken();
-
-                                SharedPreferences.Editor editor = prefs.edit();
-                                editor.putString("access_token", accessToken);
-                                editor.putString("refresh_token", refreshToken);
-                                editor.apply();
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<LoginResponse> call, Throwable t) {
-                            t.printStackTrace();
-                        }
-                    });
-                    saveLoginInfo(email, password);
-                    Intent intent = new Intent(LoginActivity.this, ClinicHomeActivity.class);
-                    intent.putExtra("user_name", foundUsername);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(this, "로그인 정보가 올바르지 않습니다.", Toast.LENGTH_SHORT).show();
+                @Override
+                public void onFailure(Call<LoginResponse> call, Throwable t) {
+                    t.printStackTrace();
+                    Toast.makeText(LoginActivity.this, "로그인 실패: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         });

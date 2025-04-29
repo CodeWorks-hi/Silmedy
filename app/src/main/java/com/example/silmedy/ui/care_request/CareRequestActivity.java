@@ -19,7 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.config.TokenManager;
 
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.io.Serializable;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,7 +49,12 @@ public class CareRequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new TokenManager(getApplicationContext()).refreshAccessToken();
+        new TokenManager(getApplicationContext()).refreshAccessTokenAsync(new TokenManager.TokenRefreshCallback() {
+            @Override
+            public void onTokenRefreshed(String newAccessToken) {
+                // Token refreshed successfully, you can add further logic if needed
+            }
+        });
         setContentView(R.layout.activity_care_request);
 
         btnBack = findViewById(R.id.btnBack);
@@ -51,7 +62,7 @@ public class CareRequestActivity extends AppCompatActivity {
         btnTomorrow = findViewById(R.id.btnTomorrow);
         btnReserve = findViewById(R.id.btnReserve);
         checkSignLanguage = findViewById(R.id.checkSignLanguage);
-        // timeSlotRecycler = findViewById(R.id.timeSlotRecycler); // Removed unused assignment
+        checkInitialSignLanguageSetting();
         doctorName = findViewById(R.id.doctorName);
         doctorClinic = findViewById(R.id.doctorClinic);
         doctorTime = findViewById(R.id.doctorTime);
@@ -71,7 +82,6 @@ public class CareRequestActivity extends AppCompatActivity {
             finish();
         });
         btnReserve.setEnabled(false);
-        // timeSlotRecycler.setLayoutManager(new GridLayoutManager(this, 3)); // Removed unused assignment
 
         // 의사 정보 인텐트 처리
         Intent intent = getIntent();
@@ -324,5 +334,37 @@ public class CareRequestActivity extends AppCompatActivity {
             sb.append(tomorrow).append(" : ").append(timeMap.get(tomorrow));
         }
         return sb.toString().trim();
+    }
+    // Check initial sign language setting from server
+    private void checkInitialSignLanguageSetting() {
+        new Thread(() -> {
+            try {
+                String accessToken = new TokenManager(getApplicationContext()).getAccessToken();
+                URL url = new URL("http://43.201.73.161:5000/request/signcheck");
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
+                conn.setRequestProperty("Authorization", "Bearer " + accessToken);
+                conn.setRequestProperty("Accept", "application/json");
+
+                int responseCode = conn.getResponseCode();
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                    StringBuilder response = new StringBuilder();
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        response.append(line);
+                    }
+                    reader.close();
+
+                    JSONObject jsonResponse = new JSONObject(response.toString());
+                    boolean isNeeded = jsonResponse.getBoolean("sign_language_needed");
+
+                    runOnUiThread(() -> checkSignLanguage.setChecked(isNeeded));
+                }
+                conn.disconnect();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
     }
 }

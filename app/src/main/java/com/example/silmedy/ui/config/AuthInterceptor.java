@@ -22,19 +22,10 @@ public class AuthInterceptor implements Interceptor {
 
         Response response = chain.proceed(builder.build());
 
-        // 401 Unauthorized → Refresh 토큰 시도
+        // 401 Unauthorized 발생 시 별도 처리 없이 반환
         if (response.code() == 401) {
-            response.close(); // 기존 응답 닫기
-
-            synchronized (this) {
-                String newAccessToken = tokenManager.refreshAccessToken();
-                if (newAccessToken != null) {
-                    Request newRequest = originalRequest.newBuilder()
-                            .header("Authorization", "Bearer " + newAccessToken)
-                            .build();
-                    return chain.proceed(newRequest);
-                }
-            }
+            response.close();
+            // 401 처리: 앱 레벨에서 재로그인 유도
         }
 
         return response;

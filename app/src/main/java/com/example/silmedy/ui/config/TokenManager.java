@@ -14,8 +14,8 @@ public class TokenManager {
     private final Context context;
 
     public TokenManager(Context context) {
-        this.context = context;
-        this.prefs = context.getSharedPreferences("auth", Context.MODE_PRIVATE);
+        this.context = context.getApplicationContext();
+        this.prefs = this.context.getSharedPreferences("SilmedyPrefs", Context.MODE_PRIVATE);
     }
 
     public String getAccessToken() {
@@ -30,26 +30,41 @@ public class TokenManager {
         prefs.edit().putString("access_token", token).apply();
     }
 
-    public String refreshAccessToken() {
-        try {
-            OkHttpClient client = new OkHttpClient();
-            Request request = new Request.Builder()
-                    .url("http://192.168.0.170:5000/token/refresh")
-                    .post(RequestBody.create("", MediaType.parse("application/json")))
-                    .addHeader("Authorization", "Bearer " + getRefreshToken())
-                    .build();
+    public interface TokenRefreshCallback {
+        void onTokenRefreshed(String newAccessToken);
+    }
 
-            Response response = client.newCall(request).execute();
-            if (response.isSuccessful()) {
-                String body = response.body().string();
-                JSONObject json = new JSONObject(body);
-                String newAccessToken = json.getString("access_token");
-                saveAccessToken(newAccessToken);
-                return newAccessToken;
+    public void refreshAccessTokenAsync(TokenRefreshCallback callback) {
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url("http://43.201.73.161:5000/token/refresh")
+                .post(RequestBody.create("", MediaType.parse("application/json")))
+                .addHeader("Authorization", "Bearer " + getRefreshToken())
+                .build();
+
+        client.newCall(request).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String body = response.body().string();
+                    try {
+                        JSONObject json = new JSONObject(body);
+                        String newAccessToken = json.getString("access_token");
+                        saveAccessToken(newAccessToken);
+                        if (callback != null) {
+                            callback.onTokenRefreshed(newAccessToken);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 }

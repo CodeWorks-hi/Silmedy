@@ -18,7 +18,12 @@ public class BodyMain extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new TokenManager(getApplicationContext()).refreshAccessToken();
+        new TokenManager(getApplicationContext()).refreshAccessTokenAsync(new TokenManager.TokenRefreshCallback() {
+            @Override
+            public void onTokenRefreshed(String newAccessToken) {
+                // Token refreshed successfully, you can add further logic if needed
+            }
+        });
         setContentView(R.layout.activity_body_main); // ✔️ 반드시 존재해야 함
 
         Intent intent = getIntent();

@@ -29,7 +29,12 @@ public class ClinicHomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new TokenManager(getApplicationContext()).refreshAccessToken();
+        new TokenManager(getApplicationContext()).refreshAccessTokenAsync(new TokenManager.TokenRefreshCallback() {
+            @Override
+            public void onTokenRefreshed(String newAccessToken) {
+                // Token refreshed successfully, you can add further logic if needed
+            }
+        });
         setContentView(R.layout.activity_clinic_home);
 
         //  뒤로가기 버튼

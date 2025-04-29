@@ -65,7 +65,12 @@ public class DoctorListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new TokenManager(getApplicationContext()).refreshAccessToken();
+        new TokenManager(getApplicationContext()).refreshAccessTokenAsync(new TokenManager.TokenRefreshCallback() {
+            @Override
+            public void onTokenRefreshed(String newAccessToken) {
+                // Token refreshed successfully, you can add further logic if needed
+            }
+        });
         setContentView(R.layout.activity_doctor_list);
 
         Intent intent = getIntent();
@@ -121,7 +126,7 @@ public class DoctorListActivity extends AppCompatActivity {
             protected Void doInBackground(Void... voids) {
                 try {
                     Log.d("DoctorListActivity", "Fetching doctors with lat=" + latitude + ", lng=" + longitude + ", department=" + department);
-                    String urlStr = "http://192.168.0.170:5000/health-centers-with-doctors?lat="
+                    String urlStr = "http://43.201.73.161:5000/health-centers-with-doctors?lat="
                             + latitude + "&lng=" + longitude + "&department=" + department;
                     URL url = new URL(urlStr);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();

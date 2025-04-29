@@ -20,7 +20,12 @@ public class MapActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new TokenManager(getApplicationContext()).refreshAccessToken();
+        new TokenManager(getApplicationContext()).refreshAccessTokenAsync(new TokenManager.TokenRefreshCallback() {
+            @Override
+            public void onTokenRefreshed(String newAccessToken) {
+                // Token refreshed successfully, you can add further logic if needed
+            }
+        });
 
         webView = new WebView(this);
         setContentView(webView);
