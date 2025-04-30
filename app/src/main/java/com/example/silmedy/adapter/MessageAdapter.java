@@ -33,7 +33,11 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemViewType(int position) {
         Message m = msgs.get(position);
-        return currentUser.equals(m.getPatientId()) ? TYPE_ME : TYPE_AI;
+        if ("나".equals(m.senderId)) {
+            return TYPE_ME;
+        } else {
+            return TYPE_AI;
+        }
     }
 
     @NonNull
@@ -58,8 +62,8 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             @NonNull RecyclerView.ViewHolder holder, int position
     ) {
         Message m = msgs.get(position);
-        String text = m.getText();
-        String time = m.getCreated_at();
+        String text = m.text;
+        String time = m.createdAt;
 
         if (holder instanceof MeHolder) {
             MeHolder h = (MeHolder) holder;

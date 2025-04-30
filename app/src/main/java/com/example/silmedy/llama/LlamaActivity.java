@@ -2,6 +2,8 @@ package com.example.silmedy.llama;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -27,18 +29,24 @@ import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper.StreamCallbac
 import com.example.silmedy.ui.config.TokenManager;
 import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.Query;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * LlamaActivity.java
@@ -51,8 +59,6 @@ public class LlamaActivity extends AppCompatActivity {
     private static final String TAG = "LlamaActivity";
 
     private String userId;
-    private FirebaseFirestore db;
-    private CollectionReference chatRef;
 
     private RecyclerView recyclerMessages;
     private EditText editMessage;
@@ -66,28 +72,15 @@ public class LlamaActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new TokenManager(getApplicationContext()).refreshAccessTokenAsync(new TokenManager.TokenRefreshCallback() {
+            @Override
+            public void onTokenRefreshed(String newAccessToken) {
+                // Token refreshed successfully, you can add further logic if needed
+            }
+        });
         setContentView(R.layout.activity_llama);
 
-        // 1) 로그인 사용자 토큰 → userId
-        TokenManager tokenManager = new TokenManager(getApplicationContext());
-        String accessToken = tokenManager.getAccessToken();
-        if (accessToken == null || accessToken.isEmpty()) {
-            Toast.makeText(this,
-                    "유효한 로그인 정보가 없습니다. 로그인 후 사용해주세요.",
-                    Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-        userId = accessToken;
-
-
-        // 2) Firestore 초기화
-        db = FirebaseFirestore.getInstance();
-        chatRef = db.collection("consult_text")
-                .document(userId)
-                .collection("chats");
-
-        // 3) UI 바인딩
+        // 2) UI 바인딩
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
         ((TextView)findViewById(R.id.textRoomCode)).setText("닥터링(Dr.Link)");
@@ -97,76 +90,20 @@ public class LlamaActivity extends AppCompatActivity {
         editMessage      = findViewById(R.id.editMessage);
         btnSend          = findViewById(R.id.btnSend);
 
-        // 4) RecyclerView 설정
+        // 3) RecyclerView 설정
         adapter = new MessageAdapter(this, msgs, userId);
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(adapter);
 
-        // 5) Firestore 리스닝
-        chatRef.orderBy("patient_timestamp", Query.Direction.ASCENDING)
-                .addSnapshotListener((snap, e) -> {
-                    if (e != null) {
-                        Log.e(TAG, "Firestore listen error", e);
-                        return;
-                    }
-                    msgs.clear();
-                    long lastDate = 0;
-                    for (DocumentSnapshot doc : snap.getDocuments()) {
-                        long ptTs = doc.getLong("patient_timestamp");
-                        String pt  = doc.getString("patient_text");
-                        long aiTs  = doc.getLong("ai_timestamp");
-                        String ai  = doc.getString("ai_text");
-
-                        if (!Message.isSameDay(lastDate, ptTs)) {
-                            msgs.add(Message.createDateSeparator(ptTs));
-                            lastDate = ptTs;
-                        }
-                        // 환자 메시지 객체 생성 및 추가
-                        Message patientMsg = new Message();
-                        patientMsg.setChat_id(String.valueOf(ptTs));
-                        patientMsg.setPatientId(userId);
-                        patientMsg.setText(pt);
-                        patientMsg.setIs_separator(false);
-                        patientMsg.setCreated_at(
-                            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                                .format(new Date(ptTs))
-                        );
-                        msgs.add(patientMsg);
-
-                        // AI 메시지 객체 생성 및 추가
-                        Message aiMsg = new Message();
-                        aiMsg.setChat_id(String.valueOf(aiTs));
-                        aiMsg.setPatientId("AI");
-                        aiMsg.setText(ai);
-                        aiMsg.setIs_separator(false);
-                        aiMsg.setCreated_at(
-                            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
-                                .format(new Date(aiTs))
-                        );
-                        msgs.add(aiMsg);
-                    }
-                    adapter.notifyDataSetChanged();
-                    recyclerMessages.scrollToPosition(msgs.size() - 1);
-                });
-
-        // 6) EditText 동작 제어
+        // 4) EditText 동작 제어
         editMessage.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // Do nothing
+            @Override public void beforeTextChanged(CharSequence s,int a,int b,int c){}
+            @Override public void onTextChanged(CharSequence s,int a,int b,int c){
+                boolean has = s.toString().trim().length()>0;
+                btnSend.setEnabled(has);
+                btnSend.setAlpha(has?1f:0.5f);
             }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                boolean hasText = s.toString().trim().length() > 0;
-                btnSend.setEnabled(hasText);
-                btnSend.setAlpha(hasText ? 1.0f : 0.5f);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                // Do nothing
-            }
+            @Override public void afterTextChanged(Editable s){}
         });
         editMessage.setSingleLine(true);
         editMessage.setImeOptions(EditorInfo.IME_ACTION_SEND);
@@ -179,7 +116,7 @@ public class LlamaActivity extends AppCompatActivity {
             return false;
         });
 
-        // 7) Send 버튼 클릭
+        // 5) Send 버튼 클릭
         btnSend.setOnClickListener(v -> {
             String text = editMessage.getText().toString().trim();
             if (text.isEmpty()) return;
@@ -190,8 +127,7 @@ public class LlamaActivity extends AppCompatActivity {
 
     /** 외과/내과 분류 or 내과 증상 분석 흐름 */
     private void classifyOrAnalyze(String text) {
-        long ptTs = System.currentTimeMillis();
-        saveChat(text, ptTs, "", 0L);
+        String ptTs = String.valueOf(System.currentTimeMillis());
 
         classifier.classifyOrPrompt(text, new ClassificationCallback() {
             @Override public void onSurgicalQuestion(String prompt) {
@@ -201,9 +137,10 @@ public class LlamaActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     if ("외과".equals(category)) {
                         showSurgicalDialog(text,
-                                "외과 진료가 필요해 보입니다. 터치로 증상확인 페이지로 이동하시겠습니까?");
+                                "외과 진료가 필요해 보입니다. 신체 부위 선택·촬영 페이지로 이동하시겠습니까?");
                     } else {
-                        sendInternalChat(text, ptTs);
+                        Log.d(TAG, "내과 분류 - 응답 표시");
+                        saveChat(text, ptTs, "", "");
                     }
                 });
             }
@@ -215,29 +152,6 @@ public class LlamaActivity extends AppCompatActivity {
         });
     }
 
-    /** 내과 AI 응답 스트리밍 및 저장 */
-    private void sendInternalChat(String patientText, long ptTs) {
-        LlamaPromptHelper.sendChatStream(
-                userId, prevSymptom, patientText,
-                new StreamCallback() {
-                    StringBuilder aiBuf = new StringBuilder();
-                    @Override public void onChunk(String chunk) {
-                        aiBuf.append(chunk);
-                    }
-                    @Override public void onComplete() {
-                        long aiTs = System.currentTimeMillis();
-                        saveChat(patientText, ptTs, aiBuf.toString().trim(), aiTs);
-                        if (prevSymptom.isEmpty()) prevSymptom = patientText;
-                    }
-                    @Override public void onError(Exception e) {
-                        runOnUiThread(() ->
-                                Toast.makeText(LlamaActivity.this,
-                                        "AI 오류", Toast.LENGTH_SHORT).show());
-                    }
-                }
-        );
-    }
-
     /** 외과 촬영 페이지 이동 다이얼로그 */
     private void showSurgicalDialog(String patientText, String prompt) {
         new AlertDialog.Builder(this)
@@ -245,20 +159,93 @@ public class LlamaActivity extends AppCompatActivity {
                 .setPositiveButton("예", (d,w) -> {
                     startActivity(new Intent(this, BodyMain.class));
                 })
-                .setNegativeButton("아니오", null)
+                .setNegativeButton("아니오", (d,w) -> {
+                    // 외과가 아니라는 판단 후, 바로 사용자 메시지만 표시 (AI 분석은 하지 않음)
+                    runOnUiThread(() -> {
+                        String ptTs = String.valueOf(System.currentTimeMillis());
+                        msgs.add(new Message("나", patientText, formatTimeOnly(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date())), false, ptTs));
+                        adapter.notifyItemInserted(msgs.size() - 1);
+                        recyclerMessages.scrollToPosition(msgs.size() - 1);
+                    });
+                })
                 .show();
     }
 
-    /** Firestore에 Q&A 저장 */
-    private void saveChat(String pt, long ptTs, String ai, long aiTs) {
-        Map<String,Object> data = new HashMap<>();
-        data.put("patient_text", pt);
-        data.put("patient_timestamp", ptTs);
-        data.put("ai_text", ai);
-        data.put("ai_timestamp", aiTs);
+    /** API를 통해 Q&A 저장 */
+    private void saveChat(String pt, String ptTs, String ai, String aiTs) {
+        TokenManager tokenManager = new TokenManager(getApplicationContext());
+        String accessToken = tokenManager.getAccessToken();
 
-        chatRef.document(String.valueOf(ptTs))
-                .set(data)
-                .addOnFailureListener(e -> Log.e(TAG, "Save error", e));
+        try {
+            // Add created_at before creating JSON object
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            String createdAt = sdf.format(new Date());
+
+            JSONObject json = new JSONObject();
+            json.put("patient_text", pt);
+
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+            Request request = new Request.Builder()
+                    .url("http://43.201.73.161:5000/chat/save")
+                    .addHeader("Authorization", "Bearer " + accessToken)
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    Log.e(TAG, "Save chat failed", e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        String resStr = response.body().string();
+                        JSONObject resJson = null;
+                        try {
+                            resJson = new JSONObject(resStr);
+                        } catch (JSONException e) {
+                            throw new RuntimeException(e);
+                        }
+                        String aiText = resJson.optString("ai_text", "").trim();
+
+                        runOnUiThread(() -> {
+                            // 1. 사용자 메시지 표시
+                            msgs.add(new Message("나", pt, formatTimeOnly(createdAt), false, ptTs));
+                            adapter.notifyItemInserted(msgs.size() - 1);
+                            recyclerMessages.scrollToPosition(msgs.size() - 1);
+
+                            // 2. AI 응답 메시지 표시
+                            if (!aiText.isEmpty()) {
+                                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                                    msgs.add(new Message("AI", aiText, formatTimeOnly(createdAt), false, aiTs));
+                                    adapter.notifyItemInserted(msgs.size() - 1);
+                                    recyclerMessages.scrollToPosition(msgs.size() - 1);
+                                }, 800);
+                            }
+                        });
+
+                        Log.d(TAG, "Chat saved to API and displayed");
+                    } else {
+                        Log.e(TAG, "API save failed: " + response.code());
+                    }
+                }
+            });
+        } catch (Exception e) {
+            Log.e(TAG, "JSON creation failed", e);
+        }
+    }
+
+    private String formatTimeOnly(String fullTimestamp) {
+        try {
+            SimpleDateFormat fullFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+            Date date = fullFormat.parse(fullTimestamp);
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+            return timeFormat.format(date);
+        } catch (Exception e) {
+            return fullTimestamp;
+        }
     }
 }
+
