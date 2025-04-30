@@ -21,7 +21,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -77,19 +77,12 @@
 
                 <EditText
                     android:id="@+id/editName"
-                    android:layout_width="255dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
                     android:text="홍길동" />
 
-                <Button
-                    android:id="@+id/btnChangeName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/btn_confirm"
-                    android:text="변경" />
             </LinearLayout>
 
             <TextView
@@ -107,19 +100,12 @@
 
                 <EditText
                     android:id="@+id/editBirthDate"
-                    android:layout_width="255dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
                     android:text="1983-04-23" />
 
-                <Button
-                    android:id="@+id/btnChangeBirthDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/btn_confirm"
-                    android:text="변경" />
             </LinearLayout>
 
             <TextView
@@ -137,18 +123,12 @@
 
                 <EditText
                     android:id="@+id/editContact"
-                    android:layout_width="255dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:inputType="text"
                     android:text="010-1111-2222" />
 
-                <Button
-                    android:id="@+id/btnChangeContact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="변경" />
             </LinearLayout>
 
             <TextView
@@ -244,7 +224,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="변경" />
+                android:text="정보 저장" />
 
         </LinearLayout>
     </ScrollView>
