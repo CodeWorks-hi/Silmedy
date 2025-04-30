@@ -77,7 +77,7 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
 
         textSymptom.setText("증상 : " + symptoms.get(0));
 
-        String serverUrl = "http://43.201.73.161:5000/disease/info-by-symptom";
+        String serverUrl = "http://43.201.73.161:5000/info-by-symptom";
 
         JSONObject jsonBody = new JSONObject();
         try {

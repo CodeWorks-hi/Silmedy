@@ -18,11 +18,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.silmedy.MainActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.model.Doctor;
 import com.example.silmedy.adapter.DoctorAdapter;
+import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
 import com.example.silmedy.ui.open_api.MapActivity;
+import com.example.silmedy.ui.photo_clinic.BodyMain;
+import com.example.silmedy.ui.photo_clinic.ShootingActivity;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 
@@ -111,11 +115,19 @@ public class DoctorListActivity extends AppCompatActivity {
         });
 
         btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
-            backIntent.putExtra("user_name", username);
-            backIntent.putExtra("part", part);
-            backIntent.putExtra("symptom", symptom);
-            startActivity(backIntent);
+            if (department.equals("내과")) {
+                Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
+                backIntent.putExtra("user_name", username);
+                backIntent.putExtra("part", part);
+                backIntent.putExtra("symptom", symptom);
+                startActivity(backIntent);
+            } else if (department.equals("외과")) {
+                Intent backIntent = new Intent(DoctorListActivity.this, BodyMain.class);
+                backIntent.putExtra("user_name", username);
+                backIntent.putExtra("part", part);
+                backIntent.putExtra("symptom", symptom);
+                startActivity(backIntent);
+            }
             finish();
         });
     }
