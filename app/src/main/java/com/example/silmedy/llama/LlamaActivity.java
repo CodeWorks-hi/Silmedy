@@ -137,7 +137,9 @@ public class LlamaActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     if ("외과".equals(category)) {
                         showSurgicalDialog(text,
-                                "외과 진료가 필요해 보입니다. 신체 부위 선택·촬영 페이지로 이동하시겠습니까?");
+                                "외과 진료가 필요해 보여요.\n" +
+                                        "편하실 때 촬영을 통해 증상을 확인해 보실 수 있습니다.\n" +
+                                        "지금 터치로 증상 확인 페이지로 이동해 보시겠어요? (예/아니오)");
                     } else {
                         Log.d(TAG, "내과 분류 - 응답 표시");
                         saveChat(text, ptTs, "", "");
