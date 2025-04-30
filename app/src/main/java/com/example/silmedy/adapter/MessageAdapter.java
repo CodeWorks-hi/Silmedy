@@ -13,10 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.silmedy.R;
 import com.example.silmedy.llama.Message;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -36,7 +33,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     @Override
     public int getItemViewType(int position) {
         Message m = msgs.get(position);
-        return currentUser.equals(m.getSender()) ? TYPE_ME : TYPE_AI;
+        return currentUser.equals(m.getPatientId()) ? TYPE_ME : TYPE_AI;
     }
 
     @NonNull
@@ -62,8 +59,7 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     ) {
         Message m = msgs.get(position);
         String text = m.getText();
-        String time = new SimpleDateFormat("a hh:mm", Locale.KOREA)
-                .format(new Date(m.getTimestamp()));
+        String time = m.getCreated_at();
 
         if (holder instanceof MeHolder) {
             MeHolder h = (MeHolder) holder;
