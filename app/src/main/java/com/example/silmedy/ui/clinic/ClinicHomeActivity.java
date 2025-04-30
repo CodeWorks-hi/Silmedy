@@ -15,6 +15,8 @@ import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.example.silmedy.R;
 import com.example.silmedy.llama.LlamaActivity;
 import com.example.silmedy.ui.care_request.SymptomChoiceActivity;
+import com.example.silmedy.ui.user.MedicalHistoryActivity;
+import com.example.silmedy.ui.user.MyPageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.silmedy.ui.config.TokenManager;
 
@@ -95,9 +97,9 @@ public class ClinicHomeActivity extends AppCompatActivity {
                     Toast.makeText(this, "🏠 현재 홈 화면입니다.", Toast.LENGTH_SHORT).show();
                     return true;
                 } else if (itemId == R.id.nav_history) {
-//                    navigationIntent = new Intent(this, HistoryActivity.class); // replace with actual history activity class
+                    navigationIntent = new Intent(this, MedicalHistoryActivity.class); // replace with actual history activity class
                 } else if (itemId == R.id.nav_mypage) {
-//                    navigationIntent = new Intent(this, MypageActivity.class); // replace with actual mypage activity class
+                    navigationIntent = new Intent(this, MyPageActivity.class); // replace with actual mypage activity class
                 }
 
                 if (navigationIntent != null) {
