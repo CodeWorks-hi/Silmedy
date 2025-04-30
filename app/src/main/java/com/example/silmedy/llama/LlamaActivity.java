@@ -162,12 +162,9 @@ public class LlamaActivity extends AppCompatActivity {
                     startActivity(new Intent(this, BodyMain.class));
                 })
                 .setNegativeButton("아니오", (d,w) -> {
-                    // 외과가 아니라는 판단 후, 바로 사용자 메시지만 표시 (AI 분석은 하지 않음)
                     runOnUiThread(() -> {
                         String ptTs = String.valueOf(System.currentTimeMillis());
-                        msgs.add(new Message("나", patientText, formatTimeOnly(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault()).format(new Date())), false, ptTs));
-                        adapter.notifyItemInserted(msgs.size() - 1);
-                        recyclerMessages.scrollToPosition(msgs.size() - 1);
+                        saveChat(patientText, ptTs, "", "");
                     });
                 })
                 .show();
