@@ -73,15 +73,11 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
             }
         }
 
-        Log.d("DiagnosisResultsActivity", "Image Path: " + imagePath);
-        Log.d("DiagnosisResultsActivity", "Symptom Part: " + part);
-        Log.d("DiagnosisResultsActivity", "Predicted Symptoms: " + symptoms);
-
         textPart.setText("부위 : " + part.get(0));
 
         textSymptom.setText("증상 : " + symptoms.get(0));
 
-        String serverUrl = "http://192.168.0.170:5000/request/result-info";
+        String serverUrl = "http://43.201.73.161:5000/disease/info-by-symptom";
 
         JSONObject jsonBody = new JSONObject();
         try {
