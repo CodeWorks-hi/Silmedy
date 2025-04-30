@@ -26,6 +26,7 @@ import com.example.silmedy.llama.LlamaClassifier;
 import com.example.silmedy.llama.LlamaClassifier.ClassificationCallback;
 import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper;
 import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper.StreamCallback;
+import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
 import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.google.firebase.auth.FirebaseAuth;
@@ -80,15 +81,22 @@ public class LlamaActivity extends AppCompatActivity {
         });
         setContentView(R.layout.activity_llama);
 
+        Intent intent = getIntent();
+        String userName = intent.getStringExtra("user_name");
+
         // 2) UI 바인딩
         ImageView btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
-        ((TextView)findViewById(R.id.textRoomCode)).setText("닥터링(Dr.Link)");
-        ((TextView)findViewById(R.id.textRoomName)).setText("AI 의료 연결자");
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(this, ClinicHomeActivity.class);
+            backIntent.putExtra("user_name", userName);
+            finish();
+        });
+        ((TextView) findViewById(R.id.textRoomCode)).setText("닥터링(Dr.Link)");
+        ((TextView) findViewById(R.id.textRoomName)).setText("AI 의료 연결자");
 
         recyclerMessages = findViewById(R.id.recyclerMessages);
-        editMessage      = findViewById(R.id.editMessage);
-        btnSend          = findViewById(R.id.btnSend);
+        editMessage = findViewById(R.id.editMessage);
+        btnSend = findViewById(R.id.btnSend);
 
         // 3) RecyclerView 설정
         adapter = new MessageAdapter(this, msgs, userId);
@@ -97,19 +105,26 @@ public class LlamaActivity extends AppCompatActivity {
 
         // 4) EditText 동작 제어
         editMessage.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s,int a,int b,int c){}
-            @Override public void onTextChanged(CharSequence s,int a,int b,int c){
-                boolean has = s.toString().trim().length()>0;
-                btnSend.setEnabled(has);
-                btnSend.setAlpha(has?1f:0.5f);
+            @Override
+            public void beforeTextChanged(CharSequence s, int a, int b, int c) {
             }
-            @Override public void afterTextChanged(Editable s){}
+
+            @Override
+            public void onTextChanged(CharSequence s, int a, int b, int c) {
+                boolean has = s.toString().trim().length() > 0;
+                btnSend.setEnabled(has);
+                btnSend.setAlpha(has ? 1f : 0.5f);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
         });
         editMessage.setSingleLine(true);
         editMessage.setImeOptions(EditorInfo.IME_ACTION_SEND);
         editMessage.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEND ||
-                    (event!=null && event.getKeyCode()==KeyEvent.KEYCODE_ENTER && event.getAction()==KeyEvent.ACTION_DOWN)) {
+                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
                 if (btnSend.isEnabled()) btnSend.performClick();
                 return true;
             }
@@ -125,15 +140,20 @@ public class LlamaActivity extends AppCompatActivity {
         });
     }
 
-    /** 외과/내과 분류 or 내과 증상 분석 흐름 */
+    /**
+     * 외과/내과 분류 or 내과 증상 분석 흐름
+     */
     private void classifyOrAnalyze(String text) {
         String ptTs = String.valueOf(System.currentTimeMillis());
 
         classifier.classifyOrPrompt(text, new ClassificationCallback() {
-            @Override public void onSurgicalQuestion(String prompt) {
+            @Override
+            public void onSurgicalQuestion(String prompt) {
                 runOnUiThread(() -> showSurgicalDialog(text, prompt));
             }
-            @Override public void onClassification(String category) {
+
+            @Override
+            public void onClassification(String category) {
                 runOnUiThread(() -> {
                     if ("외과".equals(category)) {
                         showSurgicalDialog(text,
@@ -146,7 +166,9 @@ public class LlamaActivity extends AppCompatActivity {
                     }
                 });
             }
-            @Override public void onError(Exception e) {
+
+            @Override
+            public void onError(Exception e) {
                 runOnUiThread(() ->
                         Toast.makeText(LlamaActivity.this,
                                 "분류 오류", Toast.LENGTH_SHORT).show());
@@ -154,14 +176,16 @@ public class LlamaActivity extends AppCompatActivity {
         });
     }
 
-    /** 외과 촬영 페이지 이동 다이얼로그 */
+    /**
+     * 외과 촬영 페이지 이동 다이얼로그
+     */
     private void showSurgicalDialog(String patientText, String prompt) {
         new AlertDialog.Builder(this)
                 .setMessage(prompt)
-                .setPositiveButton("예", (d,w) -> {
+                .setPositiveButton("예", (d, w) -> {
                     startActivity(new Intent(this, BodyMain.class));
                 })
-                .setNegativeButton("아니오", (d,w) -> {
+                .setNegativeButton("아니오", (d, w) -> {
                     runOnUiThread(() -> {
                         String ptTs = String.valueOf(System.currentTimeMillis());
                         saveChat(patientText, ptTs, "", "");
@@ -170,7 +194,9 @@ public class LlamaActivity extends AppCompatActivity {
                 .show();
     }
 
-    /** API를 통해 Q&A 저장 */
+    /**
+     * API를 통해 Q&A 저장
+     */
     private void saveChat(String pt, String ptTs, String ai, String aiTs) {
         TokenManager tokenManager = new TokenManager(getApplicationContext());
         String accessToken = tokenManager.getAccessToken();
@@ -246,5 +272,38 @@ public class LlamaActivity extends AppCompatActivity {
             return fullTimestamp;
         }
     }
-}
 
+    private void callAddSeparatorApi() {
+        TokenManager tokenManager = new TokenManager(getApplicationContext());
+        String accessToken = tokenManager.getAccessToken();
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("http://43.201.73.161:5000/chat/add-separator")
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .post(RequestBody.create("", MediaType.get("application/json")))
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                Log.e(TAG, "Add-separator API call failed", e);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    Log.d(TAG, "Add-separator API called successfully");
+                } else {
+                    Log.e(TAG, "Add-separator API failed: " + response.code());
+                }
+            }
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        callAddSeparatorApi();
+    }
+}
