@@ -24,6 +24,7 @@ import com.example.silmedy.llama.LlamaClassifier;
 import com.example.silmedy.llama.LlamaClassifier.ClassificationCallback;
 import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper;
 import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper.StreamCallback;
+import com.example.silmedy.ui.config.TokenManager;
 import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -67,14 +68,17 @@ public class LlamaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_llama);
 
-        // 1) 로그인 사용자 이메일 → userId
-        String email = FirebaseAuth.getInstance()
-                .getCurrentUser()
-                .getEmail();
-        userId = (email != null)
-                ? email.replace(".", "_").replace("@", "_at_")
-                : "";
-
+        // 1) 로그인 사용자 토큰 → userId
+        TokenManager tokenManager = new TokenManager(getApplicationContext());
+        String accessToken = tokenManager.getAccessToken();
+        if (accessToken == null || accessToken.isEmpty()) {
+            Toast.makeText(this,
+                    "유효한 로그인 정보가 없습니다. 로그인 후 사용해주세요.",
+                    Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        userId = accessToken;
         // 2) Firestore 초기화
         db = FirebaseFirestore.getInstance();
         chatRef = db.collection("consult_text")
@@ -84,8 +88,8 @@ public class LlamaActivity extends AppCompatActivity {
         // 3) UI 바인딩
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
-        ((TextView)findViewById(R.id.textRoomCode)).setText("실시간 상담");
-        ((TextView)findViewById(R.id.textRoomName)).setText("의료 AI 챗봇");
+        ((TextView)findViewById(R.id.textRoomCode)).setText("Slimedy");
+        ((TextView)findViewById(R.id.textRoomName)).setText("의료 상담 AI 챗봇");
 
         recyclerMessages = findViewById(R.id.recyclerMessages);
         editMessage      = findViewById(R.id.editMessage);
@@ -145,13 +149,22 @@ public class LlamaActivity extends AppCompatActivity {
 
         // 6) EditText 동작 제어
         editMessage.addTextChangedListener(new TextWatcher() {
-            @Override public void beforeTextChanged(CharSequence s,int a,int b,int c){}
-            @Override public void onTextChanged(CharSequence s,int a,int b,int c){
-                boolean has = s.toString().trim().length()>0;
-                btnSend.setEnabled(has);
-                btnSend.setAlpha(has?1f:0.5f);
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // Do nothing
             }
-            @Override public void afterTextChanged(Editable s){}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                boolean hasText = s.toString().trim().length() > 0;
+                btnSend.setEnabled(hasText);
+                btnSend.setAlpha(hasText ? 1.0f : 0.5f);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // Do nothing
+            }
         });
         editMessage.setSingleLine(true);
         editMessage.setImeOptions(EditorInfo.IME_ACTION_SEND);
@@ -186,7 +199,7 @@ public class LlamaActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     if ("외과".equals(category)) {
                         showSurgicalDialog(text,
-                                "외과 진료가 필요해 보입니다. 신체 부위 선택·촬영 페이지로 이동하시겠습니까?");
+                                "외과 진료가 필요해 보입니다. 터치로 증상확인 페이지로 이동하시겠습니까?");
                     } else {
                         sendInternalChat(text, ptTs);
                     }
