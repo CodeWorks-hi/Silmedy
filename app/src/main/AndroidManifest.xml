@@ -58,6 +58,13 @@
             </intent-filter>
         </activity>
 
+        <!-- 마이 페이지 액티비티-->
+        <activity android:name=".ui.user.MyPageActivity" />
+        <activity android:name=".ui.user.MyEditActivity" />
+
+        <!-- 진료 내역 액티비티-->
+        <activity android:name=".ui.user.MedicalHistoryActivity" />
+
         <!-- 인증 관련 액티비티 -->
         <activity
             android:name=".ui.auth.FindIdActivity"
