@@ -43,7 +43,9 @@ public class LlamaClassifier {
      */
     public interface ClassificationCallback {
         void onSurgicalQuestion(String prompt);
+
         void onClassification(String category);
+
         void onError(Exception e);
     }
 
@@ -56,9 +58,9 @@ public class LlamaClassifier {
         for (String kw : SURGICAL_KEYWORDS) {
             if (lower.contains(kw)) {
                 cb.onSurgicalQuestion(
-                        "외과 진료를 요하는 질문으로 보입니다.\n" +
-                                "직접 신체 부위를 선택·촬영하여 증상을 확인할 수 있습니다.\n" +
-                                "터치로 증상확인 페이지로 이동하시겠습니까? (예/아니오)"
+                        "외과 진료가 필요해 보여요.\n" +
+                                "편하실 때 촬영을 통해 증상을 확인해 보실 수 있습니다.\n" +
+                                "지금 터치로 증상 확인 페이지로 이동해 보시겠어요? (예/아니오)"
                 );
                 return;
             }
@@ -67,7 +69,11 @@ public class LlamaClassifier {
         try {
             JSONObject system = new JSONObject()
                     .put("role", "system")
-                    .put("content", "너는 의료 텍스트 분류 전문가야. 아래 문장을 '외과', '내과' 중 하나로 분류하고, 반드시 한 단어로만 답해.");
+                    .put("content",
+                            "너는 내과 관련 AI 상담 전문가야. " +
+                                    "아래 환자의 질문에 환자가 불안해하지 않도록 친절하게 안내하고, " +
+                                    "아래 문장을 ‘외과’ 또는 ‘내과’ 중 하나로 분류해. " +
+                                    "반드시 한국어로만 답해.");
             JSONObject user = new JSONObject()
                     .put("role", "user")
                     .put("content", "문장: \"" + sentence + "\"");
@@ -86,10 +92,13 @@ public class LlamaClassifier {
                     .build();
 
             new OkHttpClient().newCall(req).enqueue(new Callback() {
-                @Override public void onFailure(Call call, IOException e) {
+                @Override
+                public void onFailure(Call call, IOException e) {
                     cb.onError(e);
                 }
-                @Override public void onResponse(Call call, Response resp) throws IOException {
+
+                @Override
+                public void onResponse(Call call, Response resp) throws IOException {
                     if (!resp.isSuccessful()) {
                         cb.onError(new IOException("HTTP " + resp.code()));
                         return;
@@ -122,7 +131,9 @@ public class LlamaClassifier {
 
         public interface StreamCallback {
             void onChunk(String chunk);
+
             void onComplete();
+
             void onError(Exception e);
         }
 
@@ -167,10 +178,13 @@ public class LlamaClassifier {
                         .build();
 
                 client.newCall(request).enqueue(new Callback() {
-                    @Override public void onFailure(Call call, IOException e) {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
                         callback.onError(e);
                     }
-                    @Override public void onResponse(Call call, Response response) {
+
+                    @Override
+                    public void onResponse(Call call, Response response) {
                         if (!response.isSuccessful()) {
                             callback.onError(new IOException("HTTP " + response.code()));
                             return;
@@ -204,33 +218,33 @@ public class LlamaClassifier {
         }
 
         // 시스템 프롬프트 빌드
-        private static String buildSystemPrompt(
-                String prevSymptom,
-                String userMessage,
-                boolean isCombined
-        ) {
+        private static String buildSystemPrompt(String prevSymptom, String userMessage, boolean isCombined) {
             StringBuilder sb = new StringBuilder()
-                    .append("안녕하세요! Slimedy AI입니다. 증상을 분석해 드립니다 🩺\n\n");
+                    .append("안녕하세요!🩺 저는 Slimedy AI 닥터링(Dr.Link)입니다.\n")
+                    .append("궁금한 증상을 말씀해 주시면 쉽게 안내해 드릴게요.\n\n");
+
             if (isCombined) {
                 sb.append("✏️ [복합 증상 분석]\n")
-                        .append("• 증상1: ").append(prevSymptom).append("\n")
-                        .append("• 증상2: ").append(userMessage).append("\n")
-                        .append("• 가능성 예시:\n  1) ")
+                        .append("- 증상1: ").append(prevSymptom).append("\n")
+                        .append("- 증상2: ").append(userMessage).append("\n")
+                        .append("- 원인 예시:\n  1) ")
                         .append(getCombinedCause(prevSymptom, userMessage))
                         .append("\n  2) 스트레스 또는 일시적 피로\n\n");
             } else {
-                sb.append("✏️ [단일 증상 분석]\n")
-                        .append("• 주요 증상: ").append(userMessage).append("\n")
-                        .append("• 가능성 예시:\n")
+                sb.append("✏️ [증상 분석]\n")
+                        .append("- 증상: ").append(userMessage).append("\n")
+                        .append("- 원인 예시:\n")
                         .append(getSingleCauseExamples(userMessage))
                         .append("\n\n");
             }
-            sb.append("🏠 [자가 관리]\n")
+
+            sb.append("🏠 [집에서 할 수 있는 관리]\n")
                     .append(getGeneralCareAdvice())
                     .append(getSymptomSpecificAdvice(userMessage))
-                    .append("\n⚠️ [즉시 병원 방문]\n")
+                    .append("\n⚠️ [이럴 땐 병원 방문]\n")
                     .append(getEmergencyIndicators(userMessage))
-                    .append("\n\n비대면 진료를 원하시나요?");
+                    .append("\n\n비대면 진료가 필요하시면 '예'라고 답해주세요.");
+
             return sb.toString();
         }
 
@@ -238,11 +252,11 @@ public class LlamaClassifier {
             if (symptom.contains("두통")) {
                 return "  1) 근육 긴장\n  2) 탈수\n  3) 눈 피로";
             } else if (symptom.contains("복통")) {
-                return "  1) 소화불량\n  2) 가스 축적\n  3) 과식";
+                return "  1) 소화불량\n  2) 가스\n  3) 과식";
             } else if (symptom.contains("열")) {
-                return "  1) 감염\n  2) 염증 반응\n  3) 과로";
+                return "  1) 감염\n  2) 염증\n  3) 과로";
             }
-            return "  1) 일시적 피로\n  2) 환경 변화 영향";
+            return "  1) 일시적 피로\n  2) 환경 변화";
         }
 
         private static String getCombinedCause(String s1, String s2) {
@@ -256,33 +270,34 @@ public class LlamaClassifier {
         }
 
         private static String getGeneralCareAdvice() {
-            return "  → 30분 간격 미지근한 물 섭취\n" +
-                    "  → 1-2시간 편안히 휴식\n" +
-                    "  → 체온·통증 기록하기\n";
+            return "  → 30분마다 미지근한 물을 조금씩 마셔보세요\n"
+                    + "    (단, 신장질환·심부전·부종·삼킴 곤란·금식 등은 의료진과 상의)\n"
+                    + "  → 1~2시간 편하게 쉬세요\n"
+                    + "  → 증상과 체온을 기록해 두세요\n";
         }
 
         private static String getSymptomSpecificAdvice(String symptom) {
             StringBuilder sb = new StringBuilder();
             if (symptom.contains("열")) {
-                sb.append("  → 체온 38.5℃ 이상 시 해열제 복용\n");
+                sb.append("  → 38.5℃ 이상이면 해열제 복용\n");
             }
             if (symptom.contains("통증")) {
-                sb.append("  → 통증 부위 5분간 찜질\n");
+                sb.append("  → 아픈 부위 5분간 찜질\n");
             }
             if (symptom.matches(".*(구토|설사).*")) {
-                sb.append("  → 전해질 음료(이온음료) 섭취\n");
+                sb.append("  → 이온음료(전해질 음료)로 수분 보충\n");
             }
             return sb.toString();
         }
 
         private static String getEmergencyIndicators(String symptom) {
             List<String> signs = new ArrayList<>();
-            signs.add("증상 6시간 이상 지속");
+            signs.add("증상이 6시간 이상 계속됨");
             if (symptom.matches(".*(흉통|호흡곤란).*")) {
-                signs.add("가슴 답답함/호흡 곤란 → 119 신고");
+                signs.add("가슴 답답/숨쉬기 힘듦 → 119 신고");
             }
             if (symptom.contains("의식저하")) {
-                signs.add("의식 흐려짐/말 어눌해짐");
+                signs.add("의식이 흐려짐/이상 행동");
             }
             return "• " + String.join("\n• ", signs);
         }

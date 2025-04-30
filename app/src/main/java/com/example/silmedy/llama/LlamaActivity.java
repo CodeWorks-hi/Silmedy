@@ -79,6 +79,8 @@ public class LlamaActivity extends AppCompatActivity {
             return;
         }
         userId = accessToken;
+
+
         // 2) Firestore 초기화
         db = FirebaseFirestore.getInstance();
         chatRef = db.collection("consult_text")
@@ -88,8 +90,8 @@ public class LlamaActivity extends AppCompatActivity {
         // 3) UI 바인딩
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> finish());
-        ((TextView)findViewById(R.id.textRoomCode)).setText("Slimedy");
-        ((TextView)findViewById(R.id.textRoomName)).setText("의료 상담 AI 챗봇");
+        ((TextView)findViewById(R.id.textRoomCode)).setText("닥터링(Dr.Link)");
+        ((TextView)findViewById(R.id.textRoomName)).setText("AI 의료 연결자");
 
         recyclerMessages = findViewById(R.id.recyclerMessages);
         editMessage      = findViewById(R.id.editMessage);
