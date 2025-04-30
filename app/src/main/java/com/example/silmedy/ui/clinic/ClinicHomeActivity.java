@@ -36,12 +36,12 @@ public class ClinicHomeActivity extends AppCompatActivity {
             }
         });
         setContentView(R.layout.activity_clinic_home);
-
-        //  뒤로가기 버튼
-        btnBack = findViewById(R.id.btnBack);
-        if (btnBack != null) {
-            btnBack.setOnClickListener(v -> onBackPressed());
-        }
+//
+//        //  뒤로가기 버튼
+//        btnBack = findViewById(R.id.btnBack);
+//        if (btnBack != null) {
+//            btnBack.setOnClickListener(v -> onBackPressed());
+//        }
 
         // 사용자 이름 환영 메시지 세팅
         Intent intent = getIntent();
