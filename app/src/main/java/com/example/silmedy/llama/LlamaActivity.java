@@ -35,6 +35,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  * LlamaActivity.java
@@ -112,8 +115,29 @@ public class LlamaActivity extends AppCompatActivity {
                             msgs.add(Message.createDateSeparator(ptTs));
                             lastDate = ptTs;
                         }
-                        msgs.add(new Message(userId, pt, ptTs));
-                        msgs.add(new Message("AI", ai, aiTs));
+                        // 환자 메시지 객체 생성 및 추가
+                        Message patientMsg = new Message();
+                        patientMsg.setChat_id(String.valueOf(ptTs));
+                        patientMsg.setPatientId(userId);
+                        patientMsg.setText(pt);
+                        patientMsg.setIs_separator(false);
+                        patientMsg.setCreated_at(
+                            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                                .format(new Date(ptTs))
+                        );
+                        msgs.add(patientMsg);
+
+                        // AI 메시지 객체 생성 및 추가
+                        Message aiMsg = new Message();
+                        aiMsg.setChat_id(String.valueOf(aiTs));
+                        aiMsg.setPatientId("AI");
+                        aiMsg.setText(ai);
+                        aiMsg.setIs_separator(false);
+                        aiMsg.setCreated_at(
+                            new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                                .format(new Date(aiTs))
+                        );
+                        msgs.add(aiMsg);
                     }
                     adapter.notifyDataSetChanged();
                     recyclerMessages.scrollToPosition(msgs.size() - 1);
