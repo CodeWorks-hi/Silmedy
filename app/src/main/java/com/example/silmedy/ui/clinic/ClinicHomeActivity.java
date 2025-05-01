@@ -3,6 +3,7 @@ package com.example.silmedy.ui.clinic;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.example.silmedy.R;
 import com.example.silmedy.llama.LlamaActivity;
 import com.example.silmedy.ui.care_request.SymptomChoiceActivity;
+import com.example.silmedy.ui.prescription.PrescriptionActivity;
 import com.example.silmedy.ui.user.MedicalHistoryActivity;
 import com.example.silmedy.ui.user.MyPageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -34,6 +36,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
     private TextView textGreeting;
 
     private CardView cardAI, cardTouchSymptom, cardCold;
+    Button btnPrescription;
     String username = "";
 
     @Override
@@ -129,6 +132,15 @@ public class ClinicHomeActivity extends AppCompatActivity {
                 startActivity(aiIntent);
             });
         }
+
+        // 확인용
+        btnPrescription = findViewById(R.id.btnPrescription);
+        btnPrescription.setOnClickListener(v -> {
+            Intent prescription = new Intent(ClinicHomeActivity.this, PrescriptionActivity.class);
+            prescription.putExtra("user_name",username);
+            startActivity(prescription);
+        });
+
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);

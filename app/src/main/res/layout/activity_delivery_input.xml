@@ -157,6 +157,13 @@
 
         <!-- 배송 신청 버튼 -->
         <TextView
+            android:id="@+id/txtShowAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="주소명"
+            android:textSize="14sp" />
+
+        <TextView
             android:id="@+id/textView26"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,7 +171,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editAddress"
+            android:id="@+id/editDetailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:contentDescription="@string/hint_address_detail"

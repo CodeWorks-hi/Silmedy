@@ -67,6 +67,10 @@
         <activity android:name=".ui.user.MedicalHistoryActivity" />
         <activity android:name=".ui.user.MedicalDetailActivity" />
 
+        <!--배달 신청 액티비티-->
+        <activity android:name=".ui.prescription.PrescriptionActivity" />
+        <activity android:name=".ui.prescription.DeliveryInputActivity" />
+
         <!-- 인증 관련 액티비티 -->
         <activity
             android:name=".ui.auth.FindIdActivity"

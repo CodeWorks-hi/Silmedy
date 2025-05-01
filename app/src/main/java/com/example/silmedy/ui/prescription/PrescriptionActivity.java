@@ -21,9 +21,7 @@ public class PrescriptionActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
 
-    Intent intent = getIntent();
-    String username = intent.getStringExtra("user_name");
-    String patient_id = intent.getStringExtra("patient_id");
+
     ImageView btnVisit, btnDelivery,btnBack;
 
     @Override
@@ -36,6 +34,10 @@ public class PrescriptionActivity extends AppCompatActivity {
             }
         });
         setContentView(R.layout.activity_prescription);
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("user_name");
+        String patient_id = intent.getStringExtra("patient_id");
 
         btnVisit = findViewById(R.id.btnVisit);
         btnDelivery = findViewById(R.id.btnDelivery);
