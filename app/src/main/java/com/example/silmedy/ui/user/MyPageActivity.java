@@ -45,7 +45,6 @@ public class MyPageActivity extends AppCompatActivity {
         // 내 정보 수정하기 버튼
         btnChangeProfile.setOnClickListener(v -> {
             Intent profileIntent = new Intent(MyPageActivity.this,MyEditActivity.class);
-            profileIntent.putExtra("user_name",username);
             startActivity(profileIntent);
         });
 
