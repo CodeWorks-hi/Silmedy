@@ -5,12 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
+import com.example.silmedy.ui.user.MedicalHistoryActivity;
+import com.example.silmedy.ui.user.MyPageActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.silmedy.ui.config.TokenManager;
 
 public class BodyMain extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigation;
 
     ImageView btnBack;
     ImageButton btnLeftArm, btnRightArm, btnHead, btnBody, btnLeg;
@@ -35,6 +41,8 @@ public class BodyMain extends AppCompatActivity {
         btnHead = findViewById(R.id.btnHead);
         btnBody = findViewById(R.id.btnBody);
         btnLeg = findViewById(R.id.btnLeg);
+
+
 
         btnRightArm.setOnClickListener(v -> {
             Intent ArmIntent = new Intent(BodyMain.this, ArmActivity.class);
@@ -71,12 +79,36 @@ public class BodyMain extends AppCompatActivity {
             finish();
         });
 
-
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(BodyMain.this, ClinicHomeActivity.class);
             backIntent.putExtra("user_name", username);
             startActivity(backIntent);
             finish();
         });
+
+        // 하단 네비게이션 바 설정
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        if (bottomNavigation != null) {
+            bottomNavigation.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                Intent navigationIntent = null;
+
+                if (itemId == R.id.nav_home) {
+                    navigationIntent = new Intent(this, ClinicHomeActivity.class);
+                } else if (itemId == R.id.nav_history) {
+                    navigationIntent = new Intent(this, MedicalHistoryActivity.class); // replace with actual history activity class
+                } else if (itemId == R.id.nav_mypage) {
+                    navigationIntent = new Intent(this, MyPageActivity.class); // replace with actual mypage activity class
+                }
+
+                if (navigationIntent != null) {
+                    navigationIntent.putExtra("user_name", username);
+                    startActivity(navigationIntent);
+                    return true;
+                }
+                return false;
+            });
+        }
+
     }
 }

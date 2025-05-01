@@ -19,12 +19,18 @@ import com.bumptech.glide.Glide;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
 import com.example.silmedy.ai_model.KerasModelPredict;
+import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
+import com.example.silmedy.ui.user.MedicalHistoryActivity;
+import com.example.silmedy.ui.user.MyPageActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import org.json.JSONObject;
 
 public class DiagnosisResultsActivity extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigation;
 
     ImageView btnBack, imgDiagnosis, imgResult;
     Button btnReservation;
@@ -150,5 +156,29 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
             backIntent.putExtra("part", part);
             startActivity(backIntent);
         });
+
+        // 하단 네비게이션 바 설정
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        if (bottomNavigation != null) {
+            bottomNavigation.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                Intent navigationIntent = null;
+
+                if (itemId == R.id.nav_home) {
+                    navigationIntent = new Intent(this, ClinicHomeActivity.class);
+                } else if (itemId == R.id.nav_history) {
+                    navigationIntent = new Intent(this, MedicalHistoryActivity.class); // replace with actual history activity class
+                } else if (itemId == R.id.nav_mypage) {
+                    navigationIntent = new Intent(this, MyPageActivity.class); // replace with actual mypage activity class
+                }
+
+                if (navigationIntent != null) {
+                    navigationIntent.putExtra("user_name", username);
+                    startActivity(navigationIntent);
+                    return true;
+                }
+                return false;
+            });
+        }
     }
 }
