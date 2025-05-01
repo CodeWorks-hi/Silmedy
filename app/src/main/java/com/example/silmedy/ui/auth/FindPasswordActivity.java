@@ -8,6 +8,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -76,7 +77,11 @@ public class FindPasswordActivity extends AppCompatActivity {
         btnChangePassword = findViewById(R.id.btnChangePassword);
 
         ImageView btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(FindPasswordActivity.this, LoginActivity.class);
+            startActivity(backIntent);
+            finish();
+        });
 
         // 본인확인 버튼 클릭
         btnVerifyPhone.setOnClickListener(v -> {
@@ -136,7 +141,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            String url = "http://43.201.73.161:5000/verify-code";
+            String url = "http://43.201.73.161:5000/verify-code-check-user";
             JSONObject json = new JSONObject();
             try {
                 json.put("email", email);

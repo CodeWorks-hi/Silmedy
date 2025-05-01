@@ -3,6 +3,7 @@ package com.example.silmedy.ui.auth;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +14,18 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class FindIdActivity extends AppCompatActivity {
 
@@ -50,43 +63,116 @@ public class FindIdActivity extends AppCompatActivity {
 
         // 본인확인 버튼
         btnVerify.setOnClickListener(v -> {
-            String phone = editPhone.getText().toString().trim();
+            String rawPhone = editPhone.getText().toString().trim();
+            String phone = PhoneUtils.convertToE164Format(rawPhone);
             if (TextUtils.isEmpty(phone)) {
                 Toast.makeText(this, "연락처를 입력해주세요", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // 실제 서버에서 인증번호 발송 API 호출 필요
-            Toast.makeText(this, "인증번호가 발송되었습니다", Toast.LENGTH_SHORT).show();
+
+            String url = "http://43.201.73.161:5000/request-verification-code";
+            JSONObject json = new JSONObject();
+            try {
+                json.put("phone_number", phone);
+            } catch (Exception e) {
+                Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> Toast.makeText(FindIdActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        runOnUiThread(() -> Toast.makeText(FindIdActivity.this, "인증 코드가 전송되었습니다", Toast.LENGTH_SHORT).show());
+                    } else {
+                        runOnUiThread(() -> Toast.makeText(FindIdActivity.this, "인증 코드 전송 실패", Toast.LENGTH_SHORT).show());
+                    }
+                }
+            });
         });
 
         // 인증 버튼
         btnCode.setOnClickListener(v -> {
             String code = editCode.getText().toString().trim();
+            String rawPhone = editPhone.getText().toString().trim().replace("-", "");
+
             if (TextUtils.isEmpty(code)) {
-                Toast.makeText(this, "인증 코드를 입력해주세요", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "인증번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if (code.equals(sentCode)) {
-                // 임시: 인증 성공 시 사용자 아이디 조회 (전화번호로)
-                String userId = getUserIdByPhone(editPhone.getText().toString());
-                if (userId != null) {
-                    textMyId.setText(maskEmail(userId));
-                    textMyId.setVisibility(View.VISIBLE);
-                    textMyIdLabel.setVisibility(View.VISIBLE);
-                    btnFindPassword.setVisibility(View.VISIBLE);
-                    btnGoToLogin.setVisibility(View.VISIBLE);
-                } else {
-                    Toast.makeText(this, "등록된 아이디가 없습니다", Toast.LENGTH_SHORT).show();
-                }
-            } else {
-                Toast.makeText(this, "인증 코드가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+            String url = "http://43.201.73.161:5000/verify-code-get-email";
+            JSONObject json = new JSONObject();
+            try {
+                json.put("phone_number", rawPhone);
+                json.put("code", code);
+            } catch (Exception e) {
+                Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> Toast.makeText(FindIdActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        String responseData = response.body().string();
+                        runOnUiThread(() -> {
+                            Toast.makeText(FindIdActivity.this, "인증 성공", Toast.LENGTH_SHORT).show();
+                            String email = "";
+                            try {
+                                JSONObject jsonResponse = new JSONObject(responseData);
+                                email = jsonResponse.getString("email");
+                            } catch (Exception e) {
+                                Log.e("EMAIL EXISTS", "JSON 파싱 오류: " + e.getMessage());
+                            }
+                            if (email != null) {
+                                textMyId.setText(maskEmail(email));
+                                textMyId.setVisibility(View.VISIBLE);
+                                textMyIdLabel.setVisibility(View.VISIBLE);
+                                btnFindPassword.setVisibility(View.VISIBLE);
+                                btnGoToLogin.setVisibility(View.VISIBLE);
+                            } else {
+                                Toast.makeText(FindIdActivity.this, "등록된 아이디가 없습니다", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else {
+                        runOnUiThread(() -> {
+                            Toast.makeText(FindIdActivity.this, "서버 응답 오류: " + response.code(), Toast.LENGTH_SHORT).show();
+                        });
+                    }
+                }
+            });
         });
 
         // 버튼 이벤트들
         btnFindPassword.setOnClickListener(v -> {
-            startActivity(new Intent(this, FindPasswordActivity.class));
+            Intent intent = new Intent(FindIdActivity.this, FindPasswordActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         btnGoToLogin.setOnClickListener(v -> {
@@ -94,18 +180,14 @@ public class FindIdActivity extends AppCompatActivity {
         });
     }
 
-    private String getUserIdByPhone(String phone) {
-        // TODO: 서버/DB 조회로 교체 필요
-        if (phone.equals("010-1234-1234")) {
-            return "code@naver.com";
-        }
-        return null;
-    }
-
     private String maskEmail(String email) {
         int index = email.indexOf("@");
         if (index > 2) {
-            return email.substring(0, 2) + "**" + email.substring(index - 1);
+            return email.substring(0, index - 3) + "**" + email.substring(index - 1);
+        } else if (index == 2) {
+            return "*" + email.substring(index - 1);
+        } else if (index == 1) {
+            return "*" + email.substring(index);
         }
         return email;
     }
