@@ -65,19 +65,8 @@ public class PostalCodeActivity extends AppCompatActivity {
     }
 
     public void searchZipCode(String keyword) {
-        String apiKey = "devU01TX0FVVEgyMDI1MDQyMjE3MDExMTExNTY4MzQ=";
-        String encodedKeyword = "";
-        try {
-            encodedKeyword = URLEncoder.encode(keyword, "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        String apiUrl = "https://business.juso.go.kr/addrlink/addrLinkApi.do"
-                + "?currentPage=1&countPerPage=100"
-                + "&keyword=" + encodedKeyword
-                + "&confmKey=" + apiKey
-                + "&resultType=json";
+        String baseUrl = "http://43.201.73.161:5000";
+        String apiUrl = baseUrl + "/postal_code?keyword=" + keyword;
 
         new Thread(() -> {
             try {
@@ -97,8 +86,7 @@ public class PostalCodeActivity extends AppCompatActivity {
                 reader.close();
                 is.close();
 
-                JSONObject jsonObject = new JSONObject(result.toString());
-                JSONArray jusoArray = jsonObject.getJSONObject("results").getJSONArray("juso");
+                JSONArray jusoArray = new JSONArray(result.toString());
 
                 ArrayList<String> tempResults = new ArrayList<>();
                 for (int i = 0; i < jusoArray.length(); i++) {

@@ -19,6 +19,18 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 public class CheckIdentityActivity extends AppCompatActivity {
 
     private EditText phoneInput, codeInput;
@@ -68,25 +80,45 @@ public class CheckIdentityActivity extends AppCompatActivity {
 
     // 인증 코드 전송 함수
     private void sendVerificationCode() {
-        String rawPhone = phoneInput.getText().toString().trim();
-        String cleanedPhone = rawPhone.replaceAll("-", "");
-        String phone = cleanedPhone;
+        String rawPhone = phoneInput.getText().toString().trim().replaceAll("-", "");
+        String phone = rawPhone;
 
         if (phone.isEmpty() || phone.length() < 9) {
             Toast.makeText(this, "올바른 전화번호를 입력하세요", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        String formattedPhone = phone.startsWith("+82") ? phone : "+82" + phone.replaceFirst("^0", "");
+        String url = "http://43.201.73.161:5000/request-verification-code";
+        JSONObject json = new JSONObject();
+        try {
+            json.put("phone_number", phone);
+        } catch (Exception e) {
+            Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        PhoneAuthOptions options = PhoneAuthOptions.newBuilder(mAuth)
-                .setPhoneNumber(formattedPhone)
-                .setTimeout(60L, TimeUnit.SECONDS)
-                .setActivity(this)
-                .setCallbacks(callbacks)
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
                 .build();
 
-        PhoneAuthProvider.verifyPhoneNumber(options);
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                runOnUiThread(() -> Toast.makeText(CheckIdentityActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    runOnUiThread(() -> Toast.makeText(CheckIdentityActivity.this, "인증 코드가 전송되었습니다", Toast.LENGTH_SHORT).show());
+                } else {
+                    runOnUiThread(() -> Toast.makeText(CheckIdentityActivity.this, "인증 코드 전송 실패", Toast.LENGTH_SHORT).show());
+                }
+            }
+        });
     }
 
     // 인증 결과 콜백 정의
@@ -122,14 +154,49 @@ public class CheckIdentityActivity extends AppCompatActivity {
     // 인증 코드 검증 함수
     private void verifyCode() {
         String code = codeInput.getText().toString().trim();
+        String phone = phoneInput.getText().toString().trim().replaceAll("-", "");
 
-        if (verificationId == null || code.isEmpty()) {
-            Toast.makeText(this, "인증 코드 전송을 먼저 해주세요", Toast.LENGTH_SHORT).show();
+        if (phone.isEmpty() || code.isEmpty()) {
+            Toast.makeText(this, "전화번호와 인증번호를 입력하세요", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verificationId, code);
-        signInWithCredential(credential);
+        String url = "http://43.201.73.161:5000/verify-code";
+        JSONObject json = new JSONObject();
+        try {
+            json.put("phone_number", phone);
+            json.put("code", code);
+        } catch (Exception e) {
+            Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        OkHttpClient client = new OkHttpClient();
+        RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                runOnUiThread(() -> Toast.makeText(CheckIdentityActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    runOnUiThread(() -> {
+                        Toast.makeText(CheckIdentityActivity.this, "인증 성공", Toast.LENGTH_SHORT).show();
+                        confirmButton.setEnabled(true);
+                        confirmButton.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
+                    });
+                } else {
+                    runOnUiThread(() -> Toast.makeText(CheckIdentityActivity.this, "인증 실패", Toast.LENGTH_SHORT).show());
+                }
+            }
+        });
     }
 
     // Firebase 인증 처리
