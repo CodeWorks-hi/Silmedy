@@ -2,6 +2,8 @@ package com.example.silmedy.ui.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +20,10 @@ public class MyEditActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
 
+    ImageView btnBack;
+
+    Button btnChangeEdit, btnZipSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +37,18 @@ public class MyEditActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
+
+        btnBack = findViewById(R.id.btnBack);
+        btnChangeEdit = findViewById(R.id.btnChangeEdit);
+        btnZipSearch = findViewById(R.id.btnZipSearch);
+
+        // 정보 불러오기
+
+        // 벙보 수정 버튼
+
+
+        // 뒤로가기 버튼
+        btnBack.setOnClickListener(v -> finish());
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);

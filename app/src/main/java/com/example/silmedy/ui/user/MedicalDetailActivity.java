@@ -2,6 +2,7 @@ package com.example.silmedy.ui.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,8 @@ public class MedicalDetailActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
 
+    ImageView btnBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,11 @@ public class MedicalDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
+
+        btnBack = findViewById(R.id.btnBack);
+
+        // 뒤로가기 버튼
+        btnBack.setOnClickListener(v -> finish());
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);

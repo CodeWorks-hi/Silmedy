@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +21,8 @@ public class MyPageActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
 
     ImageButton btnChangeProfile, btnChangePassword;
+
+    ImageView btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class MyPageActivity extends AppCompatActivity {
 
         btnChangeProfile = findViewById(R.id.btnChangeProfile);
         btnChangePassword = findViewById(R.id.btnChangePassword);
+        btnBack = findViewById(R.id.btnBack);
 
         // 내 정보 수정하기 버튼
         btnChangeProfile.setOnClickListener(v -> {
@@ -54,6 +58,10 @@ public class MyPageActivity extends AppCompatActivity {
         //로그아웃 버튼
 
         //회원탈퇴버튼
+
+
+        // 뒤로가기 버튼
+        btnBack.setOnClickListener(v -> finish());
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);
