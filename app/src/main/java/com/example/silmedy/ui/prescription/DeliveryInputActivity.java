@@ -18,7 +18,7 @@ import com.example.silmedy.ui.config.TokenManager;
 public class DeliveryInputActivity extends AppCompatActivity {
 
     ImageView btnBack;
-    TextView txtName,txtContact, txtAddress, txtDetailAddress;
+    TextView txtName,txtContact, txtAddress, txtDetailAddress,txtPostalCode;
     EditText editName, editContact, editAddress, editRequest;
     Button btnZipSearch, btnSubmit;
 
@@ -38,6 +38,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
         txtContact = findViewById(R.id.txtContact);
         txtAddress = findViewById(R.id.txtAddress);
         txtDetailAddress = findViewById(R.id.txtDetailAddress);
+        txtPostalCode = findViewById(R.id.txtPostalCode);
         editName = findViewById(R.id.editName);
         editContact = findViewById(R.id.editContact);
         editAddress = findViewById(R.id.editAddress);

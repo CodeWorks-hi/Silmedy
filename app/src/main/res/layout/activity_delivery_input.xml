@@ -141,7 +141,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtAddress"
+                android:id="@+id/txtPostalCode"
                 android:layout_width="173dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
