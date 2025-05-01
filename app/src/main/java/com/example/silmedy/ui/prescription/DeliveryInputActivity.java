@@ -149,7 +149,13 @@ public class DeliveryInputActivity extends AppCompatActivity {
                 txtPostalCode.setText(String.valueOf(postalCode));
                 txtShowAddress.setText(txtAddress.getText().toString());
                 editDetailAddress.setText(txtDetailAddress.getText().toString());
-
+            } else {
+                // 체크박스를 해제하면 EditText를 비움
+                editName.setText("");
+                editContact.setText("");
+                txtPostalCode.setText("");
+                txtShowAddress.setText("");
+                editDetailAddress.setText("");
             }
         });
 
