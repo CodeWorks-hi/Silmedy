@@ -24,8 +24,7 @@ public class PrescriptionActivity extends AppCompatActivity {
     Intent intent = getIntent();
     String username = intent.getStringExtra("user_name");
     String patient_id = intent.getStringExtra("patient_id");
-
-    ImageView btnVisit, btnDelivery;
+    ImageView btnVisit, btnDelivery,btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class PrescriptionActivity extends AppCompatActivity {
 
         btnVisit = findViewById(R.id.btnVisit);
         btnDelivery = findViewById(R.id.btnDelivery);
+        btnBack = findViewById(R.id.btnBack);
 
         // 약국 방문 버튼
         btnVisit.setOnClickListener(v -> {
@@ -60,6 +60,9 @@ public class PrescriptionActivity extends AppCompatActivity {
             startActivity(deliveryIntent);
             finish();
         });
+
+        //뒤로가기 -> 클리닉 홈으로
+        btnBack.setOnClickListener(v -> finish());
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);

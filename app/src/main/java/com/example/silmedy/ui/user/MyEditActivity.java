@@ -2,9 +2,7 @@ package com.example.silmedy.ui.user;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -12,14 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.silmedy.R;
-import com.example.silmedy.ui.auth.FindIdActivity;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -63,7 +56,7 @@ public class MyEditActivity extends AppCompatActivity {
         editBirthDate = findViewById(R.id.editBirthDate);
         editContact = findViewById(R.id.editContact);
         editDetailAddress = findViewById(R.id.editDetailAddress);
-        txtPostalCode = findViewById(R.id.txtPostalCode);
+        txtPostalCode = findViewById(R.id.txtAddress);
         txtAddress = findViewById(R.id.txtAddress);
         txtEmail = findViewById(R.id.txtEmail);
         checkboxDefault = findViewById(R.id.checkboxDefault);

@@ -2,6 +2,8 @@ package com.example.silmedy.ui.prescription;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +16,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class DeliveryCompletedActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigation;
+
+    ImageView btnBack;
+    TextView txtName, txtContact, txtAddress,txtRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +33,22 @@ public class DeliveryCompletedActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
+
+        btnBack = findViewById(R.id.btnBack);
+        txtName = findViewById(R.id.txtName);
+        txtContact = findViewById(R.id.txtContact);
+        txtAddress = findViewById(R.id.txtAddress);
+        txtRequest = findViewById(R.id.txtRequest);
+
+        // 배송 정보 불러오기
+
+
+        // 뒤로가기 -> 클리닉 홈
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(DeliveryCompletedActivity.this,ClinicHomeActivity.class);
+            backIntent.putExtra("user_name",username);
+            startActivity(backIntent);
+        });
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);

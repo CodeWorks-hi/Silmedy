@@ -93,9 +93,9 @@
             android:textColor="@color/text_secondary" />
 
         <TextView
-            android:id="@+id/txtPostalCode"
+            android:id="@+id/txtAddress"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="22dp"
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:text="주소 : 경기도 성남시 중원구"

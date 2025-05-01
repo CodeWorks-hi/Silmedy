@@ -141,18 +141,18 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txtPostalCode"
+                android:id="@+id/txtAddress"
                 android:layout_width="173dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="우편번호" />
 
             <Button
-                android:id="@+id/btnFinedAddress"
+                android:id="@+id/btnZipSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="주소 찾기" />
+                android:text="주소 검색" />
         </LinearLayout>
 
         <!-- 배송 신청 버튼 -->

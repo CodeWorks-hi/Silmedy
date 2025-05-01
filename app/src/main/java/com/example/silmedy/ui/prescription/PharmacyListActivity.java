@@ -1,6 +1,8 @@
 package com.example.silmedy.ui.prescription;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,9 @@ import com.example.silmedy.ui.config.TokenManager;
 
 public class PharmacyListActivity extends AppCompatActivity {
 
+    ImageView btnBack;
+    TextView btnChangeLocation,locationText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,5 +28,16 @@ public class PharmacyListActivity extends AppCompatActivity {
             }
         });
         setContentView(R.layout.activity_pharmacy_list);
+
+        btnBack = findViewById(R.id.btnBack);
+        btnChangeLocation = findViewById(R.id.btnChangeLocation);
+        locationText = findViewById(R.id.locationText);
+
+        // 내위 치 설정
+
+        // 약국 리스트 불러오기
+
+        // 뒤로가기
+        btnBack.setOnClickListener(v -> finish());
     }
 }
