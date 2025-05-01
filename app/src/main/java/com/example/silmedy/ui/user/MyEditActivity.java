@@ -56,7 +56,7 @@ public class MyEditActivity extends AppCompatActivity {
         editBirthDate = findViewById(R.id.editBirthDate);
         editContact = findViewById(R.id.editContact);
         editDetailAddress = findViewById(R.id.editDetailAddress);
-        txtPostalCode = findViewById(R.id.txtAddress);
+        txtPostalCode = findViewById(R.id.txtPostalCode);
         txtAddress = findViewById(R.id.txtAddress);
         txtEmail = findViewById(R.id.txtEmail);
         checkboxDefault = findViewById(R.id.checkboxDefault);
