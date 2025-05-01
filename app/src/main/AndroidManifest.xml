@@ -70,6 +70,7 @@
         <!--배달 신청 액티비티-->
         <activity android:name=".ui.prescription.PrescriptionActivity" />
         <activity android:name=".ui.prescription.DeliveryInputActivity" />
+        <activity android:name=".ui.prescription.DeliveryCompletedActivity" />
 
         <!-- 약국 관련 액티비티-->
         <activity android:name=".ui.prescription.PharmacyListActivity" />

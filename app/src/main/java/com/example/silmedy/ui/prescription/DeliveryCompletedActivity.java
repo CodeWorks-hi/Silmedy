@@ -32,7 +32,11 @@ public class DeliveryCompletedActivity extends AppCompatActivity {
         setContentView(R.layout.activity_delivery_completed);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("user_name");
+        String username = intent.getStringExtra("username");
+        String contact = intent.getStringExtra("contact");
+        String address = intent.getStringExtra("address");
+        String detailAddress = intent.getStringExtra("detailAddress");
+        String requestMessage = intent.getStringExtra("requestMessage");
 
         btnBack = findViewById(R.id.btnBack);
         txtName = findViewById(R.id.txtName);
@@ -41,13 +45,16 @@ public class DeliveryCompletedActivity extends AppCompatActivity {
         txtRequest = findViewById(R.id.txtRequest);
 
         // 배송 정보 불러오기
-
+        txtName.setText("이름 : " + username);
+        txtContact.setText("연락처 : " + contact);
+        txtAddress.setText("주소 : " + address);
+        txtRequest.setText("요청사항 : " + requestMessage);
 
         // 뒤로가기 -> 클리닉 홈
         btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(DeliveryCompletedActivity.this,ClinicHomeActivity.class);
-            backIntent.putExtra("user_name",username);
+            Intent backIntent = new Intent(DeliveryCompletedActivity.this, ClinicHomeActivity.class);
             startActivity(backIntent);
+            finish();
         });
 
         // 하단 네비게이션 바 설정
