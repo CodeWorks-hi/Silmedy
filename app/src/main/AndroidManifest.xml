@@ -61,6 +61,7 @@
         <!-- 마이 페이지 액티비티-->
         <activity android:name=".ui.user.MyPageActivity" />
         <activity android:name=".ui.user.MyEditActivity" />
+        <activity android:name=".ui.user.ChangePasswordActivity" />
 
         <!-- 진료 내역 액티비티-->
         <activity android:name=".ui.user.MedicalHistoryActivity" />

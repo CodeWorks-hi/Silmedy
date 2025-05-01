@@ -154,4 +154,5 @@
     <string name="label_chat_summary">Chat Summary</string>
     <string name="hint_no_summary">No chat summary available.</string>
 
+    <string name="title_activity_change_password">Change Password</string>
 </resources>

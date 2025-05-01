@@ -1,4 +1,23 @@
-package com.example.silmedy.ui.auth;
+package com.example.silmedy.ui.user;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.silmedy.R;
+import com.example.silmedy.ui.auth.LoginActivity;
+import com.example.silmedy.ui.config.PhoneUtils;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -8,24 +27,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
-import android.widget.ImageView;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.silmedy.R;
-import com.example.silmedy.ui.config.PhoneUtils;
-
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-public class FindPasswordActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
 
     // For manual verification/testing without Firebase
     private final String sentCode = "123456"; // 임시비밀번호 고정값
@@ -42,7 +44,7 @@ public class FindPasswordActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find_password);
+        setContentView(R.layout.activity_change_password);
 
         // View 연결
         editEmail = findViewById(R.id.editEmail);
@@ -66,7 +68,7 @@ public class FindPasswordActivity extends AppCompatActivity {
 
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(FindPasswordActivity.this, LoginActivity.class);
+            Intent backIntent = new Intent(ChangePasswordActivity.this, LoginActivity.class);
             startActivity(backIntent);
             finish();
         });
@@ -104,15 +106,15 @@ public class FindPasswordActivity extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                    runOnUiThread(() -> Toast.makeText(ChangePasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     if (response.isSuccessful()) {
-                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "인증 코드가 전송되었습니다", Toast.LENGTH_SHORT).show());
+                        runOnUiThread(() -> Toast.makeText(ChangePasswordActivity.this, "인증 코드가 전송되었습니다", Toast.LENGTH_SHORT).show());
                     } else {
-                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "인증 코드 전송 실패", Toast.LENGTH_SHORT).show());
+                        runOnUiThread(() -> Toast.makeText(ChangePasswordActivity.this, "인증 코드 전송 실패", Toast.LENGTH_SHORT).show());
                     }
                 }
             });
@@ -150,7 +152,7 @@ public class FindPasswordActivity extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                    runOnUiThread(() -> Toast.makeText(ChangePasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
                 }
 
                 @Override
@@ -158,7 +160,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                     if (response.isSuccessful()) {
                         String responseData = response.body().string();
                         runOnUiThread(() -> {
-                            Toast.makeText(FindPasswordActivity.this, "인증 성공", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangePasswordActivity.this, "인증 성공", Toast.LENGTH_SHORT).show();
                             // TODO: parse JSON and set email field if needed
                             // 예시: editEmail.setText(parsedEmail);
                             // 새 비밀번호 영역 표시
@@ -170,7 +172,7 @@ public class FindPasswordActivity extends AppCompatActivity {
                         });
                     } else {
                         runOnUiThread(() -> {
-                            Toast.makeText(FindPasswordActivity.this, "서버 응답 오류: " + response.code(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ChangePasswordActivity.this, "서버 응답 오류: " + response.code(), Toast.LENGTH_SHORT).show();
                         });
                     }
                 }
@@ -219,16 +221,16 @@ public class FindPasswordActivity extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                    runOnUiThread(() -> Toast.makeText(ChangePasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     if (response.isSuccessful()) {
-                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "비밀번호 변경 완료", Toast.LENGTH_SHORT).show());
+                        runOnUiThread(() -> Toast.makeText(ChangePasswordActivity.this, "비밀번호 변경 완료", Toast.LENGTH_SHORT).show());
                         finish();
                     } else {
-                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "비밀번호 변경 실패", Toast.LENGTH_SHORT).show());
+                        runOnUiThread(() -> Toast.makeText(ChangePasswordActivity.this, "비밀번호 변경 실패", Toast.LENGTH_SHORT).show());
                     }
                 }
             });

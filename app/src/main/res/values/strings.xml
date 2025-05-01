@@ -156,4 +156,5 @@
     <string name="label_chat_summary">대화 요약</string>
     <string name="hint_no_summary">요약된 대화가 없습니다.</string>
 
+    <string name="title_activity_change_password">비밀번호 변경</string>
 </resources>

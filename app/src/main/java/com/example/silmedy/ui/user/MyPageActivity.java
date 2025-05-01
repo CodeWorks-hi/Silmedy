@@ -44,13 +44,13 @@ public class MyPageActivity extends AppCompatActivity {
 
         // 내 정보 수정하기 버튼
         btnChangeProfile.setOnClickListener(v -> {
-            Intent profileIntent = new Intent(MyPageActivity.this,MyEditActivity.class);
+            Intent profileIntent = new Intent(MyPageActivity.this, MyEditActivity.class);
             startActivity(profileIntent);
         });
 
         // 비밀번호 변경 버튼
         btnChangePassword.setOnClickListener((v -> {
-            Intent passwordIntent = new Intent(MyPageActivity.this,FindPasswordActivity.class);
+            Intent passwordIntent = new Intent(MyPageActivity.this, ChangePasswordActivity.class);
             startActivity(passwordIntent);
         }));
 
