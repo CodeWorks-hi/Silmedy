@@ -97,7 +97,7 @@ public class ClinicHomeActivity extends AppCompatActivity {
                             textGreeting.setText(String.format("%s님, 환영합니다.", username));
                         });
                     }
-                }else {
+                } else {
                     runOnUiThread(() ->
                             Toast.makeText(ClinicHomeActivity.this, "서버 응답 오류: " + response.code(), Toast.LENGTH_SHORT).show()
                     );

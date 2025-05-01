@@ -71,6 +71,9 @@
         <activity android:name=".ui.prescription.PrescriptionActivity" />
         <activity android:name=".ui.prescription.DeliveryInputActivity" />
 
+        <!-- 약국 관련 액티비티-->
+        <activity android:name=".ui.prescription.PharmacyListActivity" />
+
         <!-- 인증 관련 액티비티 -->
         <activity
             android:name=".ui.auth.FindIdActivity"

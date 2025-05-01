@@ -1,5 +1,6 @@
 package com.example.silmedy.ui.prescription;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.silmedy.R;
 import com.example.silmedy.ui.config.TokenManager;
+import com.example.silmedy.ui.user.MedicalDetailActivity;
 
 public class PharmacyListActivity extends AppCompatActivity {
 
@@ -29,15 +31,28 @@ public class PharmacyListActivity extends AppCompatActivity {
         });
         setContentView(R.layout.activity_pharmacy_list);
 
+        Intent intent = getIntent();
+        String date = intent.getStringExtra("date");
+        String hospitalName = intent.getStringExtra("hospital_name");
+        String diagnosisId = intent.getStringExtra("diagnosis_id");
+        String prescriptionId = intent.getStringExtra("prescription_id");
+
         btnBack = findViewById(R.id.btnBack);
         btnChangeLocation = findViewById(R.id.btnChangeLocation);
         locationText = findViewById(R.id.locationText);
 
-        // 내위 치 설정
+        // 내 위치 설정
 
         // 약국 리스트 불러오기
 
         // 뒤로가기
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(PharmacyListActivity.this, MedicalDetailActivity.class);
+            backIntent.putExtra("date", date);
+            backIntent.putExtra("hospital_name", hospitalName);
+            backIntent.putExtra("diagnosis_id", diagnosisId);
+            startActivity(backIntent);
+            finish();
+        });
     }
 }
