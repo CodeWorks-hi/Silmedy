@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FAFB">
+    android:background="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="24dp">
+        android:padding="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- 상단 뒤로가기 버튼 -->
         <ImageButton
@@ -16,19 +22,19 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/back_icon"
-            android:contentDescription="뒤로가기" />
+            android:contentDescription="뒤로가기"
+            android:src="@drawable/back_icon" />
 
         <!-- 타이틀 -->
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
             android:text="증상 선택하기"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp"
-            android:layout_gravity="center_horizontal" />
+            android:textStyle="bold" />
 
         <!-- 증상 목록: Grid -->
         <GridLayout
@@ -36,9 +42,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:rowCount="3"
-            android:alignmentMode="alignMargins"
             android:rowOrderPreserved="false"
             android:useDefaultMargins="true">
 
@@ -48,25 +54,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/card_bg"
-                android:padding="12dp"
+                android:elevation="2dp"
                 android:gravity="center"
-                android:elevation="2dp">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/cold_"
-                    android:contentDescription="감기" />
+                    android:contentDescription="감기"
+                    android:src="@drawable/cold_" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="감기"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- 증상 카드 2 -->
@@ -75,25 +81,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/card_bg"
-                android:padding="12dp"
+                android:elevation="2dp"
                 android:gravity="center"
-                android:elevation="2dp">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/indigestion"
-                    android:contentDescription="소화불량" />
+                    android:contentDescription="소화불량"
+                    android:src="@drawable/indigestion" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="소화불량"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- 증상 카드 3 -->
@@ -102,25 +108,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/card_bg"
-                android:padding="12dp"
+                android:elevation="2dp"
                 android:gravity="center"
-                android:elevation="2dp">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/heat"
-                    android:contentDescription="소화불량" />
+                    android:contentDescription="소화불량"
+                    android:src="@drawable/heat" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="열"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- 증상 카드 4 -->
@@ -129,25 +135,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/card_bg"
-                android:padding="12dp"
+                android:elevation="2dp"
                 android:gravity="center"
-                android:elevation="2dp">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/headache"
-                    android:contentDescription="소화불량" />
+                    android:contentDescription="소화불량"
+                    android:src="@drawable/headache" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="두통"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- 증상 카드 5 -->
@@ -156,25 +162,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/card_bg"
-                android:padding="12dp"
+                android:elevation="2dp"
                 android:gravity="center"
-                android:elevation="2dp">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/diabetes"
-                    android:contentDescription="소화불량" />
+                    android:contentDescription="소화불량"
+                    android:src="@drawable/diabetes" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="당뇨"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- 증상 카드 6 -->
@@ -183,25 +189,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:orientation="vertical"
                 android:background="@drawable/card_bg"
-                android:padding="12dp"
+                android:elevation="2dp"
                 android:gravity="center"
-                android:elevation="2dp">
+                android:orientation="vertical"
+                android:padding="12dp">
 
                 <ImageView
                     android:layout_width="64dp"
                     android:layout_height="64dp"
-                    android:src="@drawable/high_blood"
-                    android:contentDescription="소화불량" />
+                    android:contentDescription="소화불량"
+                    android:src="@drawable/high_blood" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:text="고혈압"
                     android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="8dp" />
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <!-- 열, 두통, 당뇨, 고혈압 카드도 같은 구조로 추가 -->
@@ -209,4 +215,20 @@
 
         </GridLayout>
     </LinearLayout>
-</ScrollView>
+
+    <!-- ⬇️ 하단 네비게이션 바 -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:menu="@menu/menu_bottom_nav"
+        app:itemIconTint="@xml/selector_bottom_nav"
+        app:itemTextColor="@xml/selector_bottom_nav"
+        app:labelVisibilityMode="labeled"
+        android:background="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,10 +10,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
+import com.example.silmedy.ui.user.MedicalHistoryActivity;
+import com.example.silmedy.ui.user.MyPageActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 public class SymptomChoiceActivity extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigation;
 
     public LinearLayout cardCold, cardIndigestion, cardHeat, cardHeadache, cardDiabetes, cardHighBlood;
     public ImageButton btnBack;
@@ -86,6 +91,30 @@ public class SymptomChoiceActivity extends AppCompatActivity {
             startActivity(backIntent);
             finish();
         });
+
+        // 하단 네비게이션 바 설정
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        if (bottomNavigation != null) {
+            bottomNavigation.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                Intent navigationIntent = null;
+
+                if (itemId == R.id.nav_home) {
+                    navigationIntent = new Intent(this, ClinicHomeActivity.class);
+                } else if (itemId == R.id.nav_history) {
+                    navigationIntent = new Intent(this, MedicalHistoryActivity.class); // replace with actual history activity class
+                } else if (itemId == R.id.nav_mypage) {
+                    navigationIntent = new Intent(this, MyPageActivity.class); // replace with actual mypage activity class
+                }
+
+                if (navigationIntent != null) {
+                    navigationIntent.putExtra("user_name", username);
+                    startActivity(navigationIntent);
+                    return true;
+                }
+                return false;
+            });
+        }
     }
 
     private void moveToDoctorList(ArrayList<String> parts, ArrayList<String> symptoms,
@@ -97,4 +126,6 @@ public class SymptomChoiceActivity extends AppCompatActivity {
         intent.putExtra("department", "내과");
         startActivity(intent);
     }
+
+
 }

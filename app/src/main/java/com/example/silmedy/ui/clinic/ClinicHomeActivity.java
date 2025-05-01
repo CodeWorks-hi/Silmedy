@@ -109,7 +109,6 @@ public class ClinicHomeActivity extends AppCompatActivity {
                 }
                 return false;
             });
-            bottomNavigation.setSelectedItemId(R.id.nav_home);
         }
     }
 

@@ -1,6 +1,8 @@
 package com.example.silmedy.ui.user;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,9 +11,13 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.silmedy.R;
+import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MedicalHistoryActivity extends AppCompatActivity {
+
+    BottomNavigationView bottomNavigation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +29,34 @@ public class MedicalHistoryActivity extends AppCompatActivity {
             }
         });
         setContentView(R.layout.activity_medical_history);
+
+        Intent intent = getIntent();
+        String username = intent.getStringExtra("user_name");
+
+        // 하단 네비게이션 바 설정
+        bottomNavigation = findViewById(R.id.bottom_navigation);
+        if (bottomNavigation != null) {
+            bottomNavigation.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                Intent navigationIntent = null;
+
+                if (itemId == R.id.nav_home) {
+                    navigationIntent = new Intent(this, ClinicHomeActivity.class);
+                } else if (itemId == R.id.nav_history) {
+                    Toast.makeText(this, "현재 진료내역 화면입니다.", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.nav_mypage) {
+                    navigationIntent = new Intent(this, MyPageActivity.class); // replace with actual mypage activity class
+                }
+
+                if (navigationIntent != null) {
+                    navigationIntent.putExtra("user_name", username);
+                    startActivity(navigationIntent);
+                    return true;
+                }
+                return false;
+            });
+        }
 
     }
 }
