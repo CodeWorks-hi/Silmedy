@@ -3,6 +3,8 @@ package com.example.silmedy.ui.user;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,7 +19,7 @@ public class MyPageActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigation;
 
-    Button btnChangeProfile,btnChangePassword;
+    ImageButton btnChangeProfile, btnChangePassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

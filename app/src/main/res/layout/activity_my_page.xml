@@ -12,9 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="30dp">
+        app:layout_constraintEnd_toStartOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toEndOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/btnBack4"
@@ -34,23 +38,57 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btnChangeProfile"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="내 정보 수정하기"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_height="40dp" />
 
-        <Button
-            android:id="@+id/btnChangePassword"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="비밀번호 변경"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btnChangeProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_view_shadow" />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="내 정보 수정하기"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btnChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/card_view_shadow" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="비밀번호 변경"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -64,9 +102,14 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:text="로그아웃"
+                android:textColor="@color/main_color"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/main_color"
+                app:strokeWidth="2dp" />
 
             <Space
                 android:layout_width="50dp"
@@ -78,10 +121,16 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:backgroundTint="@color/white"
                 android:text="회원탈퇴"
+                android:textColor="@color/main_color"
                 android:textSize="14sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/main_color"
+                app:strokeWidth="2dp" />
         </LinearLayout>
+
     </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
