@@ -1,5 +1,13 @@
 package com.example.silmedy.ui.auth;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,7 +18,12 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.silmedy.R;
+import com.example.silmedy.ui.auth.CheckIdentityActivity;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 class PhoneUtils {
     public static String convertToE164Format(String phone) {
@@ -79,36 +92,101 @@ public class FindPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            // 실제로는 서버에서 인증번호 발송 로직 필요
-            Toast.makeText(this, "인증번호가 발송되었습니다", Toast.LENGTH_SHORT).show();
-            inputCodeLayout.setVisibility(View.VISIBLE);
-            btnVerifyCode.setVisibility(View.VISIBLE);
+            String url = "http://43.201.73.161:5000/request-verification-code";
+            JSONObject json = new JSONObject();
+            try {
+                json.put("phone_number", phone);
+            } catch (Exception e) {
+                Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "인증 코드가 전송되었습니다", Toast.LENGTH_SHORT).show());
+                    } else {
+                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "인증 코드 전송 실패", Toast.LENGTH_SHORT).show());
+                    }
+                }
+            });
         });
 
         // 인증 버튼 클릭
         btnVerifyCode.setOnClickListener(v -> {
+            String email = editEmail.getText().toString().trim();
             String code = editCode.getText().toString().trim();
+            String rawPhone = editPhone.getText().toString().trim().replace("-", "");
+
             if (TextUtils.isEmpty(code)) {
                 Toast.makeText(this, "인증번호를 입력해주세요", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if (code.equals(sentCode)) {
-                Toast.makeText(this, "인증되었습니다", Toast.LENGTH_SHORT).show();
-
-                // 새 비밀번호 영역 표시
-                findViewById(R.id.labelNewPassword).setVisibility(View.VISIBLE);
-                newPasswordSection.setVisibility(View.VISIBLE);
-                findViewById(R.id.labelConfirmPassword).setVisibility(View.VISIBLE);
-                findViewById(R.id.inputConfirmPasswordLayout).setVisibility(View.VISIBLE);
-                findViewById(R.id.btnChangePassword).setVisibility(View.VISIBLE);
-            } else {
-                Toast.makeText(this, "인증번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+            String url = "http://43.201.73.161:5000/verify-code";
+            JSONObject json = new JSONObject();
+            try {
+                json.put("email", email);
+                json.put("phone_number", rawPhone);
+                json.put("code", code);
+            } catch (Exception e) {
+                Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        String responseData = response.body().string();
+                        runOnUiThread(() -> {
+                            Toast.makeText(FindPasswordActivity.this, "인증 성공", Toast.LENGTH_SHORT).show();
+                            // TODO: parse JSON and set email field if needed
+                            // 예시: editEmail.setText(parsedEmail);
+                            // 새 비밀번호 영역 표시
+                            findViewById(R.id.labelNewPassword).setVisibility(View.VISIBLE);
+                            newPasswordSection.setVisibility(View.VISIBLE);
+                            findViewById(R.id.labelConfirmPassword).setVisibility(View.VISIBLE);
+                            findViewById(R.id.inputConfirmPasswordLayout).setVisibility(View.VISIBLE);
+                            findViewById(R.id.btnChangePassword).setVisibility(View.VISIBLE);
+                        });
+                    } else {
+                        runOnUiThread(() -> {
+                            Toast.makeText(FindPasswordActivity.this, "서버 응답 오류: " + response.code(), Toast.LENGTH_SHORT).show();
+                        });
+                    }
+                }
+            });
         });
 
         // 비밀번호 변경 버튼 클릭
         btnChangePassword.setOnClickListener(v -> {
+            String email = editEmail.getText().toString().trim();
             String pw = editNewPassword.getText().toString();
             String pwConfirm = editConfirmPassword.getText().toString();
 
@@ -128,19 +206,39 @@ public class FindPasswordActivity extends AppCompatActivity {
                 return;
             }
 
-            // 실제 서버 비밀번호 변경 요청 로직 필요
-            // Firebase Firestore에 비밀번호 업데이트
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-            String email = editEmail.getText().toString().trim();
-            db.collection("patients").document(email)
-                .update("password", pw)
-                .addOnSuccessListener(unused -> {
-                    Toast.makeText(this, "비밀번호가 변경되었습니다", Toast.LENGTH_SHORT).show();
-                    finish();
-                })
-                .addOnFailureListener(e -> {
-                    Toast.makeText(this, "비밀번호 변경에 실패했습니다", Toast.LENGTH_SHORT).show();
-                });
+            String url = "http://43.201.73.161:5000/patient/repassword";
+            JSONObject json = new JSONObject();
+            try {
+                json.put("email", email);
+                json.put("new_password", pw);
+            } catch (Exception e) {
+                Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            OkHttpClient client = new OkHttpClient();
+            RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+            Request request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (response.isSuccessful()) {
+                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "비밀번호 변경 완료", Toast.LENGTH_SHORT).show());
+                        finish();
+                    } else {
+                        runOnUiThread(() -> Toast.makeText(FindPasswordActivity.this, "비밀번호 변경 실패", Toast.LENGTH_SHORT).show());
+                    }
+                }
+            });
         });
     }
 }

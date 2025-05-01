@@ -195,6 +195,11 @@ public class SignupActivity extends AppCompatActivity {
                 return;
             }
 
+            if (!password.matches("^(?=.*[a-z])(?=.*\\d)[a-z\\d]{6,}$")) {
+                Toast.makeText(this, "비밀번호는 소문자와 숫자를 포함한 6자 이상이어야 합니다.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             String url = "http://43.201.73.161:5000/patient/signup";
             JSONObject json = new JSONObject();
             try {
