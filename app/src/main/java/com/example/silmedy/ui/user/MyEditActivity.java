@@ -2,7 +2,9 @@ package com.example.silmedy.ui.user;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -10,11 +12,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.silmedy.R;
+import com.example.silmedy.ui.auth.FindIdActivity;
+import com.example.silmedy.ui.auth.SignupActivity;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
+import com.example.silmedy.ui.open_api.PostalCodeActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONObject;
@@ -31,12 +40,18 @@ import okhttp3.Response;
 
 public class MyEditActivity extends AppCompatActivity {
 
+    private static final int POSTCODE_REQUEST_CODE = 1001;
     EditText editName, editBirthDate, editContact, editDetailAddress;
     BottomNavigationView bottomNavigation;
     CheckBox checkboxDefault;
     ImageView btnBack;
     TextView txtPostalCode, txtAddress, txtEmail;
     Button btnChangeEdit, btnZipSearch;
+    String url;
+    JSONObject json;
+    RequestBody body;
+    Request request;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,12 +81,12 @@ public class MyEditActivity extends AppCompatActivity {
         String accessToken = tokenManager.getAccessToken();
 
         // 정보 불러오기
-        String url = "http://43.201.73.161:5000/patient/mypage";
-        JSONObject json = new JSONObject();
+        url = "http://43.201.73.161:5000/patient/mypage";
+        json = new JSONObject();
 
         OkHttpClient client = new OkHttpClient();
-        RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
-        Request request = new Request.Builder()
+        body = RequestBody.create(json.toString(), MediaType.get("application/json"));
+        request = new Request.Builder()
                 .url(url)
                 .addHeader("Authorization", "Bearer " + accessToken)
                 .get()
@@ -128,8 +143,80 @@ public class MyEditActivity extends AppCompatActivity {
             }
         });
 
-        // 벙보 수정 버튼
+        btnZipSearch.setOnClickListener(v -> {
+            Intent newIntent = new Intent(MyEditActivity.this, PostalCodeActivity.class);
+            startActivityForResult(newIntent, POSTCODE_REQUEST_CODE);
+        });
 
+        // 정보 수정 버튼
+        btnChangeEdit.setOnClickListener(v -> {
+            String name = editName.getText().toString().trim();
+            String birthDate = editBirthDate.getText().toString().trim();
+            String contact = editContact.getText().toString().trim();
+            String postalCode = txtPostalCode.getText().toString().trim();
+            String address = txtAddress.getText().toString().trim();
+            String addressDetail = editDetailAddress.getText().toString().trim();
+            boolean isSignLangChecked = checkboxDefault.isChecked();
+
+            if (TextUtils.isEmpty(name) || TextUtils.isEmpty(birthDate) || TextUtils.isEmpty(contact)
+                    || TextUtils.isEmpty(postalCode) || TextUtils.isEmpty(address)
+                    || TextUtils.isEmpty(addressDetail)) {
+                Toast.makeText(this, getString(R.string.toast_all_fields_required), Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            url = "http://43.201.73.161:5000/patient/update";
+            JSONObject updatesJson = new JSONObject();
+            try {
+                updatesJson.put("name", name);
+                updatesJson.put("birth_date", birthDate);
+                updatesJson.put("contact", contact);
+                updatesJson.put("postal_code", postalCode);
+                updatesJson.put("address", address);
+                updatesJson.put("address_detail", addressDetail);
+                updatesJson.put("sign_language_needed", String.valueOf(isSignLangChecked));
+
+                json.put("updates", updatesJson);
+            } catch (Exception e) {
+                Toast.makeText(this, "JSON 오류", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            JSONObject fullJson = new JSONObject();
+            try {
+                fullJson.put("updates", updatesJson);
+            } catch (Exception e) {
+                Toast.makeText(this, "JSON wrapping 오류", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            body = RequestBody.create(fullJson.toString(), MediaType.get("application/json"));
+            request = new Request.Builder()
+                    .url(url)
+                    .post(body)
+                    .addHeader("Authorization", "Bearer " + accessToken)
+                    .build();
+
+            client.newCall(request).enqueue(new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> Toast.makeText(MyEditActivity.this, "정보 수정 실패: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    String resp = response.body().string();
+                    runOnUiThread(() -> {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(MyEditActivity.this, "회원 정보 수정이 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(MyEditActivity.this, "회원 정보 수정에 실패하였습니다." + ": " + resp, Toast.LENGTH_SHORT).show();
+                            Log.e("회원 정보 수정", "서버 응답 오류: " + response.code() + ", " + resp);
+                        }
+                    });
+                }
+            });
+        });
 
         // 뒤로가기 버튼
         btnBack.setOnClickListener(v -> finish());
@@ -155,6 +242,16 @@ public class MyEditActivity extends AppCompatActivity {
                 }
                 return false;
             });
+        }
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == POSTCODE_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            String zipCode = data.getStringExtra("zipCode");
+            String addressResult = data.getStringExtra("address");
+            txtPostalCode.setText(zipCode);
+            txtAddress.setText(addressResult);
         }
     }
 }
