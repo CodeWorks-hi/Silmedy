@@ -65,6 +65,7 @@
 
         <!-- 진료 내역 액티비티-->
         <activity android:name=".ui.user.MedicalHistoryActivity" />
+        <activity android:name=".ui.user.MedicalDetailActivity" />
 
         <!-- 인증 관련 액티비티 -->
         <activity

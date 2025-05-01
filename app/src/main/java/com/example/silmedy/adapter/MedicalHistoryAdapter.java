@@ -1,5 +1,6 @@
 package com.example.silmedy.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.silmedy.R;
 import com.example.silmedy.model.MedicalHistoryItem;
+import com.example.silmedy.ui.user.MedicalDetailActivity;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class MedicalHistoryAdapter extends RecyclerView.Adapter<MedicalHistoryAdapter.ViewHolder> {
@@ -41,6 +44,14 @@ public class MedicalHistoryAdapter extends RecyclerView.Adapter<MedicalHistoryAd
                 .replace("\"", "")
                 .trim();
         holder.textDiagnosis.setText("진료 정보 : " + summary);
+
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(v.getContext(), MedicalDetailActivity.class);
+            intent.putExtra("date", item.getDate());
+            intent.putExtra("hospital_name", item.getHospitalName());
+            intent.putExtra("diagnosis_id", item.getDiagnosisId());
+            v.getContext().startActivity(intent);
+        });
     }
 
     @Override
@@ -48,7 +59,7 @@ public class MedicalHistoryAdapter extends RecyclerView.Adapter<MedicalHistoryAd
         return medicalHistoryList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textDate, textHospital, textDiagnosis;
 
         public ViewHolder(@NonNull View itemView) {
@@ -56,6 +67,8 @@ public class MedicalHistoryAdapter extends RecyclerView.Adapter<MedicalHistoryAd
             textDate = itemView.findViewById(R.id.txtMedicalDate);
             textHospital = itemView.findViewById(R.id.txtMedicalCenter);
             textDiagnosis = itemView.findViewById(R.id.txtMedical);
+
+
         }
     }
 }

@@ -33,12 +33,21 @@ public class MedicalDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_medical_detail);
 
         Intent intent = getIntent();
-        String username = intent.getStringExtra("user_name");
+        String date = intent.getStringExtra("date");
+        String hospitalName = intent.getStringExtra("hospital_name");
+        String diagnosisId = intent.getStringExtra("diagnosis_id");
 
         btnBack = findViewById(R.id.btnBack);
 
         // 뒤로가기 버튼
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(MedicalDetailActivity.this, MedicalHistoryActivity.class);
+            backIntent.putExtra("date", date);
+            backIntent.putExtra("hospital_name", hospitalName);
+            backIntent.putExtra("diagnosis_id", diagnosisId);
+            startActivity(backIntent);
+            finish();
+        });
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);
@@ -56,7 +65,6 @@ public class MedicalDetailActivity extends AppCompatActivity {
                 }
 
                 if (navigationIntent != null) {
-                    navigationIntent.putExtra("user_name", username);
                     startActivity(navigationIntent);
                     return true;
                 }

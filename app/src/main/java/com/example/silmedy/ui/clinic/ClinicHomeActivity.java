@@ -10,7 +10,12 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.silmedy.adapter.MedicalHistoryAdapter;
+import com.example.silmedy.model.MedicalHistoryItem;
+import com.example.silmedy.ui.auth.SignupActivity;
 import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.example.silmedy.R;
 import com.example.silmedy.llama.LlamaActivity;
@@ -20,13 +25,16 @@ import com.example.silmedy.ui.user.MyPageActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.silmedy.ui.config.TokenManager;
 
+import org.json.JSONObject;
+
 public class ClinicHomeActivity extends AppCompatActivity {
 
 //    private ImageView btnBack;
     private BottomNavigationView bottomNavigation;
     private TextView textGreeting;
 
-    private CardView cardAI;
+    private CardView cardAI, cardTouchSymptom, cardCold;
+    String username = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,18 +53,56 @@ public class ClinicHomeActivity extends AppCompatActivity {
 //            btnBack.setOnClickListener(v -> onBackPressed());
 //        }
 
-        // 사용자 이름 환영 메시지 세팅
-        Intent intent = getIntent();
-        textGreeting = findViewById(R.id.text_greeting);
-        String username = intent.getStringExtra("user_name");
+        TokenManager tokenManager = new TokenManager(getApplicationContext());
+        String accessToken = tokenManager.getAccessToken();
 
-        Log.d("ClinicHome", "userName: " + username);
-        if (username != null && !username.isEmpty()) {
-            textGreeting.setText(String.format("%s님, 환영합니다.", username));
-        }
+        textGreeting = findViewById(R.id.text_greeting);
+        cardTouchSymptom = findViewById(R.id.card_touch_symptom);
+        cardCold = findViewById(R.id.card_cold);
+        cardAI = findViewById(R.id.card_ai);
+
+        // 사용자 이름 환영 메시지 세팅
+        String url = "http://43.201.73.161:5000/patient/name"; // 실제 서버 주소로 변경 필요
+
+        okhttp3.OkHttpClient client = new okhttp3.OkHttpClient();
+        okhttp3.Request request = new okhttp3.Request.Builder()
+                .url(url)
+                .addHeader("Authorization", "Bearer " + accessToken)
+                .get()
+                .build();
+
+        client.newCall(request).enqueue(new okhttp3.Callback() {
+            @Override
+            public void onFailure(okhttp3.Call call, java.io.IOException e) {
+                runOnUiThread(() ->
+                        Toast.makeText(ClinicHomeActivity.this, "서버 연결 실패", Toast.LENGTH_SHORT).show()
+                );
+            }
+
+            @Override
+            public void onResponse(okhttp3.Call call, okhttp3.Response response) throws java.io.IOException {
+                if (response.isSuccessful()) {
+                    String responseData = response.body().string();
+                    try {
+                        JSONObject jsonResponse = new JSONObject(responseData);
+                        username = jsonResponse.getString("name");
+                    } catch (Exception e) {
+                        Log.e("NAME EXISTS", "JSON 파싱 오류: " + e.getMessage());
+                    }
+                    if (username != null && !username.isEmpty()) {
+                        runOnUiThread(() -> {
+                            textGreeting.setText(String.format("%s님, 환영합니다.", username));
+                        });
+                    }
+                }else {
+                    runOnUiThread(() ->
+                            Toast.makeText(ClinicHomeActivity.this, "서버 응답 오류: " + response.code(), Toast.LENGTH_SHORT).show()
+                    );
+                }
+            }
+        });
 
         // 터치로 증상확인 카드 클릭
-        CardView cardTouchSymptom = findViewById(R.id.card_touch_symptom);
         if (cardTouchSymptom != null) {
             cardTouchSymptom.setOnClickListener(v -> {
                 Intent bodyIntent = new Intent(this, BodyMain.class);
@@ -66,7 +112,6 @@ public class ClinicHomeActivity extends AppCompatActivity {
         }
 
         // 일상질환 카드 클릭
-        CardView cardCold = findViewById(R.id.card_cold);
         if (cardCold != null) {
             cardCold.setOnClickListener(v -> {
                 Intent coldIntent = new Intent(this, SymptomChoiceActivity.class);
@@ -76,7 +121,6 @@ public class ClinicHomeActivity extends AppCompatActivity {
         }
 
         // AI 증상확인 카드 클릭
-        cardAI = findViewById(R.id.card_ai);
         if (cardAI != null) {
             cardAI.setOnClickListener(v -> {
                 Log.d("ClinicHomeActivity", "AI 카드 클릭됨");

@@ -40,7 +40,12 @@ public class MedicalHistoryActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
 
         // 뒤로가기 버튼
-        btnBack.setOnClickListener(v -> finish());
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(MedicalHistoryActivity.this, ClinicHomeActivity.class);
+            backIntent.putExtra("user_name", username);
+            startActivity(backIntent);
+            finish();
+        });
 
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);
