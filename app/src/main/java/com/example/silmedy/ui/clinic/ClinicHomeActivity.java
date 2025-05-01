@@ -22,7 +22,7 @@ import com.example.silmedy.ui.config.TokenManager;
 
 public class ClinicHomeActivity extends AppCompatActivity {
 
-    private ImageView btnBack;
+//    private ImageView btnBack;
     private BottomNavigationView bottomNavigation;
     private TextView textGreeting;
 
