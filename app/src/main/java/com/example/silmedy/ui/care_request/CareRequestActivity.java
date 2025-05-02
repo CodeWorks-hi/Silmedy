@@ -73,21 +73,27 @@ public class CareRequestActivity extends AppCompatActivity {
         TokenManager tokenManager = new TokenManager(getApplicationContext());
         String accessToken = tokenManager.getAccessToken();
 
-        btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
-            backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
-            backIntent.putExtra("part", getIntent().getSerializableExtra("part"));
-            backIntent.putExtra("symptom", getIntent().getSerializableExtra("symptom"));
-            startActivity(backIntent);
-            finish();
-        });
-        btnReserve.setEnabled(false);
-
         // 의사 정보 인텐트 처리
         Intent intent = getIntent();
         String username = intent.getStringExtra("user_name");
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
         ArrayList<String> symptom = (ArrayList<String>) intent.getSerializableExtra("symptom");
+        double latitude = intent.getDoubleExtra("latitude", 0);
+        double longitude = intent.getDoubleExtra("longitude", 0);
+
+        btnBack.setOnClickListener(v -> {
+            Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
+            backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
+            backIntent.putExtra("part", getIntent().getSerializableExtra("part"));
+            backIntent.putExtra("symptom", getIntent().getSerializableExtra("symptom"));
+            backIntent.putExtra("latitude", latitude);
+            backIntent.putExtra("longitude", longitude);
+            backIntent.putExtra("finish_on_resume", true); // signal to DoctorListActivity to finish on resume
+            startActivity(backIntent);
+            finish();
+        });
+        btnReserve.setEnabled(false);
+
         int license_number = intent.getIntExtra("license_number", 0);
         doctorNameStr = intent.getStringExtra("doctor_name");
         doctorClinicStr = intent.getStringExtra("doctor_clinic");

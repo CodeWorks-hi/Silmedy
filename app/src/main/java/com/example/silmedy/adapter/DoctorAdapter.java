@@ -117,7 +117,18 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
             intent.putExtra("doctor_clinic", doctor.getCenter());
             intent.putExtra("doctor_time", (Serializable) doctor.getSchedule());
             intent.putExtra("doctor_image", doctor.getImageUrl());
+            // Pass selected latitude/longitude from DoctorListActivity static fields
+            try {
+                Class<?> doctorListClass = Class.forName("com.example.silmedy.ui.care_request.DoctorListActivity");
+                double lat = doctorListClass.getDeclaredField("staticLatitude").getDouble(null);
+                double lng = doctorListClass.getDeclaredField("staticLongitude").getDouble(null);
+                intent.putExtra("latitude", lat);
+                intent.putExtra("longitude", lng);
+            } catch (Exception e) {
+                // fallback: don't add extras
+            }
             v.getContext().startActivity(intent);
+            // Do NOT call finish() here; let DoctorListActivity stay alive
         });
     }
 

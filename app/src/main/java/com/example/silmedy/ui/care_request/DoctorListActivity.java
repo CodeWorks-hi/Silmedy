@@ -51,6 +51,10 @@ import java.util.Locale;
 
 public class DoctorListActivity extends AppCompatActivity {
 
+    // Static variables to persist location between activity instances
+    public static double staticLatitude = 0;
+    public static double staticLongitude = 0;
+
     private String username, department;
     private ArrayList<String> part, symptom;
 
@@ -63,8 +67,11 @@ public class DoctorListActivity extends AppCompatActivity {
     private RecyclerView doctorRecyclerView;
     private DoctorAdapter adapter;
     private List<Doctor> doctorList;
-
     private FusedLocationProviderClient fusedLocationClient;
+    double latitude = 0;
+    double longitude = 0;
+    private boolean isLocationFromMap = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +83,15 @@ public class DoctorListActivity extends AppCompatActivity {
             }
         });
         setContentView(R.layout.activity_doctor_list);
+
+        if (savedInstanceState != null) {
+            latitude = savedInstanceState.getDouble("latitude", 0);
+            longitude = savedInstanceState.getDouble("longitude", 0);
+            isLocationFromMap = savedInstanceState.getBoolean("isLocationFromMap", false);
+        } else {
+            latitude = staticLatitude;
+            longitude = staticLongitude;
+        }
 
         Intent intent = getIntent();
         part = (ArrayList<String>) intent.getSerializableExtra("part");
@@ -90,38 +106,36 @@ public class DoctorListActivity extends AppCompatActivity {
         btnGenderFilter = findViewById(R.id.btnGenderFilter);
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        // 위치 클라이언트 초기화 및 위치 가져오기
+        if (!isLocationFromMap && latitude == 0 && longitude == 0) {
+            checkLocationPermissionAndGetCurrentLocation();
+            // fetchDoctors will be called after location is fetched in getCurrentLocation()
+        } else {
+            // Use restored or map location
+            fetchDoctors(latitude, longitude, department);
+        }
+
         // 위치 변경 클릭 시 카카오맵 실행
         btnChangeLocation.setOnClickListener(v -> {
             Intent kakaoIntent = new Intent(DoctorListActivity.this, MapActivity.class);
             startActivityForResult(kakaoIntent, REQUEST_CODE_MAP);
         });
 
-        // 위치 클라이언트 초기화
-        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-        checkLocationPermissionAndGetCurrentLocation();
-
         doctorRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         doctorList = new ArrayList<>();
         adapter = new DoctorAdapter(doctorList, username, part, symptom);
         doctorRecyclerView.setAdapter(adapter);
 
-        fusedLocationClient.getLastLocation().addOnSuccessListener(location -> {
-            if (location != null) {
-                Log.d("DoctorListActivity", "location: " + location.getLatitude() + ", " + location.getLongitude());
-                fetchDoctors(location.getLatitude(), location.getLongitude(), department);
-            } else {
-                Log.e("LOCATION", "Failed to get location");
-            }
-        });
-
         btnBack.setOnClickListener(v -> {
-            if (department.equals("내과")) {
+            if (department != null && department.equals("내과")) {
                 Intent backIntent = new Intent(DoctorListActivity.this, SymptomChoiceActivity.class);
                 backIntent.putExtra("user_name", username);
                 backIntent.putExtra("part", part);
                 backIntent.putExtra("symptom", symptom);
                 startActivity(backIntent);
-            } else if (department.equals("외과")) {
+            } else if (department != null && department.equals("외과")) {
                 Intent backIntent = new Intent(DoctorListActivity.this, BodyMain.class);
                 backIntent.putExtra("user_name", username);
                 backIntent.putExtra("part", part);
@@ -162,22 +176,22 @@ public class DoctorListActivity extends AppCompatActivity {
                         doctorList.clear();
                         for (int i = 0; i < doctorsArray.length(); i++) {
                             JSONObject doctorJson = doctorsArray.getJSONObject(i);
-                        Log.d("DoctorListActivity", "Parsing doctor: " + doctorJson.toString());
-                        String name = doctorJson.getString("name");
-                        String center = doctorJson.getString("hospital_name");
-                        String dep = doctorJson.getString("department");
-                        String profileUrl = doctorJson.getString("profile_url");
-                        int licenseNumber = -1;
-                        if (doctorJson.has("license_number")) {
-                            String licenseStr = doctorJson.getString("license_number");
-                            try {
-                                licenseNumber = Integer.parseInt(licenseStr);
-                            } catch (NumberFormatException e) {
-                                Log.e("DoctorListActivity", "Invalid license_number format: " + licenseStr);
+                            Log.d("DoctorListActivity", "Parsing doctor: " + doctorJson.toString());
+                            String name = doctorJson.getString("name");
+                            String center = doctorJson.getString("hospital_name");
+                            String dep = doctorJson.getString("department");
+                            String profileUrl = doctorJson.getString("profile_url");
+                            int licenseNumber = -1;
+                            if (doctorJson.has("license_number")) {
+                                String licenseStr = doctorJson.getString("license_number");
+                                try {
+                                    licenseNumber = Integer.parseInt(licenseStr);
+                                } catch (NumberFormatException e) {
+                                    Log.e("DoctorListActivity", "Invalid license_number format: " + licenseStr);
+                                }
+                            } else {
+                                Log.e("DoctorListActivity", "doctorJson에 license_number 없음: " + doctorJson.toString());
                             }
-                        } else {
-                            Log.e("DoctorListActivity", "doctorJson에 license_number 없음: " + doctorJson.toString());
-                        }
 
                             JSONObject availabilityObj = doctorJson.getJSONObject("availability");
                             HashMap<String, String> schedule = new HashMap<>();
@@ -229,7 +243,15 @@ public class DoctorListActivity extends AppCompatActivity {
 
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
             if (location != null) {
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+                // Save to static fields so adapter can access
+                staticLatitude = latitude;
+                staticLongitude = longitude;
                 updateLocationTextWithAddress(location);
+                if(department != null && !department.isEmpty()) {
+                    fetchDoctors(latitude, longitude, department);
+                }
             } else {
                 locationText.setText("위치 정보를 가져올 수 없습니다.");
             }
@@ -247,6 +269,10 @@ public class DoctorListActivity extends AppCompatActivity {
             );
             if (addresses != null && !addresses.isEmpty()) {
                 String address = addresses.get(0).getAddressLine(0);
+                // Strip "대한민국 " prefix if present
+                if (address != null && address.startsWith("대한민국 ")) {
+                    address = address.substring("대한민국 ".length());
+                }
                 locationText.setText(address);
             } else {
                 locationText.setText("주소를 찾을 수 없습니다.");
@@ -276,20 +302,48 @@ public class DoctorListActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_MAP && resultCode == RESULT_OK) {
+            isLocationFromMap = true;
+            latitude = data.getDoubleExtra("latitude", 0);
+            longitude = data.getDoubleExtra("longitude", 0);
+            // Store statically as well
+            staticLatitude = latitude;
+            staticLongitude = longitude;
             String selectedAddress = data.getStringExtra("selected_address");
-            double latitude = data.getDoubleExtra("latitude", 0);
-            double longitude = data.getDoubleExtra("longitude", 0);
-            // department is already stored as a member variable
             if (selectedAddress != null && !selectedAddress.isEmpty()) {
                 locationText.setText(selectedAddress);
             }
             Log.d("DoctorListActivity", "Selected location: " + selectedAddress + ", lat: " + latitude + ", lng: " + longitude);
-            Log.d("DoctorListActivity", "Department: " + department);
             if(latitude != 0 && longitude != 0 && department != null && !department.isEmpty()) {
                 fetchDoctors(latitude, longitude, department);
-            } else {
-                Log.e("DoctorListActivity", "Invalid coordinates or department, fetchDoctors not called");
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (staticLatitude != 0 && staticLongitude != 0) {
+            latitude = staticLatitude;
+            longitude = staticLongitude;
+
+            // Explicitly update locationText UI even if not fetching new GPS
+            Location fakeLocation = new Location("");
+            fakeLocation.setLatitude(latitude);
+            fakeLocation.setLongitude(longitude);
+            updateLocationTextWithAddress(fakeLocation);
+        }
+
+        // If returning from CareRequestActivity, close immediately
+        if (getIntent().getBooleanExtra("finish_on_resume", false)) {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putDouble("latitude", latitude);
+        outState.putDouble("longitude", longitude);
+        outState.putBoolean("isLocationFromMap", isLocationFromMap);
     }
 }
