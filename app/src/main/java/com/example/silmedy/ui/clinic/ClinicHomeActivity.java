@@ -133,15 +133,6 @@ public class ClinicHomeActivity extends AppCompatActivity {
             });
         }
 
-        // 확인용
-        btnPrescription = findViewById(R.id.btnPrescription);
-        btnPrescription.setOnClickListener(v -> {
-            Intent prescription = new Intent(ClinicHomeActivity.this, PrescriptionActivity.class);
-            prescription.putExtra("user_name",username);
-            startActivity(prescription);
-        });
-
-
         // 하단 네비게이션 바 설정
         bottomNavigation = findViewById(R.id.bottom_navigation);
         if (bottomNavigation != null) {

@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
 import com.example.silmedy.ai_model.KerasModelPredict;
@@ -66,11 +67,16 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
         ArrayList<String> part = (ArrayList<String>) intent.getSerializableExtra("part");
         String imagePath = intent.getStringExtra("image_path");
 
+        imgDiagnosis.setImageDrawable(null);  // Clear old image
+        Glide.with(this).clear(imgDiagnosis);  // Force Glide to clear old cache
+        symptoms.clear();                      // Clear old symptom results
+
         if (imagePath != null && !imagePath.isEmpty()) {
             Glide.with(this)
                 .load(imagePath)
+                .skipMemoryCache(true)  // Skip memory cache
+                .diskCacheStrategy(DiskCacheStrategy.NONE)  // Skip disk cache
                 .into(imgDiagnosis);
-
             try {
                 Bitmap bitmap = BitmapFactory.decodeFile(imagePath);
                 symptoms.add(predictor.predict(bitmap));
@@ -83,60 +89,64 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
 
         textSymptom.setText("증상 : " + symptoms.get(0));
 
-        String serverUrl = "http://43.201.73.161:5000/info-by-symptom";
+        if (symptoms.get(0).equals("정상피부")) {
+            editMedical1.setText("정상 피부");
+            editMedical2.setText("진료가 필요하지 않습니다.");
+            Glide.with(this)
+                    .load("https://silmedy-bucket.s3.ap-northeast-2.amazonaws.com/14.+%E1%84%8C%E1%85%A5%E1%86%BC%E1%84%89%E1%85%A1%E1%86%BC+%E1%84%91%E1%85%B5%E1%84%87%E1%85%AE.png")
+                    .into(imgResult);
+        } else {
+            String serverUrl = "http://43.201.73.161:5000/info-by-symptom";
 
-        JSONObject jsonBody = new JSONObject();
-        try {
-            jsonBody.put("symptom", symptoms.get(0));
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        RequestBody requestBody = RequestBody.create(
-            jsonBody.toString(),
-            okhttp3.MediaType.parse("application/json; charset=utf-8")
-        );
-
-        Request request = new Request.Builder()
-                .url(serverUrl)
-                .post(requestBody)
-                .build();
-
-        new Thread(() -> {
+            JSONObject jsonBody = new JSONObject();
             try {
-                Response response = client.newCall(request).execute();
-                if (response.isSuccessful()) {
-                    String responseBody = response.body().string();
+                jsonBody.put("symptom", symptoms.get(0));
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+            RequestBody requestBody = RequestBody.create(
+                    jsonBody.toString(),
+                    okhttp3.MediaType.parse("application/json; charset=utf-8")
+            );
+
+            Request request = new Request.Builder()
+                    .url(serverUrl)
+                    .post(requestBody)
+                    .build();
+
+            new Thread(() -> {
+                try {
+                    Response response = client.newCall(request).execute();
+                    if (response.isSuccessful()) {
+                        String responseBody = response.body().string();
+                        runOnUiThread(() -> {
+                            try {
+                                JSONObject jsonResponse = new JSONObject(responseBody);
+                                department = jsonResponse.optString("department", "");
+                                String subDepartment = jsonResponse.optString("sub_department", "");
+                                String imgPath = jsonResponse.optString("image_url", "");
+                                editMedical1.setText("추천 진료과 1 : " + department);
+                                editMedical2.setText("추천 진료과 2 : " + subDepartment);
+                                Glide.with(this)
+                                        .load(imgPath)
+                                        .into(imgResult);
+                            } catch (Exception e) {
+                                textPart.append("\n서버 응답 파싱 실패");
+                            }
+                        });
+                    } else {
+                        runOnUiThread(() -> {
+                            textPart.append("\n서버 응답 실패");
+                        });
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                     runOnUiThread(() -> {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(responseBody);
-                            department = jsonResponse.optString("department", "");
-                            String subDepartment = jsonResponse.optString("sub_department", "");
-                            String imgPath = jsonResponse.optString("image_url", "");
-                            editMedical1.setText("추천 진료과 1 : " + department);
-                            editMedical2.setText("추천 진료과 2 : " + subDepartment);
-                            Glide.with(this)
-                                    .load(imgPath)
-                                    .into(imgResult);
-                        } catch (Exception e) {
-                            textPart.append("\n서버 응답 파싱 실패");
-                        }
-                    });
-                } else {
-                    runOnUiThread(() -> {
-                        textPart.append("\n서버 응답 실패");
+                        textPart.append("\n서버 연결 실패");
                     });
                 }
-            } catch (Exception e) {
-                e.printStackTrace();
-                runOnUiThread(() -> {
-                    textPart.append("\n서버 연결 실패");
-                });
-            }
-        }).start();
-
-
-        // 진료 과목 (결과 리스트 중 첫 항목만 저장?)
-        // String department = 결과 리스트 중 첫 항목;
+            }).start();
+        }
 
         btnReservation.setOnClickListener(v -> {
             Intent resultIntent = new Intent(DiagnosisResultsActivity.this, DoctorListActivity.class);
