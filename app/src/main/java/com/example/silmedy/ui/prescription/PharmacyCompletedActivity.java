@@ -49,9 +49,9 @@ public class PharmacyCompletedActivity extends AppCompatActivity {
         String username = intent.getStringExtra("user_name");
         String pharmacyName = intent.getStringExtra("pharmacy_name");
         String pharmacyContact = intent.getStringExtra("pharmacy_contact");
-        String pharmacyId = intent.getStringExtra("pharmacy_id");
+        int pharmacyId = intent.getIntExtra("pharmacy_id", 0);
         String pharmacyAddress = intent.getStringExtra("pharmacy_address");
-        String prescriptionId = intent.getStringExtra("prescription_id");
+        int prescriptionId = intent.getIntExtra("prescription_id", 0);
 
         btnBack = findViewById(R.id.btnBack);
         txtPharmacyName = findViewById(R.id.txtPharmacyName);
@@ -75,6 +75,8 @@ public class PharmacyCompletedActivity extends AppCompatActivity {
                 jsonInput.put("is_delivery", false);
                 jsonInput.put("pharmacy_id", pharmacyId);
                 jsonInput.put("prescription_id", prescriptionId);
+
+                Log.e("PharmacyCompletedActivity", "jsonInput: " + jsonInput.toString());
 
                 try (OutputStream os = conn.getOutputStream()) {
                     byte[] input = jsonInput.toString().getBytes("utf-8");

@@ -19,15 +19,13 @@ import java.util.List;
 public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.PharmacyViewHolder> {
     public final List<Pharmacy> pharmacyList;
     public final String username;
-    public final boolean isDelivery;
-    public final String prescriptionId;
+    public final int prescriptionId;
 
 
     // 생성자: 의사 리스트와 사용자 정보만 주입받음
-    public PharmacyAdapter(List<Pharmacy> pharmacyList, String username, boolean isDelivery, String prescriptionId) {
+    public PharmacyAdapter(List<Pharmacy> pharmacyList, String username, int prescriptionId) {
         this.pharmacyList = pharmacyList;
         this.username = username;
-        this.isDelivery = isDelivery;
         this.prescriptionId = prescriptionId;
     }
 
@@ -60,7 +58,6 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Pharma
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(v.getContext(), PharmacyCompletedActivity.class);
             intent.putExtra("user_name", username);
-            intent.putExtra("is_delivery", isDelivery);
             intent.putExtra("pharmacy_name", pharmacy.getName());
             intent.putExtra("pharmacy_contact", pharmacy.getContact());
             intent.putExtra("pharmacy_id", pharmacy.getPharmcyId());

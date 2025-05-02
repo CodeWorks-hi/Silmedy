@@ -84,7 +84,6 @@ public class DeliveryInputActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int prescriptionId = intent.getIntExtra("prescription_id", 0);
-        boolean isDelivery = intent.getBooleanExtra("is_delivery", false);
         Log.e("DELIVERY_INPUT", "prescriptionId: " + prescriptionId);
 
         TokenManager tokenManager = new TokenManager(getApplicationContext());
@@ -199,9 +198,6 @@ public class DeliveryInputActivity extends AppCompatActivity {
             try {
                 deliveryData.put("is_delivery", true);
                 deliveryData.put("patient_contact", contact);
-                // 수정해야 할 부분!!!! -> 어떤 약국 넣어야 함???
-                deliveryData.put("pharmacy_id", 1);
-
                 deliveryData.put("prescription_id", prescriptionId);
                 deliveryData.put("address", address + " " + detailAddress);
                 deliveryData.put("postal_code", postalCodeStr);

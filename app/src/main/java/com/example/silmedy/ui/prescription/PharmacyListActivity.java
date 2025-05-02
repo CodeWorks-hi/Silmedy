@@ -84,9 +84,8 @@ public class PharmacyListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
-        String prescriptionId = intent.getStringExtra("prescription_id");
+        int prescriptionId = intent.getIntExtra("prescription_id", 0);
         String diagnosisId = intent.getStringExtra("diagnosis_id");
-        boolean isDelivery = intent.getBooleanExtra("is_delivery", false);
 
         btnBack = findViewById(R.id.btnBack);
         btnChangeLocation = findViewById(R.id.btnChangeLocation);
@@ -116,7 +115,7 @@ public class PharmacyListActivity extends AppCompatActivity {
         // 약국 리스트 불러오기
         pharmacyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         pharmacyList = new ArrayList<>();
-        adapter = new PharmacyAdapter(pharmacyList, username, isDelivery, prescriptionId);
+        adapter = new PharmacyAdapter(pharmacyList, username, prescriptionId);
         pharmacyRecyclerView.setAdapter(adapter);
 
         // 뒤로가기

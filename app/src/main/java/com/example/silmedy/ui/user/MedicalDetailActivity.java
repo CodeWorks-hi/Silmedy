@@ -118,7 +118,6 @@ public class MedicalDetailActivity extends AppCompatActivity {
             visitIntent.putExtra("date", date);
             visitIntent.putExtra("hospital_name", hospitalName);
             visitIntent.putExtra("prescription_id", prescriptionId);
-            visitIntent.putExtra("is_delivery", false);
             startActivity(visitIntent);
             finish();
         });
@@ -129,7 +128,6 @@ public class MedicalDetailActivity extends AppCompatActivity {
             deliveryIntent.putExtra("date", date);
             deliveryIntent.putExtra("hospital_name", hospitalName);
             deliveryIntent.putExtra("prescription_id", prescriptionId);
-            deliveryIntent.putExtra("is_delivery", true);
             startActivity(deliveryIntent);
         });
 
