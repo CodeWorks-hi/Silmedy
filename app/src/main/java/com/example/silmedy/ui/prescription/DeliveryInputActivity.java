@@ -84,6 +84,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         int prescriptionId = intent.getIntExtra("prescription_id", 0);
+        boolean isDelivery = intent.getBooleanExtra("is_delivery", false);
         Log.e("DELIVERY_INPUT", "prescriptionId: " + prescriptionId);
 
         TokenManager tokenManager = new TokenManager(getApplicationContext());
@@ -186,7 +187,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
             String detailAddress = editDetailAddress.getText().toString();
             String requestMessage = editRequest.getText().toString();
 
-            if (name.isEmpty() || contact.isEmpty() || address.isEmpty() || postalCode == 0) {
+            if (name.isEmpty() || contact.isEmpty() || address.isEmpty() || postalCodeStr.equals("0")) {
                 Toast.makeText(DeliveryInputActivity.this, "모든 필드를 입력해주세요.", Toast.LENGTH_SHORT).show();
                 return;
             }
