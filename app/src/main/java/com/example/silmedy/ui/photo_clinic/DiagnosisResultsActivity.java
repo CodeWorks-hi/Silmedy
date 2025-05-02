@@ -111,7 +111,7 @@ public class DiagnosisResultsActivity extends AppCompatActivity {
                             JSONObject jsonResponse = new JSONObject(responseBody);
                             department = jsonResponse.optString("department", "");
                             String subDepartment = jsonResponse.optString("sub_department", "");
-                            String imgPath = jsonResponse.optString("desc_url", "");
+                            String imgPath = jsonResponse.optString("image_url", "");
                             editMedical1.setText("추천 진료과 1 : " + department);
                             editMedical2.setText("추천 진료과 2 : " + subDepartment);
                             Glide.with(this)
