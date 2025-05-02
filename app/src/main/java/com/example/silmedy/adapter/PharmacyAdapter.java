@@ -5,23 +5,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.silmedy.R;
 import com.example.silmedy.model.Pharmacy;
-import com.example.silmedy.ui.care_request.CareRequestActivity;
 import com.example.silmedy.ui.prescription.PharmacyCompletedActivity;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Map;
 
 public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.PharmacyViewHolder> {
     public final List<Pharmacy> pharmacyList;

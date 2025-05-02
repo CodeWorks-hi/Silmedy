@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.silmedy.R;
 import com.example.silmedy.adapter.PharmacyAdapter;
 import com.example.silmedy.model.Pharmacy;
+import com.example.silmedy.ui.care_request.DoctorListActivity;
 import com.example.silmedy.ui.config.TokenManager;
 import com.example.silmedy.ui.open_api.MapActivity;
 import com.example.silmedy.ui.user.MedicalDetailActivity;
@@ -47,6 +48,8 @@ public class PharmacyListActivity extends AppCompatActivity {
 
     private static final int REQUEST_CODE_MAP = 1001;
     private static final int REQUEST_LOCATION_PERMISSION = 1002;
+    public static double staticLatitude = 0;
+    public static double staticLongitude = 0;
     private RecyclerView pharmacyRecyclerView;
     private PharmacyAdapter adapter;
     private List<Pharmacy> pharmacyList;
@@ -55,6 +58,7 @@ public class PharmacyListActivity extends AppCompatActivity {
     private FusedLocationProviderClient fusedLocationClient;
     double latitude = 0;
     double longitude = 0;
+    private boolean isLocationFromMap = false;
 
 
 
@@ -69,6 +73,15 @@ public class PharmacyListActivity extends AppCompatActivity {
         });
         setContentView(R.layout.activity_pharmacy_list);
 
+        if (savedInstanceState != null) {
+            latitude = savedInstanceState.getDouble("latitude", 0);
+            longitude = savedInstanceState.getDouble("longitude", 0);
+            isLocationFromMap = savedInstanceState.getBoolean("isLocationFromMap", false);
+        } else {
+            latitude = staticLatitude;
+            longitude = staticLongitude;
+        }
+
         Intent intent = getIntent();
         String username = intent.getStringExtra("username");
         String prescriptionId = intent.getStringExtra("prescription_id");
@@ -79,10 +92,15 @@ public class PharmacyListActivity extends AppCompatActivity {
         locationText = findViewById(R.id.locationText);
         pharmacyRecyclerView = findViewById(R.id.pharmacyRecyclerView);
 
-        // 위치 클라이언트 초기화
-        if (latitude == 0 && longitude == 0) {
-            fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+
+        // 위치 클라이언트 초기화 및 위치 가져오기
+        if (!isLocationFromMap && latitude == 0 && longitude == 0) {
             checkLocationPermissionAndGetCurrentLocation();
+            // fetchDoctors will be called after location is fetched in getCurrentLocation()
+        } else {
+            // Use restored or map location
+            fetchPharmacies(latitude, longitude);
         }
 
         // 위치 변경 클릭 시 카카오맵 실행
@@ -199,7 +217,13 @@ public class PharmacyListActivity extends AppCompatActivity {
 
         fusedLocationClient.getLastLocation().addOnSuccessListener(this, location -> {
             if (location != null) {
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+                // Save to static fields so adapter can access
+                staticLatitude = latitude;
+                staticLongitude = longitude;
                 updateLocationTextWithAddress(location);
+                fetchPharmacies(latitude, longitude);
             } else {
                 locationText.setText("위치 정보를 가져올 수 없습니다.");
             }
@@ -217,6 +241,10 @@ public class PharmacyListActivity extends AppCompatActivity {
             );
             if (addresses != null && !addresses.isEmpty()) {
                 String address = addresses.get(0).getAddressLine(0);
+                // Strip "대한민국 " prefix if present
+                if (address != null && address.startsWith("대한민국 ")) {
+                    address = address.substring("대한민국 ".length());
+                }
                 locationText.setText(address);
             } else {
                 locationText.setText("주소를 찾을 수 없습니다.");
@@ -259,5 +287,33 @@ public class PharmacyListActivity extends AppCompatActivity {
                 Log.e("PharmacyListActivity", "Invalid coordinates, fetchPharms not called");
             }
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (staticLatitude != 0 && staticLongitude != 0) {
+            latitude = staticLatitude;
+            longitude = staticLongitude;
+
+            // Explicitly update locationText UI even if not fetching new GPS
+            Location fakeLocation = new Location("");
+            fakeLocation.setLatitude(latitude);
+            fakeLocation.setLongitude(longitude);
+            updateLocationTextWithAddress(fakeLocation);
+        }
+
+        // If returning from CareRequestActivity, close immediately
+        if (getIntent().getBooleanExtra("finish_on_resume", false)) {
+            finish();
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putDouble("latitude", latitude);
+        outState.putDouble("longitude", longitude);
+        outState.putBoolean("isLocationFromMap", isLocationFromMap);
     }
 }
