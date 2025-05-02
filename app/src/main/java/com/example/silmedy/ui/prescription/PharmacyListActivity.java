@@ -106,6 +106,9 @@ public class PharmacyListActivity extends AppCompatActivity {
         // 위치 변경 클릭 시 카카오맵 실행
         btnChangeLocation.setOnClickListener(v -> {
             Intent kakaoIntent = new Intent(PharmacyListActivity.this, MapActivity.class);
+            // Pass current known coordinates to pre-fill the map
+            kakaoIntent.putExtra("latitude", latitude);
+            kakaoIntent.putExtra("longitude", longitude);
             startActivityForResult(kakaoIntent, REQUEST_CODE_MAP);
         });
 
@@ -277,14 +280,13 @@ public class PharmacyListActivity extends AppCompatActivity {
             String selectedAddress = data.getStringExtra("selected_address");
             latitude = data.getDoubleExtra("latitude", 0);
             longitude = data.getDoubleExtra("longitude", 0);
+            staticLatitude = latitude;
+            staticLongitude = longitude;
             if (selectedAddress != null && !selectedAddress.isEmpty()) {
                 locationText.setText(selectedAddress);
             }
-            Log.d("PharmacyListActivity", "Selected location: " + selectedAddress + ", lat: " + latitude + ", lng: " + longitude);
             if(latitude != 0 && longitude != 0) {
                 fetchPharmacies(latitude, longitude);
-            } else {
-                Log.e("PharmacyListActivity", "Invalid coordinates, fetchPharms not called");
             }
         }
     }
@@ -296,7 +298,6 @@ public class PharmacyListActivity extends AppCompatActivity {
             latitude = staticLatitude;
             longitude = staticLongitude;
 
-            // Explicitly update locationText UI even if not fetching new GPS
             Location fakeLocation = new Location("");
             fakeLocation.setLatitude(latitude);
             fakeLocation.setLongitude(longitude);
