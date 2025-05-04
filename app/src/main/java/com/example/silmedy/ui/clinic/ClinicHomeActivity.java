@@ -158,5 +158,4 @@ public class ClinicHomeActivity extends AppCompatActivity {
             });
         }
     }
-
 }
