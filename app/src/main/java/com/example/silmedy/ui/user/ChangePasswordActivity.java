@@ -68,7 +68,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(ChangePasswordActivity.this, LoginActivity.class);
+            Intent backIntent = new Intent(ChangePasswordActivity.this, MyPageActivity.class);
             startActivity(backIntent);
             finish();
         });
