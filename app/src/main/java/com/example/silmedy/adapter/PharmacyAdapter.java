@@ -20,13 +20,20 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Pharma
     public final List<Pharmacy> pharmacyList;
     public final String username;
     public final int prescriptionId;
+    private Pharmacy selectedPharmacy;
+    private final OnPharmacySelectedListener selectionListener;
 
+    // 콜백 인터페이스: 선택된 약국을 알림
+    public interface OnPharmacySelectedListener {
+        void onPharmacySelected(Pharmacy selected);
+    }
 
-    // 생성자: 의사 리스트와 사용자 정보만 주입받음
-    public PharmacyAdapter(List<Pharmacy> pharmacyList, String username, int prescriptionId) {
+    // 생성자: 의사 리스트, 사용자 정보, 선택 콜백 주입
+    public PharmacyAdapter(List<Pharmacy> pharmacyList, String username, int prescriptionId, OnPharmacySelectedListener listener) {
         this.pharmacyList = pharmacyList;
         this.username = username;
         this.prescriptionId = prescriptionId;
+        this.selectionListener = listener;
     }
 
     @NonNull
@@ -55,14 +62,32 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Pharma
         holder.address.setText(pharmacy.getAddress());
         holder.hour.setText(pharmacy.getOpenHour() + " - " + pharmacy.getCloseHour());
 
+        if (pharmacy.equals(selectedPharmacy)) {
+            holder.itemView.setBackgroundResource(R.drawable.selected_card_border);
+            holder.name.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.text_primary));
+            holder.hour.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.text_secondary));
+            holder.address.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.text_secondary));
+            holder.itemView.setTranslationZ(8f);  // ensures this view is drawn above others
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.unselected_card_background);
+            holder.name.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.text_primary));
+            holder.hour.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.text_secondary));
+            holder.address.setTextColor(holder.itemView.getContext().getResources().getColor(R.color.text_secondary));
+            holder.itemView.setTranslationZ(0f);  // reset to normal drawing order
+        }
+
         holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(v.getContext(), PharmacyCompletedActivity.class);
-            intent.putExtra("user_name", username);
-            intent.putExtra("pharmacy_name", pharmacy.getName());
-            intent.putExtra("pharmacy_contact", pharmacy.getContact());
-            intent.putExtra("pharmacy_id", pharmacy.getPharmcyId());
-            intent.putExtra("prescription_id", prescriptionId);
-            v.getContext().startActivity(intent);
+            int previousSelected = pharmacyList.indexOf(selectedPharmacy);
+            if (pharmacy != selectedPharmacy) {
+                selectedPharmacy = pharmacy;
+                if (previousSelected != -1) {
+                    notifyItemChanged(previousSelected);
+                }
+                notifyItemChanged(position);
+                if (selectionListener != null) {
+                    selectionListener.onPharmacySelected(selectedPharmacy);
+                }
+            }
         });
     }
 
@@ -81,5 +106,9 @@ public class PharmacyAdapter extends RecyclerView.Adapter<PharmacyAdapter.Pharma
             hour = itemView.findViewById(R.id.pharmacyHour);
             address = itemView.findViewById(R.id.pharmacyAddress);
         }
+    }
+
+    public Pharmacy getSelectedPharmacy() {
+        return selectedPharmacy;
     }
 }

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/deep_purple" />
+            <corners android:radius="12dp" />
+            <stroke android:width="2dp" android:color="@color/light_purple" />
+            <padding android:left="8dp" android:top="8dp" android:right="8dp" android:bottom="8dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="12dp" />
+            <stroke android:width="1dp" android:color="@color/default_button_border" />
+        </shape>
+    </item>
+</selector>

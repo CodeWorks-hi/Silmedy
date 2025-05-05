@@ -9,6 +9,7 @@ import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -55,6 +56,7 @@ public class PharmacyListActivity extends AppCompatActivity {
     private List<Pharmacy> pharmacyList;
     ImageView btnBack;
     TextView btnChangeLocation,locationText;
+    Button btnSelectComplete;
     private FusedLocationProviderClient fusedLocationClient;
     double latitude = 0;
     double longitude = 0;
@@ -91,6 +93,15 @@ public class PharmacyListActivity extends AppCompatActivity {
         btnChangeLocation = findViewById(R.id.btnChangeLocation);
         locationText = findViewById(R.id.locationText);
         pharmacyRecyclerView = findViewById(R.id.pharmacyRecyclerView);
+        btnSelectComplete = findViewById(R.id.btnSelectComplete);
+        btnSelectComplete.setEnabled(false);
+        btnSelectComplete.setOnClickListener(v -> {
+            Pharmacy selectedPharmacy = adapter.getSelectedPharmacy();
+            if (selectedPharmacy != null) {
+                // TODO: Add your intent or next step here
+                Log.d("PharmacyListActivity", "Selected pharmacy: " + selectedPharmacy.getName());
+            }
+        });
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -115,7 +126,7 @@ public class PharmacyListActivity extends AppCompatActivity {
         // 약국 리스트 불러오기
         pharmacyRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         pharmacyList = new ArrayList<>();
-        adapter = new PharmacyAdapter(pharmacyList, username, prescriptionId);
+        adapter = new PharmacyAdapter(pharmacyList, username, prescriptionId, selected -> btnSelectComplete.setEnabled(true));
         pharmacyRecyclerView.setAdapter(adapter);
 
         // 뒤로가기

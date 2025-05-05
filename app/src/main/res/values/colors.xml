@@ -49,6 +49,18 @@
 
     <color name="selected_button_color">#FF9800</color> <!-- 주황색 강조 -->
     <color name="unselected_button_color">#4DB8B2</color> <!-- 기본 민트 -->
-
     <color name="selected_button_border">#FF5722</color> <!-- 주황색 테두리 -->
+
+    <color name="default_button">#FFFFFF</color> <!-- 기본 흰색 -->
+    <color name="default_button_border">#CCCCCC</color> <!-- 기본 회색 테두리 -->
+
+    <color name="button_pressed_color">#FF9800</color> <!-- 주황색 버튼 클릭 시 색상 -->
+    <color name="button_selected_color">#FF5722</color> <!-- 주황색 버튼 선택 시 색상 -->
+    <color name="button_default_color">#FFFFFF</color> <!-- 기본 흰색 버튼 색상 -->
+
+    <color name="colorSelected">#CCCCCC</color> <!-- 기본 회색 버튼 테두리 색상 -->
+    <color name="colorDefault">#FFFFFF</color> <!-- 기본 흰색 버튼 색상 -->
+
+    <color name="selectedText">#FF5722</color> <!-- 주황색 버튼 선택 시 텍스트 색상 -->
+    <color name="defaultText">#FFFFFF</color> <!-- 기본 흰색 버튼 텍스트 색상 -->
 </resources>
