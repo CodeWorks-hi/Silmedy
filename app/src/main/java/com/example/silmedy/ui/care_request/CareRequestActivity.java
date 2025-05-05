@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.config.TokenManager;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -26,10 +27,15 @@ import java.io.InputStreamReader;
 import java.io.Serializable;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 public class CareRequestActivity extends AppCompatActivity {
 
@@ -57,18 +63,6 @@ public class CareRequestActivity extends AppCompatActivity {
         });
         setContentView(R.layout.activity_care_request);
 
-        btnBack = findViewById(R.id.btnBack);
-        btnToday = findViewById(R.id.btnToday);
-        btnTomorrow = findViewById(R.id.btnTomorrow);
-        btnReserve = findViewById(R.id.btnReserve);
-        checkSignLanguage = findViewById(R.id.checkSignLanguage);
-        checkInitialSignLanguageSetting();
-        doctorName = findViewById(R.id.doctorName);
-        doctorClinic = findViewById(R.id.doctorClinic);
-        doctorTime = findViewById(R.id.doctorTime);
-        doctorImage = findViewById(R.id.doctorImage);
-        timeButtonContainer = (GridLayout) findViewById(R.id.time_button_container);
-
         // 수어 필요 여부 확인 위해 토큰 필요!!!!!
         TokenManager tokenManager = new TokenManager(getApplicationContext());
         String accessToken = tokenManager.getAccessToken();
@@ -81,6 +75,17 @@ public class CareRequestActivity extends AppCompatActivity {
         double latitude = intent.getDoubleExtra("latitude", 0);
         double longitude = intent.getDoubleExtra("longitude", 0);
 
+        btnBack = findViewById(R.id.btnBack);
+        btnToday = findViewById(R.id.btnToday);
+        btnTomorrow = findViewById(R.id.btnTomorrow);
+        btnReserve = findViewById(R.id.btnReserve);
+        checkSignLanguage = findViewById(R.id.checkSignLanguage);
+        doctorName = findViewById(R.id.doctorName);
+        doctorClinic = findViewById(R.id.doctorClinic);
+        doctorTime = findViewById(R.id.doctorTime);
+        doctorImage = findViewById(R.id.doctorImage);
+        timeButtonContainer = (GridLayout) findViewById(R.id.time_button_container);
+        // Set click listener AFTER initialization
         btnBack.setOnClickListener(v -> {
             Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
             backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
@@ -94,7 +99,8 @@ public class CareRequestActivity extends AppCompatActivity {
         });
         btnReserve.setEnabled(false);
 
-        int license_number = intent.getIntExtra("license_number", 0);
+        int licenseNumber = intent.getIntExtra("license_number", 0);
+        checkInitialSignLanguageSetting(licenseNumber);
         doctorNameStr = intent.getStringExtra("doctor_name");
         doctorClinicStr = intent.getStringExtra("doctor_clinic");
         Serializable serializedMap = intent.getSerializableExtra("doctor_time");
@@ -152,7 +158,7 @@ public class CareRequestActivity extends AppCompatActivity {
                 confirmIntent.putExtra("user_name", username);
                 confirmIntent.putExtra("part", part);
                 confirmIntent.putExtra("symptom", symptom);
-                confirmIntent.putExtra("license_number", license_number);
+                confirmIntent.putExtra("license_number", licenseNumber);
                 confirmIntent.putExtra("doctor_name", doctorNameStr);
                 confirmIntent.putExtra("doctor_clinic", doctorClinicStr);
                 confirmIntent.putExtra("doctor_department", department);
@@ -179,12 +185,26 @@ public class CareRequestActivity extends AppCompatActivity {
         renderTimeButtons(timeList);
     }
 
+    // Map of reserved hours by date
+    private Map<String, List<String>> reservedHoursMap = new HashMap<>();
+
     private void renderTimeButtons(List<String> timeList) {
         timeButtonContainer.setColumnCount(3); // 3 buttons per row
         LayoutInflater inflater = LayoutInflater.from(this);
         timeButtonContainer.removeAllViews();
 
+        // --- Date-specific reserved hours logic ---
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Calendar cal = Calendar.getInstance();
+        if (selectedDay.equals("tomorrow")) {
+            cal.add(Calendar.DAY_OF_YEAR, 1);
+        }
+        String targetDate = sdf.format(cal.getTime());
+        List<String> reservedForDay = reservedHoursMap.getOrDefault(targetDate, new ArrayList<>());
+        // ------------------------------------------
+
         for (String time : timeList) {
+            boolean shouldDisable = reservedForDay.contains(time);
             View view = inflater.inflate(R.layout.time_button, timeButtonContainer, false);
             Button timeButton = view.findViewById(R.id.timeButton);
             timeButton.setText(time);
@@ -199,7 +219,7 @@ public class CareRequestActivity extends AppCompatActivity {
             gridParams.setMargins(8, 8, 8, 8);
             view.setLayoutParams(gridParams);
 
-            if (time.equals("휴진")) {
+            if (time.equals("휴진") || shouldDisable) {
                 timeButton.setEnabled(false);
                 timeButton.setAlpha(0.5f);
             } else {
@@ -342,11 +362,11 @@ public class CareRequestActivity extends AppCompatActivity {
         return sb.toString().trim();
     }
     // Check initial sign language setting from server
-    private void checkInitialSignLanguageSetting() {
+    private void checkInitialSignLanguageSetting(int licenseNumber) {
         new Thread(() -> {
             try {
                 String accessToken = new TokenManager(getApplicationContext()).getAccessToken();
-                URL url = new URL("http://43.201.73.161:5000/request/signcheck");
+                URL url = new URL("http://43.201.73.161:5000/request/availability-signcheck?license_number=" + licenseNumber);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 conn.setRequestProperty("Authorization", "Bearer " + accessToken);
@@ -365,10 +385,47 @@ public class CareRequestActivity extends AppCompatActivity {
                     JSONObject jsonResponse = new JSONObject(response.toString());
                     boolean isNeeded = jsonResponse.getBoolean("sign_language_needed");
 
-                    runOnUiThread(() -> checkSignLanguage.setChecked(isNeeded));
+                    Map<String, List<String>> dateToHoursMap = new HashMap<String, List<String>>();
+                    JSONArray reservations = jsonResponse.getJSONArray("reservations");
+                    for (int i = 0; i < reservations.length(); i++) {
+                        JSONObject reservation = reservations.getJSONObject(i);
+                        String date = reservation.getString("book_date");
+                        String hour = reservation.getString("book_hour");
+                        dateToHoursMap.computeIfAbsent(date, k -> new ArrayList<>()).add(hour);
+                    }
+
+                    // 오늘, 내일 날짜만 필터링
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+                    String todayStr = sdf.format(new Date());
+                    Calendar calendar = Calendar.getInstance();
+                    calendar.add(Calendar.DAY_OF_YEAR, 1);
+                    String tomorrowStr = sdf.format(calendar.getTime());
+
+                    Map<String, List<String>> filteredMap = new HashMap<>();
+                    if (dateToHoursMap.containsKey(todayStr)) {
+                        filteredMap.put(todayStr, dateToHoursMap.get(todayStr));
+                    }
+                    if (dateToHoursMap.containsKey(tomorrowStr)) {
+                        filteredMap.put(tomorrowStr, dateToHoursMap.get(tomorrowStr));
+                    }
+
+                    // 로그 추가: API 응답 파싱 직후
+                    Log.d("CareRequestActivity", "API filteredMap: " + filteredMap.toString());
+
+                    runOnUiThread(() -> {
+                        if (reservedHoursMap != null) {
+                            reservedHoursMap.clear();
+                            reservedHoursMap.putAll(filteredMap);
+                            checkSignLanguage.setChecked(isNeeded);
+                            Log.d("CareRequestActivity", "reservedHoursMap updated: " + reservedHoursMap.toString());
+                        } else {
+                            Log.e("CareRequestActivity", "reservedHoursMap is null!");
+                        }
+                    });
                 }
                 conn.disconnect();
             } catch (Exception e) {
+                Log.e("CareRequestActivity", "Error in checkInitialSignLanguageSetting", e);
                 e.printStackTrace();
             }
         }).start();
