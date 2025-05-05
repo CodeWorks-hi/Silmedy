@@ -85,18 +85,22 @@ public class CareRequestActivity extends AppCompatActivity {
         doctorTime = findViewById(R.id.doctorTime);
         doctorImage = findViewById(R.id.doctorImage);
         timeButtonContainer = (GridLayout) findViewById(R.id.time_button_container);
-        // Set click listener AFTER initialization
-        btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
-            backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
-            backIntent.putExtra("part", getIntent().getSerializableExtra("part"));
-            backIntent.putExtra("symptom", getIntent().getSerializableExtra("symptom"));
-            backIntent.putExtra("latitude", latitude);
-            backIntent.putExtra("longitude", longitude);
-            backIntent.putExtra("finish_on_resume", true); // signal to DoctorListActivity to finish on resume
-            startActivity(backIntent);
-            finish();
-        });
+        // Set click listener AFTER initialization, with null check
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> {
+                Intent backIntent = new Intent(CareRequestActivity.this, DoctorListActivity.class);
+                backIntent.putExtra("user_name", getIntent().getStringExtra("user_name"));
+                backIntent.putExtra("part", getIntent().getSerializableExtra("part"));
+                backIntent.putExtra("symptom", getIntent().getSerializableExtra("symptom"));
+                backIntent.putExtra("latitude", latitude);
+                backIntent.putExtra("longitude", longitude);
+                backIntent.putExtra("finish_on_resume", true); // signal to DoctorListActivity to finish on resume
+                startActivity(backIntent);
+                finish();
+            });
+        } else {
+            Log.e("CareRequestActivity", "btnBack not found in layout (null)");
+        }
         btnReserve.setEnabled(false);
 
         int licenseNumber = intent.getIntExtra("license_number", 0);
@@ -234,9 +238,15 @@ public class CareRequestActivity extends AppCompatActivity {
                         Button otherButton = child.findViewById(R.id.timeButton);
                         if (otherButton != null) {
                             otherButton.setSelected(false); // 이게 핵심
+                            otherButton.setScaleX(1.0f);
+                            otherButton.setScaleY(1.0f);
+                            otherButton.setBackgroundResource(R.drawable.time_slot_selector);
                         }
                     }
                     timeButton.setSelected(true);
+                    timeButton.setScaleX(1.1f);
+                    timeButton.setScaleY(1.1f);
+                    timeButton.setBackgroundResource(R.drawable.time_slot_selected_background);
                 });
             }
 

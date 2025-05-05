@@ -44,8 +44,11 @@
     <color name="deep_blue">#1976D2</color>
 
     <!-- 채팅 -->
-
     <color name="colorPrimaryLight">#CCE4F6</color> <!-- 연한 파란색 -->
     <color name="colorPrimaryDark">#1976D2</color> <!-- 진한 파란색 -->
 
+    <color name="selected_button_color">#FF9800</color> <!-- 주황색 강조 -->
+    <color name="unselected_button_color">#4DB8B2</color> <!-- 기본 민트 -->
+
+    <color name="selected_button_border">#FF5722</color> <!-- 주황색 테두리 -->
 </resources>
