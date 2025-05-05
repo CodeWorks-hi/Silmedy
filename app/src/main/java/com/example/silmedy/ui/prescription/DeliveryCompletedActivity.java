@@ -48,7 +48,12 @@ public class DeliveryCompletedActivity extends AppCompatActivity {
         txtName.setText("이름 : " + username);
         txtContact.setText("연락처 : " + contact);
         txtAddress.setText("주소 : " + address);
-        txtRequest.setText("요청사항 : " + requestMessage);
+        if (requestMessage != null && !requestMessage.isEmpty()) {
+            txtRequest.setText("요청사항 : " + requestMessage);
+        } else {
+            txtRequest.setText("요청사항 : 없음");
+        }
+
 
         // 뒤로가기 -> 클리닉 홈
         btnBack.setOnClickListener(v -> {
