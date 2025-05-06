@@ -103,6 +103,19 @@ public class PharmacyListActivity extends AppCompatActivity {
             }
         });
 
+        btnSelectComplete.setOnClickListener(v -> {
+            Pharmacy selectedPharmacy = adapter.getSelectedPharmacy();
+            if (selectedPharmacy != null) {
+                Intent intent1 = new Intent(PharmacyListActivity.this, PharmacyCompletedActivity.class);
+                intent1.putExtra("pharmacy_id", selectedPharmacy.getPharmcyId());
+                intent1.putExtra("prescription_id", prescriptionId);
+                intent1.putExtra("username", username);
+                intent1.putExtra("pharmacy_name", selectedPharmacy.getName());
+                intent1.putExtra("pharmacy_contact", selectedPharmacy.getContact());
+                startActivity(intent1);
+            }
+        });
+
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
         // 위치 클라이언트 초기화 및 위치 가져오기
