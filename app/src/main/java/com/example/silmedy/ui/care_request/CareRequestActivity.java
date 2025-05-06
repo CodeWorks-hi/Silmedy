@@ -428,6 +428,7 @@ public class CareRequestActivity extends AppCompatActivity {
                             reservedHoursMap.putAll(filteredMap);
                             checkSignLanguage.setChecked(isNeeded);
                             Log.d("CareRequestActivity", "reservedHoursMap updated: " + reservedHoursMap.toString());
+                            loadTimeSlots(selectedDay);
                         } else {
                             Log.e("CareRequestActivity", "reservedHoursMap is null!");
                         }
