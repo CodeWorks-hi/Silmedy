@@ -1,5 +1,6 @@
 package com.example.silmedy.ui.user;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -7,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,11 +43,11 @@ import okhttp3.Response;
 public class MyEditActivity extends AppCompatActivity {
 
     private static final int POSTCODE_REQUEST_CODE = 1001;
-    EditText editName, editBirthDate, editContact, editDetailAddress;
+    EditText editName, editContact, editDetailAddress;
     BottomNavigationView bottomNavigation;
     CheckBox checkboxDefault;
     ImageView btnBack;
-    TextView txtPostalCode, txtAddress, txtEmail;
+    TextView txtPostalCode, txtAddress, txtEmail, editBirthDate;
     Button btnChangeEdit, btnZipSearch;
     String url;
     JSONObject json;
@@ -79,6 +81,33 @@ public class MyEditActivity extends AppCompatActivity {
 
         TokenManager tokenManager = new TokenManager(getApplicationContext());
         String accessToken = tokenManager.getAccessToken();
+
+        editBirthDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerDialog dialog = new DatePickerDialog(MyEditActivity.this);
+                dialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        if (month < 9) {
+                            if (dayOfMonth < 10) {
+                                editBirthDate.setText(year + "-0" + (month + 1) + "-0" + dayOfMonth);
+                            } else {
+                                editBirthDate.setText(year + "-0" + (month + 1) + "-" + dayOfMonth);
+                            }
+                        } else {
+                            if (dayOfMonth < 10) {
+                                editBirthDate.setText(year + "-" + (month + 1) + "-0" + dayOfMonth);
+                            } else {
+                                editBirthDate.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
+                            }
+                        }
+                        return;
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         // 정보 불러오기
         url = "http://43.201.73.161:5000/patient/mypage";

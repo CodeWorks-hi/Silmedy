@@ -37,8 +37,8 @@ public class SignupActivity extends AppCompatActivity {
 
     private static final int POSTCODE_REQUEST_CODE = 1001;
 
-    private EditText editEmail, editPassword, editConfirmPassword, editName, editDetailAddress, editBirthDate;
-    private TextView contactView, zipView, addressView;
+    private EditText editEmail, editPassword, editConfirmPassword, editName, editDetailAddress;
+    private TextView contactView, zipView, addressView, editBirthDate;
     private Button btnSignup, btnZipSearch, btnCheckEmail;
     private CheckBox checkboxSignLang;
     private ImageView btnBack;
