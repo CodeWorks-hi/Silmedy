@@ -3,6 +3,10 @@
     <style name="Base.Theme.Silmedy" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- 상태바 배경색 -->
+        <item name="android:statusBarColor">@android:color/white</item>
+        <!-- 상태바 아이콘을 어둡게 (검정색) -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.Silmedy" parent="Base.Theme.Silmedy" />
