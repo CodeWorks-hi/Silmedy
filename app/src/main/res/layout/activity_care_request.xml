@@ -3,8 +3,8 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9FAFB"
     android:orientation="vertical"
-    android:background="@color/white"
     android:padding="16dp">
 
     <!-- 뒤로가기 -->
@@ -20,46 +20,46 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비대면 진료 예약"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:layout_marginTop="16dp"
-        android:textColor="@color/text_primary" />
+        android:text="비대면 진료 예약"
+        android:textColor="@color/text_primary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비대면 진료 예약"
-        android:textSize="14sp"
         android:layout_marginTop="4dp"
-        android:textColor="@color/text_secondary" />
+        android:text="비대면 진료 예약"
+        android:textColor="@color/text_secondary"
+        android:textSize="14sp" />
 
     <!-- 의사 카드뷰 -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:backgroundTint="@color/input_bg"
         card_view:cardCornerRadius="12dp"
-        card_view:cardElevation="0dp"
-        android:backgroundTint="@color/input_bg">
+        card_view:cardElevation="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="12dp"
-            android:gravity="center_vertical">
+            android:padding="12dp">
 
             <ImageView
                 android:id="@+id/doctorImage"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:src="@drawable/doc"
-                android:scaleType="centerCrop"
-                android:clipToOutline="true"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/circle_bg"
+                android:clipToOutline="true"
                 android:contentDescription="의사 사진"
-                android:layout_marginEnd="16dp" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/doc" />
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -72,25 +72,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="최유진"
-                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
                     android:textSize="16sp"
-                    android:textColor="@color/text_primary" />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/doctorClinic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="성남시 노인보건센터 의원"
-                    android:textSize="14sp"
-                    android:textColor="@color/text_secondary" />
+                    android:textColor="@color/text_secondary"
+                    android:textSize="14sp" />
 
                 <TextView
                     android:id="@+id/doctorTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="진료 가능 시간"
-                    android:textSize="13sp"
-                    android:textColor="@color/mint_700" />
+                    android:textColor="@color/mint_700"
+                    android:textSize="13sp" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -99,34 +99,34 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnToday"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_weight="1"
-            android:text="@string/btn_today"
-            android:textStyle="bold"
-            android:background="@drawable/tab_selector"
-            android:textColor="@color/tab_text_selector"
-            android:stateListAnimator="@null"
             android:layout_marginEnd="4dp"
-            android:onClick="onClickDateSelect" />
+            android:layout_weight="1"
+            android:background="@drawable/tab_selector"
+            android:onClick="onClickDateSelect"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_today"
+            android:textColor="@color/tab_text_selector"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnTomorrow"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:layout_weight="1"
-            android:text="@string/btn_tomorrow"
-            android:textStyle="bold"
-            android:background="@drawable/tab_selector"
-            android:textColor="@color/tab_text_selector"
-            android:stateListAnimator="@null"
             android:layout_marginStart="4dp"
-            android:onClick="onClickDateSelect" />
+            android:layout_weight="1"
+            android:background="@drawable/tab_selector"
+            android:onClick="onClickDateSelect"
+            android:stateListAnimator="@null"
+            android:text="@string/btn_tomorrow"
+            android:textColor="@color/tab_text_selector"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- 시간 선택 영역 -->
@@ -134,35 +134,243 @@
         android:id="@+id/time_button_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        android:padding="4dp"
-        android:columnCount="3"
-        android:orientation="horizontal"
         android:alignmentMode="alignMargins"
-        android:rowOrderPreserved="false"
-        android:visibility="visible"
+        android:columnCount="3"
         android:gravity="center"
-        android:layout_gravity="center_horizontal">
+        android:orientation="horizontal"
+        android:padding="4dp"
+        android:rowOrderPreserved="false"
+        android:visibility="visible">
 
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="09:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="09:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="10:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="10:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="11:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="11:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="12:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="12:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="13:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="13:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="14:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="14:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="15:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="15:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="16:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="16:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="17:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="17:30" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
-        <Button android:layout_width="wrap_content" android:layout_height="40dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:layout_gravity="center" android:text="18:00" android:background="@drawable/time_slot_selector" android:backgroundTint="?attr/colorControlHighlight" android:textSize="14sp" android:textColor="@color/white" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="09:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="09:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="10:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="10:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="11:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="11:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="12:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="12:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="13:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="13:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="14:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="14:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="15:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="15:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="16:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="16:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="17:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="17:30"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:background="@drawable/time_slot_selector"
+            android:backgroundTint="?attr/colorControlHighlight"
+            android:text="18:00"
+            android:textColor="@color/white"
+            android:textSize="14sp" />
     </GridLayout>
 
 
@@ -170,9 +378,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_marginTop="16dp"
         android:gravity="center_vertical"
-        android:layout_marginTop="16dp">
+        android:orientation="horizontal">
 
         <CheckBox
             android:id="@+id/checkSignLanguage"
@@ -182,17 +390,17 @@
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_sign_language"
             android:layout_marginStart="8dp"
-            android:contentDescription="수어" />
+            android:contentDescription="수어"
+            android:src="@drawable/ic_sign_language" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="수어"
-            android:textSize="14sp"
             android:layout_marginStart="8dp"
-            android:textColor="@color/text_primary" />
+            android:text="수어"
+            android:textColor="@color/text_primary"
+            android:textSize="14sp" />
     </LinearLayout>
 
     <!-- 예약 버튼 -->
@@ -201,8 +409,8 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
-        android:text="예약하기"
+        android:background="@drawable/button_disabled_bg"
         android:enabled="false"
-        android:textColor="@color/white"
-        android:background="@drawable/button_disabled_bg" />
+        android:text="예약하기"
+        android:textColor="@color/white" />
 </LinearLayout>

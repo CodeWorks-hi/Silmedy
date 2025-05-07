@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#F9FAFB">
 
     <!-- 상단 콘텐츠 -->
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,21 +113,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="( 정확한 진단을 위해 비대면진료를 추천합니다. )"
-                android:textSize="14sp"
                 android:textAlignment="center"
-                android:layout_marginBottom="16dp"/>
+                android:textSize="14sp" />
 
             <!-- 진료 예약 버튼 -->
             <Button
                 android:id="@+id/btnReservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="진료 예약"
+                android:layout_marginBottom="32dp"
                 android:backgroundTint="#85D8CE"
+                android:text="진료 예약"
                 android:textColor="@android:color/white"
-                android:textStyle="bold"
-                android:layout_marginBottom="32dp"/>
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 
@@ -137,13 +136,13 @@
         android:id="@+id/bottom_navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:menu="@menu/menu_bottom_nav"
+        android:background="@android:color/white"
         app:itemIconTint="@xml/selector_bottom_nav"
         app:itemTextColor="@xml/selector_bottom_nav"
         app:labelVisibilityMode="labeled"
-        android:background="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:menu="@menu/menu_bottom_nav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

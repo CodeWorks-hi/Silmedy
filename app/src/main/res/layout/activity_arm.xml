@@ -2,9 +2,9 @@
     android:id="@+id/ArmLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9FAFB"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:padding="16dp">
 
     <!--  안내 텍스트 -->
     <ImageView
@@ -23,12 +23,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
+        android:gravity="center"
         android:text="증상 부위를 선택해주세요"
+        android:textAlignment="center"
         android:textColor="#333333"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textAlignment="center" />
+        android:textStyle="bold" />
 
     <!--  신체 이미지와 터치 영역 -->
     <FrameLayout

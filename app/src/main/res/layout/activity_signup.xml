@@ -5,8 +5,8 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F9FAFB"
     android:padding="24dp"
-    android:background="@android:color/white"
     tools:context=".ui.auth.SignupActivity">
 
     <!-- 한정 버튼 -->
@@ -26,12 +26,12 @@
         android:id="@+id/textTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="회원가입"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="12dp"
-        app:layout_constraintTop_toBottomOf="@id/btnBack"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnBack" />
 
     <!-- 이메일 + 중복확인 -->
     <EditText
@@ -64,9 +64,9 @@
         android:layout_marginTop="12dp"
         android:hint="@string/hint_new_password"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/editEmail"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editEmail" />
 
     <!-- 비밀번호 확인 -->
     <EditText
@@ -76,9 +76,9 @@
         android:layout_marginTop="12dp"
         android:hint="@string/hint_new_password_confirm"
         android:inputType="textPassword"
-        app:layout_constraintTop_toBottomOf="@id/editPassword"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editPassword" />
 
     <!-- 이름 -->
     <EditText
@@ -88,9 +88,9 @@
         android:layout_marginTop="12dp"
         android:hint="이름"
         android:inputType="textPersonName"
-        app:layout_constraintTop_toBottomOf="@id/editConfirmPassword"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editConfirmPassword" />
 
     <!-- 생년월일 -->
     <TextView
@@ -98,14 +98,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="생년월일 (YYYY-MM-DD)"
-        android:focusable="false"
         android:clickable="true"
+        android:focusable="false"
+        android:hint="생년월일 (YYYY-MM-DD)"
         android:inputType="none"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/editName"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editName" />
 
     <!-- 연락처 -->
     <TextView
@@ -116,22 +116,22 @@
         android:hint="연락처"
         android:inputType="phone"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/editBirthDate"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editBirthDate" />
 
     <!-- 우편번호 + 주소 검색 -->
     <TextView
         android:id="@+id/zipView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="우편번호"
-        app:layout_constraintTop_toBottomOf="@id/contactView"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
+        android:hint="우편번호"
         android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@id/btnZipSearch"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/btnZipSearch" />
+        app:layout_constraintTop_toBottomOf="@id/contactView" />
 
     <Button
         android:id="@+id/btnZipSearch"
@@ -152,9 +152,9 @@
         android:hint="주소"
         android:inputType="textPostalAddress"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/zipView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/zipView" />
 
 
     <!-- 상세주소 -->
