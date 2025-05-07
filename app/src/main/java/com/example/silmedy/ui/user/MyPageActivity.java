@@ -1,6 +1,7 @@
 package com.example.silmedy.ui.user;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
@@ -38,6 +39,7 @@ public class MyPageActivity extends AppCompatActivity {
     ImageButton btnChangeProfile, btnChangePassword, btnLogout, btnSecession;
 
     ImageView btnBack;
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +79,11 @@ public class MyPageActivity extends AppCompatActivity {
                 .setTitle("로그아웃")
                 .setMessage("로그아웃하시겠습니까?")
                 .setPositiveButton("확인", (dialog, which) -> {
+                    prefs = getSharedPreferences("SilmedyPrefs", MODE_PRIVATE);
+                    prefs.edit().clear().apply();
+
                     Intent logoutIntent = new Intent(MyPageActivity.this, LoginActivity.class);
+                    logoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(logoutIntent);
                     finish();
                 })

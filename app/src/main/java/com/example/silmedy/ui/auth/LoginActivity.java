@@ -54,18 +54,18 @@ public class LoginActivity extends AppCompatActivity {
 
         prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
         String token = prefs.getString("access_token", null);
-//        if (token != null) {
-//            // 이미 로그인됨 → 딜레이 없이 Home 또는 Receive로 이동
-//            String afterRoom = getIntent().getStringExtra("after_login_roomId");
-//            if (afterRoom != null) {
-//                startActivity(new Intent(this, VideoCallActivity.class)
-//                        .putExtra("roomId", afterRoom));
-//            } else {
-//                startActivity(new Intent(this, ClinicHomeActivity.class));
-//            }
-//            finish();
-//            return;
-//        }
+        if (token != null) {
+            // 이미 로그인됨 → 딜레이 없이 Home 또는 Receive로 이동
+            String afterRoom = getIntent().getStringExtra("after_login_roomId");
+            if (afterRoom != null) {
+                startActivity(new Intent(this, VideoCallActivity.class)
+                        .putExtra("roomId", afterRoom));
+            } else {
+                startActivity(new Intent(this, ClinicHomeActivity.class));
+            }
+            finish();
+            return;
+        }
 
         // 뷰 연결
         editEmail = findViewById(R.id.editEmail);
