@@ -70,8 +70,10 @@ android {
 }
 
 dependencies {
+    implementation("androidx.appcompat:appcompat:1.6.1")
     // Volley networking library
     implementation("com.android.volley:volley:1.2.1")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -85,11 +87,23 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
 
     // Firebase BoM (Bill of Materials)
-    implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
+    implementation(platform("com.google.firebase:firebase-bom:33.13.0"))
     implementation("com.google.android.material:material:1.11.0") // 버전은 네 프로젝트에 맞춰서
     // Glide
     implementation("com.github.bumptech.glide:glide:4.16.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+    // Firebase Realtime Database
+    implementation("com.google.firebase:firebase-database")
+    // AndroidX Activity (최신 Activity API)
+    implementation("androidx.activity:activity:1.10.1")
+
+    // JUnit 4 — 단위 테스트
+    testImplementation("junit:junit:4.13.2")
+    // AndroidX Test Ext — Android용 JUnit 확장
+    androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    // Espresso — UI 테스트 프레임워크
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     // transform 기능 쓰려면 이거도 추가
     implementation("jp.wasabeef:glide-transformations:4.3.0")
@@ -114,7 +128,14 @@ dependencies {
     // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+    // WebRTC
+    implementation("io.github.webrtc-sdk:android:125.6422.07")
+
+    // JWT 디코더
+    implementation("com.auth0.android:jwtdecode:2.0.0")
 }
 
 // Exclude Google's protobuf that conflicts with nd4j's protobuf and nd4j's bundled guava

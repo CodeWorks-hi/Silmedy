@@ -1,6 +1,11 @@
 package com.example.silmedy.ui.clinic;
 
+import static com.example.silmedy.videocall.NotificationHelper.CHANNEL_ID;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -49,8 +54,19 @@ public class ClinicHomeActivity extends AppCompatActivity {
             }
         });
         setContentView(R.layout.activity_clinic_home);
-//
-//        //  뒤로가기 버튼
+
+        // 안드로이드 O 이상 버전용 채널 생성
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationManager nm = getSystemService(NotificationManager.class);
+            NotificationChannel channel = new NotificationChannel(
+                    CHANNEL_ID,
+                    "영상 통화 알림",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            nm.createNotificationChannel(channel);
+        }
+
+        //  뒤로가기 버튼
 //        btnBack = findViewById(R.id.btnBack);
 //        if (btnBack != null) {
 //            btnBack.setOnClickListener(v -> onBackPressed());

@@ -15,7 +15,7 @@ import java.util.Map;
  * Firebase 클라우드 메시징을 처리하는 서비스 클래스
  * - FCM 메시지를 수신해서 Cloud Firestore에 바로 저장
  */
-public class MyFirebaseMessagingService extends FirebaseMessagingService {
+public class MyFirebaseChatMessagingService extends FirebaseMessagingService {
 
     public static final String TAG = "FCMService";
     public static final String COLLECTION_CHAT = "chatMessages";
