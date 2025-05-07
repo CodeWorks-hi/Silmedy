@@ -7,28 +7,23 @@
     android:padding="16dp">
 
     <!--  뒤로가기 버튼 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_gravity="start"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:contentDescription="@string/btn_back"
         android:src="@drawable/ic_arrow_back" />
 
     <!--  안내 문구 -->
-    <TextView
-        android:id="@+id/guideText"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:gravity="center"
-        android:text="증상 부위를 선택해주세요"
-        android:textAlignment="center"
-        android:textColor="#333333"
-        android:textSize="18sp"
-        android:textStyle="bold" />
+        android:layout_height="20dp" />
 
     <!--  신체 이미지 및 터치 버튼 영역 -->
     <FrameLayout
@@ -36,6 +31,7 @@
         android:layout_height="match_parent">
 
         <!-- 신체 이미지 -->
+
         <ImageView
             android:id="@+id/body_image"
             android:layout_width="match_parent"
@@ -58,12 +54,24 @@
         <View
             android:id="@+id/btnAbdomen"
             android:layout_width="276dp"
-            android:layout_height="245dp"
+            android:layout_height="253dp"
             android:layout_gravity="bottom|center_horizontal"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="70dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true" />
+
+        <TextView
+            android:id="@+id/guideText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="증상 부위를 선택해주세요"
+            android:textAlignment="center"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </FrameLayout>
 </LinearLayout>

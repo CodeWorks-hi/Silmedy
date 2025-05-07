@@ -7,6 +7,10 @@
     android:padding="16dp">
 
     <!--  안내 텍스트 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
     <ImageView
         android:id="@+id/btnBack"
         android:layout_width="20dp"
@@ -18,22 +22,15 @@
         android:src="@drawable/ic_arrow_back" />
 
     <!--  안내 문구 -->
-    <TextView
-        android:id="@+id/guideText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
-        android:gravity="center"
-        android:text="증상 부위를 선택해주세요"
-        android:textAlignment="center"
-        android:textColor="#333333"
-        android:textSize="18sp"
-        android:textStyle="bold" />
 
     <!--  신체 이미지와 터치 영역 -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="626dp">
 
         <ImageView
             android:id="@+id/body_image"
@@ -59,7 +56,7 @@
             android:layout_width="83dp"
             android:layout_height="155dp"
             android:layout_gravity="right"
-            android:layout_marginTop="370dp"
+            android:layout_marginTop="290dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true" />
@@ -69,7 +66,7 @@
             android:layout_width="146dp"
             android:layout_height="87dp"
             android:layout_gravity="right"
-            android:layout_marginTop="450dp"
+            android:layout_marginTop="350dp"
             android:layout_marginRight="70dp"
             android:background="@android:color/transparent"
             android:clickable="true"
@@ -80,10 +77,22 @@
             android:layout_width="73dp"
             android:layout_height="82dp"
             android:layout_gravity="right"
-            android:layout_marginTop="300dp"
+            android:layout_marginTop="210dp"
             android:background="@android:color/transparent"
             android:clickable="true"
             android:focusable="true" />
+
+        <TextView
+            android:id="@+id/guideText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="증상 부위를 선택해주세요"
+            android:textAlignment="center"
+            android:textColor="#333333"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
     </FrameLayout>
 </LinearLayout>
