@@ -63,4 +63,19 @@
 
     <color name="selectedText">#FF5722</color> <!-- 주황색 버튼 선택 시 텍스트 색상 -->
     <color name="defaultText">#FFFFFF</color> <!-- 기본 흰색 버튼 텍스트 색상 -->
+
+    <!-- Text & Icons -->
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_background">#000000</color>
+    <color name="on_background_dark">#FFFFFF</color>
+
+    <!-- Primary Palette -->
+    <color name="primary_200">#81D4FA</color>
+    <color name="primary_500">#03A9F4</color>
+    <color name="primary_700">#0288D1</color>
+
+    <!-- Accent / Secondary -->
+    <color name="secondary_200">#FFCDD2</color>
+    <color name="secondary_500">#F44336</color>
+    <color name="secondary_700">#D32F2F</color>
 </resources>
