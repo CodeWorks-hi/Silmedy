@@ -119,7 +119,7 @@ public class CareRequestActivity extends AppCompatActivity {
         doctorClinic.setText(doctorClinicStr);
         String scheduleText = buildScheduleText(doctorTimeStr);
         doctorTime.setText(scheduleText);
-        loadTimeSlots("today");
+        // loadTimeSlots("today"); // Moved to runOnUiThread in checkInitialSignLanguageSetting
         doctorImage.setImageResource(doctorImageResId);
 
         btnToday.setSelected(true);
@@ -138,6 +138,25 @@ public class CareRequestActivity extends AppCompatActivity {
         } else {
             btnToday.setText("오늘");
             btnTomorrow.setText("내일");
+        }
+
+        // Reflect 휴진 status for today/tomorrow initially
+        String labelToday = getDayLabel("today");
+        String timeRangeToday = doctorTimeMapFormatted != null && doctorTimeMapFormatted.containsKey(labelToday)
+            ? doctorTimeMapFormatted.get(labelToday)
+            : "휴진";
+        if ("휴진".equals(timeRangeToday)) {
+            btnToday.setText("오늘 : 휴진");
+            btnToday.setEnabled(false);
+        }
+
+        String labelTomorrow = getDayLabel("tomorrow");
+        String timeRangeTomorrow = doctorTimeMapFormatted != null && doctorTimeMapFormatted.containsKey(labelTomorrow)
+            ? doctorTimeMapFormatted.get(labelTomorrow)
+            : "휴진";
+        if ("휴진".equals(timeRangeTomorrow)) {
+            btnTomorrow.setText("내일 : 휴진");
+            btnTomorrow.setEnabled(false);
         }
 
         btnToday.setOnClickListener(v -> {
@@ -184,6 +203,18 @@ public class CareRequestActivity extends AppCompatActivity {
         String timeRange = doctorTimeMapFormatted != null && doctorTimeMapFormatted.containsKey(label)
             ? doctorTimeMapFormatted.get(label)
             : "휴진";
+
+        // 휴진 처리: 버튼 텍스트 및 비활성화
+        if ("휴진".equals(timeRange)) {
+            if ("today".equals(day)) {
+                btnToday.setText("오늘 : 휴진");
+                btnToday.setEnabled(false);
+            } else if ("tomorrow".equals(day)) {
+                btnTomorrow.setText("내일 : 휴진");
+                btnTomorrow.setEnabled(false);
+            }
+        }
+
         List<String> timeList = generateTimeSlots(timeRange);
 
         renderTimeButtons(timeList);
@@ -212,6 +243,7 @@ public class CareRequestActivity extends AppCompatActivity {
             View view = inflater.inflate(R.layout.time_button, timeButtonContainer, false);
             Button timeButton = view.findViewById(R.id.timeButton);
             timeButton.setText(time);
+            // Set the selector background ONCE, immediately after inflating
             timeButton.setBackgroundResource(R.drawable.time_slot_selector);
             // Set text color to white for all states
             timeButton.setTextColor(getResources().getColor(R.color.white));
@@ -237,16 +269,14 @@ public class CareRequestActivity extends AppCompatActivity {
                         View child = timeButtonContainer.getChildAt(i);
                         Button otherButton = child.findViewById(R.id.timeButton);
                         if (otherButton != null) {
-                            otherButton.setSelected(false); // 이게 핵심
+                            otherButton.setSelected(false);
                             otherButton.setScaleX(1.0f);
                             otherButton.setScaleY(1.0f);
-                            otherButton.setBackgroundResource(R.drawable.time_slot_selector);
                         }
                     }
                     timeButton.setSelected(true);
                     timeButton.setScaleX(1.1f);
                     timeButton.setScaleY(1.1f);
-                    timeButton.setBackgroundResource(R.drawable.time_slot_selected_background);
                 });
             }
 
@@ -428,10 +458,10 @@ public class CareRequestActivity extends AppCompatActivity {
                             reservedHoursMap.putAll(filteredMap);
                             checkSignLanguage.setChecked(isNeeded);
                             Log.d("CareRequestActivity", "reservedHoursMap updated: " + reservedHoursMap.toString());
-                            loadTimeSlots(selectedDay);
                         } else {
                             Log.e("CareRequestActivity", "reservedHoursMap is null!");
                         }
+                        loadTimeSlots(selectedDay);
                     });
                 }
                 conn.disconnect();
