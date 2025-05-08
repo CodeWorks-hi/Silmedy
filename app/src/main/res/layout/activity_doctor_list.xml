@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -57,14 +58,18 @@
         <Button
             android:id="@+id/btnGenderFilter"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="50dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/filter_button_bg"
+            android:backgroundTint="@color/button_default_color"
             android:minWidth="80dp"
-            android:text="성별 : 전체"
-            android:textColor="@color/white"
+            android:text="성별"
+            android:textColor="@android:color/black"
             android:textSize="14sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:icon="@drawable/gender_icon"
+            app:iconTint="@color/material_dynamic_neutral70"
+            app:strokeColor="@color/default_button_border"
+            app:strokeWidth="2sp" />
     </LinearLayout>
 
     <!-- RecyclerView -->
