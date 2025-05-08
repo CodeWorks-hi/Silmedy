@@ -245,6 +245,7 @@ public class CareRequestActivity extends AppCompatActivity {
             timeButton.setText(time);
             // Set the selector background ONCE, immediately after inflating
             timeButton.setBackgroundResource(R.drawable.time_slot_selector);
+            timeButton.setBackgroundTintList(null);
             // Set text color to white for all states
             timeButton.setTextColor(getResources().getColor(R.color.white));
 

@@ -151,7 +151,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="09:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -163,7 +162,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="09:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -175,7 +173,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="10:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -187,7 +184,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="10:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -199,7 +195,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="11:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -211,7 +206,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="11:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -223,7 +217,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="12:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -235,7 +228,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="12:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -247,7 +239,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="13:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -259,7 +250,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="13:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -271,7 +261,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="14:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -283,7 +272,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="14:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -295,7 +283,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="15:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -307,7 +294,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="15:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -319,7 +305,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="16:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -331,7 +316,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="16:30"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -343,7 +327,6 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="17:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -355,20 +338,7 @@
             android:layout_gravity="center"
             android:layout_margin="4dp"
             android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
             android:text="17:30"
-            android:textColor="@color/white"
-            android:textSize="14sp" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
-            android:backgroundTint="?attr/colorControlHighlight"
-            android:text="18:00"
             android:textColor="@color/white"
             android:textSize="14sp" />
     </GridLayout>
