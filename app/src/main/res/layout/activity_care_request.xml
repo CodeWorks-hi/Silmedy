@@ -40,7 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="@color/input_bg"
+        android:backgroundTint="@color/on_primary"
+        card_view:cardBackgroundColor="@color/button_default_color"
         card_view:cardCornerRadius="12dp"
         card_view:cardElevation="0dp">
 
@@ -98,31 +99,32 @@
 
     <!-- 날짜 선택 -->
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:orientation="horizontal">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnToday"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginEnd="4dp"
             android:layout_weight="1"
-            android:background="@drawable/tab_selector"
+            android:background="@drawable/selected_card_background"
             android:onClick="onClickDateSelect"
             android:stateListAnimator="@null"
             android:text="@string/btn_today"
             android:textColor="@color/tab_text_selector"
             android:textStyle="bold" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnTomorrow"
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:layout_marginStart="4dp"
             android:layout_weight="1"
-            android:background="@drawable/tab_selector"
+            android:background="@drawable/selected_card_background"
             android:onClick="onClickDateSelect"
             android:stateListAnimator="@null"
             android:text="@string/btn_tomorrow"
@@ -145,202 +147,231 @@
         android:rowOrderPreserved="false"
         android:visibility="visible">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="09:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="09:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="10:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="10:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="11:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="11:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="12:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="12:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="13:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="13:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="14:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="14:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="15:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="15:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="16:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="16:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="17:00"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_columnWeight="1"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:background="@drawable/time_slot_selector"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
             android:text="17:30"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center"
+            android:background="@drawable/selected_card_background"
+            android:backgroundTint="@null"
+            android:text="18:00"
+            android:textColor="@color/black"
             android:textSize="14sp" />
     </GridLayout>
 

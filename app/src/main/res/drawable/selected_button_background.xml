@@ -3,14 +3,14 @@
     <item android:state_selected="true">
         <shape android:shape="rectangle">
             <solid android:color="@color/selected_button_color" />
-            <corners android:radius="12dp" />
+            <corners android:radius="12dp" /> <!-- 각지게 -->
             <stroke android:width="2dp" android:color="@color/selected_button_border" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
             <solid android:color="@color/default_button" />
-            <corners android:radius="12dp" />
+            <corners android:radius="12dp" /> <!-- 각지게 -->
             <stroke android:width="2dp" android:color="@color/default_button_border" />
         </shape>
     </item>
