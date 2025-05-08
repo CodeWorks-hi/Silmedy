@@ -39,7 +39,7 @@
         <GridLayout
             android:id="@+id/symptomGrid"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="598dp"
             android:layout_marginTop="24dp"
             android:alignmentMode="alignMargins"
             android:columnCount="2"
@@ -51,162 +51,238 @@
             <LinearLayout
                 android:id="@+id/cardCold"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_columnWeight="1"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/card_bg"
                 android:elevation="2dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="12dp">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="감기"
-                    android:src="@drawable/cold_" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="감기"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        android:text="감기"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:contentDescription="감기"
+                        android:src="@drawable/cold_" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
             <!-- 증상 카드 2 -->
+
             <LinearLayout
                 android:id="@+id/cardIndigestion"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_columnWeight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/card_bg"
                 android:elevation="2dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="12dp">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="소화불량"
-                    android:src="@drawable/indigestion" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="소화불량"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:text="소화불량"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="5dp"
+                        android:contentDescription="소화불량"
+                        android:src="@drawable/indigestion" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <!-- 증상 카드 3 -->
             <LinearLayout
                 android:id="@+id/cardHeat"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_columnWeight="1"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/card_bg"
                 android:elevation="2dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="12dp">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="소화불량"
-                    android:src="@drawable/heat" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="열"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginTop="15dp"
+                        android:text="열"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:contentDescription="소화불량"
+                        android:src="@drawable/heat" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <!-- 증상 카드 4 -->
             <LinearLayout
                 android:id="@+id/cardHeadache"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_columnWeight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/card_bg"
                 android:elevation="2dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="12dp">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="소화불량"
-                    android:src="@drawable/headache" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="두통"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        android:text="두통"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:contentDescription="소화불량"
+                        android:src="@drawable/headache" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <!-- 증상 카드 5 -->
             <LinearLayout
                 android:id="@+id/cardDiabetes"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_columnWeight="1"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="15dp"
                 android:background="@drawable/card_bg"
                 android:elevation="2dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="12dp">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="소화불량"
-                    android:src="@drawable/diabetes" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="당뇨"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        android:text="당뇨"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="bottom"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginBottom="5dp"
+                        android:contentDescription="소화불량"
+                        android:src="@drawable/diabetes" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <!-- 증상 카드 6 -->
             <LinearLayout
                 android:id="@+id/cardHighBlood"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:layout_columnWeight="1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/card_bg"
                 android:elevation="2dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 android:padding="12dp">
 
-                <ImageView
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:contentDescription="소화불량"
-                    android:src="@drawable/high_blood" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="고혈압"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="고혈압"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="85dp"
+                        android:layout_height="85dp"
+                        android:layout_gravity="bottom"
+                        android:contentDescription="소화불량"
+                        android:src="@drawable/high_blood" />
+                </LinearLayout>
+
             </LinearLayout>
 
             <!-- 열, 두통, 당뇨, 고혈압 카드도 같은 구조로 추가 -->
