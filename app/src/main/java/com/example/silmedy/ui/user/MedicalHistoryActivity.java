@@ -75,7 +75,8 @@ public class MedicalHistoryActivity extends AppCompatActivity {
         // --- 진단 내역 리스트 불러오기 ---
         TokenManager tokenManager = new TokenManager(getApplicationContext());
         String token = tokenManager.getAccessToken();
-        String url = "http://43.201.73.161:5000/diagnosis/list"; // 실제 서버 주소로 변경 필요
+
+        String url = "http://43.201.73.161:5000/diagnosis/list";
 
         okhttp3.OkHttpClient client = new okhttp3.OkHttpClient();
         okhttp3.Request request = new okhttp3.Request.Builder()
