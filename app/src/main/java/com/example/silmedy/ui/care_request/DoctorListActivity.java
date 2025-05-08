@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
@@ -63,7 +64,7 @@ public class DoctorListActivity extends AppCompatActivity {
 
     private ImageButton btnBack;
     private TextView locationText, btnChangeLocation;
-    private Button btnSort, btnGenderFilter;
+    private Button btnGenderFilter;
     private RecyclerView doctorRecyclerView;
     private DoctorAdapter adapter;
     private List<Doctor> doctorList;
@@ -102,9 +103,27 @@ public class DoctorListActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         locationText = findViewById(R.id.locationText);
         btnChangeLocation = findViewById(R.id.btnChangeLocation);
-        btnSort = findViewById(R.id.btnSort);
         btnGenderFilter = findViewById(R.id.btnGenderFilter);
         doctorRecyclerView = findViewById(R.id.doctorRecyclerView);
+
+        // 클릭 리스너 등록
+        btnGenderFilter.setOnClickListener(v -> {
+            final String[] genderOptions = {"전체", "남", "여"};
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(DoctorListActivity.this);
+            builder.setTitle("성별 필터 선택")
+                    .setItems(genderOptions, (dialog, which) -> {
+                        // 선택된 항목 처리
+                        String selectedGender = genderOptions[which];
+                        btnGenderFilter.setText("성별 : " + selectedGender);
+
+                        // 선택값에 따라 필터 로직 수행
+                        filterDoctorsByGender(selectedGender);
+                    });
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -144,6 +163,81 @@ public class DoctorListActivity extends AppCompatActivity {
             }
             finish();
         });
+    }
+
+    private void filterDoctorsByGender(String selectedGender) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                try {
+                    Log.d("DoctorListActivity", "Fetching doctors with lat=" + latitude + ", lng=" + longitude + ", department=" + department);
+                    String urlStr = "http://43.201.73.161:5000/health-centers-with-doctors?lat="
+                            + latitude + "&lng=" + longitude + "&department=" + department + "&gender=" + selectedGender;
+                    URL url = new URL(urlStr);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    conn.setRequestMethod("GET");
+                    conn.setRequestProperty("Accept", "application/json");
+                    // Authorization header removed as per instructions
+
+                    int responseCode = conn.getResponseCode();
+                    if (responseCode == HttpURLConnection.HTTP_OK) {
+                        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "utf-8"));
+                        StringBuilder response = new StringBuilder();
+                        String responseLine;
+                        while ((responseLine = br.readLine()) != null) {
+                            response.append(responseLine.trim());
+                        }
+                        Log.d("DoctorListActivity", "Response: " + response.toString());
+
+                        JSONArray doctorsArray = new JSONArray(response.toString());
+                        Log.d("DoctorListActivity", "Number of doctors received: " + doctorsArray.length());
+
+                        doctorList.clear();
+                        for (int i = 0; i < doctorsArray.length(); i++) {
+                            JSONObject doctorJson = doctorsArray.getJSONObject(i);
+                            Log.d("DoctorListActivity", "Parsing doctor: " + doctorJson.toString());
+                            String name = doctorJson.getString("name");
+                            String center = doctorJson.getString("hospital_name");
+                            String dep = doctorJson.getString("department");
+                            String profileUrl = doctorJson.getString("profile_url");
+                            int licenseNumber = -1;
+                            if (doctorJson.has("license_number")) {
+                                String licenseStr = doctorJson.getString("license_number");
+                                try {
+                                    licenseNumber = Integer.parseInt(licenseStr);
+                                } catch (NumberFormatException e) {
+                                    Log.e("DoctorListActivity", "Invalid license_number format: " + licenseStr);
+                                }
+                            } else {
+                                Log.e("DoctorListActivity", "doctorJson에 license_number 없음: " + doctorJson.toString());
+                            }
+
+                            JSONObject availabilityObj = doctorJson.getJSONObject("availability");
+                            HashMap<String, String> schedule = new HashMap<>();
+                            Iterator<String> keys = availabilityObj.keys();
+                            while (keys.hasNext()) {
+                                String key = keys.next();
+                                schedule.put(key, availabilityObj.getString(key));
+                            }
+
+                            doctorList.add(new Doctor(licenseNumber, profileUrl, name, center, dep, schedule));
+                        }
+
+                        runOnUiThread(() -> {
+                            Log.d("DoctorListActivity", "Successfully fetched doctor data, updating adapter");
+                            Log.d("DoctorListActivity", "doctorList size after fetch: " + doctorList.size());
+                            adapter.notifyDataSetChanged();
+                        });
+                    } else {
+                        Log.e("API_ERROR", "HTTP error code: " + responseCode);
+                    }
+                    conn.disconnect();
+                } catch (Exception e) {
+                    runOnUiThread(() -> Log.e("DoctorListActivity", "Exception in fetchDoctors: " + e.getMessage()));
+                }
+                return null;
+            }
+        }.execute();
     }
 
     private void fetchDoctors(double latitude, double longitude, String department) {

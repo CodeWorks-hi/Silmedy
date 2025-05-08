@@ -54,18 +54,22 @@
 
                 <ImageView
                     android:id="@+id/imgDiagnosis"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/scratch"
+                    android:layout_marginLeft="20dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/scratch" />
+                    android:src="@drawable/scratch"
+                    android:background="@drawable/bg_image_float"
+                    android:translationZ="10dp"
+                    android:elevation="8dp" />
 
                 <TextView
                     android:id="@+id/textPart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:layout_marginLeft="30dp"
                     android:text="부위: 손"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -75,7 +79,7 @@
                     android:layout_width="134dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:text="병명: 찰과상"
                     android:textSize="16sp"
@@ -90,6 +94,7 @@
                 android:layout_width="280dp"
                 android:layout_height="314dp"
                 android:layout_gravity="center"
+                android:layout_marginTop="20dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/superficial" />
 
@@ -97,22 +102,29 @@
                 android:id="@+id/editMedical1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginBottom="4dp"
                 android:text="추천 진료과 1 : 외과"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/editMedical2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginBottom="16dp"
                 android:text="추천 진료과 2 : 응급의학과"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
             <!-- 안내 문구 -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginBottom="16dp"
                 android:text="( 정확한 진단을 위해 비대면진료를 추천합니다. )"
                 android:textAlignment="center"
@@ -123,6 +135,9 @@
                 android:id="@+id/btnReservation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginBottom="32dp"
                 android:backgroundTint="#85D8CE"
                 android:text="진료 예약"
