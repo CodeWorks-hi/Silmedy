@@ -123,7 +123,9 @@ public class CareRequestActivity extends AppCompatActivity {
         doctorImage.setImageResource(doctorImageResId);
 
         btnToday.setSelected(true);
+        btnToday.setBackgroundTintList(null);
         btnTomorrow.setSelected(false);
+        btnTomorrow.setBackgroundTintList(null);
 
         // Set button labels for 오늘/내일 with special handling for Friday/Saturday
         java.util.Calendar calendar = java.util.Calendar.getInstance();
