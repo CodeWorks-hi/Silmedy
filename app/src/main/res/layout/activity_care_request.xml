@@ -8,14 +8,14 @@
     android:padding="16dp">
 
     <!-- 뒤로가기 -->
-    <ImageButton
+    <ImageView
         android:id="@+id/btnBack"
-        android:layout_width="26dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="20dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="start"
+        android:layout_marginStart="16dp"
         android:contentDescription="@string/btn_back"
-        android:src="@drawable/back_icon" />
+        android:src="@drawable/ic_arrow_back" />
 
     <!-- 제목 -->
     <TextView

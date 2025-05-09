@@ -10,12 +10,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="710dp"
+        android:layout_height="0dp"
         android:layout_margin="15dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
         <ImageView
             android:id="@+id/btnBack"
@@ -26,6 +30,8 @@
             android:contentDescription="@string/btn_back"
             android:src="@drawable/ic_arrow_back" />
 
+
+        <!-- 기본 배송지 정보 박스 -->
         <TextView
             android:id="@+id/textView15"
             android:layout_width="wrap_content"
@@ -35,8 +41,6 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-
-        <!-- 기본 배송지 정보 박스 -->
         <LinearLayout
             android:id="@+id/layout_default_address"
             android:layout_width="match_parent"
@@ -44,7 +48,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="16dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/tab_selector"
+            android:background="@drawable/selected_card_border"
             android:orientation="vertical"
             android:padding="12dp">
 
@@ -93,6 +97,7 @@
             android:layout_height="39dp"
             android:layout_gravity="right"
             android:layout_marginRight="10dp"
+            android:buttonTint="@color/main_color"
             android:text="기본 배송지로 적용" />
 
         <!-- 입력 폼 -->
@@ -107,8 +112,13 @@
             android:id="@+id/editName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/selected_card_background"
             android:contentDescription="@string/hint_name"
             android:hint="받는분 이름" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/textView24"
@@ -121,10 +131,15 @@
             android:id="@+id/editContact"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/selected_card_background"
             android:contentDescription="@string/hint_phone"
             android:ems="10"
             android:hint="연락처"
             android:inputType="text" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -133,26 +148,47 @@
 
             <TextView
                 android:id="@+id/textView25"
-                android:layout_width="104dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="배송지 주소"
 
+                android:text="배송지 주소"
                 android:textStyle="bold" />
+
+            <Space
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/txtPostalCode"
                 android:layout_width="173dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:text="우편번호" />
+                android:background="@drawable/gray_box"
+                android:fontFamily="sans-serif"
+                android:text="우편번호"
+                android:textSize="16sp"
+                android:typeface="normal"
+                android:gravity="center"
+                android:textAlignment="center"/>
 
-            <Button
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnZipSearch"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:text="주소 검색" />
+                android:background="@drawable/selected_card_border"
+                android:text="주소 검색"
+                android:textColor="@color/main_color"
+                app:backgroundTint="@null" />
         </LinearLayout>
 
         <!-- 배송 신청 버튼 -->
@@ -160,8 +196,16 @@
             android:id="@+id/txtShowAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/gray_box"
             android:text="주소명"
-            android:textSize="14sp" />
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textAlignment="center"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/textView26"
@@ -174,9 +218,14 @@
             android:id="@+id/editDetailAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/selected_card_background"
             android:contentDescription="@string/hint_address_detail"
             android:ems="10"
             android:inputType="text" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
         <TextView
             android:id="@+id/textView27"
@@ -189,15 +238,20 @@
             android:id="@+id/editRequest"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/selected_card_background"
             android:ems="10"
             android:inputType="text" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
 
         <Button
             android:id="@+id/btnSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:backgroundTint="#94D2D4"
+            android:backgroundTint="@color/main_color"
             android:text="배송 신청"
             android:textColor="#FFFFFF" />
 
