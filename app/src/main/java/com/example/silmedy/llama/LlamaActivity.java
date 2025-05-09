@@ -8,6 +8,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -40,6 +41,7 @@ import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -59,6 +61,7 @@ import okhttp3.Response;
 public class LlamaActivity extends AppCompatActivity {
     private static final String TAG = "LlamaActivity";
 
+    private boolean isFinished = false;
     private String userId;
 
     private RecyclerView recyclerMessages;
@@ -69,6 +72,7 @@ public class LlamaActivity extends AppCompatActivity {
 
     private final LlamaClassifier classifier = new LlamaClassifier();
     private String prevSymptom = "";
+    private View loadingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +101,7 @@ public class LlamaActivity extends AppCompatActivity {
         recyclerMessages = findViewById(R.id.recyclerMessages);
         editMessage = findViewById(R.id.editMessage);
         btnSend = findViewById(R.id.btnSend);
+        loadingIndicator = findViewById(R.id.loadingIndicator);
 
         // 3) RecyclerView 설정
         adapter = new MessageAdapter(this, msgs, userId);
@@ -136,42 +141,10 @@ public class LlamaActivity extends AppCompatActivity {
             String text = editMessage.getText().toString().trim();
             if (text.isEmpty()) return;
             editMessage.setText("");
-            classifyOrAnalyze(text);
-        });
-    }
-
-    /**
-     * 외과/내과 분류 or 내과 증상 분석 흐름
-     */
-    private void classifyOrAnalyze(String text) {
-        String ptTs = String.valueOf(System.currentTimeMillis());
-
-        classifier.classifyOrPrompt(text, new ClassificationCallback() {
-            @Override
-            public void onSurgicalQuestion(String prompt) {
-                runOnUiThread(() -> showSurgicalDialog(text, prompt));
-            }
-
-            @Override
-            public void onClassification(String category) {
-                runOnUiThread(() -> {
-                    if ("외과".equals(category)) {
-                        showSurgicalDialog(text,
-                                "외과 진료가 필요해 보여요.\n" +
-                                        "편하실 때 촬영을 통해 증상을 확인해 보실 수 있습니다.\n" +
-                                        "지금 터치로 증상 확인 페이지로 이동해 보시겠어요? (예/아니오)");
-                    } else {
-                        Log.d(TAG, "내과 분류 - 응답 표시");
-                        saveChat(text, ptTs, "", "");
-                    }
-                });
-            }
-
-            @Override
-            public void onError(Exception e) {
-                runOnUiThread(() ->
-                        Toast.makeText(LlamaActivity.this,
-                                "분류 오류", Toast.LENGTH_SHORT).show());
+            String ptTs = String.valueOf(System.currentTimeMillis());
+            saveChat(text, ptTs, "", "");
+            if (isFinished && text.equals("예")) {
+                callAddSeparatorApi();
             }
         });
     }
@@ -206,10 +179,25 @@ public class LlamaActivity extends AppCompatActivity {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
             String createdAt = sdf.format(new Date());
 
+            runOnUiThread(() -> {
+                loadingIndicator.setVisibility(View.VISIBLE);
+                msgs.add(new Message("나", pt, formatTimeOnly(createdAt), false, ptTs));
+                adapter.notifyItemInserted(msgs.size() - 1);
+                recyclerMessages.scrollToPosition(msgs.size() - 1);
+            });
+
+            if (isFinished) {
+                return;
+            }
+
             JSONObject json = new JSONObject();
             json.put("patient_text", pt);
 
-            OkHttpClient client = new OkHttpClient();
+            OkHttpClient client = new OkHttpClient.Builder()
+                    .connectTimeout(10, TimeUnit.SECONDS)
+                    .writeTimeout(10, TimeUnit.SECONDS)
+                    .readTimeout(30, TimeUnit.SECONDS) // ← 기본 10초보다 더 여유 있게
+                    .build();
             RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
             Request request = new Request.Builder()
                     .url("http://43.201.73.161:5000/chat/save")
@@ -220,6 +208,7 @@ public class LlamaActivity extends AppCompatActivity {
             client.newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
+                    runOnUiThread(() -> loadingIndicator.setVisibility(View.GONE));
                     Log.e(TAG, "Save chat failed", e);
                 }
 
@@ -236,18 +225,16 @@ public class LlamaActivity extends AppCompatActivity {
                         String aiText = resJson.optString("ai_text", "").trim();
 
                         runOnUiThread(() -> {
-                            // 1. 사용자 메시지 표시
-                            msgs.add(new Message("나", pt, formatTimeOnly(createdAt), false, ptTs));
-                            adapter.notifyItemInserted(msgs.size() - 1);
-                            recyclerMessages.scrollToPosition(msgs.size() - 1);
-
-                            // 2. AI 응답 메시지 표시
+                            loadingIndicator.setVisibility(View.GONE);
                             if (!aiText.isEmpty()) {
                                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
                                     msgs.add(new Message("AI", aiText, formatTimeOnly(createdAt), false, aiTs));
                                     adapter.notifyItemInserted(msgs.size() - 1);
                                     recyclerMessages.scrollToPosition(msgs.size() - 1);
                                 }, 800);
+                                if (aiText.contains("비대면 진료")) {
+                                    isFinished = true;
+                                }
                             }
                         });
 
@@ -258,6 +245,7 @@ public class LlamaActivity extends AppCompatActivity {
                 }
             });
         } catch (Exception e) {
+            runOnUiThread(() -> loadingIndicator.setVisibility(View.GONE));
             Log.e(TAG, "JSON creation failed", e);
         }
     }
