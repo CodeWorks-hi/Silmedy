@@ -13,6 +13,10 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp" />
+
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="20dp"
@@ -22,6 +26,10 @@
             android:layout_marginTop="30dp"
             android:contentDescription="@string/btn_back"
             android:src="@drawable/ic_arrow_back" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
 
         <TextView
             android:id="@+id/textView3"
