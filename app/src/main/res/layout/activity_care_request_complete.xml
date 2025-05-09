@@ -13,19 +13,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
 
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="start"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="30dp"
-            android:contentDescription="@string/btn_back"
-            android:src="@drawable/ic_arrow_back" />
+
+        <!-- 상단바 (흰색 배경) -->
+        <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/btn_back"
+                android:src="@drawable/ic_arrow_back" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"

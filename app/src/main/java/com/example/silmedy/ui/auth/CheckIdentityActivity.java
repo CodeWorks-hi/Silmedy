@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,7 +36,7 @@ public class CheckIdentityActivity extends AppCompatActivity {
 
     private EditText phoneInput, codeInput;
     private Button verifyButton, codeConfirmButton, confirmButton;
-    private ImageButton btnBack;
+    private ImageView btnBack;
 
     private FirebaseAuth mAuth;
     private String verificationId;

@@ -9,18 +9,19 @@
     <LinearLayout
         android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="80dp"
         android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_gravity="start"
+            android:layout_gravity="center|start"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
             android:contentDescription="@string/btn_back"
             android:src="@drawable/ic_arrow_back" />
     </LinearLayout>
@@ -67,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:background="@color/white"
+                android:background="@drawable/selected_card_background"
                 android:hint="숫자만 입력해주세요."
                 android:inputType="phone"
                 android:paddingHorizontal="12dp" />
@@ -105,7 +106,7 @@
                 android:layout_width="245dp"
                 android:layout_height="48dp"
                 android:layout_weight="1"
-                android:background="@color/white"
+                android:background="@drawable/selected_card_background"
                 android:hint="인증 코드 입력해주세요."
                 android:inputType="number"
                 android:paddingHorizontal="12dp" />

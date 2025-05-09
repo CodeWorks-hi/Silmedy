@@ -9,6 +9,7 @@ import android.location.Location;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -62,7 +63,7 @@ public class DoctorListActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_MAP = 1001;
     private static final int REQUEST_LOCATION_PERMISSION = 1002;
 
-    private ImageButton btnBack;
+    private ImageView btnBack;
     private TextView locationText, btnChangeLocation;
     private Button btnGenderFilter;
     private RecyclerView doctorRecyclerView;

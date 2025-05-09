@@ -39,11 +39,10 @@ import java.util.Map;
 
 public class CareRequestActivity extends AppCompatActivity {
 
-    private ImageButton btnBack;
     private Button btnToday, btnTomorrow, btnReserve;
     private CheckBox checkSignLanguage;
     private TextView doctorName, doctorClinic, doctorTime;
-    private ImageView doctorImage;
+    private ImageView doctorImage,btnBack;
     private GridLayout timeButtonContainer;
 
     private String selectedTime = null;

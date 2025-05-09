@@ -4,415 +4,437 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F9FAFB"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:orientation="vertical">
 
-    <!-- 뒤로가기 -->
-    <ImageView
-        android:id="@+id/btnBack"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_gravity="start"
-        android:layout_marginStart="16dp"
-        android:contentDescription="@string/btn_back"
-        android:src="@drawable/ic_arrow_back" />
-
-    <!-- 제목 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="비대면 진료 예약"
-        android:textColor="@color/text_primary"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="비대면 진료 예약"
-        android:textColor="@color/text_secondary"
-        android:textSize="14sp" />
-
-    <!-- 의사 카드뷰 -->
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@color/on_primary"
-        card_view:cardBackgroundColor="@color/button_default_color"
-        card_view:cardCornerRadius="12dp"
-        card_view:cardElevation="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="12dp">
-
-            <ImageView
-                android:id="@+id/doctorImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/circle_bg"
-                android:clipToOutline="true"
-                android:contentDescription="의사 사진"
-                android:scaleType="centerCrop"
-                android:src="@drawable/doc" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/doctorName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="최유진"
-                    android:textColor="@color/text_primary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/doctorClinic"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="성남시 노인보건센터 의원"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/doctorTime"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="진료 가능 시간"
-                    android:textColor="@color/mint_700"
-                    android:textSize="13sp" />
-            </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <!-- 날짜 선택 -->
+    <!-- 상단바 (흰색 배경) -->
     <LinearLayout
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnToday"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/selected_card_background"
-            android:onClick="onClickDateSelect"
-            android:stateListAnimator="@null"
-            android:text="@string/btn_today"
-            android:textColor="@color/tab_text_selector"
-            android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnTomorrow"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="4dp"
-            android:layout_weight="1"
-            android:background="@drawable/selected_card_background"
-            android:onClick="onClickDateSelect"
-            android:stateListAnimator="@null"
-            android:text="@string/btn_tomorrow"
-            android:textColor="@color/tab_text_selector"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <!-- 시간 선택 영역 -->
-    <GridLayout
-        android:id="@+id/time_button_container"
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="8dp"
-        android:alignmentMode="alignMargins"
-        android:columnCount="3"
-        android:gravity="center"
+        android:layout_height="80dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
         android:orientation="horizontal"
-        android:padding="4dp"
-        android:rowOrderPreserved="false"
-        android:visibility="visible">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="09:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="09:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="10:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="10:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="11:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="11:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="12:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="12:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="13:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="13:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="14:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="14:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="15:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="15:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="16:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="16:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="17:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:layout_margin="4dp"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="17:30"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_columnWeight="1"
-            android:layout_gravity="center"
-            android:background="@drawable/selected_card_background"
-            android:backgroundTint="@null"
-            android:text="18:00"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-    </GridLayout>
-
-
-    <!-- 수어 체크박스 -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkSignLanguage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        android:padding="16dp">
 
         <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_marginStart="8dp"
-            android:contentDescription="수어"
-            android:src="@drawable/ic_sign_language" />
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center|start"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/btn_back"
+            android:src="@drawable/ic_arrow_back" />
+    </LinearLayout>
+
+    <!-- 제목 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:text="수어"
+            android:layout_marginTop="16dp"
+            android:text="비대면 진료 예약"
             android:textColor="@color/text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="비대면 진료 예약"
+            android:textColor="@color/text_secondary"
             android:textSize="14sp" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/on_primary"
+            card_view:cardBackgroundColor="@color/button_default_color"
+            card_view:cardCornerRadius="12dp"
+            card_view:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <ImageView
+                    android:id="@+id/doctorImage"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/circle_bg"
+                    android:clipToOutline="true"
+                    android:contentDescription="의사 사진"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/doc" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/doctorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="최유진"
+                        android:textColor="@color/text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/doctorClinic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="성남시 노인보건센터 의원"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/doctorTime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="진료 가능 시간"
+                        android:textColor="@color/mint_700"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnToday"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selected_card_background"
+                android:onClick="onClickDateSelect"
+                android:stateListAnimator="@null"
+                android:text="@string/btn_today"
+                android:textColor="@color/tab_text_selector"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnTomorrow"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/selected_card_background"
+                android:onClick="onClickDateSelect"
+                android:stateListAnimator="@null"
+                android:text="@string/btn_tomorrow"
+                android:textColor="@color/tab_text_selector"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <GridLayout
+            android:id="@+id/time_button_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:alignmentMode="alignMargins"
+            android:columnCount="3"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:rowOrderPreserved="false"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="09:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="09:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="10:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="10:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="11:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="11:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="12:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="12:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="13:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="13:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="14:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="14:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="15:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="15:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="16:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="16:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="17:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="17:30"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_columnWeight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/selected_card_background"
+                android:backgroundTint="@null"
+                android:text="18:00"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkSignLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:contentDescription="수어"
+                android:src="@drawable/ic_sign_language" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="수어"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnReserve"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/button_disabled_bg"
+            android:enabled="false"
+            android:text="예약하기"
+            android:textColor="@color/white" />
     </LinearLayout>
 
+    <!-- 의사 카드뷰 -->
+
+    <!-- 날짜 선택 -->
+
+    <!-- 시간 선택 영역 -->
+
+
+    <!-- 수어 체크박스 -->
+
     <!-- 예약 버튼 -->
-    <Button
-        android:id="@+id/btnReserve"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/button_disabled_bg"
-        android:enabled="false"
-        android:text="예약하기"
-        android:textColor="@color/white" />
 </LinearLayout>

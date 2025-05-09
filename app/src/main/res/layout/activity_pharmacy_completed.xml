@@ -17,6 +17,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
+
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="20dp"
@@ -26,6 +30,10 @@
             android:contentDescription="@string/btn_back"
             android:src="@drawable/ic_arrow_back" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp" />
+
         <TextView
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
@@ -33,7 +41,7 @@
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:text="약국 방문 수령"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textStyle="bold" />
 
         <TextView
@@ -43,7 +51,7 @@
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:text="예약 완료"
-            android:textSize="30sp"
+            android:textSize="35sp"
             android:textStyle="bold" />
 
         <TextView
@@ -53,7 +61,8 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:text="10분 ~ 20분 소요됩니다."
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/imageView8"
@@ -69,14 +78,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="10dp"
-            android:text="약국 이름 : 새모란 21세기 약국" />
+            android:text="약국 이름 : 새모란 21세기 약국"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtPharmacyContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="전화번호 : 031-758-1940" />
+            android:text="전화번호 : 031-758-1940"
+            android:textColor="@color/text_secondary"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- ⬇️ 하단 네비게이션 바 -->

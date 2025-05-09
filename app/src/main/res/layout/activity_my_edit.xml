@@ -23,10 +23,6 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
-
-            <Space
-                android:layout_width="match_parent"
                 android:layout_height="40dp" />
 
             <LinearLayout
@@ -40,6 +36,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_marginStart="16dp"
+                    android:layout_marginLeft="30dp"
                     android:layout_marginTop="12dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="@string/btn_back"
@@ -65,7 +62,7 @@
                 android:id="@+id/textView10"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:text="성명"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -74,9 +71,9 @@
                 android:id="@+id/editName"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/selected_card_background"
                 android:ems="10"
                 android:inputType="text"
@@ -90,7 +87,7 @@
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:text="생년월일"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -99,7 +96,7 @@
                 android:id="@+id/editBirthDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
                 android:ems="10"
                 android:inputType="text"
@@ -114,7 +111,7 @@
                 android:id="@+id/textView28"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:text="연락처"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -123,9 +120,9 @@
                 android:id="@+id/editContact"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/selected_card_background"
                 android:ems="10"
                 android:inputType="text"
@@ -139,7 +136,7 @@
                 android:id="@+id/textView30"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:text="이메일"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -148,7 +145,7 @@
                 android:id="@+id/txtEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
                 android:text="aaa@gmail.com"
                 android:textSize="20sp" />
@@ -161,7 +158,7 @@
                 android:id="@+id/textView32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:text="수어 통화 여부"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -170,7 +167,7 @@
                 android:id="@+id/checkboxDefault"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:buttonTint="@color/main_color"
                 android:text="수어 통화"
                 android:textSize="16sp" />
@@ -183,7 +180,7 @@
                 android:id="@+id/textView33"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:text="우편번호"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -191,14 +188,15 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
+                android:layout_marginRight="30dp"
                 android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/txtPostalCode"
-                    android:layout_width="0dp"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
                     android:layout_weight="1"
                     android:background="@drawable/gray_box"
                     android:gravity="center"
@@ -210,14 +208,14 @@
                     android:layout_width="10dp"
                     android:layout_height="wrap_content" />
 
-                <androidx.appcompat.widget.AppCompatButton
+                <Button
                     android:id="@+id/btnZipSearch"
-                    android:layout_width="100dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="45dp"
-                    android:layout_marginRight="20dp"
-                    android:background="@drawable/selected_card_border"
+                    android:backgroundTint="@color/button_default_color"
                     android:text="주소 검색"
                     android:textColor="@color/main_color"
+                    app:cornerRadius="12sp"
                     app:strokeColor="@color/main_color"
                     app:strokeWidth="1dp" />
             </LinearLayout>
@@ -230,8 +228,8 @@
                 android:id="@+id/txtAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/gray_box"
                 android:gravity="center"
                 android:text="주소"
@@ -246,7 +244,7 @@
                 android:id="@+id/textView36"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:text="상세주소"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -255,24 +253,25 @@
                 android:id="@+id/editDetailAddress"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginRight="20dp"
+                android:layout_marginRight="30dp"
                 android:background="@drawable/selected_card_background"
                 android:ems="10"
                 android:inputType="text"
                 android:text="ABC빌라 3층 301호" />
 
-            <androidx.appcompat.widget.AppCompatButton
+            <Button
                 android:id="@+id/btnChangeEdit"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
-                android:layout_marginRight="20dp"
-                android:background="@drawable/time_slot_selected_background"
+                android:layout_marginRight="30dp"
+                android:backgroundTint="@color/main_color"
                 android:text="정보 저장"
-                android:textColor="@color/button_default_color" />
+                android:textColor="@color/button_default_color"
+                app:cornerRadius="12sp" />
 
             <Space
                 android:layout_width="match_parent"
