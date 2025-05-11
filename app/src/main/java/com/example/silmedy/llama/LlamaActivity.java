@@ -27,11 +27,14 @@ import com.example.silmedy.llama.LlamaClassifier;
 import com.example.silmedy.llama.LlamaClassifier.ClassificationCallback;
 import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper;
 import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper.StreamCallback;
+import com.example.silmedy.ui.care_request.DoctorListActivity;
+import com.example.silmedy.ui.care_request.SymptomChoiceActivity;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
 import com.example.silmedy.ui.photo_clinic.BodyMain;
 import com.google.firebase.auth.FirebaseAuth;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -63,6 +66,7 @@ public class LlamaActivity extends AppCompatActivity {
 
     private boolean isFinished = false;
     private String userId;
+    private String userName;
 
     private RecyclerView recyclerMessages;
     private EditText editMessage;
@@ -86,7 +90,7 @@ public class LlamaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_llama);
 
         Intent intent = getIntent();
-        String userName = intent.getStringExtra("user_name");
+        userName = intent.getStringExtra("user_name");
 
         // 2) UI 바인딩
         ImageView btnBack = findViewById(R.id.btnBack);
@@ -282,6 +286,27 @@ public class LlamaActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) throws IOException {
                 if (response.isSuccessful()) {
                     Log.d(TAG, "Add-separator API called successfully");
+                    String resStr = response.body().string();
+                    try {
+                        JSONObject json = new JSONObject(resStr);
+                        JSONArray partsArray = json.optJSONArray("symptom_part");
+                        JSONArray symptomsArray = json.optJSONArray("disease_symptoms");
+                        ArrayList<String> parts = new ArrayList<>();
+                        ArrayList<String> symptoms = new ArrayList<>();
+                        if (partsArray != null) {
+                            for (int i = 0; i < partsArray.length(); i++) {
+                                parts.add(partsArray.getString(i));
+                            }
+                        }
+                        if (symptomsArray != null) {
+                            for (int i = 0; i < symptomsArray.length(); i++) {
+                                symptoms.add(symptomsArray.getString(i));
+                            }
+                        }
+                        moveToDoctorList(parts, symptoms, userName);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else {
                     Log.e(TAG, "Add-separator API failed: " + response.code());
                 }
@@ -293,5 +318,15 @@ public class LlamaActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         callAddSeparatorApi();
+    }
+
+    private void moveToDoctorList(ArrayList<String> parts, ArrayList<String> symptoms,
+                                  String username) {
+        Intent intent = new Intent(LlamaActivity.this, DoctorListActivity.class);
+        intent.putExtra("part", parts);
+        intent.putExtra("symptom", symptoms);
+        intent.putExtra("user_name", username);
+        intent.putExtra("department", "내과");
+        startActivity(intent);
     }
 }
