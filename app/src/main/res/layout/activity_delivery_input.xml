@@ -42,7 +42,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="15dp"
+            android:layout_margin="20dp"
             android:orientation="vertical">
 
             <TextView
@@ -151,7 +151,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="10dp" />
+                android:layout_height="15dp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -169,7 +169,7 @@
                     android:textStyle="bold" />
 
                 <Space
-                    android:layout_width="25dp"
+                    android:layout_width="20dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1" />
 
@@ -198,7 +198,7 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:background="@drawable/selected_card_border"
-                    android:text="주소 검색"
+                    android:text="주소검색"
                     android:textColor="@color/main_color"
                     app:backgroundTint="@null" />
             </LinearLayout>
@@ -207,7 +207,7 @@
                 android:id="@+id/txtShowAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="7dp"
                 android:background="@drawable/gray_box"
                 android:gravity="center"
                 android:text="주소명"

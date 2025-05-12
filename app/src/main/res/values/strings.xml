@@ -98,7 +98,7 @@
     <string name="home_cold_title">일상질환</string>
     <string name="home_cold_desc">복잡한 과정 없이\n빠르게 진료 신청</string>
 
-    <string name="home_ai_title">닥터링</string>
+    <string name="home_ai_title">닥터링(Dr.Link)</string>
     <string name="home_ai_desc">AI와 채팅하며 증상예측</string>
     <string name="home_ai_note">(내상만 예측 가능)</string>
 

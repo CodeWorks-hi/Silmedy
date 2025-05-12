@@ -6,6 +6,10 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+
     <!--  안내 텍스트 -->
     <ImageView
         android:id="@+id/btnBack"

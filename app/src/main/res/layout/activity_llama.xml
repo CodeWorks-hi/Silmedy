@@ -5,66 +5,78 @@
     android:orientation="vertical"
     android:background="#F4F7FB">
 
+
+
     <!-- 상단 바 -->
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="83dp"
         android:background="#FFFFFF"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
-        android:gravity="center_vertical"
-        android:elevation="2dp">
+        android:elevation="4dp"
+        android:orientation="vertical">
 
-        <!-- 뒤로 가기 버튼 -->
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="32dp"
-            android:layout_height="36dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:contentDescription="@string/btn_back"
-            android:src="@drawable/ic_arrow_back" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
 
-        <!-- 프로필 이미지 -->
-        <ImageView
-            android:id="@+id/imageProfile"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_toEndOf="@id/btnBack"
-            android:layout_marginStart="12dp"
-            android:layout_centerVertical="true"
-            android:scaleType="centerCrop"
-            android:src="@drawable/silmedy_circle" />
-
-        <!-- 채팅방 타이틀 -->
         <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/imageProfile"
-            android:layout_marginStart="8dp"
-            android:layout_centerVertical="true"
-            android:orientation="vertical"
-            android:gravity="center_vertical">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textRoomCode"
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/btn_back"
+                android:src="@drawable/ic_arrow_back" />
+
+            <ImageView
+                android:id="@+id/imageProfile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/silmedy_circle" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/chat_toolbar_title"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textRoomName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/chat_toolbar_status"
-                android:textColor="@color/mint_primary"
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/textRoomCode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chat_toolbar_title"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textRoomName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chat_toolbar_status"
+                    android:textColor="@color/mint_primary"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
-    </RelativeLayout>
+
+    </LinearLayout>
 
     <!-- 메시지 목록: 수직 스크롤바와 NestedScrolling 허용 -->
     <androidx.recyclerview.widget.RecyclerView
@@ -81,47 +93,48 @@
     <!-- 메시지 입력창 -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="8dp"
+        android:layout_height="70dp"
         android:background="#FFFFFF"
-        android:elevation="4dp">
+        android:elevation="4dp"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
         <EditText
             android:id="@+id/editMessage"
             android:layout_width="0dp"
             android:layout_height="48dp"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:background="@xml/bg_edittext"
             android:hint="@string/hint_chat_input"
-            android:padding="12dp"
-            android:textColor="#000000"
-            android:textColorHint="#888888"
-            android:singleLine="true"
             android:imeOptions="actionSend"
             android:inputType="text"
-            android:overScrollMode="never" />
+            android:overScrollMode="never"
+            android:padding="12dp"
+            android:singleLine="true"
+            android:textColor="#000000"
+            android:textColorHint="#888888" />
 
         <ImageButton
             android:id="@+id/btnSend"
-            android:layout_width="43dp"
-            android:layout_height="48dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
             android:background="@android:color/transparent"
             android:contentDescription="@string/btn_send"
-            android:padding="8dp"
-            android:rotation="-40"
+            android:padding="5dp"
             android:scaleType="fitCenter"
-            android:tint="@color/mint_primary"
-            android:src="@drawable/ic_send" />
+            android:src="@drawable/send_icon" />
 
         <ProgressBar
             android:id="@+id/loadingIndicator"
+            style="?android:attr/progressBarStyleLarge"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_gravity="center"
             android:layout_marginBottom="12dp"
-            android:visibility="gone"
-            style="?android:attr/progressBarStyleLarge" />
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

@@ -11,69 +11,106 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="30dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_gravity="start|left"
-            android:layout_margin="20dp"
-            android:contentDescription="@string/btn_back"
-            android:src="@drawable/ic_arrow_back" />
-
-        <TextView
-            android:id="@+id/textView38"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="처방전"
-            android:textSize="26sp"
-            android:textStyle="bold" />
-
-        <ImageView
-            android:id="@+id/imgPrescription"
-            android:layout_width="wrap_content"
-            android:layout_height="419dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
-            app:srcCompat="@drawable/prescription" />
-
-        <TextView
-            android:id="@+id/textView34"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginLeft="30dp"
-            android:text="조회용 처방전 입니다. (*실사용 불가*)"
-            android:textStyle="bold" />
-
+        <!-- 상단바 (흰색 배경) -->
         <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/btn_back"
+                android:src="@drawable/ic_arrow_back" />
+        </LinearLayout>
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
-            android:orientation="horizontal">
+            android:layout_margin="10dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/topBar">
 
-            <ImageView
-                android:id="@+id/btnVisit"
-                android:layout_width="100dp"
-                android:layout_height="125dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:src="@drawable/btn_visit" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <ImageView
-                android:id="@+id/btnDelivery"
-                android:layout_width="100dp"
-                android:layout_height="125dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="1"
-                android:src="@drawable/btn_delivery" />
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp" />
+
+                <TextView
+                    android:id="@+id/textView38"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="처방전"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/imgPrescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="419dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="10dp"
+                    app:srcCompat="@drawable/prescription" />
+
+                <TextView
+                    android:id="@+id/textView34"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:text="조회용 처방전 입니다. (*실사용 불가*)"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/btnVisit"
+                        android:layout_width="100dp"
+                        android:layout_height="125dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:src="@drawable/btn_visit" />
+
+                    <ImageView
+                        android:id="@+id/btnDelivery"
+                        android:layout_width="100dp"
+                        android:layout_height="125dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
+                        android:src="@drawable/btn_delivery" />
+                </LinearLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp" />
+            </LinearLayout>
+        </ScrollView>
         </LinearLayout>
-    </LinearLayout>
+
 
 
     <!-- ⬇️ 하단 네비게이션 바 -->

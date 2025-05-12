@@ -2,35 +2,43 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@xml/bg_login_gradient"
+    android:background="@drawable/login_backgroound"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="24dp">
 
     <!-- 상단 여백 -->
     <Space
         android:layout_width="match_parent"
-        android:layout_height="48dp" />
+        android:layout_height="55dp" />
 
     <!-- 로고 이미지 -->
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/silmedy"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginBottom="8dp"
         android:contentDescription="@string/logo_description"
-        android:layout_marginBottom="8dp" />
+        android:src="@drawable/silmedy" />
 
     <!-- 로그인 카드 -->
-    <LinearLayout
+    <Space
         android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <LinearLayout
+        android:layout_width="325dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp"
         android:background="@xml/bg_card_rounded"
-        android:elevation="6dp">
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <!-- 이메일 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,44 +59,53 @@
             android:textColorHint="#AAAAAA" />
 
         <!-- 비밀번호 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             android:text="@string/label_password"
             android:textColor="#333333"
-            android:textSize="13sp"
-            android:layout_marginBottom="4dp" />
+            android:textSize="13sp" />
 
         <EditText
             android:id="@+id/editPassword"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginBottom="20dp"
+            android:background="@xml/bg_edittext"
             android:hint="@string/hint_password"
             android:inputType="textPassword"
             android:paddingStart="12dp"
-            android:background="@xml/bg_edittext"
             android:textColor="#000000"
-            android:textColorHint="#AAAAAA"
-            android:layout_marginBottom="20dp" />
+            android:textColorHint="#AAAAAA" />
 
         <!-- 로그인 버튼 -->
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="10dp" />
+
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="match_parent"
             android:layout_height="45dp"
+            android:layout_marginBottom="6dp"
+            android:backgroundTint="#51BDB3"
+            android:elevation="2dp"
             android:text="@string/btn_login"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#51BDB3"
-            android:textSize="15sp"
-            android:elevation="2dp"
-            android:layout_marginBottom="12dp" />
+            android:textSize="15sp" />
 
         <!-- 하단 링크 -->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/btnJoin"
@@ -132,8 +149,5 @@
     </LinearLayout>
 
     <!-- 하단 여백 -->
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="60dp" />
 
 </LinearLayout>

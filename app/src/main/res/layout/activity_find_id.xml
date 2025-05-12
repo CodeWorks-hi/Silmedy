@@ -3,171 +3,188 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FAFB"
-    android:padding="24dp">
+    android:background="#F9FAFB">
 
     <!-- 상단바 -->
     <LinearLayout
-        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="83dp"
-        android:background="#FFFFFF"
-        android:elevation="4dp"
-        android:orientation="horizontal"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="@string/btn_back"
-            android:src="@drawable/back_icon" />
+        <LinearLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="83dp"
+            android:background="#FFFFFF"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center|start"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="10dp"
+                android:contentDescription="@string/btn_back"
+                android:src="@drawable/ic_arrow_back" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/title_activity_find_id"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/labelPhone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/label_phone"
+                android:textColor="#555555"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/phoneBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:hint="@string/hint_phone"
+                    android:inputType="phone"
+                    android:paddingHorizontal="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnVerify"
+                    android:layout_width="100dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="@string/btn_verify_phone"
+                    android:textColor="@color/main_color"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/main_color"
+                    app:strokeWidth="1dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/labelCode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/label_verification_code"
+                android:textColor="#555555"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/codeBlock"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/editCode"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@color/white"
+                    android:hint="@string/hint_verification_code"
+                    android:inputType="number"
+                    android:paddingHorizontal="12dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCode"
+                    android:layout_width="100dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="@string/btn_verify_code"
+                    android:textColor="@color/main_color"
+                    app:cornerRadius="12dp"
+                    app:strokeColor="@color/main_color"
+                    app:strokeWidth="1dp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textMyIdLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="54dp"
+                android:text="@string/label_my_id"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textMyId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:textColor="#000000"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnFindPassword"
+                android:layout_width="358dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="85dp"
+                android:backgroundTint="#51BDB3"
+                android:text="@string/btn_find_password"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="12dp" />
+
+            <Button
+                android:id="@+id/btnGoToLogin"
+                android:layout_width="358dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#51BDB3"
+                android:text="@string/btn_go_login"
+                android:textColor="#FFFFFF"
+                app:cornerRadius="12dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <!-- 타이틀 -->
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/topBar"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="4dp"
-        android:text="@string/title_activity_find_id"
-        android:textSize="24sp"
-        android:textStyle="bold" />
 
     <!-- 연락처 라벨 -->
-    <TextView
-        android:id="@+id/labelPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/titleText"
-        android:layout_marginTop="24dp"
-        android:text="@string/label_phone"
-        android:textColor="#555555"
-        android:textStyle="bold" />
 
     <!-- 연락처 입력 + 본인확인 버튼 -->
-    <LinearLayout
-        android:id="@+id/phoneBlock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/labelPhone"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/editPhone"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:hint="@string/hint_phone"
-            android:inputType="phone"
-            android:paddingHorizontal="12dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVerify"
-            android:layout_width="100dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="@string/btn_verify_phone"
-            android:textColor="@color/main_color"
-            app:cornerRadius="12dp"
-            app:strokeColor="@color/main_color"
-            app:strokeWidth="1dp" />
-    </LinearLayout>
 
     <!-- 인증 코드 라벨 -->
-    <TextView
-        android:id="@+id/labelCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/phoneBlock"
-        android:layout_marginTop="24dp"
-        android:text="@string/label_verification_code"
-        android:textColor="#555555"
-        android:textStyle="bold" />
 
     <!-- 인증 코드 입력 + 인증 버튼 -->
-    <LinearLayout
-        android:id="@+id/codeBlock"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/labelCode"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/editCode"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:hint="@string/hint_verification_code"
-            android:inputType="number"
-            android:paddingHorizontal="12dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCode"
-            android:layout_width="100dp"
-            android:layout_height="48dp"
-            android:layout_marginStart="8dp"
-            android:backgroundTint="#FFFFFF"
-            android:text="@string/btn_verify_code"
-            android:textColor="@color/main_color"
-            app:cornerRadius="12dp"
-            app:strokeColor="@color/main_color"
-            app:strokeWidth="1dp" />
-    </LinearLayout>
 
     <!-- 내 아이디 라벨 -->
-    <TextView
-        android:id="@+id/textMyIdLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/codeBlock"
-        android:layout_marginTop="54dp"
-        android:text="@string/label_my_id"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
     <!-- 내 아이디 텍스트 -->
-    <TextView
-        android:id="@+id/textMyId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textMyIdLabel"
-        android:layout_marginTop="32dp"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        android:visibility="gone" />
 
     <!-- 비밀번호 찾기 버튼 -->
-    <Button
-        android:id="@+id/btnFindPassword"
-        android:layout_width="358dp"
-        android:layout_height="64dp"
-        android:layout_below="@id/textMyId"
-        android:layout_marginTop="85dp"
-        android:backgroundTint="#51BDB3"
-        android:text="@string/btn_find_password"
-        android:textColor="#FFFFFF"
-        app:cornerRadius="12dp" />
 
     <!-- 로그인하러 가기 버튼 -->
-    <Button
-        android:id="@+id/btnGoToLogin"
-        android:layout_width="358dp"
-        android:layout_height="65dp"
-        android:layout_below="@id/btnFindPassword"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="#51BDB3"
-        android:text="@string/btn_go_login"
-        android:textColor="#FFFFFF"
-        app:cornerRadius="12dp" />
 
 </RelativeLayout>
