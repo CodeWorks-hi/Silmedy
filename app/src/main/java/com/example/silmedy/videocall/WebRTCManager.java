@@ -3,10 +3,12 @@ package com.example.silmedy.videocall;
 import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
+import android.widget.TextView;
 
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
 import org.webrtc.Camera1Enumerator;
+import org.webrtc.DataChannel;
 import org.webrtc.DefaultVideoDecoderFactory;
 import org.webrtc.DefaultVideoEncoderFactory;
 import org.webrtc.EglBase;
@@ -25,6 +27,8 @@ import org.webrtc.VideoTrack;
 import org.webrtc.audio.AudioDeviceModule;
 import org.webrtc.audio.JavaAudioDeviceModule;
 
+import java.nio.ByteBuffer;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +43,12 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
     private PeerConnection peerConnection;
     private FirebaseSignalingClient signalingClient;
     private String roomId;
+
+    private TextView subtitleTextView;  // 액티비티에서 뷰를 전달받아 필드로 선언   // 남호가 추가
+
+    public void setSubtitleTextView(TextView subtitleTextView) {// 남호가 추가
+        this.subtitleTextView = subtitleTextView;               // 남호가 추가
+    }                                                            // 남호가 추가
 
     public WebRTCManager(Context ctx, EglBase eglBase,
                          SurfaceViewRenderer remoteView,
@@ -113,16 +123,41 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
                     @Override
                     public void onIceConnectionChange(PeerConnection.IceConnectionState newState) {
                         Log.d(TAG, "onIceConnectionChange() state=" + newState);
-                        if (newState == PeerConnection.IceConnectionState.DISCONNECTED
-                                || newState == PeerConnection.IceConnectionState.CLOSED
-                                || newState == PeerConnection.IceConnectionState.FAILED) {
-                            dispose();
-                            if (context instanceof Activity) {
-                                ((Activity) context).runOnUiThread(
-                                        () -> ((Activity) context).finish()
+                        switch (newState) {
+                            case CONNECTED:
+                            case COMPLETED:
+                                // Connection established; you can update UI if needed
+                                break;
+                            case DISCONNECTED:
+                            case FAILED:
+                                dispose();
+                                if (context instanceof Activity) {
+                                    ((Activity) context).runOnUiThread(() -> ((Activity) context).finish());
+                                }
+                                break;
+                            default:
+                                // Other states: NEW, CHECKING, CLOSED
+                                break;
+                        }
+                    }
+
+                    @Override
+                    public void onDataChannel(DataChannel channel) {
+                        if (!"subtitles".equals(channel.label())) return;
+                        channel.registerObserver(new DataChannel.Observer() {
+                            @Override
+                            public void onMessage(DataChannel.Buffer buffer) {
+                                ByteBuffer data = buffer.data;
+                                byte[] bytes = new byte[data.capacity()];
+                                data.get(bytes);
+                                final String subtitle = new String(bytes, Charset.forName("UTF-8"));
+                                ((Activity) context).runOnUiThread(() ->
+                                    subtitleTextView.setText(subtitle)
                                 );
                             }
-                        }
+                            @Override public void onStateChange() {}
+                            @Override public void onBufferedAmountChange(long previousAmount) {}
+                        });
                     }
                 }
         );
@@ -215,10 +250,14 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
     public void onOfferReceived(String sdp) {
         SessionDescription offerDesc =
                 new SessionDescription(SessionDescription.Type.OFFER, sdp);
-        peerConnection.setRemoteDescription(
-                new SdpAdapter("setRemoteOffer"), offerDesc);
-        // Offer 받은 후 곧바로 Answer 생성/전송
-        createAnswerAndSend(roomId);
+        peerConnection.setRemoteDescription(new SdpAdapter("setRemoteOffer") {
+            @Override
+            public void onSetSuccess() {
+                Log.d(TAG, "Remote offer set successfully, creating answer");
+                // Offer 받은 후 Answer 생성 및 전송
+                createAnswerAndSend(roomId);
+            }
+        }, offerDesc);
     }
 
     @Override

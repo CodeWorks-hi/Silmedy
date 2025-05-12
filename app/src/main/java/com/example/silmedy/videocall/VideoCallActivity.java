@@ -10,6 +10,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
+import android.widget.TextView;     // 남호가 추가
 
 import com.example.silmedy.R;
 import com.example.silmedy.ui.auth.LoginActivity;
@@ -46,8 +47,7 @@ public class VideoCallActivity extends AppCompatActivity {
                 // Token refreshed successfully, you can add further logic if needed
             }
         });
-        setContentView(R.layout.activity_video_call);
-
+        // No initial layout; handled in handleIntent()
         handleIntent(getIntent());
     }
 
@@ -84,10 +84,19 @@ public class VideoCallActivity extends AppCompatActivity {
 
         // WebRTC 렌더러 초기화
         eglBase = EglBase.create();
-        remoteView.init(eglBase.getEglBaseContext(), null);
+        // ❷ 렌더러 뷰를 findViewById 한 후 init 호출
+
+        remoteView.init(eglBase.getEglBaseContext(), /* events= */ null);
         remoteView.setMirror(false);
-        localView.init(eglBase.getEglBaseContext(), null);
+        remoteView.setEnableHardwareScaler(true);
+
+
+        localView.init(eglBase.getEglBaseContext(), /* events= */ null);
+        localView.setZOrderMediaOverlay(true);
         localView.setMirror(true);
+        localView.setEnableHardwareScaler(true);
+
+        
 
         // FCM 풀스크린 알림 취소
         NotificationManagerCompat.from(this)
@@ -95,6 +104,8 @@ public class VideoCallActivity extends AppCompatActivity {
 
         // WebRTC 연결 시작
         webRTC = new WebRTCManager(this, eglBase, remoteView, localView);
+        TextView subtitleTextView = findViewById(R.id.sttText);     // 남호가 추가
+        webRTC.setSubtitleTextView(subtitleTextView);     // 남호가 추가
         webRTC.setRoomId(roomId);
 
         // ◀ 여기부터: Firebase 경로 삭제 시 액티비티 종료 감지 설정
@@ -105,6 +116,7 @@ public class VideoCallActivity extends AppCompatActivity {
         callListener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
+                Log.d(TAG, "[Android] answer 스냅샷: " + snapshot.getValue());
                 if (!snapshot.exists()) {
                     Log.d(TAG, "📴 방 데이터가 삭제되었습니다. VideoCallActivity 종료.");
                     // WebRTC 리소스 해제
@@ -141,4 +153,7 @@ public class VideoCallActivity extends AppCompatActivity {
         }
         // ▶ 여기까지
     }
+
+
+
 }
