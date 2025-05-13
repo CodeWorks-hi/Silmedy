@@ -13,7 +13,6 @@ import com.example.silmedy.R;
 import com.example.silmedy.model.MedicalHistoryItem;
 import com.example.silmedy.ui.user.MedicalDetailActivity;
 
-import java.io.Serializable;
 import java.util.List;
 
 public class MedicalHistoryAdapter extends RecyclerView.Adapter<MedicalHistoryAdapter.ViewHolder> {
@@ -37,7 +36,7 @@ public class MedicalHistoryAdapter extends RecyclerView.Adapter<MedicalHistoryAd
         MedicalHistoryItem item = medicalHistoryList.get(position);
         holder.textDate.setText(item.getDate());
         holder.textHospital.setText(item.getHospitalName());
-        String summary = item.getDiagnosisSummary().toString()
+        String summary = item.getSymptoms().toString()
                 .replace("[", "")
                 .replace("]", "")
                 .replace(",", ", ")

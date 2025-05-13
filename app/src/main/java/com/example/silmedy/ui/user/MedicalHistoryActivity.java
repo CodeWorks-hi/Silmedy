@@ -105,9 +105,9 @@ public class MedicalHistoryActivity extends AppCompatActivity {
                             org.json.JSONObject item = recordsArray.getJSONObject(i);
                             String diagnosisId = item.getString("diagnosis_id");
                             String diagnosedAt = item.getString("diagnosed_at");
-                            String summaryText = item.getString("summary_text");
+                            String symptoms = item.getString("symptoms");
                             String hospitalName = item.getString("hospital_name");
-                            diagnosisList.add(new MedicalHistoryItem(diagnosisId, diagnosedAt, hospitalName, summaryText));
+                            diagnosisList.add(new MedicalHistoryItem(diagnosisId, diagnosedAt, hospitalName, symptoms));
                         }
                         runOnUiThread(() -> {
                             RecyclerView recyclerView = findViewById(R.id.historyRecyclerView);
