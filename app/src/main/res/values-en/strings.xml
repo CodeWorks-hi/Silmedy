@@ -146,6 +146,8 @@
     <string name="label_home_actions">Home Care</string>
     <string name="label_guideline">Guideline</string>
     <string name="label_emergency_advice">Emergency Advice</string>
+    <string name="label_symptom_part">Symptom Part</string>
+    <string name="label_analysis">summary</string>
 
     <!-- Disclaimer and instructions (English) -->
     <string name="text_disclaimer1">※ For an accurate diagnosis, please consult a healthcare professional.</string>

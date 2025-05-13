@@ -149,6 +149,9 @@
     <string name="label_home_actions">자가 관리</string>
     <string name="label_guideline">권고사항</string>
     <string name="label_emergency_advice">응급 조치</string>
+    <string name="label_symptom_part">질병 부위</string>
+    <string name="label_analysis">증상 분석</string>
+
 
     <string name="text_disclaimer1">※ 정확한 진단은 전문가 상담을 통해 진행하세요.</string>
     <string name="text_disclaimer2">※ 비대면 진료가 필요하면 ‘예’라고 답해주세요.</string>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/message_item_greeting.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:gravity="start">
+
+    <!-- AI 프로필 아이콘 -->
+    <ImageView
+        android:id="@+id/imageProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/silmedy_circle"
+        android:contentDescription="@string/desc_profile_image" />
+
+    <!-- 인사말 버블 컨테이너 -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/layoutMessageBubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@xml/bg_message_ai"
+            android:padding="12dp"
+            android:maxWidth="240dp">
+
+            <TextView
+                android:id="@+id/textGreeting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="안녕하세요!\nAI 내과상담챗봇 닥터링(Dr.Link)입니다.\n증상을 입력해주세요."
+                android:textSize="14sp"
+                android:textColor="#000000"
+                android:lineSpacingExtra="4dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/activity_chat_summary.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -22,15 +23,14 @@
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <ImageView
                 android:id="@+id/btnBack"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:layout_gravity="center|start"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="10dp"
                 android:contentDescription="@string/btn_back"
                 android:src="@drawable/ic_arrow_back" />
 
@@ -38,19 +38,14 @@
                 android:id="@+id/imageProfile"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:layout_gravity="center"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/silmedy_circle" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:gravity="center_vertical"
                 android:orientation="vertical">
 
                 <TextView
@@ -73,20 +68,72 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Scrollable text area -->
+    <!-- 요약 및 구조화 정보 영역 -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="16dp">
 
-        <TextView
-            android:id="@+id/textViewSummary"
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:lineSpacingExtra="4dp"
-            android:textColor="@color/black" />
+            android:layout_height="wrap_content">
+
+            <!-- 2) 질병 증상 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_disease_symptoms"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/textDiseaseSymptoms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/black"
+                android:paddingBottom="16dp" />
+
+            <!-- 2) 주요 증상 부위 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_symptom_part"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:paddingBottom="4dp" />
+
+            <TextView
+                android:id="@+id/textSymptomParts"
+                android:layout_width="match_parent"
+                android:layout_height="37dp"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <!-- 3) 요약 텍스트 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/label_analysis"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:paddingBottom="4dp" />
+            <TextView
+                android:id="@+id/textViewSummary"
+                android:layout_width="match_parent"
+                android:layout_height="168dp"
+                android:lineSpacingExtra="4dp"
+                android:paddingBottom="24dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

@@ -1,4 +1,3 @@
-// LlamaClassifier.java
 package com.example.silmedy.llama;
 
 import android.content.Context;
@@ -48,7 +47,7 @@ public class LlamaClassifier {
 
     /**
      * 1) patientText POST → 2) ai_text 응답 → 3) 레이블 파싱 → 4) Message 콜백
-     * Authorization 헤더 추가
+     * Authorization 헤더 포함
      */
     public void classifySymptom(String patientText, String ptTs, Callback cb) {
         String token = new TokenManager(context).getAccessToken();
@@ -76,6 +75,7 @@ public class LlamaClassifier {
             public void onFailure(Call call, IOException e) {
                 mainHandler.post(() -> cb.onError(e));
             }
+
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 if (!response.isSuccessful()) {
@@ -84,6 +84,7 @@ public class LlamaClassifier {
                     );
                     return;
                 }
+
                 String raw = response.body().string();
                 String aiText;
                 try {
@@ -93,14 +94,14 @@ public class LlamaClassifier {
                     return;
                 }
 
-// 한글 레이블
-                String korP = "- " + context.getString(R.string.label_patient_symptoms);   // "- 환자 증상"
+                // 한글/영문 레이블 정의
+                String korP = "- " + context.getString(R.string.label_patient_symptoms);
                 String korD = "- " + context.getString(R.string.label_disease_symptoms);
                 String korM = "- " + context.getString(R.string.label_main_symptoms);
                 String korH = "- " + context.getString(R.string.label_home_actions);
                 String korG = "- " + context.getString(R.string.label_guideline);
                 String korE = "- " + context.getString(R.string.label_emergency_advice);
-// 영문 레이블
+
                 String engP = "- patient_symptoms";
                 String engD = "- disease_symptoms";
                 String engM = "- main_symptoms";
@@ -108,28 +109,48 @@ public class LlamaClassifier {
                 String engG = "- guideline";
                 String engE = "- emergency_advice";
 
-                String ps="", ds="", ms="", ha="", gl="", ea="";
-
+                // 파싱 변수 초기화
+                String ps = "", ds = "", ms = "", ha = "", gl = "", ea = "";
                 for (String line : aiText.split("\\r?\\n")) {
                     line = line.trim();
-                    if      (line.startsWith(korP) || line.startsWith(engP)) ps = line.substring(line.indexOf(':')+1).trim();
-                    else if (line.startsWith(korD) || line.startsWith(engD)) ds = line.substring(line.indexOf(':')+1).trim();
-                    else if (line.startsWith(korM) || line.startsWith(engM)) ms = line.substring(line.indexOf(':')+1).trim();
-                    else if (line.startsWith(korH) || line.startsWith(engH)) ha = line.substring(line.indexOf(':')+1).trim();
-                    else if (line.startsWith(korG) || line.startsWith(engG)) gl = line.substring(line.indexOf(':')+1).trim();
-                    else if (line.startsWith(korE) || line.startsWith(engE)) ea = line.substring(line.indexOf(':')+1).trim();
+                    if      (line.matches("(?i)(" + korP + "|" + engP + ")\\s*[:：].*"))
+                        ps = line.replaceFirst("(?i).+[:：]\\s*", "");
+                    else if (line.matches("(?i)(" + korD + "|" + engD + ")\\s*[:：].*"))
+                        ds = line.replaceFirst("(?i).+[:：]\\s*", "");
+                    else if (line.matches("(?i)(" + korM + "|" + engM + ")\\s*[:：].*"))
+                        ms = line.replaceFirst("(?i).+[:：]\\s*", "");
+                    else if (line.matches("(?i)(" + korH + "|" + engH + ")\\s*[:：].*"))
+                        ha = line.replaceFirst("(?i).+[:：]\\s*", "");
+                    else if (line.matches("(?i)(" + korG + "|" + engG + ")\\s*[:：].*"))
+                        gl = line.replaceFirst("(?i).+[:：]\\s*", "");
+                    else if (line.matches("(?i)(" + korE + "|" + engE + ")\\s*[:：].*"))
+                        ea = line.replaceFirst("(?i).+[:：]\\s*", "");
                 }
 
+                // 파싱 실패 시 원본 텍스트만 담기
+                boolean allEmpty = ps.isEmpty() && ds.isEmpty() && ms.isEmpty()
+                        && ha.isEmpty() && gl.isEmpty() && ea.isEmpty();
 
                 String aiTs = String.valueOf(System.currentTimeMillis());
-                Message aiMsg = new Message(
-                        "AI",
-                        aiText,
-                        Message.formatTimeOnly(System.currentTimeMillis()),
-                        false,
-                        aiTs,
-                        ps, ds, ms, ha, gl, ea
-                );
+                Message aiMsg;
+                if (allEmpty) {
+                    aiMsg = new Message(
+                            "AI",
+                            aiText,
+                            Message.formatTimeOnly(System.currentTimeMillis()),
+                            false,
+                            aiTs
+                    );
+                } else {
+                    aiMsg = new Message(
+                            "AI",
+                            aiText,
+                            Message.formatTimeOnly(System.currentTimeMillis()),
+                            false,
+                            aiTs,
+                            ps, ds, ms, ha, gl, ea
+                    );
+                }
 
                 mainHandler.post(() -> cb.onResult(aiMsg));
             }
@@ -137,8 +158,7 @@ public class LlamaClassifier {
     }
 
     /**
-     * 진료 종료 후 구분선 API 호출 → SeparatorCallback 으로 parts/symptoms 전달
-     * Authorization 헤더 추가
+     * 진료 완료 후 구분선 API 호출 → SeparatorCallback 으로 parts/symptoms 전달
      */
     public void callAddSeparator(String userName, SeparatorCallback cb) {
         String token = new TokenManager(context).getAccessToken();
@@ -151,9 +171,7 @@ public class LlamaClassifier {
 
         client.newCall(request).enqueue(new okhttp3.Callback() {
             @Override public void onFailure(Call call, IOException e) { /* 무시 */ }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            @Override public void onResponse(Call call, Response response) throws IOException {
                 if (!response.isSuccessful()) return;
                 try {
                     JSONObject json = new JSONObject(response.body().string());

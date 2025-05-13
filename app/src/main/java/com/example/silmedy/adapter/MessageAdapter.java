@@ -17,12 +17,14 @@ import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    private static final int TYPE_GREETING = -1;
     private static final int TYPE_ME = 0;
     private static final int TYPE_AI = 1;
 
     private final Context context;
     private final List<Message> msgs;
     private final String currentUser;
+    private boolean showGreeting = true;
 
     public MessageAdapter(Context context, List<Message> messageList, String currentUser) {
         this.context = context;
@@ -32,17 +34,22 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public int getItemViewType(int position) {
-        Message m = msgs.get(position);
+        if (showGreeting && position == 0) {
+            return TYPE_GREETING;
+        }
+        int dataPos = showGreeting ? position - 1 : position;
+        Message m = msgs.get(dataPos);
         return "나".equals(m.getSenderId()) ? TYPE_ME : TYPE_AI;
     }
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(
-            @NonNull ViewGroup parent, int viewType
-    ) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        if (viewType == TYPE_ME) {
+        if (viewType == TYPE_GREETING) {
+            View v = inflater.inflate(R.layout.message_item_greeting, parent, false);
+            return new GreetingHolder(v);
+        } else if (viewType == TYPE_ME) {
             View v = inflater.inflate(R.layout.message_item_me, parent, false);
             return new MeHolder(v);
         } else {
@@ -52,21 +59,21 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(
-            @NonNull RecyclerView.ViewHolder holder, int position
-    ) {
-        Message m = msgs.get(position);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+        if (getItemViewType(position) == TYPE_GREETING) {
+            // greeting holder has static text, nothing to bind
+            return;
+        }
+        int dataPos = showGreeting ? position - 1 : position;
+        Message m = msgs.get(dataPos);
         String time = m.getCreatedAt();
 
         if (holder instanceof MeHolder) {
             MeHolder h = (MeHolder) holder;
             h.msg.setText(m.getText());
             h.time.setText(time);
-
         } else if (holder instanceof AiHolder) {
             AiHolder h = (AiHolder) holder;
-
-            // 각 TextView에 데이터 바인딩 (레이블 + 값)
             h.textPatientSymptoms.setText(
                     context.getString(R.string.label_patient_symptoms) + ": " + m.getPatientSymptoms()
             );
@@ -85,34 +92,44 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             h.textEmergencyAdvice.setText(
                     context.getString(R.string.label_emergency_advice) + ": " + m.getEmergencyAdvice()
             );
-
-            // 고정된 주의 문구
             h.textDisclaimer1.setText(context.getString(R.string.text_disclaimer1));
             h.textDisclaimer2.setText(context.getString(R.string.text_disclaimer2));
-
-            // 전송 시간
             h.textTime.setText(time);
-
-            // 프로필 이미지는 XML drawable 그대로 사용
         }
     }
 
     @Override
     public int getItemCount() {
-        return msgs != null ? msgs.size() : 0;
+        return msgs.size() + (showGreeting ? 1 : 0);
     }
 
-    /** “나” 메시지용 ViewHolder **/
+    /** 외부에서 인사표시 토글 **/
+    public void hideGreeting() {
+        if (showGreeting) {
+            showGreeting = false;
+            notifyItemRemoved(0);
+        }
+    }
+
+    static class GreetingHolder extends RecyclerView.ViewHolder {
+        final TextView textGreeting;
+        final ImageView profile;
+        GreetingHolder(View v) {
+            super(v);
+            profile = v.findViewById(R.id.imageProfile);
+            textGreeting = v.findViewById(R.id.textGreeting);
+        }
+    }
+
     static class MeHolder extends RecyclerView.ViewHolder {
         final TextView msg, time;
         MeHolder(View v) {
             super(v);
-            msg  = v.findViewById(R.id.textMessage);
+            msg = v.findViewById(R.id.textMessage);
             time = v.findViewById(R.id.textTime);
         }
     }
 
-    /** AI 메시지용 ViewHolder **/
     static class AiHolder extends RecyclerView.ViewHolder {
         final ImageView profile;
         final TextView textPatientSymptoms;
@@ -127,16 +144,16 @@ public class MessageAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         AiHolder(View v) {
             super(v);
-            profile             = v.findViewById(R.id.imageProfile);
+            profile = v.findViewById(R.id.imageProfile);
             textPatientSymptoms = v.findViewById(R.id.textPatientSymptoms);
             textDiseaseSymptoms = v.findViewById(R.id.textDiseaseSymptoms);
-            textMainSymptoms    = v.findViewById(R.id.textMainSymptoms);
-            textHomeActions     = v.findViewById(R.id.textHomeActions);
-            textGuideline       = v.findViewById(R.id.textGuideline);
+            textMainSymptoms = v.findViewById(R.id.textMainSymptoms);
+            textHomeActions = v.findViewById(R.id.textHomeActions);
+            textGuideline = v.findViewById(R.id.textGuideline);
             textEmergencyAdvice = v.findViewById(R.id.textEmergencyAdvice);
-            textDisclaimer1     = v.findViewById(R.id.textDisclaimer1);
-            textDisclaimer2     = v.findViewById(R.id.textDisclaimer2);
-            textTime            = v.findViewById(R.id.textTime);
+            textDisclaimer1 = v.findViewById(R.id.textDisclaimer1);
+            textDisclaimer2 = v.findViewById(R.id.textDisclaimer2);
+            textTime = v.findViewById(R.id.textTime);
         }
     }
 }
