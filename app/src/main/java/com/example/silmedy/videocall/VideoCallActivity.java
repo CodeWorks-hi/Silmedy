@@ -10,6 +10,7 @@ import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationManagerCompat;
+
 import android.widget.TextView;     // 남호가 추가
 
 import com.example.silmedy.R;
@@ -24,9 +25,10 @@ import com.google.firebase.database.ValueEventListener;
 import org.webrtc.EglBase;
 import org.webrtc.SurfaceViewRenderer;
 
-public class VideoCallActivity extends AppCompatActivity {
 
-    private static final String PREFS     = "SilmedyPrefs";
+public class VideoCallActivity extends AppCompatActivity {
+    private static final String TAG = "WebRTCManager";
+    private static final String PREFS = "SilmedyPrefs";
     private static final String KEY_TOKEN = "access_token";
 
     private SurfaceViewRenderer remoteView, localView;
@@ -61,7 +63,7 @@ public class VideoCallActivity extends AppCompatActivity {
     private void handleIntent(Intent intent) {
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
         String token = prefs.getString(KEY_TOKEN, null);
-        String roomId   = intent.getStringExtra("roomId");
+        String roomId = intent.getStringExtra("roomId");
         boolean isCaller = intent.getBooleanExtra("isCaller", false);
         Log.d(TAG, "handleIntent() roomId=" + roomId + ", isCaller=" + isCaller);
 
@@ -76,7 +78,7 @@ public class VideoCallActivity extends AppCompatActivity {
         // 레이아웃 + 오디오 세팅
         setContentView(R.layout.activity_receive);
         remoteView = findViewById(R.id.remoteView);
-        localView  = findViewById(R.id.localView);
+        localView = findViewById(R.id.localView);
         AudioManager am = (AudioManager) getSystemService(AUDIO_SERVICE);
         am.setMode(AudioManager.MODE_IN_COMMUNICATION);
         am.setSpeakerphoneOn(true);
@@ -96,15 +98,14 @@ public class VideoCallActivity extends AppCompatActivity {
         localView.setMirror(true);
         localView.setEnableHardwareScaler(true);
 
-        
 
         // FCM 풀스크린 알림 취소
         NotificationManagerCompat.from(this)
                 .cancel(NotificationHelper.NOTIFY_ID + 1);
 
         // WebRTC 연결 시작
-        webRTC = new WebRTCManager(this, eglBase, remoteView, localView);
         TextView subtitleTextView = findViewById(R.id.sttText);     // 남호가 추가
+        webRTC = new WebRTCManager(this, eglBase, remoteView, localView);
         webRTC.setSubtitleTextView(subtitleTextView);     // 남호가 추가
         isCaller = getIntent().getBooleanExtra("isCaller", false);
         webRTC.setRoomId(roomId, isCaller);
@@ -126,7 +127,10 @@ public class VideoCallActivity extends AppCompatActivity {
                     finish();
                 }
             }
-            @Override public void onCancelled(DatabaseError error) { }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+            }
         };
         callRef.addValueEventListener(callListener);
         // ▶ 여기까지
@@ -143,18 +147,27 @@ public class VideoCallActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (webRTC != null) webRTC.dispose();
-        if (remoteView != null) remoteView.release();
-        if (localView != null) localView.release();
-        if (eglBase != null) eglBase.release();
 
-        // ◀ 여기부터: 리스너 해제
+        // 1) 렌더러 뷰 먼저 해제
+        if (remoteView != null) {
+            remoteView.release();
+            remoteView = null;
+        }
+        if (localView != null) {
+            localView.release();
+            localView = null;
+        }
+
+        // 2) EGL 컨텍스트 해제는 여기서
+        if (eglBase != null) {
+            eglBase.release();
+            eglBase = null;
+        }
+
+        // ⚠️ eglBase.release() 는 여기서 제거!
+
         if (callRef != null && callListener != null) {
             callRef.removeEventListener(callListener);
         }
-        // ▶ 여기까지
     }
-
-
-
 }

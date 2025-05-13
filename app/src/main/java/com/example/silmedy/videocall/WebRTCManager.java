@@ -35,16 +35,19 @@ import java.util.List;
 public class WebRTCManager implements FirebaseSignalingClient.Callback {
     private static final String TAG = "WebRTCManager";
 
-    private final Context context;
+    private final Activity activity;
     private final EglBase eglBase;
     private final SurfaceViewRenderer remoteView;
     private final SurfaceViewRenderer localView;
+    private VideoCapturer videoCapturer;
     private PeerConnectionFactory factory;
     private PeerConnection peerConnection;
     private FirebaseSignalingClient signalingClient;
     private String roomId;
     private DataChannel localDataChannel;
     private boolean isCaller = false;
+    private boolean disposed = false;
+
 
     private TextView subtitleTextView;  // 액티비티에서 뷰를 전달받아 필드로 선언   // 남호가 추가
 
@@ -52,10 +55,10 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
         this.subtitleTextView = subtitleTextView;               // 남호가 추가
     }                                                            // 남호가 추가
 
-    public WebRTCManager(Context ctx, EglBase eglBase,
+    public WebRTCManager(Activity activity, EglBase eglBase,
                          SurfaceViewRenderer remoteView,
                          SurfaceViewRenderer localView) {
-        this.context = ctx.getApplicationContext();
+        this.activity = activity;
         this.eglBase = eglBase;
         this.remoteView = remoteView;
         this.localView = localView;
@@ -65,7 +68,7 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
         initLocalMedia();
     }
 
-    public void setRoomId(String roomId, boolean isCaller ) {
+    public void setRoomId(String roomId, boolean isCaller) {
         this.roomId = roomId;
         this.isCaller = isCaller;
         Log.d(TAG, "setRoomId() called. roomId=" + roomId);
@@ -78,9 +81,9 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
     private void initFactory() {
         Log.d(TAG, "initFactory() start");
         PeerConnectionFactory.initialize(
-                PeerConnectionFactory.InitializationOptions.builder(context)
+                PeerConnectionFactory.InitializationOptions.builder(activity.getApplicationContext())
                         .createInitializationOptions());
-        AudioDeviceModule adm = JavaAudioDeviceModule.builder(context)
+        AudioDeviceModule adm = JavaAudioDeviceModule.builder(activity.getApplicationContext())
                 .setUseHardwareAcousticEchoCanceler(true)
                 .setUseHardwareNoiseSuppressor(true)
                 .createAudioDeviceModule();
@@ -133,10 +136,7 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
                                 break;
                             case DISCONNECTED:
                             case FAILED:
-                                dispose();
-                                if (context instanceof Activity) {
-                                    ((Activity) context).runOnUiThread(() -> ((Activity) context).finish());
-                                }
+                                Log.d(TAG, "onIceConnectionChange DISCONNECTED/FAILED – 대기 상태 유지");
                                 break;
                             default:
                                 // Other states: NEW, CHECKING, CLOSED
@@ -157,14 +157,24 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
                                 data.get(bytes);
                                 final String subtitle = new String(bytes, Charset.forName("UTF-8"));
                                 Log.d(TAG, "Received subtitle: " + subtitle);
-                                ((Activity) context).runOnUiThread(() ->
-                                    subtitleTextView.setText(subtitle)
-                                );
+                                // 뷰가 세팅되어 있으면 화면에 띄우고, 아니면 경고만 로깅
+                                if (subtitleTextView != null) {
+                                    activity.runOnUiThread(() ->
+                                            subtitleTextView.setText(subtitle)
+                                    );
+                                } else {
+                                    Log.w(TAG, "subtitleTextView is null — cannot show subtitle");
+                                }
                             }
-                            @Override public void onStateChange() {
+
+                            @Override
+                            public void onStateChange() {
                                 Log.d(TAG, "▶ subtitles DC state → " + channel.state());
                             }
-                            @Override public void onBufferedAmountChange(long previousAmount) {}
+
+                            @Override
+                            public void onBufferedAmountChange(long previousAmount) {
+                            }
                         });
                     }
                 }
@@ -175,20 +185,25 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
         } else {
             Log.d(TAG, "PeerConnection created");
         }
-        DataChannel.Init init = new DataChannel.Init();
-        localDataChannel = peerConnection.createDataChannel("subtitles", init);  // <<-- 추가
+    }
+
+    public void closeDataChannel() {
+        if (localDataChannel != null) {
+            localDataChannel.close();
+            localDataChannel = null;
+        }
     }
 
 
     private void initLocalMedia() {
         Log.d(TAG, "initLocalMedia() start");
-        VideoCapturer capturer = createCameraCapturer();
+        videoCapturer = createCameraCapturer();
         SurfaceTextureHelper helper = SurfaceTextureHelper.create(
                 "CaptureThread", eglBase.getEglBaseContext());
         VideoSource vs = factory.createVideoSource(false);
-        capturer.initialize(helper, context, vs.getCapturerObserver());
+        videoCapturer.initialize(helper, activity.getApplicationContext(), vs.getCapturerObserver());
         try {
-            capturer.startCapture(640, 480, 30);
+            videoCapturer.startCapture(640, 480, 30);
         } catch (Exception e) {
             Log.e(TAG, "startCapture() failed", e);
         }
@@ -223,16 +238,16 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
     public void createOfferAndSend(String roomId) {
         this.roomId = roomId;
         Log.d(TAG, "▶ createOfferAndSend() — caller? " + isCaller);
-        if (isCaller) {
-            DataChannel.Init init = new DataChannel.Init();
-            localDataChannel = peerConnection.createDataChannel("subtitles", init);
-            Log.d(TAG, "▶ Caller created subtitles DC, state=" + localDataChannel.state());
 
-        }
         // 신규 시그널링 클라이언트 초기화 (이미 init 되었다면 중복 무시)
         if (signalingClient == null) {
             signalingClient = new FirebaseSignalingClient(roomId, this);
         }
+        // ▶ caller 역할로 Offer 만들기 직전에만 채널 생성
+        DataChannel.Init init = new DataChannel.Init();
+        localDataChannel = peerConnection.createDataChannel("subtitles", init);
+        Log.d(TAG, "▶ Caller created subtitles DC, state=" + localDataChannel.state());
+
         peerConnection.createOffer(new SdpAdapter("createOffer") {
             @Override
             public void onCreateSuccess(SessionDescription offer) {
@@ -251,6 +266,11 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
         if (signalingClient == null) {
             signalingClient = new FirebaseSignalingClient(roomId, this);
         }
+        // ▶ callee 역할로 Answer 만들기 직전에만 채널 생성
+        DataChannel.Init init = new DataChannel.Init();
+        localDataChannel = peerConnection.createDataChannel("subtitles", init);
+        Log.d(TAG, "▶ Callee created subtitles DC, state=" + localDataChannel.state());
+
         peerConnection.createAnswer(new SdpAdapter("createAnswer") {
             @Override
             public void onCreateSuccess(SessionDescription answer) {
@@ -295,10 +315,22 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
      * 연결 종료 시 리소스 해제
      */
     public void dispose() {
+        if (disposed) return;
+        disposed = true;
         Log.d(TAG, "dispose() called");
+
+        // 1) 카메라 캡처러 정리
+        if (videoCapturer != null) {
+            try {
+                videoCapturer.stopCapture();
+            } catch (InterruptedException e) {
+                Log.w(TAG, "stopCapture 실패", e);
+            }
+            videoCapturer.dispose();
+            videoCapturer = null;
+        }
         if (signalingClient != null) signalingClient.stop();
         if (peerConnection != null) peerConnection.dispose();
         if (factory != null) factory.dispose();
-        eglBase.release();
     }
 }
