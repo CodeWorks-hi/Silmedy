@@ -43,6 +43,8 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
     private PeerConnection peerConnection;
     private FirebaseSignalingClient signalingClient;
     private String roomId;
+    private DataChannel localDataChannel;
+    private boolean isCaller = false;
 
     private TextView subtitleTextView;  // 액티비티에서 뷰를 전달받아 필드로 선언   // 남호가 추가
 
@@ -63,8 +65,9 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
         initLocalMedia();
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(String roomId, boolean isCaller ) {
         this.roomId = roomId;
+        this.isCaller = isCaller;
         Log.d(TAG, "setRoomId() called. roomId=" + roomId);
         if (signalingClient == null) {
             signalingClient = new FirebaseSignalingClient(roomId, this);
@@ -143,19 +146,24 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
 
                     @Override
                     public void onDataChannel(DataChannel channel) {
+                        Log.d(TAG, "onDataChannel() label=" + channel.label() + " state=" + channel.state());
                         if (!"subtitles".equals(channel.label())) return;
                         channel.registerObserver(new DataChannel.Observer() {
                             @Override
                             public void onMessage(DataChannel.Buffer buffer) {
+                                Log.d(TAG, "▶ onMessage() fired");
                                 ByteBuffer data = buffer.data;
                                 byte[] bytes = new byte[data.capacity()];
                                 data.get(bytes);
                                 final String subtitle = new String(bytes, Charset.forName("UTF-8"));
+                                Log.d(TAG, "Received subtitle: " + subtitle);
                                 ((Activity) context).runOnUiThread(() ->
                                     subtitleTextView.setText(subtitle)
                                 );
                             }
-                            @Override public void onStateChange() {}
+                            @Override public void onStateChange() {
+                                Log.d(TAG, "▶ subtitles DC state → " + channel.state());
+                            }
                             @Override public void onBufferedAmountChange(long previousAmount) {}
                         });
                     }
@@ -167,7 +175,10 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
         } else {
             Log.d(TAG, "PeerConnection created");
         }
+        DataChannel.Init init = new DataChannel.Init();
+        localDataChannel = peerConnection.createDataChannel("subtitles", init);  // <<-- 추가
     }
+
 
     private void initLocalMedia() {
         Log.d(TAG, "initLocalMedia() start");
@@ -211,6 +222,13 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
      */
     public void createOfferAndSend(String roomId) {
         this.roomId = roomId;
+        Log.d(TAG, "▶ createOfferAndSend() — caller? " + isCaller);
+        if (isCaller) {
+            DataChannel.Init init = new DataChannel.Init();
+            localDataChannel = peerConnection.createDataChannel("subtitles", init);
+            Log.d(TAG, "▶ Caller created subtitles DC, state=" + localDataChannel.state());
+
+        }
         // 신규 시그널링 클라이언트 초기화 (이미 init 되었다면 중복 무시)
         if (signalingClient == null) {
             signalingClient = new FirebaseSignalingClient(roomId, this);

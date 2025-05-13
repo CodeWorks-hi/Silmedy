@@ -106,7 +106,8 @@ public class VideoCallActivity extends AppCompatActivity {
         webRTC = new WebRTCManager(this, eglBase, remoteView, localView);
         TextView subtitleTextView = findViewById(R.id.sttText);     // 남호가 추가
         webRTC.setSubtitleTextView(subtitleTextView);     // 남호가 추가
-        webRTC.setRoomId(roomId);
+        isCaller = getIntent().getBooleanExtra("isCaller", false);
+        webRTC.setRoomId(roomId, isCaller);
 
         // ◀ 여기부터: Firebase 경로 삭제 시 액티비티 종료 감지 설정
         callRef = FirebaseDatabase
