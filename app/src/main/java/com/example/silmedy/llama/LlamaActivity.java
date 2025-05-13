@@ -106,10 +106,12 @@ public class LlamaActivity extends AppCompatActivity {
             classifier.classifySymptom(patientText, ptTs, new LlamaClassifier.Callback() {
                 @Override
                 public void onResult(Message aiMsg) {
-                    loadingIndicator.setVisibility(View.GONE);
+                    adapter.hideGreeting();
+
                     msgs.add(aiMsg);
                     adapter.notifyItemInserted(msgs.size()-1);
                     recyclerMessages.scrollToPosition(msgs.size()-1);
+
                     if (aiMsg.getText().contains("비대면 진료")) {
                         isFinished = true;
                     }
