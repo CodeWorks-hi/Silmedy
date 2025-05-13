@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- AI 메시지 (왼쪽 정렬) -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -17,23 +18,102 @@
         android:src="@drawable/silmedy_circle"
         android:contentDescription="@string/desc_profile_image" />
 
-    <!-- 메시지 버블 + 시간 -->
+    <!-- 메시지 + 시간 컨테이너 -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- AI 메시지 버블 -->
-        <TextView
-            android:id="@+id/textMessage"
+        <!-- 메시지 버블 -->
+        <LinearLayout
+            android:id="@+id/layoutMessageBubble"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="vertical"
             android:background="@xml/bg_message_ai"
             android:padding="12dp"
-            android:textColor="#000000"
-            android:textSize="16sp"
-            android:maxWidth="240dp" />
+            android:maxWidth="240dp">
+
+            <!-- 환자 증상 -->
+            <TextView
+                android:id="@+id/textPatientSymptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:text="환자 증상: 속쓰림" />
+
+            <!-- 질병 증상 -->
+            <TextView
+                android:id="@+id/textDiseaseSymptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:text="질병 증상: 위염, 소화불량" />
+
+            <!-- 주요 증상 -->
+            <TextView
+                android:id="@+id/textMainSymptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:text="주요 증상: 속쓰림, 복통" />
+
+            <!-- 자가 관리 -->
+            <TextView
+                android:id="@+id/textHomeActions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:text="자가 관리: 가벼운 식사, 충분한 수분 섭취" />
+
+            <!-- 권고사항 -->
+            <TextView
+                android:id="@+id/textGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:text="권고사항: 스트레스 관리, 제산제 복용" />
+
+            <!-- 응급 조치 -->
+            <TextView
+                android:id="@+id/textEmergencyAdvice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                tools:text="응급 조치: 흑색변·혈변 시 병원 방문" />
+
+            <!-- 주의 문구1 -->
+            <TextView
+                android:id="@+id/textDisclaimer1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/text_disclaimer1"
+                android:textColor="#888888"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/textDisclaimer2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/text_disclaimer2"
+                android:textColor="#888888"
+                android:textSize="12sp" />
+
+        </LinearLayout>
 
         <!-- 전송 시간 -->
         <TextView
@@ -42,6 +122,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:textSize="10sp"
-            android:textColor="#AAAAAA" />
+            android:textColor="#AAAAAA"
+            tools:text="오후 5:15" />
+
     </LinearLayout>
 </LinearLayout>

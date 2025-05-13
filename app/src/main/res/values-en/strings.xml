@@ -140,6 +140,20 @@
     <string name="hint_chat_input">Enter a message</string>
     <string name="chat_toolbar_title">Silmedy</string>
     <string name="chat_toolbar_status">Online</string>
+    <string name="label_patient_symptoms">Patient Symptoms</string>
+    <string name="label_disease_symptoms">Disease Symptoms</string>
+    <string name="label_main_symptoms">Main Symptoms</string>
+    <string name="label_home_actions">Home Care</string>
+    <string name="label_guideline">Guideline</string>
+    <string name="label_emergency_advice">Emergency Advice</string>
+
+    <!-- Disclaimer and instructions (English) -->
+    <string name="text_disclaimer1">※ For an accurate diagnosis, please consult a healthcare professional.</string>
+    <string name="text_disclaimer2">※ If you require a telemedicine consultation, reply ‘Yes’.</string>
+
+
+
+
 
     <string name="sample_my_msg">Lately I feel dizzy and heavy-headed sometimes.</string>
     <string name="sample_ai_msg">Please seek a professional diagnosis. Would you like to schedule a remote consultation?</string>

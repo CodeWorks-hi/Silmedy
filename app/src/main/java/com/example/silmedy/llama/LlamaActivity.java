@@ -1,332 +1,140 @@
+// LlamaActivity.java
 package com.example.silmedy.llama;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.silmedy.R;
 import com.example.silmedy.adapter.MessageAdapter;
-import com.example.silmedy.llama.LlamaClassifier;
-import com.example.silmedy.llama.LlamaClassifier.ClassificationCallback;
-import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper;
-import com.example.silmedy.llama.LlamaClassifier.LlamaPromptHelper.StreamCallback;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
-import com.example.silmedy.ui.care_request.SymptomChoiceActivity;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
-import com.example.silmedy.ui.photo_clinic.BodyMain;
-import com.google.firebase.auth.FirebaseAuth;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.concurrent.TimeUnit;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
-
-/**
- * LlamaActivity.java
- * • layout/activity_llama.xml 기반 UI
- * • 로그인된 사용자의 이메일을 sanitized userId로 사용
- * • 외과/내과 분류 → BodyMain 또는 LlamaPromptHelper 호출
- * • Cloud Firestore에 Q&A 저장 및 리스닝
- */
 public class LlamaActivity extends AppCompatActivity {
     private static final String TAG = "LlamaActivity";
-
-    private boolean isFinished = false;
-    private String userId;
-    private String userName;
 
     private RecyclerView recyclerMessages;
     private EditText editMessage;
     private ImageButton btnSend;
-    private MessageAdapter adapter;
-    private final List<Message> msgs = new ArrayList<>();
-
-    private final LlamaClassifier classifier = new LlamaClassifier();
-    private String prevSymptom = "";
     private View loadingIndicator;
+
+    private final ArrayList<Message> msgs = new ArrayList<>();
+    private MessageAdapter adapter;
+    private LlamaClassifier classifier;
+    private boolean isFinished = false;
+    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        new TokenManager(getApplicationContext()).refreshAccessTokenAsync(new TokenManager.TokenRefreshCallback() {
-            @Override
-            public void onTokenRefreshed(String newAccessToken) {
-                // Token refreshed successfully, you can add further logic if needed
-            }
-        });
+        new TokenManager(getApplicationContext())
+                .refreshAccessTokenAsync(token -> { /* no-op */ });
+
         setContentView(R.layout.activity_llama);
 
-        Intent intent = getIntent();
-        userName = intent.getStringExtra("user_name");
+        userName   = getIntent().getStringExtra("user_name");
+        classifier = new LlamaClassifier(this);
 
-        // 2) UI 바인딩
+        // 상단바 설정
         ImageView btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent backIntent = new Intent(this, ClinicHomeActivity.class);
-            backIntent.putExtra("user_name", userName);
+            Intent back = new Intent(this, ClinicHomeActivity.class);
+            back.putExtra("user_name", userName);
+            startActivity(back);
             finish();
         });
-        ((TextView) findViewById(R.id.textRoomCode)).setText("닥터링(Dr.Link)");
-        ((TextView) findViewById(R.id.textRoomName)).setText("AI 의료 연결자");
+        ((TextView)findViewById(R.id.textRoomCode)).setText("닥터링(Dr.Link)");
+        ((TextView)findViewById(R.id.textRoomName)).setText("Online");
 
-        recyclerMessages = findViewById(R.id.recyclerMessages);
-        editMessage = findViewById(R.id.editMessage);
-        btnSend = findViewById(R.id.btnSend);
-        loadingIndicator = findViewById(R.id.loadingIndicator);
+        // UI 바인딩
+        recyclerMessages  = findViewById(R.id.recyclerMessages);
+        editMessage       = findViewById(R.id.editMessage);
+        btnSend           = findViewById(R.id.btnSend);
+        loadingIndicator  = findViewById(R.id.loadingIndicator);
 
-        // 3) RecyclerView 설정
-        adapter = new MessageAdapter(this, msgs, userId);
+        adapter = new MessageAdapter(this, msgs, userName);
         recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerMessages.setAdapter(adapter);
 
-        // 4) EditText 동작 제어
-        editMessage.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int a, int b, int c) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int a, int b, int c) {
-                boolean has = s.toString().trim().length() > 0;
-                btnSend.setEnabled(has);
-                btnSend.setAlpha(has ? 1f : 0.5f);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-        editMessage.setSingleLine(true);
+        // IME ‘전송’ 버튼 처리
         editMessage.setImeOptions(EditorInfo.IME_ACTION_SEND);
+        editMessage.setSingleLine(true);
         editMessage.setOnEditorActionListener((v, actionId, event) -> {
             if (actionId == EditorInfo.IME_ACTION_SEND ||
-                    (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN)) {
+                    (event != null && event.getKeyCode()==KeyEvent.KEYCODE_ENTER
+                            && event.getAction()==KeyEvent.ACTION_DOWN)) {
                 if (btnSend.isEnabled()) btnSend.performClick();
                 return true;
             }
             return false;
         });
 
-        // 5) Send 버튼 클릭
         btnSend.setOnClickListener(v -> {
-            String text = editMessage.getText().toString().trim();
-            if (text.isEmpty()) return;
+            String patientText = editMessage.getText().toString().trim();
+            if (patientText.isEmpty()) return;
             editMessage.setText("");
+
+            // 1) 환자 메시지 표시
             String ptTs = String.valueOf(System.currentTimeMillis());
-            saveChat(text, ptTs, "", "");
-            if (isFinished && text.equals("예")) {
-                callAddSeparatorApi();
-            }
-        });
-    }
+            Message patientMsg = new Message(
+                    "나",
+                    patientText,
+                    Message.formatTimeOnly(System.currentTimeMillis()),
+                    false,
+                    ptTs
+            );
+            msgs.add(patientMsg);
+            adapter.notifyItemInserted(msgs.size()-1);
+            recyclerMessages.scrollToPosition(msgs.size()-1);
 
-    /**
-     * 외과 촬영 페이지 이동 다이얼로그
-     */
-    private void showSurgicalDialog(String patientText, String prompt) {
-        new AlertDialog.Builder(this)
-                .setMessage(prompt)
-                .setPositiveButton("예", (d, w) -> {
-                    startActivity(new Intent(this, BodyMain.class));
-                })
-                .setNegativeButton("아니오", (d, w) -> {
-                    runOnUiThread(() -> {
-                        String ptTs = String.valueOf(System.currentTimeMillis());
-                        saveChat(patientText, ptTs, "", "");
-                    });
-                })
-                .show();
-    }
-
-    /**
-     * API를 통해 Q&A 저장
-     */
-    private void saveChat(String pt, String ptTs, String ai, String aiTs) {
-        TokenManager tokenManager = new TokenManager(getApplicationContext());
-        String accessToken = tokenManager.getAccessToken();
-
-        try {
-            // Add created_at before creating JSON object
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-            String createdAt = sdf.format(new Date());
-
-            runOnUiThread(() -> {
-                loadingIndicator.setVisibility(View.VISIBLE);
-                msgs.add(new Message("나", pt, formatTimeOnly(createdAt), false, ptTs));
-                adapter.notifyItemInserted(msgs.size() - 1);
-                recyclerMessages.scrollToPosition(msgs.size() - 1);
-            });
-
-            if (isFinished) {
-                return;
-            }
-
-            JSONObject json = new JSONObject();
-            json.put("patient_text", pt);
-
-            OkHttpClient client = new OkHttpClient.Builder()
-                    .connectTimeout(10, TimeUnit.SECONDS)
-                    .writeTimeout(10, TimeUnit.SECONDS)
-                    .readTimeout(30, TimeUnit.SECONDS) // ← 기본 10초보다 더 여유 있게
-                    .build();
-            RequestBody body = RequestBody.create(json.toString(), MediaType.get("application/json"));
-            Request request = new Request.Builder()
-                    .url("http://43.201.73.161:5000/chat/save")
-                    .addHeader("Authorization", "Bearer " + accessToken)
-                    .post(body)
-                    .build();
-
-            client.newCall(request).enqueue(new Callback() {
+            // 2) AI 호출 (서버 + 레이블 파싱)
+            loadingIndicator.setVisibility(View.VISIBLE);
+            classifier.classifySymptom(patientText, ptTs, new LlamaClassifier.Callback() {
                 @Override
-                public void onFailure(Call call, IOException e) {
-                    runOnUiThread(() -> loadingIndicator.setVisibility(View.GONE));
-                    Log.e(TAG, "Save chat failed", e);
-                }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    if (response.isSuccessful()) {
-                        String resStr = response.body().string();
-                        JSONObject resJson = null;
-                        try {
-                            resJson = new JSONObject(resStr);
-                        } catch (JSONException e) {
-                            throw new RuntimeException(e);
-                        }
-                        String aiText = resJson.optString("ai_text", "").trim();
-
-                        runOnUiThread(() -> {
-                            loadingIndicator.setVisibility(View.GONE);
-                            if (!aiText.isEmpty()) {
-                                new Handler(Looper.getMainLooper()).postDelayed(() -> {
-                                    msgs.add(new Message("AI", aiText, formatTimeOnly(createdAt), false, aiTs));
-                                    adapter.notifyItemInserted(msgs.size() - 1);
-                                    recyclerMessages.scrollToPosition(msgs.size() - 1);
-                                }, 800);
-                                if (aiText.contains("비대면 진료")) {
-                                    isFinished = true;
-                                }
-                            }
-                        });
-
-                        Log.d(TAG, "Chat saved to API and displayed");
-                    } else {
-                        Log.e(TAG, "API save failed: " + response.code());
+                public void onResult(Message aiMsg) {
+                    loadingIndicator.setVisibility(View.GONE);
+                    msgs.add(aiMsg);
+                    adapter.notifyItemInserted(msgs.size()-1);
+                    recyclerMessages.scrollToPosition(msgs.size()-1);
+                    if (aiMsg.getText().contains("비대면 진료")) {
+                        isFinished = true;
                     }
                 }
-            });
-        } catch (Exception e) {
-            runOnUiThread(() -> loadingIndicator.setVisibility(View.GONE));
-            Log.e(TAG, "JSON creation failed", e);
-        }
-    }
-
-    private String formatTimeOnly(String fullTimestamp) {
-        try {
-            SimpleDateFormat fullFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault());
-            Date date = fullFormat.parse(fullTimestamp);
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
-            return timeFormat.format(date);
-        } catch (Exception e) {
-            return fullTimestamp;
-        }
-    }
-
-    private void callAddSeparatorApi() {
-        TokenManager tokenManager = new TokenManager(getApplicationContext());
-        String accessToken = tokenManager.getAccessToken();
-
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("http://43.201.73.161:5000/chat/add-separator")
-                .addHeader("Authorization", "Bearer " + accessToken)
-                .post(RequestBody.create("", MediaType.get("application/json")))
-                .build();
-
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.e(TAG, "Add-separator API call failed", e);
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {
-                    Log.d(TAG, "Add-separator API called successfully");
-                    String resStr = response.body().string();
-                    try {
-                        JSONObject json = new JSONObject(resStr);
-                        JSONArray partsArray = json.optJSONArray("symptom_part");
-                        JSONArray symptomsArray = json.optJSONArray("disease_symptoms");
-                        ArrayList<String> parts = new ArrayList<>();
-                        ArrayList<String> symptoms = new ArrayList<>();
-                        if (partsArray != null) {
-                            for (int i = 0; i < partsArray.length(); i++) {
-                                parts.add(partsArray.getString(i));
-                            }
-                        }
-                        if (symptomsArray != null) {
-                            for (int i = 0; i < symptomsArray.length(); i++) {
-                                symptoms.add(symptomsArray.getString(i));
-                            }
-                        }
-                        moveToDoctorList(parts, symptoms, userName);
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                } else {
-                    Log.e(TAG, "Add-separator API failed: " + response.code());
+                @Override
+                public void onError(Exception e) {
+                    loadingIndicator.setVisibility(View.GONE);
+                    Log.e(TAG, "AI 응답 실패", e);
                 }
-            }
+            });
         });
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        callAddSeparatorApi();
-    }
-
-    private void moveToDoctorList(ArrayList<String> parts, ArrayList<String> symptoms,
-                                  String username) {
-        Intent intent = new Intent(LlamaActivity.this, DoctorListActivity.class);
-        intent.putExtra("part", parts);
-        intent.putExtra("symptom", symptoms);
-        intent.putExtra("user_name", username);
-        intent.putExtra("department", "내과");
-        startActivity(intent);
+        if (isFinished) {
+            classifier.callAddSeparator(userName, (parts, symptoms) -> {
+                Intent it = new Intent(LlamaActivity.this, DoctorListActivity.class);
+                it.putStringArrayListExtra("part", parts);
+                it.putStringArrayListExtra("symptom", symptoms);
+                it.putExtra("user_name", userName);
+                it.putExtra("department", "내과");
+                startActivity(it);
+            });
+        }
     }
 }

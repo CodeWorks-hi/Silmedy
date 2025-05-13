@@ -140,8 +140,19 @@
     <string name="btn_addatt">첨부파일 추가</string>
     <string name="btn_send">메시지 전송</string>
     <string name="hint_chat_input">메시지를 입력하세요</string>
-    <string name="chat_toolbar_title">Silmedy</string>
+    <string name="chat_toolbar_title">닥터링(Dr.Link)</string>
     <string name="chat_toolbar_status">Online</string>
+    <!-- 메시지 항목 레이블 -->
+    <string name="label_patient_symptoms">환자 증상</string>
+    <string name="label_disease_symptoms">질병 증상</string>
+    <string name="label_main_symptoms">주요 증상</string>
+    <string name="label_home_actions">자가 관리</string>
+    <string name="label_guideline">권고사항</string>
+    <string name="label_emergency_advice">응급 조치</string>
+
+    <string name="text_disclaimer1">※ 정확한 진단은 전문가 상담을 통해 진행하세요.</string>
+    <string name="text_disclaimer2">※ 비대면 진료가 필요하면 ‘예’라고 답해주세요.</string>
+
 
     <string name="sample_my_msg">요즘 가끔 어지럽고 머리가 땡해</string>
     <string name="sample_ai_msg">정확한 진단은 의료진을 통해 받아보시길 바랍니다. 비대면 진료 예약을 원하시나요?</string>
@@ -150,6 +161,9 @@
     <string name="sample_time">오전 9:30</string>
     <string name="desc_profile_image">프로필 이미지</string>
     <string name="sample_ai_sender">Silmedy</string>
+
+
+
 
     <!-- Chat Summary 화면 추가 -->
     <string name="title_activity_chat_summary">대화 요약 보기</string>
