@@ -100,15 +100,29 @@ public class WebRTCManager implements FirebaseSignalingClient.Callback {
     private void initPeerConnection() {
         Log.d(TAG, "initPeerConnection() start");
         List<PeerConnection.IceServer> iceServers = new ArrayList<>();
-        iceServers.add(PeerConnection.IceServer.builder(
-                "stun:stun.l.google.com:19302").createIceServer());
-        iceServers.add(PeerConnection.IceServer.builder(
-                        "turn:13.209.17.4:3478")
+        iceServers.add(PeerConnection.IceServer.builder("stun:stun.l.google.com:19302")
+                .createIceServer());
+// TURN over UDP/TCP
+        iceServers.add(PeerConnection.IceServer
+                .builder("turn:13.209.17.4:3478?transport=udp")
                 .setUsername("testuser").setPassword("testpass")
                 .createIceServer());
-        PeerConnection.RTCConfiguration cfg =
-                new PeerConnection.RTCConfiguration(iceServers);
-
+        iceServers.add(PeerConnection.IceServer
+                .builder("turn:13.209.17.4:3478?transport=tcp")
+                .setUsername("testuser").setPassword("testpass")
+                .createIceServer());
+// TLS (5349), HTTPS (443) failover
+        iceServers.add(PeerConnection.IceServer
+                .builder("turn:13.209.17.4:5349?transport=tcp")
+                .setUsername("testuser").setPassword("testpass")
+                .createIceServer());
+        iceServers.add(PeerConnection.IceServer
+                .builder("turn:13.209.17.4:443?transport=tcp")
+                .setUsername("testuser").setPassword("testpass")
+                .createIceServer());
+        PeerConnection.RTCConfiguration cfg = new PeerConnection.RTCConfiguration(iceServers);
+        cfg.iceTransportsType = PeerConnection.IceTransportsType.ALL;
+        
         peerConnection = factory.createPeerConnection(cfg,
                 new PeerConnectionAdapter() {
                     @Override
