@@ -1,4 +1,3 @@
-// LlamaActivity.java
 package com.example.silmedy.llama;
 
 import android.content.Intent;
@@ -12,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +21,7 @@ import com.example.silmedy.adapter.MessageAdapter;
 import com.example.silmedy.ui.care_request.DoctorListActivity;
 import com.example.silmedy.ui.clinic.ClinicHomeActivity;
 import com.example.silmedy.ui.config.TokenManager;
+import com.example.silmedy.ui.photo_clinic.BodyMain;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,7 @@ public class LlamaActivity extends AppCompatActivity {
     private LlamaClassifier classifier;
     private boolean isFinished = false;
     private String userName;
+    private String lastPtText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +90,21 @@ public class LlamaActivity extends AppCompatActivity {
             if (patientText.isEmpty()) return;
             editMessage.setText("");
 
-            // 1) 환자 메시지 표시
+            // 1) 비대면 진료 이후 '예'/'네' 입력 처리
+            if (isFinished && (patientText.equals("예") || patientText.equals("네"))) {
+                classifier.callAddSeparator(userName, (parts, symptoms) -> {
+                    Intent it = new Intent(LlamaActivity.this, DoctorListActivity.class);
+                    it.putStringArrayListExtra("part", parts);
+                    it.putStringArrayListExtra("symptom", symptoms);
+                    it.putExtra("user_name", userName);
+                    it.putExtra("department", "내과");
+                    startActivity(it);
+                });
+                return;
+            }
+
+            // 2) 환자 메시지 저장
+            lastPtText = patientText;
             String ptTs = String.valueOf(System.currentTimeMillis());
             Message patientMsg = new Message(
                     "나",
@@ -101,21 +117,65 @@ public class LlamaActivity extends AppCompatActivity {
             adapter.notifyItemInserted(msgs.size()-1);
             recyclerMessages.scrollToPosition(msgs.size()-1);
 
-            // 2) AI 호출 (서버 + 레이블 파싱)
+            // 3) AI 호출
             loadingIndicator.setVisibility(View.VISIBLE);
             classifier.classifySymptom(patientText, ptTs, new LlamaClassifier.Callback() {
                 @Override
                 public void onResult(Message aiMsg) {
+                    loadingIndicator.setVisibility(View.GONE);
                     adapter.hideGreeting();
 
+                    String aiText = aiMsg.getText();
+
+                    // 외과 분기 (anywhere in the text)
+                    if (aiText.contains("외과 진료")) {
+                        msgs.add(new Message(
+                                "AI", aiText,
+                                Message.formatTimeOnly(System.currentTimeMillis()),
+                                false,
+                                String.valueOf(System.currentTimeMillis())
+                        ));
+                        adapter.notifyItemInserted(msgs.size()-1);
+                        new AlertDialog.Builder(LlamaActivity.this)
+                                .setMessage(aiText)
+                                .setPositiveButton("예", (d,w) ->
+                                        startActivity(new Intent(LlamaActivity.this, BodyMain.class))
+                                )
+                                .setNegativeButton("아니오", null)
+                                .show();
+                        return;
+                    }
+
+                    // 기타 분기 (anywhere in the text)
+                    if (aiText.contains("전문의 상담이 필요해")) {
+                        msgs.add(new Message(
+                                "AI", aiText,
+                                Message.formatTimeOnly(System.currentTimeMillis()),
+                                false,
+                                String.valueOf(System.currentTimeMillis())
+                        ));
+                        adapter.notifyItemInserted(msgs.size()-1);
+                        new AlertDialog.Builder(LlamaActivity.this)
+                                .setMessage(aiText)
+                                .setPositiveButton("내과", (d,w) -> {
+                                    isFinished = false;
+                                })
+                                .setNegativeButton("외과", (d,w) ->
+                                        showSurgicalDialog(lastPtText, aiText)
+                                )
+                                .show();
+                        return;
+                    }
+
+                    // 내과 기본 흐름
                     msgs.add(aiMsg);
                     adapter.notifyItemInserted(msgs.size()-1);
                     recyclerMessages.scrollToPosition(msgs.size()-1);
-
-                    if (aiMsg.getText().contains("비대면 진료")) {
+                    if (aiText.contains("비대면 진료")) {
                         isFinished = true;
                     }
                 }
+
                 @Override
                 public void onError(Exception e) {
                     loadingIndicator.setVisibility(View.GONE);
@@ -123,6 +183,17 @@ public class LlamaActivity extends AppCompatActivity {
                 }
             });
         });
+    }
+
+    /** 외과 촬영 페이지 다이얼로그 **/
+    private void showSurgicalDialog(String patientText, String prompt) {
+        new AlertDialog.Builder(this)
+                .setMessage(prompt)
+                .setPositiveButton("예", (d,w) ->
+                        startActivity(new Intent(this, BodyMain.class))
+                )
+                .setNegativeButton("아니오", null)
+                .show();
     }
 
     @Override

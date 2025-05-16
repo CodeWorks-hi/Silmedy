@@ -46,12 +46,59 @@ public class LlamaClassifier {
     }
 
     /**
-     * 1) patientText POST → 2) ai_text 응답 → 3) 레이블 파싱 → 4) Message 콜백
-     * Authorization 헤더 포함
+     * 1) Quick local check for 외과 / 기타 keywords
+     * 2) If neither, POST to server + parse labels
      */
     public void classifySymptom(String patientText, String ptTs, Callback cb) {
-        String token = new TokenManager(context).getAccessToken();
+        String norm = patientText.toLowerCase();
 
+        // 1-a) 외과 긴급 키워드
+        String[] surgical = {"골절", "뼈 부러짐", "상처", "출혈", "멍"};
+        for (String kw : surgical) {
+            if (norm.contains(kw)) {
+                Message aiMsg = new Message(
+                        "AI",
+                        "외과 진료가 필요해 보여요.\n" +
+                                "편하실 때 촬영을 통해 증상을 확인해 보실 수 있습니다.\n" +
+                                "지금 터치로 증상 확인 페이지로 이동해 보시겠어요? (예/아니오)",
+                        Message.formatTimeOnly(System.currentTimeMillis()),
+                        false,
+                        String.valueOf(System.currentTimeMillis())
+                );
+                mainHandler.post(() -> cb.onResult(aiMsg));
+                return;
+            }
+        }
+
+        // 1-b) 이비인후과/안과 (기타) 키워드
+        String[] ent = {
+                "눈","시야","충혈","안구","시력","눈물","눈부심","안통","눈통증",
+                "귀","이명","청력","코막힘","콧물","재채기","목","목통증","인후통"
+        };
+        for (String kw : ent) {
+            if (norm.contains(kw)) {
+                Message aiMsg = new Message(
+                        "AI",
+                        "전문의 상담이 필요해 보이는 증상입니다.\n" +
+                                "내과 또는 외과 중 추가로 원하시는 상담을 입력해주세요. (예: 내과 또는 외과)",
+                        Message.formatTimeOnly(System.currentTimeMillis()),
+                        false,
+                        String.valueOf(System.currentTimeMillis())
+                );
+                mainHandler.post(() -> cb.onResult(aiMsg));
+                return;
+            }
+        }
+
+        // 2) 그 외는 서버 호출 + 레이블 파싱
+        doServerCallAndLabelParsing(patientText, ptTs, cb);
+    }
+
+    /**
+     * Performs the HTTP POST to SAVE_URL, then parses the "- patient_symptoms", etc.
+     */
+    private void doServerCallAndLabelParsing(String patientText, String ptTs, Callback cb) {
+        String token = new TokenManager(context).getAccessToken();
         JSONObject payload = new JSONObject();
         try {
             payload.put("patient_text", patientText);
@@ -158,11 +205,10 @@ public class LlamaClassifier {
     }
 
     /**
-     * 진료 완료 후 구분선 API 호출 → SeparatorCallback 으로 parts/symptoms 전달
+     * 진료 완료 후 구분선 API 호출 → SeparatorCallback으로 parts/symptoms 전달
      */
     public void callAddSeparator(String userName, SeparatorCallback cb) {
         String token = new TokenManager(context).getAccessToken();
-
         Request request = new Request.Builder()
                 .url(SEP_URL)
                 .addHeader("Authorization", "Bearer " + token)
@@ -170,7 +216,7 @@ public class LlamaClassifier {
                 .build();
 
         client.newCall(request).enqueue(new okhttp3.Callback() {
-            @Override public void onFailure(Call call, IOException e) { /* 무시 */ }
+            @Override public void onFailure(Call call, IOException e) { /* ignore */ }
             @Override public void onResponse(Call call, Response response) throws IOException {
                 if (!response.isSuccessful()) return;
                 try {
@@ -185,9 +231,7 @@ public class LlamaClassifier {
                         disease.add(dArr.getString(i));
 
                     mainHandler.post(() -> cb.onResult(parts, disease));
-                } catch (JSONException e) {
-                    // ignore
-                }
+                } catch (JSONException ignored) {}
             }
         });
     }
