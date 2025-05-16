@@ -147,7 +147,7 @@ public class CareRequestActivity extends AppCompatActivity {
             btnTomorrow.setText("내일");
         }
 
-        // Reflect 휴진 status for today/tomorrow initially
+        // Reflect 휴진 status for today/tomorrow initially and auto-switch if needed
         String labelToday = getDayLabel("today");
         String timeRangeToday = doctorTimeMapFormatted != null && doctorTimeMapFormatted.containsKey(labelToday)
             ? doctorTimeMapFormatted.get(labelToday)
@@ -155,6 +155,12 @@ public class CareRequestActivity extends AppCompatActivity {
         if ("휴진".equals(timeRangeToday)) {
             btnToday.setText("오늘 : 휴진");
             btnToday.setEnabled(false);
+            selectedDay = "tomorrow";
+            btnToday.setSelected(false);
+            btnTomorrow.setSelected(true);
+            loadTimeSlots("tomorrow");
+        } else {
+            loadTimeSlots("today");
         }
 
         String labelTomorrow = getDayLabel("tomorrow");
