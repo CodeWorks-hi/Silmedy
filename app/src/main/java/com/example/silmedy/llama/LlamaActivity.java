@@ -129,13 +129,6 @@ public class LlamaActivity extends AppCompatActivity {
 
                     // 외과 분기 (anywhere in the text)
                     if (aiText.contains("외과 진료")) {
-                        msgs.add(new Message(
-                                "AI", aiText,
-                                Message.formatTimeOnly(System.currentTimeMillis()),
-                                false,
-                                String.valueOf(System.currentTimeMillis())
-                        ));
-                        adapter.notifyItemInserted(msgs.size()-1);
                         new AlertDialog.Builder(LlamaActivity.this)
                                 .setMessage(aiText)
                                 .setPositiveButton("예", (d,w) ->
