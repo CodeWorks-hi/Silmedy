@@ -16,6 +16,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.silmedy.R;
 import com.example.silmedy.ui.config.TokenManager;
 
@@ -48,7 +50,7 @@ public class CareRequestActivity extends AppCompatActivity {
     private String selectedTime = null;
     private String selectedDay = "today";
     private String doctorNameStr, doctorClinicStr, doctorTimeStr;
-    private int doctorImageResId;
+    private String doctorImageUrl;
     private HashMap<String, String> doctorTimeMapFormatted;
 
     @Override
@@ -111,7 +113,7 @@ public class CareRequestActivity extends AppCompatActivity {
             doctorTimeMapFormatted = (HashMap<String, String>) serializedMap;
             doctorTimeStr = buildScheduleTextFromMap(doctorTimeMapFormatted);
         }
-        doctorImageResId = intent.getIntExtra("doctor_image", R.drawable.doc);
+        doctorImageUrl = intent.getStringExtra("doctor_image");
         String department = intent.getStringExtra("doctor_department");
 
         doctorName.setText(doctorNameStr);
@@ -119,7 +121,11 @@ public class CareRequestActivity extends AppCompatActivity {
         String scheduleText = buildScheduleText(doctorTimeStr);
         doctorTime.setText(scheduleText);
         // loadTimeSlots("today"); // Moved to runOnUiThread in checkInitialSignLanguageSetting
-        doctorImage.setImageResource(doctorImageResId);
+        Glide.with(this)
+                .load(doctorImageUrl)
+                .skipMemoryCache(true)  // Skip memory cache
+                .diskCacheStrategy(DiskCacheStrategy.NONE)  // Skip disk cache
+                .into(doctorImage);
 
         btnToday.setSelected(true);
         btnToday.setBackgroundTintList(null);
