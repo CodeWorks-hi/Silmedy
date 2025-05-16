@@ -43,7 +43,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
 
     private static final int POSTCODE_REQUEST_CODE = 1001;
     ImageView btnBack;
-    TextView txtName,txtContact, txtAddress, txtDetailAddress,txtPostalCode,txtShowAddress;
+    TextView txtName,txtContact, txtDetailAddress,txtPostalCode,txtShowAddress, txtAddress;
     EditText editName, editContact, editDetailAddress, editRequest;
     Button btnZipSearch, btnSubmit;
     CheckBox checkboxDefault;
@@ -54,7 +54,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
     Request request;
 
     // postalCode를 전역 변수로 선언
-    int postalCode = 0;
+    String postalCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +70,11 @@ public class DeliveryInputActivity extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         txtName = findViewById(R.id.txtName);
         txtContact = findViewById(R.id.txtContact);
-        txtAddress = findViewById(R.id.txtAddress);
+        txtShowAddress = findViewById(R.id.txtShowAddress);
         txtDetailAddress = findViewById(R.id.txtDetailAddress);
         txtPostalCode = findViewById(R.id.txtPostalCode);
         txtShowAddress = findViewById(R.id.txtShowAddress);
+        txtAddress = findViewById(R.id.txtAddress);
         editName = findViewById(R.id.editName);
         editContact = findViewById(R.id.editContact);
         editDetailAddress = findViewById(R.id.editDetailAddress);
@@ -122,7 +123,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
                             String contact = jsonResponse.optString("contact","");
                             String address = jsonResponse.optString("address", "");
                             String addressDetail = jsonResponse.optString("address_detail", "");
-                            postalCode = jsonResponse.optInt("postal_code", 0);
+                            postalCode = jsonResponse.optString("postal_code", "");
                             boolean isDefaultAddress = jsonResponse.optBoolean("is_default_address", false);
 
                             // UI에 데이터를 설정
@@ -158,7 +159,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
                 // 체크박스를 선택하면 배송지 정보를 EditText에 자동으로 입력
                 editName.setText(txtName.getText().toString());
                 editContact.setText(txtContact.getText().toString());
-                txtPostalCode.setText(String.valueOf(postalCode));
+                txtPostalCode.setText(postalCode);
                 txtShowAddress.setText(txtAddress.getText().toString());
                 editDetailAddress.setText(txtDetailAddress.getText().toString());
             } else {
@@ -272,7 +273,7 @@ public class DeliveryInputActivity extends AppCompatActivity {
             String zipCode = data.getStringExtra("zipCode");
             String addressResult = data.getStringExtra("address");
             txtPostalCode.setText(zipCode);
-            txtAddress.setText(addressResult);
+            txtShowAddress.setText(addressResult);
         }
     }
 }
