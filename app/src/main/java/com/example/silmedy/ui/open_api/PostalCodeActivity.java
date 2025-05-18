@@ -66,7 +66,7 @@ public class PostalCodeActivity extends AppCompatActivity {
 
     public void searchZipCode(String keyword) {
         String baseUrl = "http://43.201.73.161:5000";
-        String apiUrl = baseUrl + "/postal_code?keyword=" + keyword;
+        String apiUrl = baseUrl + "/postal-code?keyword=" + keyword;
 
         new Thread(() -> {
             try {
