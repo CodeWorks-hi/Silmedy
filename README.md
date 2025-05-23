@@ -36,15 +36,15 @@ Silmedy 환자용 앱은 비대면 진료 서비스를 이용하는 환자들을
 
 ## 🛠 기술 스택
 
-| 분야            | 기술                                        |
-|-----------------|-------------------------------------------|
-| 언어            | Java                                      |
-| 프레임워크      | Android SDK                               |
-| AI 연동         | Llama 기반 AI, REST API                     |
-| 실시간 통신     | Firebase RTDB, WebRTC                     |
-| 비동기 및 네트워크 | OkHttp, Retrofit                          |
-| 이미지 처리     | Glide                                     |
-| 데이터 저장     | Firestore, AWS DynamoDB SharedPreferences |
+| 분야            | 기술                                         |
+|-----------------|--------------------------------------------|
+| 언어            | Java                                       |
+| 프레임워크      | Android SDK                                |
+| AI 연동         | Llama 기반 AI, REST API                      |
+| 실시간 통신     | Firebase RTDB, WebRTC                      |
+| 비동기 및 네트워크 | OkHttp, Retrofit                           |
+| 이미지 처리     | Glide                                      |
+| 데이터 저장     | Firestore, AWS DynamoDB, SharedPreferences |
 
 ---
 
