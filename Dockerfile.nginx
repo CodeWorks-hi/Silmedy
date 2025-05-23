@@ -1,0 +1,5 @@
+FROM nginx:alpine
+
+COPY apk/Silmedy.apk /usr/share/nginx/html/Silmedy.apk
+
+COPY nginx.conf /etc/nginx/nginx.conf
