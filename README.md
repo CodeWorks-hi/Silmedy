@@ -236,7 +236,7 @@ docker run -d --name silmedy-nginx -p 8080:80 silmedy-distribution
 
 ## 👥 팀
 
-**KOOKIZ Team**
+**CodeWorks Team**
 
 ---
 
